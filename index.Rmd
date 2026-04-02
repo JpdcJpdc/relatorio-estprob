@@ -1,18 +1,121 @@
 ---
-title: "João Pedro Delpasso"
-image: "logo.png"
-links:
-  - label: GitHub
-    url: "https://github.com/JpdcJpdc"
-  - label: Itch.io
-    url: "https://jpdc.itch.io/"
-  - label: Email
-    url: "mailto:joao_delpasso@hotmail.com"
-  - label: Relatórios
-    url: "./relatorio/index.html"
-output:
-  postcards::jolla
+title: "Delpasso & Motta"
+output: html_document
 ---
- 
-Página dedicada a apresentação pessoal, e a divulgação dos relatórios da disciplina de Estatística e Probabilidade.
-Ainda em construção :)
+
+<style>
+
+#header {
+display: none;
+}
+
+.page-wrapper {
+min-height: 90vh;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 20px 0;
+}
+.split-container {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 50px;
+width: 100%;
+}
+.profile-card {
+flex: 1 1 300px; 
+max-width: 450px;
+text-align: center;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+.profile-img {
+width: 200px;
+height: 200px;
+border-radius: 50%;
+object-fit: cover;
+margin-bottom: 20px;
+}
+h1.profile-name {
+font-size: 2.2em;
+font-weight: 500;
+margin-bottom: 20px;
+color: #333;
+}
+.links-container {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 10px;
+}
+.button {
+display: inline-block;
+padding: 8px 16px;
+border: 1px solid #dee2e6;
+border-radius: 20px;
+color: #6c757d;
+text-decoration: none;
+font-size: 0.9em;
+transition: all 0.2s ease-in-out;
+}
+.button:hover {
+border-color: #6c757d;
+color: #343a40;
+background-color: #f8f9fa;
+text-decoration: none;
+}
+.button i {
+margin-right: 6px;
+}
+.shared-section {
+text-align: center;
+margin-top: 50px;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+max-width: 800px;
+}
+.shared-btn {
+font-size: 1.1em;
+padding: 12px 24px;
+background-color: #f8f9fa;
+border-color: #ced4da;
+color: #495057;
+margin-bottom: 20px;
+}
+.shared-description {
+font-size: 1.1em;
+color: #495057;
+line-height: 1.6;
+}
+</style>
+
+<div class="page-wrapper">
+
+<div class="split-container">
+<div class="profile-card">
+<img src="logoJp.png" alt="Jp" class="profile-img">
+<h1 class="profile-name">João Pedro Delpasso</h1>
+<div class="links-container">
+<a href="https://github.com/JpdcJpdc" class="button"></i>GitHub</a>
+<a href="https://jpdc.itch.io/" class="button">Itch.io</a>
+<a href="mailto:joao_delpasso@hotmail.com" class="button">Email</a>
+</div>
+</div>
+<div class="profile-card">
+<img src="logoMe.png" alt="Maria Eduarda Motta Rosa" class="profile-img">
+<h1 class="profile-name">Maria Eduarda Motta Rosa</h1>
+<div class="links-container">
+<a href="https://github.com/Maria-Eduarda-001" class="button">GitHub</a>
+<a href="mailto:mariaeduardamottarosa001@aluno.ufsj.edu.br" class="button">Email</a>
+</div>
+</div>
+</div>
+
+<div class="shared-section">
+<a href="./relatorio/index.html" class="button shared-btn">Acessar Relatórios</a>
+<div class="shared-description">
+<p>Página dedicada a apresentação da dupla, e a divulgação dos relatórios da disciplina de Estatística e Probabilidade.<br>Ainda em construção :)</p>
+</div>
+</div>
+
+</div>

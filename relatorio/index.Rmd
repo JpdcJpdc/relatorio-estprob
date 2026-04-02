@@ -27,7 +27,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Mais informações sobre mim
 
-Acesse: [João Delpasso](index.html){target="_blank"}
+Acesse: [J. Delpasso & M. Motta](index.html){target="_blank"}
 
 # Página dos alunos da disciplina
 
@@ -165,7 +165,6 @@ Para *linkar* os relatórios basta usar o código (Exemplo Relatório 01):
 ```
 Relatórios desenvolvidos:
 
-- [Relatório 01 (30/03/2026)](rel01/index.html){target="_blank"}
+- [Relatório 01 João Delpasso(30/03/2026)](rel01Jp/index.html){target="_blank"} (Relatório individual antes da formação da dupla)
+- [Relatório 01 Maria Eduarda Motta Rosa(30/03/2026)](rel01Me/index.html){target="_blank"} (Relatório individual antes da formação da dupla)
 - [Relatório 02 (XX/XX/XXXX)](rel02/index.html){target="_blank"}
-- [Relatório 03 (XX/XX/XXXX)](rel03/index.html){target="_blank"}
-- [Relatório 04 (XX/XX/XXXX)](rel04/index.html){target="_blank"}
