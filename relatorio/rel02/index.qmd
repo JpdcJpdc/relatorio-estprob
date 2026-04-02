@@ -1,7 +1,7 @@
 ---
 # Só mude aqui!!!!
-author: "Nome do Aluno"
-title: "Relatório de Aula Prática 02"
+author: "João Pedro e Maria Eduarda"
+title: "Relatório de Aula Prática 02 - Introdução ao R"
 bibliography: referencias.bib
 # A partir daqui nao faca alteracoes!!!!!
 link-citations: true
@@ -28,71 +28,105 @@ execute:
 
 ## 📌 Introdução
 
-Descreva o contexto da prática e sua importância.
-
-> Exemplo: análise da variabilidade em experimentos físicos utilizando uma catapulta.
-
+Antes de mostrar como programar em R, vou mostrar porque aprender a programar em R. 
+É interessante que você aprenda a programar em R por ele ser construído para ajudar com estatísticas e cientistas de dados, sendo um recurso gratuito e com uma comunidade gigantesca que participa efetivamente da criação de pacotes para a facilidade e melhor compreensão dos usuários.
 
 
 ## 🎯 Objetivos
 
-### Objetivo geral
+Baixar o R e o RStudio e aprender como programar coisas mais básicas na linguagem R
 
-Descrever o objetivo principal da prática.
 
 ### Objetivos específicos
 
-- Coletar dados experimentais  
-- Aplicar estatística descritiva  
-- Construir gráficos  
-- Interpretar resultados  
-
----
-
-## 📚  Fundamentação Teórica
-
-Apresente os conceitos principais:
-
-- Média
-- Variância
-- Desvio padrão
-- Amostragem
-
-$$
-\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i
-$$
+- Baixar o R  
+- Baixar o RStudio
+- Compreender a sintexe do R 
+- Aprender alguns conceitos do R 
 
 ---
 
 ## ⚙️ Metodologia
 
-::: {.callout-note}
-Descreva como o experimento foi realizado.
-:::
+Primeiro, o interessado deve instalar a linguagem R (no link: https://cran.r-project.org/bin/windows/base/), depois desse passo é interessante que o interessado baixe o RStudio (no link: https://www.rstudio.com/products/rstudio/download/), que no caso é a página específica do R, não é obrigatória a instalação do RStudio, mas ele facilita muito a programação, mostrando como ficarão os gráficos, pacotes e etc.
 
-- Materiais utilizados  
-- Procedimento  
-- Número de repetições  
+Depois disso feito, é interessante que o interessado estude a sintaxe da linguagem R, para isso, vídeos no youtube e mesmo materiais didáticos como livros e exercícios feitos e resolvidos; tais coisas são essenciais para a melhor compreensão de como funciona e como programar em R, durante esse passo, também é bom que o interessado pratique fazer esses exercícios que ele já sabe a resolução para se familiarizar com a sintaxe e complexidade da linguagem, e depois disso comece a fazer exercícios simples observando seus conhecimentos e quais suas dúvidas/fraquezas
+
 
 ---
 
-## 🔍 Resultados e Discussão
+## 🔍 Conceitos Fundamentais
 
-Apresente e interprete os resultados obtidos a partir dos dados coletados.
+Alguns dos conceitos fundamentais dessa linguagem são:
 
-- Descreva os principais resultados numéricos (média, variabilidade, etc.).
-- Comente o comportamento dos dados observados nos gráficos.
-- Indique se há presença de valores discrepantes (outliers).
-- Avalie se os dados apresentam simetria ou tendência.
+#### A atribuição de variáveis
 
-Em seguida, discuta os resultados à luz dos conceitos teóricos:
+usamos <- para guardar valores;
+por exemplo:
+Idade <- 25
+nome <- “Giovana”
+É importante lembrar de escrever as variáveis com letras minúsculas, como acima, para um melhor código (assim ele será visto de forma mais experiente)
 
-- Os resultados estão de acordo com o esperado?
-- Há grande variabilidade? O que isso significa no contexto do experimento?
-- Quais fatores podem ter influenciado os resultados?
-- Existem possíveis fontes de erro experimental?
+#### Tipos de dados:
 
-Procure não apenas descrever, mas **interpretar os dados**.
+- Números decimais: numeric
+- Números inteiros: integer
+- Textos/strings: Character
+- Verdadeiro (TRUE) ou Falso (FALSE): logical
+- Sequência unidimensional: vector
+- Tabela bidimensional: matrix
+- Tabela com colunas: data frame
+- Lista de objets variados: list
+
+#### Funções básicas:
+
+- sum(): Soma de elementos
+- mean(): Média aritmética
+- sd(): Desvio padrão
+- summary(): Resumo estatístico
+- length(): Quantidade de elementos
+
+#### PACOTES
+
+É interessante usar pacotes como: leem; tidyverse... são pacotes que ajudam com funções mais fáceis para usar funções bem complexas complexas, colocando muitas vezes uma palavra ao invés de usar várias linhas de código. E para baixar esses pacotes e usá-los, é necessário seguir os seguintes passos: install.packages(“nome_do_pacote”) e depois  colocar library(nome_do_pacote) em cada sessão que for usar esse pacote é necessário colocar esse passo 2, já a instalação só precisa ser feita uma vez.
+
+## RESULTADOS E DISCUSSÕES
+
+O R é uma ótima ferramenta para analisar dados estatísticos, de primeiro pode demorar para ser aprendida devido a sintaxe, mas depois ela recompensa com a velocidade e eficiência para resolver problemas complexos e inclusive se integrar com outras linguagens
+
+### COMENTÁRIOS
+
+Agora acho interessante responder algumas perguntas
+
+1)	Porque usar R?
+2)	Quais outros locais posso programar em R, fora o RStudio?
+3)	Como aprendi a interpretar as mensagens de erro do R?
+4)	Quais comunidades/sites ajudam nesse processo de aprendizado?
+5)	Como garantir que minha análise seja reprodutível para outros?
+6)	Como o uso de projetos (.Rproj) ajudam na organização das pastas e arquivos?
+
+
+Respondendo as questões acima
+
+
+1)	O R foi desenvolvido por e para estatísticos e cientistas de dados, diferente de ferramentas de planilhas, ele permite manipular vários dados com uma grande precisão e garantir que qualquer análise possa ser repetida exatamente da mesma forma, fora que tem pacotes que podem ser instalados que cobrem quase todos os métodos estatísticos existentes, se não todos.
+
+2)	Mesmo o RStudio sendo o padrão para programar em R, você pode usar o VS Code, o Jupyter Notebook (diretamente no terminal do sistema operacional) ou mesmo em plataformas na nuvem, como Posit Cloud e Google Colab.
+
+3)	Interpretar erros em R é um processo de tradução, geralmente na mensagem de erro é indicado onde no código está o erro e porque está errado, logo acredito que no início, e mesmo depois, o segredo é copiar o código e jogar no ChatGPT e pergutar como arrumar e entender a causa da raiz.
+
+4)	As fontes de apoio que acho interessantes são: 
+- Site do Ben Deivide;
+- 
+
+5)   A reprodutibilidade garantida vem por meio de:
+- Scripts bem comentados (explicando o que e porque foi feito);
+- R Markdown ou Quarto (unem o código, resultados e texto em um documento final, PDF ou HTML);
+- Controle de versões (pode ser feito através do GitHub, site muito usado junto ao R que rastreia mudanças no código; local onde inclusive pode ser achado mais projetos semelhantes ao seu);
+
+6) O .Rproj é fundamental, já que ele quem define o seu diretório de   trabalho, ao abrir um projeto, o R já sabe onde estão os dados e onde deve salvar os gráficos. Ele isola o seu ambiente de trabalho, permitindo que você altere entre diferentes análises sem que esses dados interfiram um no outro.
+
+
 
 ### 💬 Exemplo de como citar uma referência bibliográfica
 
@@ -101,12 +135,6 @@ Depois de inserido as informaçõe no arquivo **referencias.bib**, use:
 - Segundo @Rbasico2022
 - Tudo é um objeto em R [@Rbasico2022]
 
-### 📊  Análise de Dados
-
-```{r}
-distancia <- c(10.2, 9.8, 10.5, 10.1, 9.9, 10.3)
-distancia
-```
 
 ## 🧠 Considerações finais
 
