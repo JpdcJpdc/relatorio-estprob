@@ -1,6 +1,6 @@
 ---
 # Só mude aqui!!!!
-author: "João Pedro e Maria Eduarda"
+author: "João Delpasso e Maria Eduarda Motta"
 title: "Relatório de Aula Prática 02 - Introdução ao R"
 bibliography: referencias.bib
 # A partir daqui nao faca alteracoes!!!!!
@@ -16,7 +16,7 @@ format:
     toc: true
     number-sections: true
     theme: bootstrap
-    #css: styles.css
+    css: styles.css
     code-fold: true
     code-tools: true
 execute:
@@ -25,72 +25,508 @@ execute:
   message: false
 ---
 
+{{< include _links.md >}}
 
-## 📌 Introdução
+## Introdução
 
-Antes de mostrar como programar em R, vou mostrar porque aprender a programar em R. 
-É interessante que você aprenda a programar em R por ele ser construído para ajudar com estatísticas e cientistas de dados, sendo um recurso gratuito e com uma comunidade gigantesca que participa efetivamente da criação de pacotes para a facilidade e melhor compreensão dos usuários.
+<!--Antes de mostrar como programar em R, vou mostrar porque aprender a programar em R.--> 
+
+[R] é uma linguagem de programação multi-paradigma com foco em análise de dados e estatística computacional, é uma linguagem de código aberto e possui uma grande comunidade ativa, que contribui para o desenvolvimento de recursos e pacotes, o que torna [R] uma linguagem amplamente adotada por diversas áreas, como estatística e ciência de dados.
+<!--É interessante que você aprenda a programar em R por ele ser construído para ajudar com estatísticas e cientistas de dados, sendo um recurso gratuito e com uma comunidade gigantesca que participa efetivamente da criação de pacotes para a facilidade e melhor compreensão dos usuários.-->
+
+Neste relatório, será apresentado como realizar a configuração inicial para programar em [R], além de apresentar os conceitos básicos da linguagem e como ela pode ser útil para análises estatísticas e manipulação de dados.
 
 
-## 🎯 Objetivos
 
-Baixar o R e o RStudio e aprender como programar coisas mais básicas na linguagem R
+
+## Objetivo
+
+Realizar a instalação do R e do RStudio e aprender o básico da linguagem R.
 
 
 ### Objetivos específicos
 
-- Baixar o R  
-- Baixar o RStudio
-- Compreender a sintexe do R 
-- Aprender alguns conceitos do R 
+- [Instalação](#sec-setup) do [R] e [RStudio].
+- Primeiras impressões de [sintaxe](#sec-sintaxe) da linguagem [R].
+- Aprender conceitos básicos da linguagem [R].
+- Introdução ao uso de [pacotes](#sec-pacotes) em [R].
+- Breve introdução ao [pacote](#sec-pacote-leem) `leem`.
 
 ---
 
-## ⚙️ Metodologia
+## Instalação do R e do RStudio {#sec-setup}
 
-Primeiro, o interessado deve instalar a linguagem R (no link: https://cran.r-project.org/bin/windows/base/), depois desse passo é interessante que o interessado baixe o RStudio (no link: https://www.rstudio.com/products/rstudio/download/), que no caso é a página específica do R, não é obrigatória a instalação do RStudio, mas ele facilita muito a programação, mostrando como ficarão os gráficos, pacotes e etc.
+O primeiro passo para programar em uma linguagem é a configuração do ambiente de desenvolvimento.
 
-Depois disso feito, é interessante que o interessado estude a sintaxe da linguagem R, para isso, vídeos no youtube e mesmo materiais didáticos como livros e exercícios feitos e resolvidos; tais coisas são essenciais para a melhor compreensão de como funciona e como programar em R, durante esse passo, também é bom que o interessado pratique fazer esses exercícios que ele já sabe a resolução para se familiarizar com a sintaxe e complexidade da linguagem, e depois disso comece a fazer exercícios simples observando seus conhecimentos e quais suas dúvidas/fraquezas
+Para este relatório será utilizado o ambiente do [RStudio], uma interface gráfica que facilita a programação em [R], mas é importante destacar que o [R] pode ser utilizado em outros ambientes, como o [VS Code], [Jupyter Notebook], ou mesmo diretamente no terminal do sistema operacional.
+
+O [R] em si é a linguagem de programação, enquanto o [RStudio] é um ambiente de desenvolvimento integrado (IDE) que oferece uma interface amigável para escrever código, visualizar gráficos e gerenciar projetos em [R].
+
+Para configuração do ambiente:
+
+- Instale a versão apropriada ao seu sistema operacional do [R].
+- Instale o [RStudio].
+
+
+<!--Primeiro, o interessado deve instalar a linguagem R (no link: https://cran.r-project.org/bin/windows/base/), depois desse passo é interessante que o interessado baixe o RStudio (no link: https://www.rstudio.com/products/rstudio/download/), que no caso é a página específica do R, não é obrigatória a instalação do RStudio, mas ele facilita muito a programação, mostrando como ficarão os gráficos, pacotes e etc.-->
+ 
+
+<!--Depois disso feito, é interessante que o interessado estude a sintaxe da linguagem R, para isso, vídeos no youtube e mesmo materiais didáticos como livros e exercícios feitos e resolvidos; tais coisas são essenciais para a melhor compreensão de como funciona e como programar em R, durante esse passo, também é bom que o interessado pratique fazer esses exercícios que ele já sabe a resolução para se familiarizar com a sintaxe e complexidade da linguagem, e depois disso comece a fazer exercícios simples observando seus conhecimentos e quais suas dúvidas/fraquezas-->
 
 
 ---
 
-## 🔍 Conceitos Fundamentais
+## Sintaxe {#sec-sintaxe}
 
-Alguns dos conceitos fundamentais dessa linguagem são:
+Nesta parte será apresentada a sintaxe básica da linguagem [R], incluindo a estrutura de comandos, a forma de escrever código e as convenções de nomenclatura. A sintaxe é a base para a escrita de qualquer linguagem de programação, é fundamental a compressão da sintaxe para a construção de códigos em [R].
 
-#### A atribuição de variáveis
+Para chamar variaveis e funções em [R], basta escrever o nome da variável ou função, seguido de parênteses para funções, por exemplo:
+```{r}
+#| code-fold: false
+#| code-line-numbers: true
+# Exemplo de sintaxe:
+idade <- 25
+nome <- "Giovana"
 
-usamos <- para guardar valores;
-por exemplo:
-Idade <- 25
-nome <- “Giovana”
-É importante lembrar de escrever as variáveis com letras minúsculas, como acima, para um melhor código (assim ele será visto de forma mais experiente)
+function_exemplo <- function(x) {
+  return(x * 2)
+}
 
-#### Tipos de dados:
+idade
+nome
 
-- Números decimais: numeric
-- Números inteiros: integer
-- Textos/strings: Character
-- Verdadeiro (TRUE) ou Falso (FALSE): logical
-- Sequência unidimensional: vector
-- Tabela bidimensional: matrix
-- Tabela com colunas: data frame
-- Lista de objets variados: list
+function_exemplo(10)
 
-#### Funções básicas:
+```
 
-- sum(): Soma de elementos
-- mean(): Média aritmética
-- sd(): Desvio padrão
-- summary(): Resumo estatístico
-- length(): Quantidade de elementos
+::: {.callout-note}
+Veja as seções de [operadores básicos](#sec-operadores), [tipos de dados](#sec-tipos-dados) e [funções básicas](#sec-funcoes) para entender melhor a sintaxe da linguagem [R] e o código acima.
+:::
 
-#### PACOTES
+### Tipos de dados: {#sec-tipos-dados}
 
+Linguagens de programação possuem diferentes tipos de dados para armazenar informações, os tipos de dados em [R] são:
+
+#### Tipos de dados básicos: {#subsec-tipos-dados-basicos}
+
+- Numéricos: para armazenar números, como 1, 2.5, etc.
+
+  ::: {.callout-note}
+  Em [R] todos os números são armazenados como numéricos, mesmo que sejam inteiros, floats ou de outros tipos, a linguagem lida por trás dos panos com a conversão de tipos, então não é necessário se preocupar com isso.
+  :::
+
+  ```{r}
+  #| code-fold: false
+  numero1 <- 10
+  numero2 <- 3.14
+
+  numero1
+  numero2
+  ```
+
+- Inteiros: para armazenar números inteiros, como 1L, 2L, etc.
+
+  ::: {.callout-note}
+  Mesmo com o tipo Numérico, é possível armazenar números inteiros usando o sufixo "L", por exemplo, 10L, isso é útil para garantir que um número seja tratado como inteiro em operações específicas.
+  :::
+  ```{r}
+  #| code-fold: false
+  inteiro1 <- 10L
+  inteiro2 <- 20L
+
+  inteiro1
+  inteiro2
+  ```
+
+- Complexos: para armazenar números complexos, como 1 + 2i, etc.
+
+  ```{r}
+  #| code-fold: false
+  complexo1 <- 1 + 2i
+  complexo2 <- 3 - 4i
+
+  complexo1
+  complexo2
+  ```
+
+- Caracteres: para armazenar texto, como "Olá", "Mundo", etc.
+
+  ```{r}
+  #| code-fold: false
+  texto1 <- "Olá"
+  texto2 <- "Mundo"
+
+  texto1
+  texto2
+  ```
+- Lógicos: para armazenar valores booleanos, como TRUE ou FALSE.
+
+  ```{r}
+  #| code-fold: false
+  logico1 <- TRUE
+  logico2 <- FALSE
+
+  logico1
+  logico2
+  ```
+
+#### Tipos de dados estruturados: {#subsec-tipos-dados-estruturados}
+
+- Vetores: para armazenar uma sequência de elementos do mesmo tipo(homogêneos).
+
+  ```{r}
+  #| code-fold: false
+  vetor_numerico <- c(1, 2, 3, 4, 5)
+  vetor_texto <- c("A", "B", "C", "D", "E")
+
+  vetor_numerico
+  vetor_texto
+  ```
+
+- Listas: para armazenar uma coleção de elementos de diferentes tipos(heterogêneos).
+
+  ```{r}
+  #| code-fold: false
+  lista1 <- list(a = 1, b = 2, c = 3)
+  lista2 <- list(d = "A", e = "B", f = "C")
+
+  lista1
+  lista2
+  ```
+
+- Matrizes: para armazenar dados homogêneos em uma estrutura bidimensional.
+
+  ```{r}
+  #| code-fold: false
+  matriz1 <- matrix(1:6, nrow = 2, ncol = 3)
+  matriz2 <- matrix(c("A", "B", "C", "D", "E", "F"), nrow = 2, ncol = 3)
+
+  matriz1
+  matriz2
+  ```
+
+- Data Frames: para armazenar dados heterogêneos em uma estrutura bidimensional.
+
+  ```{r}
+  #| code-fold: false
+  dataframe1 <- data.frame(col1 = c(1, 2, 3), col2 = c("A", "B", "C"))
+
+  dataframe1
+  ```
+
+- Arrays: para armazenar dados homogêneos em uma estrutura multidimensional.
+
+  ```{r}
+  #| code-fold: false
+  array1 <- array(1:8, dim = c(2, 2, 2))
+
+  array1
+  ```
+
+- Fatores: para armazenar dados categóricos.
+
+  ```{r}
+  #| code-fold: false
+  fator1 <- factor(c("A", "B", "C", "A", "B"))
+
+  fator1
+  ```
+
+
+### Operadores básicos: {#sec-operadores}
+
+Como toda linguagem de programação, [R] possui operadores básicos para realizar operações matemáticas, lógicas e de comparação. Esses operadores são essenciais para a construção de códigos em [R] e permitem manipular dados de forma eficiente.
+
+#### Operadores de Atribuição: `<-` ou `=` {#subsec-operadores-atribuicao}
+
+Atribuição é o processo de armazenar um valor em uma variável. Em [R], a atribuição pode ser feita usando o operador `<-` ou `=`, a diferença dos operadores está no escopo, `<-` é o operador de atribuição tradicional em [R] e é recomendado para a maioria dos casos, enquanto `=` é mais comumente usado em argumentos de funções. Por exemplo:
+
+```{r}
+#| code-fold: false
+#| code-line-numbers: true
+# Usando <- para atribuição
+var1 <- 10
+# Usando = para atribuição
+var2 = 20
+
+# Uso de = em argumentos de função
+var3 <- mean(x = c(1, 2, 3, 4, 5))
+```
+
+#### Operadores aritméticos: `+`, `-`, `*`, `/`, `^` {#subsec-operadores-aritmeticos}
+
+Esses operadores são usados para realizar operações matemáticas básicas, como adição, subtração, multiplicação, divisão e exponenciação. Por exemplo:
+
+```{r}
+#| code-fold: false
+#| code-line-numbers: true
+a <- 5
+b <- 3
+
+soma <- a + b       # Adição
+diferenca <- a - b   # Subtração
+produto <- a * b    # Multiplicação
+quociente <- a / b   # Divisão
+potencia <- a ^ b    # Exponenciação
+```
+
+#### Operadores de comparação: `==`, `!=`, `<`, `>`, `<=`, `>=` {#subsec-operadores-comparacao}
+
+Esses operadores são usados para comparar valores e retornar um resultado lógico (TRUE ou FALSE). Por exemplo:
+
+```{r}
+#| code-fold: false
+#| code-line-numbers: true
+x <- 10
+y <- 20
+
+comparacao1 <- x == y   # Igual a
+comparacao2 <- x != y   # Diferente de
+comparacao3 <- x < y    # Menor que
+comparacao4 <- x > y    # Maior que
+comparacao5 <- x <= y   # Menor ou igual a
+comparacao6 <- x >= y   # Maior ou igual a
+```
+
+#### Operadores lógicos: `&`, `|`, `!` {#subsec-operadores-logicos}
+  
+Esses operadores são usados para combinar condições lógicas. O operador `&` representa a conjunção (AND), o operador `|` representa a disjunção (OR) e o operador `!` representa a negação (NOT). Por exemplo:
+
+```{r}
+#| code-fold: false
+#| code-line-numbers: true
+a <- TRUE
+b <- FALSE
+
+resultado1 <- a & b   # AND
+resultado2 <- a | b   # OR
+resultado3 <- !a      # NOT
+```
+
+#### Operadores de indexação: `[ ]`, `[[ ]]`, `$` {#subsec-operadores-indexacao}
+  
+Esses operadores são usados para acessar elementos específicos de vetores, listas ou data frames. O operador `[ ]` é usado para acessar elementos por posição, o operador `[[ ]]` é usado para acessar elementos por nome e o operador `$` é usado para acessar colunas em data frames. Por exemplo:
+
+```{r}
+#| code-fold: false
+#| code-line-numbers: true
+vetor <- c(10, 20, 30, 40, 50)
+lista <- list(a = 1, b = 2, c = 3)
+dataframe <- data.frame(col1 = c(1, 2, 3), col2 = c("A", "B", "C"))
+
+elemento_vetor <- vetor[2]         # Acessa o segundo elemento do vetor
+elemento_lista <- lista[["b"]]     # Acessa o elemento "b" da lista
+coluna_dataf <- dataframe$col1 # Acessa a coluna "col1" do data frame
+```
+
+::: {.callout-note}
+Veja a seção [tipos de dados](#sec-tipos-dados) para melhor entendimento do código acima.
+:::
+
+### Funções básicas: {#sec-funcoes}
+
+Funções são blocos de código que realizam uma tarefa específica e podem ser reutilizados em diferentes partes do código. Em [R], existem muitas funções pré-definidas para realizar operações comuns, como calcular a média, a variância, o desvio padrão, entre outras.
+
+#### Funções Matemáticas Básicas: {#subsec-funcoes-matematicas}
+
+- Soma: `sum()`, calcula a soma de um conjunto de números.
+
+  ```{r}
+  #| code-fold: false
+  sum(x = c(1, 2, 3, 4, 5))
+  ```
+
+- Valor Absoluto: `abs()`, calcula o valor absoluto de um número.
+
+  ```{r}
+  #| code-fold: false
+  abs(x = -10)
+  ```
+
+- Raiz Quadrada: `sqrt()`, calcula a raiz quadrada de um número.
+
+  ```{r}
+  #| code-fold: false
+  sqrt(x = 16)
+  ```
+
+- Logaritmo: `log()`, calcula o logaritmo de um número.
+
+  ```{r}
+  #| code-fold: false
+  log(x = 100, base = 10) # Calcula o logaritmo de 100 na base 10
+  ```
+
+- Arredondamento: `round()`, arredonda um número para um número específico de casas decimais.
+
+  ```{r}
+  #| code-fold: false
+  round(x = 3.14159, digits = 2) # Arredonda para 2 casas decimais
+  ```
+
+- Exponencial: `exp()`, calcula o valor exponencial de um número.
+
+  ```{r}
+  #| code-fold: false
+  exp(x = 1) # Calcula e elevado a 1
+  ```
+
+#### Funções Estatísticas Básicas: {#subsec-funcoes-estatisticas}
+
+- Média: `mean()`, calcula a média aritmética de um conjunto de números.
+
+  ```{r}
+  #| code-fold: false
+  mean(x = c(1, 2, 3, 4, 5))
+  ```
+
+- Variância: `var()`, calcula a variância de um conjunto de números.
+
+  ```{r}
+  #| code-fold: false
+  var(x = c(1, 2, 3, 4, 5))
+  ```
+
+- Desvio Padrão: `sd()`, calcula o desvio padrão de um conjunto de números.
+
+  ```{r}
+  #| code-fold: false
+  sd(x = c(1, 2, 3, 4, 5))
+  ```
+
+- Mediana: `median()`, calcula a mediana de um conjunto de números.
+
+  ```{r}
+  #| code-fold: false
+  median(x = c(1, 2, 3, 4, 5))
+  ```
+
+- Máximo e Mínimo: `max()` e `min()`, calculam o valor máximo e mínimo de um conjunto de números, respectivamente.
+
+  ```{r}
+  #| code-fold: false
+  max(x = c(1, 2, 3, 4, 5))
+  min(x = c(1, 2, 3, 4, 5))
+  ```
+
+#### Funções de Manipulação de Dados: {#subsec-funcoes-manipulacao-dados}
+
+- Tamanho: `length()`, calcula o número de elementos em um vetor ou lista.
+
+  ```{r}
+  #| code-fold: false
+  length(x = c(1, 2, 3, 4, 5))
+  ```
+
+- Nomes: `names()`, retorna os nomes dos elementos em uma lista ou data frame.
+
+  ```{r}
+  #| code-fold: false
+  names(x = list(a = 1, b = 2, c = 3))
+  ```
+
+
+- Dimensão: `dim()`, calcula as dimensões de uma matriz ou data frame.
+
+  ```{r}
+  #| code-fold: false
+  dim(x = matrix(1:6, nrow = 2, ncol = 3))
+  ```
+
+- Número de Linhas e Colunas: `nrow()` e `ncol()`, calculam o número de linhas e colunas em uma matriz ou data frame, respectivamente.
+
+  ```{r}
+  #| code-fold: false
+  nrow(x = matrix(1:6, nrow = 2, ncol = 3))
+  ncol(x = matrix(1:6, nrow = 2, ncol = 3))
+  ```
+
+- Classe: `class()`, retorna a classe de um objeto em [R].
+
+  ```{r}
+  #| code-fold: false
+  class(x = c(1, 2, 3, 4, 5))
+  ```
+
+## Pacotes {#sec-pacotes}
+
+O Uso de pacotes em [R] é fundamental para expandir as funcionalidades da linguagem e facilitar a realização de tarefas específicas. Pacotes são coleções de funções, dados e documentação que podem ser facilmente instalados e carregados em [R]. Existem milhares de pacotes disponíveis para diversas áreas, como estatística, ciência de dados, visualização, entre outras. Importante mencionar que, pacotes são criados por membros da comunidade e podem ser encontrados no repositório oficial do [CRAN] ou em outros repositórios, como o [GitHub].
+
+### Instalação e Carregamento de Pacotes
+
+Para instalar e carregar um pacote em [R], basta usar a função `install.packages()` e `library()`, passando o nome do pacote como argumento. Por exemplo, o pacote `ggplot2`, que é amplamente utilizado para visualização de dados, basta executar:
+
+```{r}
+#| code-fold: false
+#| eval: false
+install.packages("ggplot2") #Instala o pacote ggplot2
+library(ggplot2) #Carrega o pacote ggplot2 para uso
+```
+
+### Pacotes populares em [R]
+
+Alguns pacotes possuem uma grande popularidade e são amplamente utilizados pela comunidade, como:
+
+- `ggplot2`: para visualização de dados.
+- `dplyr`: para manipulação de dados.
+- `tidyr`: para organização de dados.
+- `readr`: para leitura de arquivos.
+- `stringr`: para manipulação de strings.
+- `lubridate`: para manipulação de datas.
+- `caret`: para machine learning.
+
+
+<!--
 É interessante usar pacotes como: leem; tidyverse... são pacotes que ajudam com funções mais fáceis para usar funções bem complexas complexas, colocando muitas vezes uma palavra ao invés de usar várias linhas de código. E para baixar esses pacotes e usá-los, é necessário seguir os seguintes passos: install.packages(“nome_do_pacote”) e depois  colocar library(nome_do_pacote) em cada sessão que for usar esse pacote é necessário colocar esse passo 2, já a instalação só precisa ser feita uma vez.
+-->
 
-## RESULTADOS E DISCUSSÕES
+### Pacote `leem` {#sec-pacote-leem}
+
+Na disciplina de Estatística e Probabilidade, o pacote `leem` é uma ferramenta útil para realizar análises estatísticas e manipulação de dados. Ele oferece uma variedade de funções para calcular medidas de tendência central, variabilidade, gráficos, entre outras funcionalidades.
+
+O pacote `leem` é mantido pelo professor [Ben Dêivide](https://bendeivide.github.io) e pode ser instalado e carregado da seguinte forma:
+
+```{r}
+#| code-fold: false
+#| eval: false
+install.packages("leem") #Instala o pacote leem
+library(leem) #Carrega o pacote leem para uso
+```
+
+#### Funções do pacote `leem`
+
+Alguns exemplos de funções que serão utilizadas durante a disciplina são:
+
+- `new_leem()`: para criar um objeto do tipo `leem`.
+  
+  ```{r}
+  #| code-fold: false
+  library(leem)
+
+  dados <- c(1, 2, 3, 4, 5)
+  leem_obj <- new_leem(x = dados, variable = 2)
+  leem_obj
+  ```
+
+- `tabfreq()`: para criar uma tabela de frequências.
+
+  ```{r}
+  #| code-fold: false
+  tabf <- tabfreq(leem_obj)
+  tabf
+  ```
+
+- `barplot()`: para criar um gráfico de barras a partir de uma tabela de frequências.
+
+  ```{r}
+  #| code-fold: false
+  barplot(tabf, main = "Frequência dos dados", xlab = "Valores", ylab = "Frequência", barcol = "steelblue")
+  ```
+
+::: {.callout-note}
+Para descobrir mais funções do pacote `leem` e suas aplicações, consulte a [documentação oficial](https://bendeivide.github.io/leem/).
+:::
+## Considerações finais
 
 O R é uma ótima ferramenta para analisar dados estatísticos, de primeiro pode demorar para ser aprendida devido a sintaxe, mas depois ela recompensa com a velocidade e eficiência para resolver problemas complexos e inclusive se integrar com outras linguagens
 
@@ -125,30 +561,3 @@ Respondendo as questões acima
 - Controle de versões (pode ser feito através do GitHub, site muito usado junto ao R que rastreia mudanças no código; local onde inclusive pode ser achado mais projetos semelhantes ao seu);
 
 6) O .Rproj é fundamental, já que ele quem define o seu diretório de   trabalho, ao abrir um projeto, o R já sabe onde estão os dados e onde deve salvar os gráficos. Ele isola o seu ambiente de trabalho, permitindo que você altere entre diferentes análises sem que esses dados interfiram um no outro.
-
-
-
-### 💬 Exemplo de como citar uma referência bibliográfica
-
-Depois de inserido as informaçõe no arquivo **referencias.bib**, use:
-
-- Segundo @Rbasico2022
-- Tudo é um objeto em R [@Rbasico2022]
-
-
-## 🧠 Considerações finais
-
-Apresente uma síntese dos principais pontos observados no experimento.
-
-- Retome o objetivo da prática e indique se ele foi alcançado.
-- Destaque os principais aprendizados obtidos.
-- Comente brevemente sobre a qualidade dos dados coletados.
-- Sugira possíveis melhorias no procedimento experimental.
-
-Evite repetir apenas os resultados; foque nas **conclusões e reflexões** sobre a prática realizada.
-
-## Aprenda Quarto
-
-Acesse [Quarto](https://quarto.org/).
-
-## 📖 Referências

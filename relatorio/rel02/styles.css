@@ -1,0 +1,44 @@
+#quarto-document-content a[href^="#"] {
+  color: #d95f02 !important;
+  text-decoration: underline dotted !important;
+  transition: all 0.3s ease; 
+}
+
+@keyframes orange-pulse {
+  0% { text-shadow: 0 0 8px rgba(217, 95, 2, 0.4); }
+  50% { text-shadow: 0 0 24px rgba(217, 95, 2, 0.8), 0 0 8px rgba(217, 95, 2, 0.6); }
+  100% { text-shadow: 0 0 8px rgba(217, 95, 2, 0.4); }
+}
+
+#quarto-document-content a[href^="#"]:hover {
+  animation: orange-pulse 1.5s ease-in-out infinite; 
+}
+
+#TOC a[href^="#"], 
+.sidebar a[href^="#"], 
+.nav-link {
+  color: inherit !important;
+  text-decoration: none !important;
+  text-shadow: none !important; 
+}
+
+a[href^="http"] {
+  color: #007bff !important;
+  transition: all 0.3s ease;
+}
+
+@keyframes blue-pulse {
+  0% { text-shadow: 0 0 8px rgba(0, 123, 255, 0.4); }
+  50% { text-shadow: 0 0 24px rgba(0, 123, 255, 0.8), 0 0 8px rgba(0, 123, 255, 0.6); }
+  100% { text-shadow: 0 0 8px rgba(0, 123, 255, 0.4); }
+}
+
+a[href^="http"]:hover {
+  animation: blue-pulse 1.5s ease-in-out infinite;
+}
+
+#TOC a.active, 
+.sidebar a.active, 
+.nav-link.active {
+  color: #007bff !important;
+}

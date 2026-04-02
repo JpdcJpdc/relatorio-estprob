@@ -167,4 +167,4 @@ Relatórios desenvolvidos:
 
 - [Relatório 01 João Delpasso(30/03/2026)](rel01Jp/index.html){target="_blank"} (Relatório individual antes da formação da dupla)
 - [Relatório 01 Maria Eduarda Motta Rosa(30/03/2026)](rel01Me/index.html){target="_blank"} (Relatório individual antes da formação da dupla)
-- [Relatório 02 (XX/XX/XXXX)](rel02/index.html){target="_blank"}
+- [Relatório 02 (03/04/2026)](rel02/index.html){target="_blank"}
