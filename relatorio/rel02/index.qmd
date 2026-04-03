@@ -31,10 +31,10 @@ execute:
 
 <!--Antes de mostrar como programar em R, vou mostrar porque aprender a programar em R.--> 
 
-[R] é uma linguagem de programação multi-paradigma com foco em análise de dados e estatística computacional, é uma linguagem de código aberto e possui uma grande comunidade ativa, que contribui para o desenvolvimento de recursos e pacotes, o que torna [R] uma linguagem amplamente adotada por diversas áreas, como estatística e ciência de dados.
+O [R] é uma linguagem de programação e ambiente de software de código aberto, e tem foco na computação estatística e análise de dados. Foi consolidada como uma das ferramentas padrão padrão na ciência de dados moderna, permitindo desde análises financeiras complexas até bioinformática. Assim o R, é uma linguagem que possui uma grande comunidade ativa, que possui uma grande comunidade ativa, que sempre está contribuindo para o desenvolvimento de recursos e pacotes, e por esse motivo é muito adotado o [R] é uma linguagem amplamente adotada por diversas áreas, como estatística e ciência de dados.
 <!--É interessante que você aprenda a programar em R por ele ser construído para ajudar com estatísticas e cientistas de dados, sendo um recurso gratuito e com uma comunidade gigantesca que participa efetivamente da criação de pacotes para a facilidade e melhor compreensão dos usuários.-->
 
-Neste relatório, será apresentado como realizar a configuração inicial para programar em [R], além de apresentar os conceitos básicos da linguagem e como ela pode ser útil para análises estatísticas e manipulação de dados.
+Seu diferencial é a sua capacidade de promover pesquisas reprodutíveis, e para isso integra o código, a análise e a visualização em u fluxo coeso. Este relatório, apresentará como realizar a configuração inicial para programar em [R], além de apresentar os conceitos básicos da linguagem e como ela pode ser útil para análises estatísticas e manipulação de dados.
 
 
 
@@ -64,7 +64,7 @@ O [R] em si é a linguagem de programação, enquanto o [RStudio] é um ambiente
 
 Para configuração do ambiente:
 
-- Instale a versão apropriada ao seu sistema operacional do [R].
+- Instale a versão apropriada do [R] ao seu sistema operacional (Windows, Linux ou macOS).
 - Instale o [RStudio].
 
 
@@ -78,9 +78,10 @@ Para configuração do ambiente:
 
 ## Sintaxe {#sec-sintaxe}
 
-Nesta parte será apresentada a sintaxe básica da linguagem [R], incluindo a estrutura de comandos, a forma de escrever código e as convenções de nomenclatura. A sintaxe é a base para a escrita de qualquer linguagem de programação, é fundamental a compressão da sintaxe para a construção de códigos em [R].
+Nesta parte será apresentada a sintaxe básica da linguagem [R], incluindo a estrutura de comandos, a forma de escrever código e as convenções de nomenclatura. A sintaxe é a base para a escrita de qualquer linguagem de programação, é fundamental a compreensão dela para a construção de códigos em [R].
 
 Para chamar variaveis e funções em [R], basta escrever o nome da variável ou função, seguido de parênteses para funções, por exemplo:
+
 ```{r}
 #| code-fold: false
 #| code-line-numbers: true
@@ -112,7 +113,7 @@ Linguagens de programação possuem diferentes tipos de dados para armazenar inf
 - Numéricos: para armazenar números, como 1, 2.5, etc.
 
   ::: {.callout-note}
-  Em [R] todos os números são armazenados como numéricos, mesmo que sejam inteiros, floats ou de outros tipos, a linguagem lida por trás dos panos com a conversão de tipos, então não é necessário se preocupar com isso.
+  Em [R] todos os números são armazenados como numéricos do tipo double (mesmo que pareça inteiro o R trata assim para garantir que qualquer operação futura seja precisa), mesmo que sejam inteiros (é um prduto flutuante, esse termo se refere a maneira como o computador armazana números que podem ter casas decimais), floats ou outros tipos, a linguagem lida por trás dos panos com a conversão de tipos, então não é necessário se preocupar com isso.
   :::
 
   ```{r}
@@ -129,6 +130,7 @@ Linguagens de programação possuem diferentes tipos de dados para armazenar inf
   ::: {.callout-note}
   Mesmo com o tipo Numérico, é possível armazenar números inteiros usando o sufixo "L", por exemplo, 10L, isso é útil para garantir que um número seja tratado como inteiro em operações específicas.
   :::
+  
   ```{r}
   #| code-fold: false
   inteiro1 <- 10L
@@ -159,6 +161,7 @@ Linguagens de programação possuem diferentes tipos de dados para armazenar inf
   texto1
   texto2
   ```
+  
 - Lógicos: para armazenar valores booleanos, como TRUE ou FALSE.
 
   ```{r}
@@ -170,9 +173,36 @@ Linguagens de programação possuem diferentes tipos de dados para armazenar inf
   logico2
   ```
 
+- Função class() e typeof(): A primeira mostra a identidade do objeto, retorna o atributo da classe do objeto, diz como as outras funções devem tratar esse objeto. Já a segunda tem uma natureza interna, revela como o R armazena o objeto na memória do computador, retorna a natureza do dado.
+
+  ::: {.callout-note}
+  No [R] é comum encontrarmos funções que parecem fazer a mesma coisa, mas extraem informações diferentes dos dados, as duas principais para investigação de objetos.
+  :::
+
+```{r}
+nome <- "Giovana"
+idade <- 25
+# Verificando o nome
+typeof(nome)
+class(nome)
+
+dados <- data.frame(nome, idade)
+# Aqui aparece a diferença
+typeof(dados)
+class(dados)
+```
+
+  ::: {.callout-note}
+  Acredito que é importante de mencionar já que funções falham por esperar um objeto, e isso é bom para ter uma ideia de qual é o problema, mas não vamos nos aprofundar muito nisso por serem conceitos mais comprexos
+  :::
+
 #### Tipos de dados estruturados: {#subsec-tipos-dados-estruturados}
 
-- Vetores: para armazenar uma sequência de elementos do mesmo tipo(homogêneos).
+- Vetores: para armazenar uma sequência de elementos do mesmo tipo(homogêneos). Como os vetores são homogêneos, todos os elementos dentro deles precisam ser do mesmo tipo, se tentar misturar dados diferentes ocorre a coerção automática, que segue uma hierarquia, para evitar a perda de informações transforma o tipo mais simples no mais flexível (Logical se torna Integer; Integer se torna Double; Double se torna Character)
+
+  ::: {.callout-note}
+  Nos vetores muitos usam a função c() sem saber que é uma abreviação de combine, essa função serve para agrupar elementos individuais em uma estrutura de dados unidimensional.
+  :::
 
   ```{r}
   #| code-fold: false
@@ -183,7 +213,7 @@ Linguagens de programação possuem diferentes tipos de dados para armazenar inf
   vetor_texto
   ```
 
-- Listas: para armazenar uma coleção de elementos de diferentes tipos(heterogêneos).
+- Listas: para armazenar uma coleção de elementos de diferentes tipos(heterogêneos). Assim, uma lista pode armazenar números, textos, valores, vetores e outras listas (e por esse último, são chamados de recursivos)
 
   ```{r}
   #| code-fold: false
@@ -205,7 +235,7 @@ Linguagens de programação possuem diferentes tipos de dados para armazenar inf
   matriz2
   ```
 
-- Data Frames: para armazenar dados heterogêneos em uma estrutura bidimensional.
+- Data Frames: são a base para a maioria das análises estatísticas e armazenam dados heterogêneos em uma estrutura bidimensional (cada coluna pode ter um tipo de dado diferente, contando que todas as colunas tenham o mesmo comprimento).
 
   ```{r}
   #| code-fold: false
@@ -253,9 +283,13 @@ var2 = 20
 var3 <- mean(x = c(1, 2, 3, 4, 5))
 ```
 
-#### Operadores aritméticos: `+`, `-`, `*`, `/`, `^` {#subsec-operadores-aritmeticos}
+  ::: {.callout-note}
+  O <- pode ser usado em qualquer lugar do código, enquanto o = é restrito geralmente para a definição de argumentos dentro de funções.
+  :::
 
-Esses operadores são usados para realizar operações matemáticas básicas, como adição, subtração, multiplicação, divisão e exponenciação. Por exemplo:
+#### Operadores aritméticos: `+`, `-`, `*`, `/`, `^ ou **`, `%%` {#subsec-operadores-aritmeticos}
+
+Esses operadores são usados para realizar operações matemáticas básicas, como adição, subtração, multiplicação, divisão, exponenciação e resto de divisão. Por exemplo:
 
 ```{r}
 #| code-fold: false
@@ -268,6 +302,7 @@ diferenca <- a - b   # Subtração
 produto <- a * b    # Multiplicação
 quociente <- a / b   # Divisão
 potencia <- a ^ b    # Exponenciação
+resto_div <- a %% b #Resto de divisão
 ```
 
 #### Operadores de comparação: `==`, `!=`, `<`, `>`, `<=`, `>=` {#subsec-operadores-comparacao}
@@ -290,7 +325,7 @@ comparacao6 <- x >= y   # Maior ou igual a
 
 #### Operadores lógicos: `&`, `|`, `!` {#subsec-operadores-logicos}
   
-Esses operadores são usados para combinar condições lógicas. O operador `&` representa a conjunção (AND), o operador `|` representa a disjunção (OR) e o operador `!` representa a negação (NOT). Por exemplo:
+Esses operadores são usados para combinar condições lógicas. O operador `&` representa a conjunção (AND/E), o operador `|` representa a disjunção (OR/Ou) e o operador `!` representa a negação (NOT/Não). Por exemplo:
 
 ```{r}
 #| code-fold: false
@@ -298,9 +333,9 @@ Esses operadores são usados para combinar condições lógicas. O operador `&` 
 a <- TRUE
 b <- FALSE
 
-resultado1 <- a & b   # AND
-resultado2 <- a | b   # OR
-resultado3 <- !a      # NOT
+resultado1 <- a & b   # AND E
+resultado2 <- a | b   # OR Ou
+resultado3 <- !a      # NOT Não
 ```
 
 #### Operadores de indexação: `[ ]`, `[[ ]]`, `$` {#subsec-operadores-indexacao}
@@ -319,9 +354,9 @@ elemento_lista <- lista[["b"]]     # Acessa o elemento "b" da lista
 coluna_dataf <- dataframe$col1 # Acessa a coluna "col1" do data frame
 ```
 
-::: {.callout-note}
+  ::: {.callout-note}
 Veja a seção [tipos de dados](#sec-tipos-dados) para melhor entendimento do código acima.
-:::
+  :::
 
 ### Funções básicas: {#sec-funcoes}
 
@@ -474,6 +509,7 @@ Alguns pacotes possuem uma grande popularidade e são amplamente utilizados pela
 - `stringr`: para manipulação de strings.
 - `lubridate`: para manipulação de datas.
 - `caret`: para machine learning.
+- `tidyverse`: para um conjunto de pacotes importantes
 
 
 <!--
@@ -553,7 +589,7 @@ Respondendo as questões acima
 
 4)	As fontes de apoio que acho interessantes são: 
 - Site do Ben Deivide;
-- 
+- Vídeos no youtube;
 
 5)   A reprodutibilidade garantida vem por meio de:
 - Scripts bem comentados (explicando o que e porque foi feito);
