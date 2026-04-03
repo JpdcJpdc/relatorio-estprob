@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -10,6 +10,9 @@
 
 <title>Relatório de Aula Prática 02 - Introdução ao R</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -56,21 +59,40 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="index_files/libs/clipboard/clipboard.min.js"></script>
 <script src="index_files/libs/quarto-html/quarto.js" type="module"></script>
 <script src="index_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="index_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="index_files/libs/quarto-html/popper.min.js"></script>
 <script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="index_files/libs/quarto-html/anchor.min.js"></script>
 <link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="index_files/libs/bootstrap/bootstrap-9e3ffae467580fdb927a41352e75a2e0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="index_files/libs/bootstrap/bootstrap-efbb37e9afcc02144ebbc7afd12a776f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
 <link rel="stylesheet" href="styles.css">
@@ -106,6 +128,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#comentários" id="toc-comentários" class="nav-link" data-scroll-target="#comentários"><span class="header-section-number">6.1</span> COMENTÁRIOS</a></li>
   </ul></li>
+  <li><a href="#referências" id="toc-referências" class="nav-link" data-scroll-target="#referências"><span class="header-section-number">7</span> Referências</a></li>
   </ul>
 </nav>
 </div>
@@ -146,7 +169,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Data de Publicação</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">03/04/2026, 02:12</p>
+      <p class="date">03/04/2026, 11:25</p>
     </div>
   </div>
   
@@ -162,7 +185,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="1" class="anchored" data-anchor-id="introdução"><span class="header-section-number">1</span> Introdução</h2>
 <!--Antes de mostrar como programar em R, vou mostrar porque aprender a programar em R.-->
 <p>O <a href="https://www.r-project.org/">R</a> é uma linguagem de programação e ambiente de software de código aberto, e tem foco na computação estatística e análise de dados. Foi consolidada como uma das ferramentas padrão padrão na ciência de dados moderna, permitindo desde análises financeiras complexas até bioinformática. Assim o R, é uma linguagem que possui uma grande comunidade ativa, que possui uma grande comunidade ativa, que sempre está contribuindo para o desenvolvimento de recursos e pacotes, e por esse motivo é muito adotado o <a href="https://www.r-project.org/">R</a> é uma linguagem amplamente adotada por diversas áreas, como estatística e ciência de dados. <!--É interessante que você aprenda a programar em R por ele ser construído para ajudar com estatísticas e cientistas de dados, sendo um recurso gratuito e com uma comunidade gigantesca que participa efetivamente da criação de pacotes para a facilidade e melhor compreensão dos usuários.--></p>
-<p>Seu diferencial é a sua capacidade de promover pesquisas reprodutíveis, e para isso integra o código, a análise e a visualização em u fluxo coeso. Este relatório, apresentará como realizar a configuração inicial para programar em <a href="https://www.r-project.org/">R</a>, além de apresentar os conceitos básicos da linguagem e como ela pode ser útil para análises estatísticas e manipulação de dados.</p>
+<p>Seu diferencial é a sua capacidade de promover pesquisas reprodutíveis, e para isso integra o código, a análise e a visualização em um fluxo coeso. Este relatório, com base no livro de <span class="citation" data-cites="Rbasico2022">Batista e Oliveira (<a href="#ref-Rbasico2022" role="doc-biblioref">2022</a>)</span>, apresentará como realizar a configuração inicial para programar em <a href="https://www.r-project.org/">R</a>, além de apresentar os conceitos básicos da linguagem e como ela pode ser útil para análises estatísticas e manipulação de dados.</p>
 </section>
 <section id="objetivo" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="objetivo"><span class="header-section-number">2</span> Objetivo</h2>
@@ -384,7 +407,19 @@ Nota
 <pre><code>[1] "data.frame"</code></pre>
 </div>
 </div>
-<p>::: {.callout-note} Acredito que é importante de mencionar já que funções falham por esperar um objeto, e isso é bom para ter uma ideia de qual é o problema, mas não vamos nos aprofundar muito nisso por serem conceitos mais comprexos :::</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Acredito que é importante de mencionar já que funções falham por esperar um objeto, e isso é bom para ter uma ideia de qual é o problema, mas não vamos nos aprofundar muito nisso por serem conceitos mais complexos</p>
+</div>
+</div>
 </section>
 <section id="subsec-tipos-dados-estruturados" class="level4" data-number="4.1.2">
 <h4 data-number="4.1.2" class="anchored" data-anchor-id="subsec-tipos-dados-estruturados"><span class="header-section-number">4.1.2</span> Tipos de dados estruturados:</h4>
@@ -521,7 +556,19 @@ Levels: A B C</code></pre>
 <span id="cb53-6"><a href="#cb53-6"></a><span class="co"># Uso de = em argumentos de função</span></span>
 <span id="cb53-7"><a href="#cb53-7"></a>var3 <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>))</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>::: {.callout-note} O &lt;- pode ser usado em qualquer lugar do código, enquanto o = é restrito geralmente para a definição de argumentos dentro de funções. :::</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>O &lt;- pode ser usado em qualquer lugar do código, enquanto o = é restrito geralmente para a definição de argumentos dentro de funções.</p>
+</div>
+</div>
 </section>
 <section id="subsec-operadores-aritmeticos" class="level4" data-number="4.2.2">
 <h4 data-number="4.2.2" class="anchored" data-anchor-id="subsec-operadores-aritmeticos"><span class="header-section-number">4.2.2</span> Operadores aritméticos: <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>^ ou **</code>, <code>%%</code></h4>
@@ -577,7 +624,19 @@ Levels: A B C</code></pre>
 <span id="cb57-6"><a href="#cb57-6"></a>elemento_lista <span class="ot">&lt;-</span> lista[[<span class="st">"b"</span>]]     <span class="co"># Acessa o elemento "b" da lista</span></span>
 <span id="cb57-7"><a href="#cb57-7"></a>coluna_dataf <span class="ot">&lt;-</span> dataframe<span class="sc">$</span>col1 <span class="co"># Acessa a coluna "col1" do data frame</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>::: {.callout-note} Veja a seção <a href="#sec-tipos-dados">tipos de dados</a> para melhor entendimento do código acima. :::</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Veja a seção <a href="#sec-tipos-dados">tipos de dados</a> para melhor entendimento do código acima.</p>
+</div>
+</div>
 </section>
 </section>
 <section id="sec-funcoes" class="level3" data-number="4.3">
@@ -777,23 +836,23 @@ Levels: A B C</code></pre>
 <span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a>tabf</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
-Tabela de frequência 
-Tipo de variável: continuous
+Table of frequency 
+Type of variable: continuous
 
      Classes Fi PM  Fr Fac1 Fac2 Fp Fac1p Fac2p
 1 -1 |---  3  2  1 0.4    2    5 40    40   100
 2  3 |---  7  3  5 0.6    5    3 60   100    60
 
 ============================================== 
-Classes: Agrupamento de classes 
-Fi: Frequência absoluta 
-PM: Ponto médio 
-Fr: Frequência relativa 
-Fac1: Frequência acumulada (abaixo de) 
-Fac2: Frequência acumulada (acima de) 
-Fp: Frequência percentual 
-Fac1p: Frequência acumulada percentual (abaixo de) 
-Fac2p: Frequência acumulada percentual (acima de) </code></pre>
+Classes: Grouping of classes 
+Fi: Absolute frequency 
+PM: Midpoint 
+Fr: Relative frequency 
+Fac1: Cumulative frequency (below) 
+Fac2: Cumulative frequency (above) 
+Fp: Percentage frequency 
+Fac1p: Cumulative percentage frequency (below) 
+Fac2p: Cumulative percentage frequency (above) </code></pre>
 </div>
 </div></li>
 <li><p><code>barplot()</code>: para criar um gráfico de barras a partir de uma tabela de frequências.</p>
@@ -860,12 +919,20 @@ Nota
 <ol start="6" type="1">
 <li>O .Rproj é fundamental, já que ele quem define o seu diretório de trabalho, ao abrir um projeto, o R já sabe onde estão os dados e onde deve salvar os gráficos. Ele isola o seu ambiente de trabalho, permitindo que você altere entre diferentes análises sem que esses dados interfiram um no outro.</li>
 </ol>
+</section>
+</section>
+<section id="referências" class="level2" data-number="7">
+
 <!-- -->
 
-</section>
+
 </section>
 
-</main>
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">7 Referências</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
+<div id="ref-Rbasico2022" class="csl-entry" role="listitem">
+BATISTA, B. D. O.; OLIVEIRA, D. A. B. J. <strong>R básico</strong>. 1. ed. Ouro Branco, MG: [s.n.], 2022. p. 321
+</div>
+</div></section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -1354,7 +1421,7 @@ Nota
 <span id="cb101-34"><a href="#cb101-34" aria-hidden="true" tabindex="-1"></a>O <span class="co">[</span><span class="ot">R</span><span class="co">]</span> é uma linguagem de programação e ambiente de software de código aberto, e tem foco na computação estatística e análise de dados. Foi consolidada como uma das ferramentas padrão padrão na ciência de dados moderna, permitindo desde análises financeiras complexas até bioinformática. Assim o R, é uma linguagem que possui uma grande comunidade ativa, que possui uma grande comunidade ativa, que sempre está contribuindo para o desenvolvimento de recursos e pacotes, e por esse motivo é muito adotado o <span class="co">[</span><span class="ot">R</span><span class="co">]</span> é uma linguagem amplamente adotada por diversas áreas, como estatística e ciência de dados.</span>
 <span id="cb101-35"><a href="#cb101-35" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--É interessante que você aprenda a programar em R por ele ser construído para ajudar com estatísticas e cientistas de dados, sendo um recurso gratuito e com uma comunidade gigantesca que participa efetivamente da criação de pacotes para a facilidade e melhor compreensão dos usuários.--&gt;</span></span>
 <span id="cb101-36"><a href="#cb101-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-37"><a href="#cb101-37" aria-hidden="true" tabindex="-1"></a>Seu diferencial é a sua capacidade de promover pesquisas reprodutíveis, e para isso integra o código, a análise e a visualização em u fluxo coeso. Este relatório, apresentará como realizar a configuração inicial para programar em <span class="co">[</span><span class="ot">R</span><span class="co">]</span>, além de apresentar os conceitos básicos da linguagem e como ela pode ser útil para análises estatísticas e manipulação de dados.</span>
+<span id="cb101-37"><a href="#cb101-37" aria-hidden="true" tabindex="-1"></a>Seu diferencial é a sua capacidade de promover pesquisas reprodutíveis, e para isso integra o código, a análise e a visualização em um fluxo coeso. Este relatório, com base no livro de @Rbasico2022, apresentará como realizar a configuração inicial para programar em <span class="co">[</span><span class="ot">R</span><span class="co">]</span>, além de apresentar os conceitos básicos da linguagem e como ela pode ser útil para análises estatísticas e manipulação de dados.</span>
 <span id="cb101-38"><a href="#cb101-38" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb101-39"><a href="#cb101-39" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb101-40"><a href="#cb101-40" aria-hidden="true" tabindex="-1"></a></span>
@@ -1512,411 +1579,414 @@ Nota
 <span id="cb101-196"><a href="#cb101-196" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(dados)</span>
 <span id="cb101-197"><a href="#cb101-197" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb101-198"><a href="#cb101-198" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-199"><a href="#cb101-199" aria-hidden="true" tabindex="-1"></a>  ::: {.callout-note}</span>
-<span id="cb101-200"><a href="#cb101-200" aria-hidden="true" tabindex="-1"></a>  Acredito que é importante de mencionar já que funções falham por esperar um objeto, e isso é bom para ter uma ideia de qual é o problema, mas não vamos nos aprofundar muito nisso por serem conceitos mais comprexos</span>
-<span id="cb101-201"><a href="#cb101-201" aria-hidden="true" tabindex="-1"></a>  :::</span>
-<span id="cb101-202"><a href="#cb101-202" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-203"><a href="#cb101-203" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Tipos de dados estruturados: {#subsec-tipos-dados-estruturados}</span></span>
-<span id="cb101-204"><a href="#cb101-204" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-205"><a href="#cb101-205" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Vetores: para armazenar uma sequência de elementos do mesmo tipo(homogêneos). Como os vetores são homogêneos, todos os elementos dentro deles precisam ser do mesmo tipo, se tentar misturar dados diferentes ocorre a coerção automática, que segue uma hierarquia, para evitar a perda de informações transforma o tipo mais simples no mais flexível (Logical se torna Integer; Integer se torna Double; Double se torna Character)</span>
-<span id="cb101-206"><a href="#cb101-206" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-207"><a href="#cb101-207" aria-hidden="true" tabindex="-1"></a>  ::: {.callout-note}</span>
-<span id="cb101-208"><a href="#cb101-208" aria-hidden="true" tabindex="-1"></a>  Nos vetores muitos usam a função c() sem saber que é uma abreviação de combine, essa função serve para agrupar elementos individuais em uma estrutura de dados unidimensional.</span>
-<span id="cb101-209"><a href="#cb101-209" aria-hidden="true" tabindex="-1"></a>  :::</span>
-<span id="cb101-210"><a href="#cb101-210" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-211"><a href="#cb101-211" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r}</span></span>
-<span id="cb101-212"><a href="#cb101-212" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| code-fold: false</span></span>
-<span id="cb101-213"><a href="#cb101-213" aria-hidden="true" tabindex="-1"></a>  vetor_numerico <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
-<span id="cb101-214"><a href="#cb101-214" aria-hidden="true" tabindex="-1"></a>  vetor_texto <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>, <span class="st">"E"</span>)</span>
-<span id="cb101-215"><a href="#cb101-215" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-216"><a href="#cb101-216" aria-hidden="true" tabindex="-1"></a>  vetor_numerico</span>
-<span id="cb101-217"><a href="#cb101-217" aria-hidden="true" tabindex="-1"></a>  vetor_texto</span>
-<span id="cb101-218"><a href="#cb101-218" aria-hidden="true" tabindex="-1"></a>  <span class="in">```</span></span>
-<span id="cb101-219"><a href="#cb101-219" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-220"><a href="#cb101-220" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Listas: para armazenar uma coleção de elementos de diferentes tipos(heterogêneos). Assim, uma lista pode armazenar números, textos, valores, vetores e outras listas (e por esse último, são chamados de recursivos)</span>
-<span id="cb101-221"><a href="#cb101-221" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-222"><a href="#cb101-222" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r}</span></span>
-<span id="cb101-223"><a href="#cb101-223" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| code-fold: false</span></span>
-<span id="cb101-224"><a href="#cb101-224" aria-hidden="true" tabindex="-1"></a>  lista1 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">1</span>, <span class="at">b =</span> <span class="dv">2</span>, <span class="at">c =</span> <span class="dv">3</span>)</span>
-<span id="cb101-225"><a href="#cb101-225" aria-hidden="true" tabindex="-1"></a>  lista2 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">d =</span> <span class="st">"A"</span>, <span class="at">e =</span> <span class="st">"B"</span>, <span class="at">f =</span> <span class="st">"C"</span>)</span>
-<span id="cb101-226"><a href="#cb101-226" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-227"><a href="#cb101-227" aria-hidden="true" tabindex="-1"></a>  lista1</span>
-<span id="cb101-228"><a href="#cb101-228" aria-hidden="true" tabindex="-1"></a>  lista2</span>
-<span id="cb101-229"><a href="#cb101-229" aria-hidden="true" tabindex="-1"></a>  <span class="in">```</span></span>
-<span id="cb101-230"><a href="#cb101-230" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-231"><a href="#cb101-231" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Matrizes: para armazenar dados homogêneos em uma estrutura bidimensional.</span>
-<span id="cb101-232"><a href="#cb101-232" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-233"><a href="#cb101-233" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r}</span></span>
-<span id="cb101-234"><a href="#cb101-234" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| code-fold: false</span></span>
-<span id="cb101-235"><a href="#cb101-235" aria-hidden="true" tabindex="-1"></a>  matriz1 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">3</span>)</span>
-<span id="cb101-236"><a href="#cb101-236" aria-hidden="true" tabindex="-1"></a>  matriz2 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>, <span class="st">"E"</span>, <span class="st">"F"</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">3</span>)</span>
-<span id="cb101-237"><a href="#cb101-237" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-238"><a href="#cb101-238" aria-hidden="true" tabindex="-1"></a>  matriz1</span>
-<span id="cb101-239"><a href="#cb101-239" aria-hidden="true" tabindex="-1"></a>  matriz2</span>
-<span id="cb101-240"><a href="#cb101-240" aria-hidden="true" tabindex="-1"></a>  <span class="in">```</span></span>
-<span id="cb101-241"><a href="#cb101-241" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-242"><a href="#cb101-242" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Data Frames: são a base para a maioria das análises estatísticas e armazenam dados heterogêneos em uma estrutura bidimensional (cada coluna pode ter um tipo de dado diferente, contando que todas as colunas tenham o mesmo comprimento).</span>
-<span id="cb101-243"><a href="#cb101-243" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-244"><a href="#cb101-244" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r}</span></span>
-<span id="cb101-245"><a href="#cb101-245" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| code-fold: false</span></span>
-<span id="cb101-246"><a href="#cb101-246" aria-hidden="true" tabindex="-1"></a>  dataframe1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">col1 =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="at">col2 =</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>))</span>
-<span id="cb101-247"><a href="#cb101-247" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-248"><a href="#cb101-248" aria-hidden="true" tabindex="-1"></a>  dataframe1</span>
-<span id="cb101-249"><a href="#cb101-249" aria-hidden="true" tabindex="-1"></a>  <span class="in">```</span></span>
-<span id="cb101-250"><a href="#cb101-250" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-251"><a href="#cb101-251" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Arrays: para armazenar dados homogêneos em uma estrutura multidimensional.</span>
-<span id="cb101-252"><a href="#cb101-252" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-253"><a href="#cb101-253" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r}</span></span>
-<span id="cb101-254"><a href="#cb101-254" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| code-fold: false</span></span>
-<span id="cb101-255"><a href="#cb101-255" aria-hidden="true" tabindex="-1"></a>  array1 <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>, <span class="at">dim =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb101-256"><a href="#cb101-256" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-257"><a href="#cb101-257" aria-hidden="true" tabindex="-1"></a>  array1</span>
-<span id="cb101-258"><a href="#cb101-258" aria-hidden="true" tabindex="-1"></a>  <span class="in">```</span></span>
-<span id="cb101-259"><a href="#cb101-259" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-260"><a href="#cb101-260" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Fatores: para armazenar dados categóricos.</span>
-<span id="cb101-261"><a href="#cb101-261" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-262"><a href="#cb101-262" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r}</span></span>
-<span id="cb101-263"><a href="#cb101-263" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| code-fold: false</span></span>
-<span id="cb101-264"><a href="#cb101-264" aria-hidden="true" tabindex="-1"></a>  fator1 <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"A"</span>, <span class="st">"B"</span>))</span>
-<span id="cb101-265"><a href="#cb101-265" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-266"><a href="#cb101-266" aria-hidden="true" tabindex="-1"></a>  fator1</span>
-<span id="cb101-267"><a href="#cb101-267" aria-hidden="true" tabindex="-1"></a>  <span class="in">```</span></span>
-<span id="cb101-268"><a href="#cb101-268" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-199"><a href="#cb101-199" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb101-200"><a href="#cb101-200" aria-hidden="true" tabindex="-1"></a>Acredito que é importante de mencionar já que funções falham por esperar um objeto, e isso é bom para ter uma</span>
+<span id="cb101-201"><a href="#cb101-201" aria-hidden="true" tabindex="-1"></a>ideia de qual é o problema, mas não vamos nos aprofundar muito nisso por serem conceitos mais complexos</span>
+<span id="cb101-202"><a href="#cb101-202" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb101-203"><a href="#cb101-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-204"><a href="#cb101-204" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Tipos de dados estruturados: {#subsec-tipos-dados-estruturados}</span></span>
+<span id="cb101-205"><a href="#cb101-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-206"><a href="#cb101-206" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Vetores: para armazenar uma sequência de elementos do mesmo tipo(homogêneos). Como os vetores são homogêneos, todos os elementos dentro deles precisam ser do mesmo tipo, se tentar misturar dados diferentes ocorre a coerção automática, que segue uma hierarquia, para evitar a perda de informações transforma o tipo mais simples no mais flexível (Logical se torna Integer; Integer se torna Double; Double se torna Character)</span>
+<span id="cb101-207"><a href="#cb101-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-208"><a href="#cb101-208" aria-hidden="true" tabindex="-1"></a>  ::: {.callout-note}</span>
+<span id="cb101-209"><a href="#cb101-209" aria-hidden="true" tabindex="-1"></a>  Nos vetores muitos usam a função c() sem saber que é uma abreviação de combine, essa função serve para agrupar elementos individuais em uma estrutura de dados unidimensional.</span>
+<span id="cb101-210"><a href="#cb101-210" aria-hidden="true" tabindex="-1"></a>  :::</span>
+<span id="cb101-211"><a href="#cb101-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-212"><a href="#cb101-212" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r}</span></span>
+<span id="cb101-213"><a href="#cb101-213" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| code-fold: false</span></span>
+<span id="cb101-214"><a href="#cb101-214" aria-hidden="true" tabindex="-1"></a>  vetor_numerico <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb101-215"><a href="#cb101-215" aria-hidden="true" tabindex="-1"></a>  vetor_texto <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>, <span class="st">"E"</span>)</span>
+<span id="cb101-216"><a href="#cb101-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-217"><a href="#cb101-217" aria-hidden="true" tabindex="-1"></a>  vetor_numerico</span>
+<span id="cb101-218"><a href="#cb101-218" aria-hidden="true" tabindex="-1"></a>  vetor_texto</span>
+<span id="cb101-219"><a href="#cb101-219" aria-hidden="true" tabindex="-1"></a>  <span class="in">```</span></span>
+<span id="cb101-220"><a href="#cb101-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-221"><a href="#cb101-221" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Listas: para armazenar uma coleção de elementos de diferentes tipos(heterogêneos). Assim, uma lista pode armazenar números, textos, valores, vetores e outras listas (e por esse último, são chamados de recursivos)</span>
+<span id="cb101-222"><a href="#cb101-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-223"><a href="#cb101-223" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r}</span></span>
+<span id="cb101-224"><a href="#cb101-224" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| code-fold: false</span></span>
+<span id="cb101-225"><a href="#cb101-225" aria-hidden="true" tabindex="-1"></a>  lista1 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">1</span>, <span class="at">b =</span> <span class="dv">2</span>, <span class="at">c =</span> <span class="dv">3</span>)</span>
+<span id="cb101-226"><a href="#cb101-226" aria-hidden="true" tabindex="-1"></a>  lista2 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">d =</span> <span class="st">"A"</span>, <span class="at">e =</span> <span class="st">"B"</span>, <span class="at">f =</span> <span class="st">"C"</span>)</span>
+<span id="cb101-227"><a href="#cb101-227" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-228"><a href="#cb101-228" aria-hidden="true" tabindex="-1"></a>  lista1</span>
+<span id="cb101-229"><a href="#cb101-229" aria-hidden="true" tabindex="-1"></a>  lista2</span>
+<span id="cb101-230"><a href="#cb101-230" aria-hidden="true" tabindex="-1"></a>  <span class="in">```</span></span>
+<span id="cb101-231"><a href="#cb101-231" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-232"><a href="#cb101-232" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Matrizes: para armazenar dados homogêneos em uma estrutura bidimensional.</span>
+<span id="cb101-233"><a href="#cb101-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-234"><a href="#cb101-234" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r}</span></span>
+<span id="cb101-235"><a href="#cb101-235" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| code-fold: false</span></span>
+<span id="cb101-236"><a href="#cb101-236" aria-hidden="true" tabindex="-1"></a>  matriz1 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">3</span>)</span>
+<span id="cb101-237"><a href="#cb101-237" aria-hidden="true" tabindex="-1"></a>  matriz2 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>, <span class="st">"E"</span>, <span class="st">"F"</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">3</span>)</span>
+<span id="cb101-238"><a href="#cb101-238" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-239"><a href="#cb101-239" aria-hidden="true" tabindex="-1"></a>  matriz1</span>
+<span id="cb101-240"><a href="#cb101-240" aria-hidden="true" tabindex="-1"></a>  matriz2</span>
+<span id="cb101-241"><a href="#cb101-241" aria-hidden="true" tabindex="-1"></a>  <span class="in">```</span></span>
+<span id="cb101-242"><a href="#cb101-242" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-243"><a href="#cb101-243" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Data Frames: são a base para a maioria das análises estatísticas e armazenam dados heterogêneos em uma estrutura bidimensional (cada coluna pode ter um tipo de dado diferente, contando que todas as colunas tenham o mesmo comprimento).</span>
+<span id="cb101-244"><a href="#cb101-244" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-245"><a href="#cb101-245" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r}</span></span>
+<span id="cb101-246"><a href="#cb101-246" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| code-fold: false</span></span>
+<span id="cb101-247"><a href="#cb101-247" aria-hidden="true" tabindex="-1"></a>  dataframe1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">col1 =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="at">col2 =</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>))</span>
+<span id="cb101-248"><a href="#cb101-248" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-249"><a href="#cb101-249" aria-hidden="true" tabindex="-1"></a>  dataframe1</span>
+<span id="cb101-250"><a href="#cb101-250" aria-hidden="true" tabindex="-1"></a>  <span class="in">```</span></span>
+<span id="cb101-251"><a href="#cb101-251" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-252"><a href="#cb101-252" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Arrays: para armazenar dados homogêneos em uma estrutura multidimensional.</span>
+<span id="cb101-253"><a href="#cb101-253" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-254"><a href="#cb101-254" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r}</span></span>
+<span id="cb101-255"><a href="#cb101-255" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| code-fold: false</span></span>
+<span id="cb101-256"><a href="#cb101-256" aria-hidden="true" tabindex="-1"></a>  array1 <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>, <span class="at">dim =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb101-257"><a href="#cb101-257" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-258"><a href="#cb101-258" aria-hidden="true" tabindex="-1"></a>  array1</span>
+<span id="cb101-259"><a href="#cb101-259" aria-hidden="true" tabindex="-1"></a>  <span class="in">```</span></span>
+<span id="cb101-260"><a href="#cb101-260" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-261"><a href="#cb101-261" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Fatores: para armazenar dados categóricos.</span>
+<span id="cb101-262"><a href="#cb101-262" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-263"><a href="#cb101-263" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r}</span></span>
+<span id="cb101-264"><a href="#cb101-264" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| code-fold: false</span></span>
+<span id="cb101-265"><a href="#cb101-265" aria-hidden="true" tabindex="-1"></a>  fator1 <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"A"</span>, <span class="st">"B"</span>))</span>
+<span id="cb101-266"><a href="#cb101-266" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-267"><a href="#cb101-267" aria-hidden="true" tabindex="-1"></a>  fator1</span>
+<span id="cb101-268"><a href="#cb101-268" aria-hidden="true" tabindex="-1"></a>  <span class="in">```</span></span>
 <span id="cb101-269"><a href="#cb101-269" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-270"><a href="#cb101-270" aria-hidden="true" tabindex="-1"></a><span class="fu">### Operadores básicos: {#sec-operadores}</span></span>
-<span id="cb101-271"><a href="#cb101-271" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-272"><a href="#cb101-272" aria-hidden="true" tabindex="-1"></a>Como toda linguagem de programação, <span class="co">[</span><span class="ot">R</span><span class="co">]</span> possui operadores básicos para realizar operações matemáticas, lógicas e de comparação. Esses operadores são essenciais para a construção de códigos em <span class="co">[</span><span class="ot">R</span><span class="co">]</span> e permitem manipular dados de forma eficiente.</span>
-<span id="cb101-273"><a href="#cb101-273" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-274"><a href="#cb101-274" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Operadores de Atribuição: `&lt;-` ou `=` {#subsec-operadores-atribuicao}</span></span>
-<span id="cb101-275"><a href="#cb101-275" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-276"><a href="#cb101-276" aria-hidden="true" tabindex="-1"></a>Atribuição é o processo de armazenar um valor em uma variável. Em <span class="co">[</span><span class="ot">R</span><span class="co">]</span>, a atribuição pode ser feita usando o operador <span class="in">`&lt;-`</span> ou <span class="in">`=`</span>, a diferença dos operadores está no escopo, <span class="in">`&lt;-`</span> é o operador de atribuição tradicional em <span class="co">[</span><span class="ot">R</span><span class="co">]</span> e é recomendado para a maioria dos casos, enquanto <span class="in">`=`</span> é mais comumente usado em argumentos de funções. Por exemplo:</span>
-<span id="cb101-277"><a href="#cb101-277" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-280"><a href="#cb101-280" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb101-281"><a href="#cb101-281" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
-<span id="cb101-282"><a href="#cb101-282" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
-<span id="cb101-283"><a href="#cb101-283" aria-hidden="true" tabindex="-1"></a><span class="co"># Usando &lt;- para atribuição</span></span>
-<span id="cb101-284"><a href="#cb101-284" aria-hidden="true" tabindex="-1"></a>var1 <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb101-285"><a href="#cb101-285" aria-hidden="true" tabindex="-1"></a><span class="co"># Usando = para atribuição</span></span>
-<span id="cb101-286"><a href="#cb101-286" aria-hidden="true" tabindex="-1"></a>var2 <span class="ot">=</span> <span class="dv">20</span></span>
-<span id="cb101-287"><a href="#cb101-287" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-288"><a href="#cb101-288" aria-hidden="true" tabindex="-1"></a><span class="co"># Uso de = em argumentos de função</span></span>
-<span id="cb101-289"><a href="#cb101-289" aria-hidden="true" tabindex="-1"></a>var3 <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>))</span>
-<span id="cb101-290"><a href="#cb101-290" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb101-291"><a href="#cb101-291" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-292"><a href="#cb101-292" aria-hidden="true" tabindex="-1"></a>  ::: {.callout-note}</span>
-<span id="cb101-293"><a href="#cb101-293" aria-hidden="true" tabindex="-1"></a>  O &lt;- pode ser usado em qualquer lugar do código, enquanto o = é restrito geralmente para a definição de argumentos dentro de funções.</span>
-<span id="cb101-294"><a href="#cb101-294" aria-hidden="true" tabindex="-1"></a>  :::</span>
-<span id="cb101-295"><a href="#cb101-295" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-296"><a href="#cb101-296" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Operadores aritméticos: `+`, `-`, `*`, `/`, `^ ou **`, `%%` {#subsec-operadores-aritmeticos}</span></span>
-<span id="cb101-297"><a href="#cb101-297" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-298"><a href="#cb101-298" aria-hidden="true" tabindex="-1"></a>Esses operadores são usados para realizar operações matemáticas básicas, como adição, subtração, multiplicação, divisão, exponenciação e resto de divisão. Por exemplo:</span>
-<span id="cb101-299"><a href="#cb101-299" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-302"><a href="#cb101-302" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb101-303"><a href="#cb101-303" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
-<span id="cb101-304"><a href="#cb101-304" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
-<span id="cb101-305"><a href="#cb101-305" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb101-306"><a href="#cb101-306" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb101-307"><a href="#cb101-307" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-308"><a href="#cb101-308" aria-hidden="true" tabindex="-1"></a>soma <span class="ot">&lt;-</span> a <span class="sc">+</span> b       <span class="co"># Adição</span></span>
-<span id="cb101-309"><a href="#cb101-309" aria-hidden="true" tabindex="-1"></a>diferenca <span class="ot">&lt;-</span> a <span class="sc">-</span> b   <span class="co"># Subtração</span></span>
-<span id="cb101-310"><a href="#cb101-310" aria-hidden="true" tabindex="-1"></a>produto <span class="ot">&lt;-</span> a <span class="sc">*</span> b    <span class="co"># Multiplicação</span></span>
-<span id="cb101-311"><a href="#cb101-311" aria-hidden="true" tabindex="-1"></a>quociente <span class="ot">&lt;-</span> a <span class="sc">/</span> b   <span class="co"># Divisão</span></span>
-<span id="cb101-312"><a href="#cb101-312" aria-hidden="true" tabindex="-1"></a>potencia <span class="ot">&lt;-</span> a <span class="sc">^</span> b    <span class="co"># Exponenciação</span></span>
-<span id="cb101-313"><a href="#cb101-313" aria-hidden="true" tabindex="-1"></a>resto_div <span class="ot">&lt;-</span> a <span class="sc">%%</span> b <span class="co">#Resto de divisão</span></span>
-<span id="cb101-314"><a href="#cb101-314" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb101-315"><a href="#cb101-315" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-316"><a href="#cb101-316" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Operadores de comparação: `==`, `!=`, `&lt;`, `&gt;`, `&lt;=`, `&gt;=` {#subsec-operadores-comparacao}</span></span>
-<span id="cb101-317"><a href="#cb101-317" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-318"><a href="#cb101-318" aria-hidden="true" tabindex="-1"></a>Esses operadores são usados para comparar valores e retornar um resultado lógico (TRUE ou FALSE). Por exemplo:</span>
-<span id="cb101-319"><a href="#cb101-319" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-322"><a href="#cb101-322" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb101-323"><a href="#cb101-323" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
-<span id="cb101-324"><a href="#cb101-324" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
-<span id="cb101-325"><a href="#cb101-325" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb101-326"><a href="#cb101-326" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">20</span></span>
-<span id="cb101-327"><a href="#cb101-327" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-328"><a href="#cb101-328" aria-hidden="true" tabindex="-1"></a>comparacao1 <span class="ot">&lt;-</span> x <span class="sc">==</span> y   <span class="co"># Igual a</span></span>
-<span id="cb101-329"><a href="#cb101-329" aria-hidden="true" tabindex="-1"></a>comparacao2 <span class="ot">&lt;-</span> x <span class="sc">!=</span> y   <span class="co"># Diferente de</span></span>
-<span id="cb101-330"><a href="#cb101-330" aria-hidden="true" tabindex="-1"></a>comparacao3 <span class="ot">&lt;-</span> x <span class="sc">&lt;</span> y    <span class="co"># Menor que</span></span>
-<span id="cb101-331"><a href="#cb101-331" aria-hidden="true" tabindex="-1"></a>comparacao4 <span class="ot">&lt;-</span> x <span class="sc">&gt;</span> y    <span class="co"># Maior que</span></span>
-<span id="cb101-332"><a href="#cb101-332" aria-hidden="true" tabindex="-1"></a>comparacao5 <span class="ot">&lt;-</span> x <span class="sc">&lt;=</span> y   <span class="co"># Menor ou igual a</span></span>
-<span id="cb101-333"><a href="#cb101-333" aria-hidden="true" tabindex="-1"></a>comparacao6 <span class="ot">&lt;-</span> x <span class="sc">&gt;=</span> y   <span class="co"># Maior ou igual a</span></span>
-<span id="cb101-334"><a href="#cb101-334" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb101-335"><a href="#cb101-335" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-336"><a href="#cb101-336" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Operadores lógicos: `&amp;`, `|`, `!` {#subsec-operadores-logicos}</span></span>
-<span id="cb101-337"><a href="#cb101-337" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb101-338"><a href="#cb101-338" aria-hidden="true" tabindex="-1"></a>Esses operadores são usados para combinar condições lógicas. O operador <span class="in">`&amp;`</span> representa a conjunção (AND/E), o operador <span class="in">`|`</span> representa a disjunção (OR/Ou) e o operador <span class="in">`!`</span> representa a negação (NOT/Não). Por exemplo:</span>
-<span id="cb101-339"><a href="#cb101-339" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-342"><a href="#cb101-342" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb101-343"><a href="#cb101-343" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
-<span id="cb101-344"><a href="#cb101-344" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
-<span id="cb101-345"><a href="#cb101-345" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
-<span id="cb101-346"><a href="#cb101-346" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
-<span id="cb101-347"><a href="#cb101-347" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-348"><a href="#cb101-348" aria-hidden="true" tabindex="-1"></a>resultado1 <span class="ot">&lt;-</span> a <span class="sc">&amp;</span> b   <span class="co"># AND E</span></span>
-<span id="cb101-349"><a href="#cb101-349" aria-hidden="true" tabindex="-1"></a>resultado2 <span class="ot">&lt;-</span> a <span class="sc">|</span> b   <span class="co"># OR Ou</span></span>
-<span id="cb101-350"><a href="#cb101-350" aria-hidden="true" tabindex="-1"></a>resultado3 <span class="ot">&lt;-</span> <span class="sc">!</span>a      <span class="co"># NOT Não</span></span>
-<span id="cb101-351"><a href="#cb101-351" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb101-352"><a href="#cb101-352" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-353"><a href="#cb101-353" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Operadores de indexação: `[ ]`, `[[ ]]`, `$` {#subsec-operadores-indexacao}</span></span>
-<span id="cb101-354"><a href="#cb101-354" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb101-355"><a href="#cb101-355" aria-hidden="true" tabindex="-1"></a>Esses operadores são usados para acessar elementos específicos de vetores, listas ou data frames. O operador <span class="in">`[ ]`</span> é usado para acessar elementos por posição, o operador <span class="in">`[[ ]]`</span> é usado para acessar elementos por nome e o operador <span class="in">`$`</span> é usado para acessar colunas em data frames. Por exemplo:</span>
-<span id="cb101-356"><a href="#cb101-356" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-359"><a href="#cb101-359" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb101-360"><a href="#cb101-360" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
-<span id="cb101-361"><a href="#cb101-361" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
-<span id="cb101-362"><a href="#cb101-362" aria-hidden="true" tabindex="-1"></a>vetor <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>)</span>
-<span id="cb101-363"><a href="#cb101-363" aria-hidden="true" tabindex="-1"></a>lista <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">1</span>, <span class="at">b =</span> <span class="dv">2</span>, <span class="at">c =</span> <span class="dv">3</span>)</span>
-<span id="cb101-364"><a href="#cb101-364" aria-hidden="true" tabindex="-1"></a>dataframe <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">col1 =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="at">col2 =</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>))</span>
-<span id="cb101-365"><a href="#cb101-365" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-366"><a href="#cb101-366" aria-hidden="true" tabindex="-1"></a>elemento_vetor <span class="ot">&lt;-</span> vetor[<span class="dv">2</span>]         <span class="co"># Acessa o segundo elemento do vetor</span></span>
-<span id="cb101-367"><a href="#cb101-367" aria-hidden="true" tabindex="-1"></a>elemento_lista <span class="ot">&lt;-</span> lista[[<span class="st">"b"</span>]]     <span class="co"># Acessa o elemento "b" da lista</span></span>
-<span id="cb101-368"><a href="#cb101-368" aria-hidden="true" tabindex="-1"></a>coluna_dataf <span class="ot">&lt;-</span> dataframe<span class="sc">$</span>col1 <span class="co"># Acessa a coluna "col1" do data frame</span></span>
-<span id="cb101-369"><a href="#cb101-369" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb101-370"><a href="#cb101-370" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-371"><a href="#cb101-371" aria-hidden="true" tabindex="-1"></a>  ::: {.callout-note}</span>
-<span id="cb101-372"><a href="#cb101-372" aria-hidden="true" tabindex="-1"></a>Veja a seção <span class="co">[</span><span class="ot">tipos de dados</span><span class="co">](#sec-tipos-dados)</span> para melhor entendimento do código acima.</span>
-<span id="cb101-373"><a href="#cb101-373" aria-hidden="true" tabindex="-1"></a>  :::</span>
-<span id="cb101-374"><a href="#cb101-374" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-375"><a href="#cb101-375" aria-hidden="true" tabindex="-1"></a><span class="fu">### Funções básicas: {#sec-funcoes}</span></span>
-<span id="cb101-376"><a href="#cb101-376" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-377"><a href="#cb101-377" aria-hidden="true" tabindex="-1"></a>Funções são blocos de código que realizam uma tarefa específica e podem ser reutilizados em diferentes partes do código. Em <span class="co">[</span><span class="ot">R</span><span class="co">]</span>, existem muitas funções pré-definidas para realizar operações comuns, como calcular a média, a variância, o desvio padrão, entre outras.</span>
-<span id="cb101-378"><a href="#cb101-378" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-379"><a href="#cb101-379" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Funções Matemáticas Básicas: {#subsec-funcoes-matematicas}</span></span>
-<span id="cb101-380"><a href="#cb101-380" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-381"><a href="#cb101-381" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Soma: <span class="in">`sum()`</span>, calcula a soma de um conjunto de números.</span>
-<span id="cb101-382"><a href="#cb101-382" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-383"><a href="#cb101-383" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r}</span></span>
-<span id="cb101-384"><a href="#cb101-384" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| code-fold: false</span></span>
-<span id="cb101-385"><a href="#cb101-385" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>))</span>
-<span id="cb101-386"><a href="#cb101-386" aria-hidden="true" tabindex="-1"></a>  <span class="in">```</span></span>
-<span id="cb101-387"><a href="#cb101-387" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-388"><a href="#cb101-388" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Valor Absoluto: <span class="in">`abs()`</span>, calcula o valor absoluto de um número.</span>
-<span id="cb101-389"><a href="#cb101-389" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-390"><a href="#cb101-390" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r}</span></span>
-<span id="cb101-391"><a href="#cb101-391" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| code-fold: false</span></span>
-<span id="cb101-392"><a href="#cb101-392" aria-hidden="true" tabindex="-1"></a>  <span class="fu">abs</span>(<span class="at">x =</span> <span class="sc">-</span><span class="dv">10</span>)</span>
-<span id="cb101-393"><a href="#cb101-393" aria-hidden="true" tabindex="-1"></a>  <span class="in">```</span></span>
-<span id="cb101-394"><a href="#cb101-394" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-395"><a href="#cb101-395" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Raiz Quadrada: <span class="in">`sqrt()`</span>, calcula a raiz quadrada de um número.</span>
-<span id="cb101-396"><a href="#cb101-396" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-397"><a href="#cb101-397" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r}</span></span>
-<span id="cb101-398"><a href="#cb101-398" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| code-fold: false</span></span>
-<span id="cb101-399"><a href="#cb101-399" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sqrt</span>(<span class="at">x =</span> <span class="dv">16</span>)</span>
-<span id="cb101-400"><a href="#cb101-400" aria-hidden="true" tabindex="-1"></a>  <span class="in">```</span></span>
-<span id="cb101-401"><a href="#cb101-401" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-402"><a href="#cb101-402" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Logaritmo: <span class="in">`log()`</span>, calcula o logaritmo de um número.</span>
-<span id="cb101-403"><a href="#cb101-403" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-404"><a href="#cb101-404" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r}</span></span>
-<span id="cb101-405"><a href="#cb101-405" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| code-fold: false</span></span>
-<span id="cb101-406"><a href="#cb101-406" aria-hidden="true" tabindex="-1"></a>  <span class="fu">log</span>(<span class="at">x =</span> <span class="dv">100</span>, <span class="at">base =</span> <span class="dv">10</span>) <span class="co"># Calcula o logaritmo de 100 na base 10</span></span>
-<span id="cb101-407"><a href="#cb101-407" aria-hidden="true" tabindex="-1"></a>  <span class="in">```</span></span>
-<span id="cb101-408"><a href="#cb101-408" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-409"><a href="#cb101-409" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Arredondamento: <span class="in">`round()`</span>, arredonda um número para um número específico de casas decimais.</span>
-<span id="cb101-410"><a href="#cb101-410" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-411"><a href="#cb101-411" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r}</span></span>
-<span id="cb101-412"><a href="#cb101-412" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| code-fold: false</span></span>
-<span id="cb101-413"><a href="#cb101-413" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>(<span class="at">x =</span> <span class="fl">3.14159</span>, <span class="at">digits =</span> <span class="dv">2</span>) <span class="co"># Arredonda para 2 casas decimais</span></span>
-<span id="cb101-414"><a href="#cb101-414" aria-hidden="true" tabindex="-1"></a>  <span class="in">```</span></span>
-<span id="cb101-415"><a href="#cb101-415" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-416"><a href="#cb101-416" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Exponencial: <span class="in">`exp()`</span>, calcula o valor exponencial de um número.</span>
-<span id="cb101-417"><a href="#cb101-417" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-418"><a href="#cb101-418" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r}</span></span>
-<span id="cb101-419"><a href="#cb101-419" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| code-fold: false</span></span>
-<span id="cb101-420"><a href="#cb101-420" aria-hidden="true" tabindex="-1"></a>  <span class="fu">exp</span>(<span class="at">x =</span> <span class="dv">1</span>) <span class="co"># Calcula e elevado a 1</span></span>
-<span id="cb101-421"><a href="#cb101-421" aria-hidden="true" tabindex="-1"></a>  <span class="in">```</span></span>
-<span id="cb101-422"><a href="#cb101-422" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-423"><a href="#cb101-423" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Funções Estatísticas Básicas: {#subsec-funcoes-estatisticas}</span></span>
-<span id="cb101-424"><a href="#cb101-424" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-425"><a href="#cb101-425" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Média: <span class="in">`mean()`</span>, calcula a média aritmética de um conjunto de números.</span>
-<span id="cb101-426"><a href="#cb101-426" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-427"><a href="#cb101-427" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r}</span></span>
-<span id="cb101-428"><a href="#cb101-428" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| code-fold: false</span></span>
-<span id="cb101-429"><a href="#cb101-429" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>))</span>
-<span id="cb101-430"><a href="#cb101-430" aria-hidden="true" tabindex="-1"></a>  <span class="in">```</span></span>
-<span id="cb101-431"><a href="#cb101-431" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-432"><a href="#cb101-432" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Variância: <span class="in">`var()`</span>, calcula a variância de um conjunto de números.</span>
-<span id="cb101-433"><a href="#cb101-433" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-434"><a href="#cb101-434" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r}</span></span>
-<span id="cb101-435"><a href="#cb101-435" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| code-fold: false</span></span>
-<span id="cb101-436"><a href="#cb101-436" aria-hidden="true" tabindex="-1"></a>  <span class="fu">var</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>))</span>
-<span id="cb101-437"><a href="#cb101-437" aria-hidden="true" tabindex="-1"></a>  <span class="in">```</span></span>
-<span id="cb101-438"><a href="#cb101-438" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-439"><a href="#cb101-439" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Desvio Padrão: <span class="in">`sd()`</span>, calcula o desvio padrão de um conjunto de números.</span>
-<span id="cb101-440"><a href="#cb101-440" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-441"><a href="#cb101-441" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r}</span></span>
-<span id="cb101-442"><a href="#cb101-442" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| code-fold: false</span></span>
-<span id="cb101-443"><a href="#cb101-443" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sd</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>))</span>
-<span id="cb101-444"><a href="#cb101-444" aria-hidden="true" tabindex="-1"></a>  <span class="in">```</span></span>
-<span id="cb101-445"><a href="#cb101-445" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-446"><a href="#cb101-446" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Mediana: <span class="in">`median()`</span>, calcula a mediana de um conjunto de números.</span>
-<span id="cb101-447"><a href="#cb101-447" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-448"><a href="#cb101-448" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r}</span></span>
-<span id="cb101-449"><a href="#cb101-449" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| code-fold: false</span></span>
-<span id="cb101-450"><a href="#cb101-450" aria-hidden="true" tabindex="-1"></a>  <span class="fu">median</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>))</span>
-<span id="cb101-451"><a href="#cb101-451" aria-hidden="true" tabindex="-1"></a>  <span class="in">```</span></span>
-<span id="cb101-452"><a href="#cb101-452" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-453"><a href="#cb101-453" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Máximo e Mínimo: <span class="in">`max()`</span> e <span class="in">`min()`</span>, calculam o valor máximo e mínimo de um conjunto de números, respectivamente.</span>
-<span id="cb101-454"><a href="#cb101-454" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-455"><a href="#cb101-455" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r}</span></span>
-<span id="cb101-456"><a href="#cb101-456" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| code-fold: false</span></span>
-<span id="cb101-457"><a href="#cb101-457" aria-hidden="true" tabindex="-1"></a>  <span class="fu">max</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>))</span>
-<span id="cb101-458"><a href="#cb101-458" aria-hidden="true" tabindex="-1"></a>  <span class="fu">min</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>))</span>
-<span id="cb101-459"><a href="#cb101-459" aria-hidden="true" tabindex="-1"></a>  <span class="in">```</span></span>
-<span id="cb101-460"><a href="#cb101-460" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-461"><a href="#cb101-461" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Funções de Manipulação de Dados: {#subsec-funcoes-manipulacao-dados}</span></span>
-<span id="cb101-462"><a href="#cb101-462" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-463"><a href="#cb101-463" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Tamanho: <span class="in">`length()`</span>, calcula o número de elementos em um vetor ou lista.</span>
-<span id="cb101-464"><a href="#cb101-464" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-465"><a href="#cb101-465" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r}</span></span>
-<span id="cb101-466"><a href="#cb101-466" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| code-fold: false</span></span>
-<span id="cb101-467"><a href="#cb101-467" aria-hidden="true" tabindex="-1"></a>  <span class="fu">length</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>))</span>
-<span id="cb101-468"><a href="#cb101-468" aria-hidden="true" tabindex="-1"></a>  <span class="in">```</span></span>
-<span id="cb101-469"><a href="#cb101-469" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-470"><a href="#cb101-470" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Nomes: <span class="in">`names()`</span>, retorna os nomes dos elementos em uma lista ou data frame.</span>
-<span id="cb101-471"><a href="#cb101-471" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-472"><a href="#cb101-472" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r}</span></span>
-<span id="cb101-473"><a href="#cb101-473" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| code-fold: false</span></span>
-<span id="cb101-474"><a href="#cb101-474" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>(<span class="at">x =</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">1</span>, <span class="at">b =</span> <span class="dv">2</span>, <span class="at">c =</span> <span class="dv">3</span>))</span>
-<span id="cb101-475"><a href="#cb101-475" aria-hidden="true" tabindex="-1"></a>  <span class="in">```</span></span>
-<span id="cb101-476"><a href="#cb101-476" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-270"><a href="#cb101-270" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-271"><a href="#cb101-271" aria-hidden="true" tabindex="-1"></a><span class="fu">### Operadores básicos: {#sec-operadores}</span></span>
+<span id="cb101-272"><a href="#cb101-272" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-273"><a href="#cb101-273" aria-hidden="true" tabindex="-1"></a>Como toda linguagem de programação, <span class="co">[</span><span class="ot">R</span><span class="co">]</span> possui operadores básicos para realizar operações matemáticas, lógicas e de comparação. Esses operadores são essenciais para a construção de códigos em <span class="co">[</span><span class="ot">R</span><span class="co">]</span> e permitem manipular dados de forma eficiente.</span>
+<span id="cb101-274"><a href="#cb101-274" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-275"><a href="#cb101-275" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Operadores de Atribuição: `&lt;-` ou `=` {#subsec-operadores-atribuicao}</span></span>
+<span id="cb101-276"><a href="#cb101-276" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-277"><a href="#cb101-277" aria-hidden="true" tabindex="-1"></a>Atribuição é o processo de armazenar um valor em uma variável. Em <span class="co">[</span><span class="ot">R</span><span class="co">]</span>, a atribuição pode ser feita usando o operador <span class="in">`&lt;-`</span> ou <span class="in">`=`</span>, a diferença dos operadores está no escopo, <span class="in">`&lt;-`</span> é o operador de atribuição tradicional em <span class="co">[</span><span class="ot">R</span><span class="co">]</span> e é recomendado para a maioria dos casos, enquanto <span class="in">`=`</span> é mais comumente usado em argumentos de funções. Por exemplo:</span>
+<span id="cb101-278"><a href="#cb101-278" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-281"><a href="#cb101-281" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb101-282"><a href="#cb101-282" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
+<span id="cb101-283"><a href="#cb101-283" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
+<span id="cb101-284"><a href="#cb101-284" aria-hidden="true" tabindex="-1"></a><span class="co"># Usando &lt;- para atribuição</span></span>
+<span id="cb101-285"><a href="#cb101-285" aria-hidden="true" tabindex="-1"></a>var1 <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb101-286"><a href="#cb101-286" aria-hidden="true" tabindex="-1"></a><span class="co"># Usando = para atribuição</span></span>
+<span id="cb101-287"><a href="#cb101-287" aria-hidden="true" tabindex="-1"></a>var2 <span class="ot">=</span> <span class="dv">20</span></span>
+<span id="cb101-288"><a href="#cb101-288" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-289"><a href="#cb101-289" aria-hidden="true" tabindex="-1"></a><span class="co"># Uso de = em argumentos de função</span></span>
+<span id="cb101-290"><a href="#cb101-290" aria-hidden="true" tabindex="-1"></a>var3 <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>))</span>
+<span id="cb101-291"><a href="#cb101-291" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb101-292"><a href="#cb101-292" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-293"><a href="#cb101-293" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb101-294"><a href="#cb101-294" aria-hidden="true" tabindex="-1"></a>O &lt;- pode ser usado em qualquer lugar do código, enquanto o = é restrito geralmente para a definição de argumentos dentro de funções.</span>
+<span id="cb101-295"><a href="#cb101-295" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb101-296"><a href="#cb101-296" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-297"><a href="#cb101-297" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Operadores aritméticos: `+`, `-`, `*`, `/`, `^ ou **`, `%%` {#subsec-operadores-aritmeticos}</span></span>
+<span id="cb101-298"><a href="#cb101-298" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-299"><a href="#cb101-299" aria-hidden="true" tabindex="-1"></a>Esses operadores são usados para realizar operações matemáticas básicas, como adição, subtração, multiplicação, divisão, exponenciação e resto de divisão. Por exemplo:</span>
+<span id="cb101-300"><a href="#cb101-300" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-303"><a href="#cb101-303" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb101-304"><a href="#cb101-304" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
+<span id="cb101-305"><a href="#cb101-305" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
+<span id="cb101-306"><a href="#cb101-306" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb101-307"><a href="#cb101-307" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb101-308"><a href="#cb101-308" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-309"><a href="#cb101-309" aria-hidden="true" tabindex="-1"></a>soma <span class="ot">&lt;-</span> a <span class="sc">+</span> b       <span class="co"># Adição</span></span>
+<span id="cb101-310"><a href="#cb101-310" aria-hidden="true" tabindex="-1"></a>diferenca <span class="ot">&lt;-</span> a <span class="sc">-</span> b   <span class="co"># Subtração</span></span>
+<span id="cb101-311"><a href="#cb101-311" aria-hidden="true" tabindex="-1"></a>produto <span class="ot">&lt;-</span> a <span class="sc">*</span> b    <span class="co"># Multiplicação</span></span>
+<span id="cb101-312"><a href="#cb101-312" aria-hidden="true" tabindex="-1"></a>quociente <span class="ot">&lt;-</span> a <span class="sc">/</span> b   <span class="co"># Divisão</span></span>
+<span id="cb101-313"><a href="#cb101-313" aria-hidden="true" tabindex="-1"></a>potencia <span class="ot">&lt;-</span> a <span class="sc">^</span> b    <span class="co"># Exponenciação</span></span>
+<span id="cb101-314"><a href="#cb101-314" aria-hidden="true" tabindex="-1"></a>resto_div <span class="ot">&lt;-</span> a <span class="sc">%%</span> b <span class="co">#Resto de divisão</span></span>
+<span id="cb101-315"><a href="#cb101-315" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb101-316"><a href="#cb101-316" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-317"><a href="#cb101-317" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Operadores de comparação: `==`, `!=`, `&lt;`, `&gt;`, `&lt;=`, `&gt;=` {#subsec-operadores-comparacao}</span></span>
+<span id="cb101-318"><a href="#cb101-318" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-319"><a href="#cb101-319" aria-hidden="true" tabindex="-1"></a>Esses operadores são usados para comparar valores e retornar um resultado lógico (TRUE ou FALSE). Por exemplo:</span>
+<span id="cb101-320"><a href="#cb101-320" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-323"><a href="#cb101-323" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb101-324"><a href="#cb101-324" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
+<span id="cb101-325"><a href="#cb101-325" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
+<span id="cb101-326"><a href="#cb101-326" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb101-327"><a href="#cb101-327" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb101-328"><a href="#cb101-328" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-329"><a href="#cb101-329" aria-hidden="true" tabindex="-1"></a>comparacao1 <span class="ot">&lt;-</span> x <span class="sc">==</span> y   <span class="co"># Igual a</span></span>
+<span id="cb101-330"><a href="#cb101-330" aria-hidden="true" tabindex="-1"></a>comparacao2 <span class="ot">&lt;-</span> x <span class="sc">!=</span> y   <span class="co"># Diferente de</span></span>
+<span id="cb101-331"><a href="#cb101-331" aria-hidden="true" tabindex="-1"></a>comparacao3 <span class="ot">&lt;-</span> x <span class="sc">&lt;</span> y    <span class="co"># Menor que</span></span>
+<span id="cb101-332"><a href="#cb101-332" aria-hidden="true" tabindex="-1"></a>comparacao4 <span class="ot">&lt;-</span> x <span class="sc">&gt;</span> y    <span class="co"># Maior que</span></span>
+<span id="cb101-333"><a href="#cb101-333" aria-hidden="true" tabindex="-1"></a>comparacao5 <span class="ot">&lt;-</span> x <span class="sc">&lt;=</span> y   <span class="co"># Menor ou igual a</span></span>
+<span id="cb101-334"><a href="#cb101-334" aria-hidden="true" tabindex="-1"></a>comparacao6 <span class="ot">&lt;-</span> x <span class="sc">&gt;=</span> y   <span class="co"># Maior ou igual a</span></span>
+<span id="cb101-335"><a href="#cb101-335" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb101-336"><a href="#cb101-336" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-337"><a href="#cb101-337" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Operadores lógicos: `&amp;`, `|`, `!` {#subsec-operadores-logicos}</span></span>
+<span id="cb101-338"><a href="#cb101-338" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb101-339"><a href="#cb101-339" aria-hidden="true" tabindex="-1"></a>Esses operadores são usados para combinar condições lógicas. O operador <span class="in">`&amp;`</span> representa a conjunção (AND/E), o operador <span class="in">`|`</span> representa a disjunção (OR/Ou) e o operador <span class="in">`!`</span> representa a negação (NOT/Não). Por exemplo:</span>
+<span id="cb101-340"><a href="#cb101-340" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-343"><a href="#cb101-343" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb101-344"><a href="#cb101-344" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
+<span id="cb101-345"><a href="#cb101-345" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
+<span id="cb101-346"><a href="#cb101-346" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
+<span id="cb101-347"><a href="#cb101-347" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
+<span id="cb101-348"><a href="#cb101-348" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-349"><a href="#cb101-349" aria-hidden="true" tabindex="-1"></a>resultado1 <span class="ot">&lt;-</span> a <span class="sc">&amp;</span> b   <span class="co"># AND E</span></span>
+<span id="cb101-350"><a href="#cb101-350" aria-hidden="true" tabindex="-1"></a>resultado2 <span class="ot">&lt;-</span> a <span class="sc">|</span> b   <span class="co"># OR Ou</span></span>
+<span id="cb101-351"><a href="#cb101-351" aria-hidden="true" tabindex="-1"></a>resultado3 <span class="ot">&lt;-</span> <span class="sc">!</span>a      <span class="co"># NOT Não</span></span>
+<span id="cb101-352"><a href="#cb101-352" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb101-353"><a href="#cb101-353" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-354"><a href="#cb101-354" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Operadores de indexação: `[ ]`, `[[ ]]`, `$` {#subsec-operadores-indexacao}</span></span>
+<span id="cb101-355"><a href="#cb101-355" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb101-356"><a href="#cb101-356" aria-hidden="true" tabindex="-1"></a>Esses operadores são usados para acessar elementos específicos de vetores, listas ou data frames. O operador <span class="in">`[ ]`</span> é usado para acessar elementos por posição, o operador <span class="in">`[[ ]]`</span> é usado para acessar elementos por nome e o operador <span class="in">`$`</span> é usado para acessar colunas em data frames. Por exemplo:</span>
+<span id="cb101-357"><a href="#cb101-357" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-360"><a href="#cb101-360" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb101-361"><a href="#cb101-361" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
+<span id="cb101-362"><a href="#cb101-362" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
+<span id="cb101-363"><a href="#cb101-363" aria-hidden="true" tabindex="-1"></a>vetor <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>)</span>
+<span id="cb101-364"><a href="#cb101-364" aria-hidden="true" tabindex="-1"></a>lista <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">1</span>, <span class="at">b =</span> <span class="dv">2</span>, <span class="at">c =</span> <span class="dv">3</span>)</span>
+<span id="cb101-365"><a href="#cb101-365" aria-hidden="true" tabindex="-1"></a>dataframe <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">col1 =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="at">col2 =</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>))</span>
+<span id="cb101-366"><a href="#cb101-366" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-367"><a href="#cb101-367" aria-hidden="true" tabindex="-1"></a>elemento_vetor <span class="ot">&lt;-</span> vetor[<span class="dv">2</span>]         <span class="co"># Acessa o segundo elemento do vetor</span></span>
+<span id="cb101-368"><a href="#cb101-368" aria-hidden="true" tabindex="-1"></a>elemento_lista <span class="ot">&lt;-</span> lista[[<span class="st">"b"</span>]]     <span class="co"># Acessa o elemento "b" da lista</span></span>
+<span id="cb101-369"><a href="#cb101-369" aria-hidden="true" tabindex="-1"></a>coluna_dataf <span class="ot">&lt;-</span> dataframe<span class="sc">$</span>col1 <span class="co"># Acessa a coluna "col1" do data frame</span></span>
+<span id="cb101-370"><a href="#cb101-370" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb101-371"><a href="#cb101-371" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-372"><a href="#cb101-372" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb101-373"><a href="#cb101-373" aria-hidden="true" tabindex="-1"></a>Veja a seção <span class="co">[</span><span class="ot">tipos de dados</span><span class="co">](#sec-tipos-dados)</span> para melhor entendimento do código acima.</span>
+<span id="cb101-374"><a href="#cb101-374" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb101-375"><a href="#cb101-375" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-376"><a href="#cb101-376" aria-hidden="true" tabindex="-1"></a><span class="fu">### Funções básicas: {#sec-funcoes}</span></span>
+<span id="cb101-377"><a href="#cb101-377" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-378"><a href="#cb101-378" aria-hidden="true" tabindex="-1"></a>Funções são blocos de código que realizam uma tarefa específica e podem ser reutilizados em diferentes partes do código. Em <span class="co">[</span><span class="ot">R</span><span class="co">]</span>, existem muitas funções pré-definidas para realizar operações comuns, como calcular a média, a variância, o desvio padrão, entre outras.</span>
+<span id="cb101-379"><a href="#cb101-379" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-380"><a href="#cb101-380" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Funções Matemáticas Básicas: {#subsec-funcoes-matematicas}</span></span>
+<span id="cb101-381"><a href="#cb101-381" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-382"><a href="#cb101-382" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Soma: <span class="in">`sum()`</span>, calcula a soma de um conjunto de números.</span>
+<span id="cb101-383"><a href="#cb101-383" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-384"><a href="#cb101-384" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r}</span></span>
+<span id="cb101-385"><a href="#cb101-385" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| code-fold: false</span></span>
+<span id="cb101-386"><a href="#cb101-386" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>))</span>
+<span id="cb101-387"><a href="#cb101-387" aria-hidden="true" tabindex="-1"></a>  <span class="in">```</span></span>
+<span id="cb101-388"><a href="#cb101-388" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-389"><a href="#cb101-389" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Valor Absoluto: <span class="in">`abs()`</span>, calcula o valor absoluto de um número.</span>
+<span id="cb101-390"><a href="#cb101-390" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-391"><a href="#cb101-391" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r}</span></span>
+<span id="cb101-392"><a href="#cb101-392" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| code-fold: false</span></span>
+<span id="cb101-393"><a href="#cb101-393" aria-hidden="true" tabindex="-1"></a>  <span class="fu">abs</span>(<span class="at">x =</span> <span class="sc">-</span><span class="dv">10</span>)</span>
+<span id="cb101-394"><a href="#cb101-394" aria-hidden="true" tabindex="-1"></a>  <span class="in">```</span></span>
+<span id="cb101-395"><a href="#cb101-395" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-396"><a href="#cb101-396" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Raiz Quadrada: <span class="in">`sqrt()`</span>, calcula a raiz quadrada de um número.</span>
+<span id="cb101-397"><a href="#cb101-397" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-398"><a href="#cb101-398" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r}</span></span>
+<span id="cb101-399"><a href="#cb101-399" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| code-fold: false</span></span>
+<span id="cb101-400"><a href="#cb101-400" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sqrt</span>(<span class="at">x =</span> <span class="dv">16</span>)</span>
+<span id="cb101-401"><a href="#cb101-401" aria-hidden="true" tabindex="-1"></a>  <span class="in">```</span></span>
+<span id="cb101-402"><a href="#cb101-402" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-403"><a href="#cb101-403" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Logaritmo: <span class="in">`log()`</span>, calcula o logaritmo de um número.</span>
+<span id="cb101-404"><a href="#cb101-404" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-405"><a href="#cb101-405" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r}</span></span>
+<span id="cb101-406"><a href="#cb101-406" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| code-fold: false</span></span>
+<span id="cb101-407"><a href="#cb101-407" aria-hidden="true" tabindex="-1"></a>  <span class="fu">log</span>(<span class="at">x =</span> <span class="dv">100</span>, <span class="at">base =</span> <span class="dv">10</span>) <span class="co"># Calcula o logaritmo de 100 na base 10</span></span>
+<span id="cb101-408"><a href="#cb101-408" aria-hidden="true" tabindex="-1"></a>  <span class="in">```</span></span>
+<span id="cb101-409"><a href="#cb101-409" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-410"><a href="#cb101-410" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Arredondamento: <span class="in">`round()`</span>, arredonda um número para um número específico de casas decimais.</span>
+<span id="cb101-411"><a href="#cb101-411" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-412"><a href="#cb101-412" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r}</span></span>
+<span id="cb101-413"><a href="#cb101-413" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| code-fold: false</span></span>
+<span id="cb101-414"><a href="#cb101-414" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>(<span class="at">x =</span> <span class="fl">3.14159</span>, <span class="at">digits =</span> <span class="dv">2</span>) <span class="co"># Arredonda para 2 casas decimais</span></span>
+<span id="cb101-415"><a href="#cb101-415" aria-hidden="true" tabindex="-1"></a>  <span class="in">```</span></span>
+<span id="cb101-416"><a href="#cb101-416" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-417"><a href="#cb101-417" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Exponencial: <span class="in">`exp()`</span>, calcula o valor exponencial de um número.</span>
+<span id="cb101-418"><a href="#cb101-418" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-419"><a href="#cb101-419" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r}</span></span>
+<span id="cb101-420"><a href="#cb101-420" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| code-fold: false</span></span>
+<span id="cb101-421"><a href="#cb101-421" aria-hidden="true" tabindex="-1"></a>  <span class="fu">exp</span>(<span class="at">x =</span> <span class="dv">1</span>) <span class="co"># Calcula e elevado a 1</span></span>
+<span id="cb101-422"><a href="#cb101-422" aria-hidden="true" tabindex="-1"></a>  <span class="in">```</span></span>
+<span id="cb101-423"><a href="#cb101-423" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-424"><a href="#cb101-424" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Funções Estatísticas Básicas: {#subsec-funcoes-estatisticas}</span></span>
+<span id="cb101-425"><a href="#cb101-425" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-426"><a href="#cb101-426" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Média: <span class="in">`mean()`</span>, calcula a média aritmética de um conjunto de números.</span>
+<span id="cb101-427"><a href="#cb101-427" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-428"><a href="#cb101-428" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r}</span></span>
+<span id="cb101-429"><a href="#cb101-429" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| code-fold: false</span></span>
+<span id="cb101-430"><a href="#cb101-430" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>))</span>
+<span id="cb101-431"><a href="#cb101-431" aria-hidden="true" tabindex="-1"></a>  <span class="in">```</span></span>
+<span id="cb101-432"><a href="#cb101-432" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-433"><a href="#cb101-433" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Variância: <span class="in">`var()`</span>, calcula a variância de um conjunto de números.</span>
+<span id="cb101-434"><a href="#cb101-434" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-435"><a href="#cb101-435" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r}</span></span>
+<span id="cb101-436"><a href="#cb101-436" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| code-fold: false</span></span>
+<span id="cb101-437"><a href="#cb101-437" aria-hidden="true" tabindex="-1"></a>  <span class="fu">var</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>))</span>
+<span id="cb101-438"><a href="#cb101-438" aria-hidden="true" tabindex="-1"></a>  <span class="in">```</span></span>
+<span id="cb101-439"><a href="#cb101-439" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-440"><a href="#cb101-440" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Desvio Padrão: <span class="in">`sd()`</span>, calcula o desvio padrão de um conjunto de números.</span>
+<span id="cb101-441"><a href="#cb101-441" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-442"><a href="#cb101-442" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r}</span></span>
+<span id="cb101-443"><a href="#cb101-443" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| code-fold: false</span></span>
+<span id="cb101-444"><a href="#cb101-444" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sd</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>))</span>
+<span id="cb101-445"><a href="#cb101-445" aria-hidden="true" tabindex="-1"></a>  <span class="in">```</span></span>
+<span id="cb101-446"><a href="#cb101-446" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-447"><a href="#cb101-447" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Mediana: <span class="in">`median()`</span>, calcula a mediana de um conjunto de números.</span>
+<span id="cb101-448"><a href="#cb101-448" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-449"><a href="#cb101-449" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r}</span></span>
+<span id="cb101-450"><a href="#cb101-450" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| code-fold: false</span></span>
+<span id="cb101-451"><a href="#cb101-451" aria-hidden="true" tabindex="-1"></a>  <span class="fu">median</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>))</span>
+<span id="cb101-452"><a href="#cb101-452" aria-hidden="true" tabindex="-1"></a>  <span class="in">```</span></span>
+<span id="cb101-453"><a href="#cb101-453" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-454"><a href="#cb101-454" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Máximo e Mínimo: <span class="in">`max()`</span> e <span class="in">`min()`</span>, calculam o valor máximo e mínimo de um conjunto de números, respectivamente.</span>
+<span id="cb101-455"><a href="#cb101-455" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-456"><a href="#cb101-456" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r}</span></span>
+<span id="cb101-457"><a href="#cb101-457" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| code-fold: false</span></span>
+<span id="cb101-458"><a href="#cb101-458" aria-hidden="true" tabindex="-1"></a>  <span class="fu">max</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>))</span>
+<span id="cb101-459"><a href="#cb101-459" aria-hidden="true" tabindex="-1"></a>  <span class="fu">min</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>))</span>
+<span id="cb101-460"><a href="#cb101-460" aria-hidden="true" tabindex="-1"></a>  <span class="in">```</span></span>
+<span id="cb101-461"><a href="#cb101-461" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-462"><a href="#cb101-462" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Funções de Manipulação de Dados: {#subsec-funcoes-manipulacao-dados}</span></span>
+<span id="cb101-463"><a href="#cb101-463" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-464"><a href="#cb101-464" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Tamanho: <span class="in">`length()`</span>, calcula o número de elementos em um vetor ou lista.</span>
+<span id="cb101-465"><a href="#cb101-465" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-466"><a href="#cb101-466" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r}</span></span>
+<span id="cb101-467"><a href="#cb101-467" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| code-fold: false</span></span>
+<span id="cb101-468"><a href="#cb101-468" aria-hidden="true" tabindex="-1"></a>  <span class="fu">length</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>))</span>
+<span id="cb101-469"><a href="#cb101-469" aria-hidden="true" tabindex="-1"></a>  <span class="in">```</span></span>
+<span id="cb101-470"><a href="#cb101-470" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-471"><a href="#cb101-471" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Nomes: <span class="in">`names()`</span>, retorna os nomes dos elementos em uma lista ou data frame.</span>
+<span id="cb101-472"><a href="#cb101-472" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-473"><a href="#cb101-473" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r}</span></span>
+<span id="cb101-474"><a href="#cb101-474" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| code-fold: false</span></span>
+<span id="cb101-475"><a href="#cb101-475" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>(<span class="at">x =</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">1</span>, <span class="at">b =</span> <span class="dv">2</span>, <span class="at">c =</span> <span class="dv">3</span>))</span>
+<span id="cb101-476"><a href="#cb101-476" aria-hidden="true" tabindex="-1"></a>  <span class="in">```</span></span>
 <span id="cb101-477"><a href="#cb101-477" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-478"><a href="#cb101-478" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Dimensão: <span class="in">`dim()`</span>, calcula as dimensões de uma matriz ou data frame.</span>
-<span id="cb101-479"><a href="#cb101-479" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-480"><a href="#cb101-480" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r}</span></span>
-<span id="cb101-481"><a href="#cb101-481" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| code-fold: false</span></span>
-<span id="cb101-482"><a href="#cb101-482" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dim</span>(<span class="at">x =</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">3</span>))</span>
-<span id="cb101-483"><a href="#cb101-483" aria-hidden="true" tabindex="-1"></a>  <span class="in">```</span></span>
-<span id="cb101-484"><a href="#cb101-484" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-485"><a href="#cb101-485" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Número de Linhas e Colunas: <span class="in">`nrow()`</span> e <span class="in">`ncol()`</span>, calculam o número de linhas e colunas em uma matriz ou data frame, respectivamente.</span>
-<span id="cb101-486"><a href="#cb101-486" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-487"><a href="#cb101-487" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r}</span></span>
-<span id="cb101-488"><a href="#cb101-488" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| code-fold: false</span></span>
-<span id="cb101-489"><a href="#cb101-489" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nrow</span>(<span class="at">x =</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">3</span>))</span>
-<span id="cb101-490"><a href="#cb101-490" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ncol</span>(<span class="at">x =</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">3</span>))</span>
-<span id="cb101-491"><a href="#cb101-491" aria-hidden="true" tabindex="-1"></a>  <span class="in">```</span></span>
-<span id="cb101-492"><a href="#cb101-492" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-493"><a href="#cb101-493" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Classe: <span class="in">`class()`</span>, retorna a classe de um objeto em <span class="co">[</span><span class="ot">R</span><span class="co">]</span>.</span>
-<span id="cb101-494"><a href="#cb101-494" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-495"><a href="#cb101-495" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r}</span></span>
-<span id="cb101-496"><a href="#cb101-496" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| code-fold: false</span></span>
-<span id="cb101-497"><a href="#cb101-497" aria-hidden="true" tabindex="-1"></a>  <span class="fu">class</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>))</span>
-<span id="cb101-498"><a href="#cb101-498" aria-hidden="true" tabindex="-1"></a>  <span class="in">```</span></span>
-<span id="cb101-499"><a href="#cb101-499" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-500"><a href="#cb101-500" aria-hidden="true" tabindex="-1"></a><span class="fu">## Pacotes {#sec-pacotes}</span></span>
-<span id="cb101-501"><a href="#cb101-501" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-502"><a href="#cb101-502" aria-hidden="true" tabindex="-1"></a>O Uso de pacotes em <span class="co">[</span><span class="ot">R</span><span class="co">]</span> é fundamental para expandir as funcionalidades da linguagem e facilitar a realização de tarefas específicas. Pacotes são coleções de funções, dados e documentação que podem ser facilmente instalados e carregados em <span class="co">[</span><span class="ot">R</span><span class="co">]</span>. Existem milhares de pacotes disponíveis para diversas áreas, como estatística, ciência de dados, visualização, entre outras. Importante mencionar que, pacotes são criados por membros da comunidade e podem ser encontrados no repositório oficial do <span class="co">[</span><span class="ot">CRAN</span><span class="co">]</span> ou em outros repositórios, como o <span class="co">[</span><span class="ot">GitHub</span><span class="co">]</span>.</span>
-<span id="cb101-503"><a href="#cb101-503" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-504"><a href="#cb101-504" aria-hidden="true" tabindex="-1"></a><span class="fu">### Instalação e Carregamento de Pacotes</span></span>
-<span id="cb101-505"><a href="#cb101-505" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-506"><a href="#cb101-506" aria-hidden="true" tabindex="-1"></a>Para instalar e carregar um pacote em <span class="co">[</span><span class="ot">R</span><span class="co">]</span>, basta usar a função <span class="in">`install.packages()`</span> e <span class="in">`library()`</span>, passando o nome do pacote como argumento. Por exemplo, o pacote <span class="in">`ggplot2`</span>, que é amplamente utilizado para visualização de dados, basta executar:</span>
-<span id="cb101-507"><a href="#cb101-507" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-510"><a href="#cb101-510" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb101-511"><a href="#cb101-511" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
-<span id="cb101-512"><a href="#cb101-512" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb101-513"><a href="#cb101-513" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"ggplot2"</span>) <span class="co">#Instala o pacote ggplot2</span></span>
-<span id="cb101-514"><a href="#cb101-514" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) <span class="co">#Carrega o pacote ggplot2 para uso</span></span>
-<span id="cb101-515"><a href="#cb101-515" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb101-516"><a href="#cb101-516" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-517"><a href="#cb101-517" aria-hidden="true" tabindex="-1"></a><span class="fu">### Pacotes populares em [R]</span></span>
-<span id="cb101-518"><a href="#cb101-518" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-519"><a href="#cb101-519" aria-hidden="true" tabindex="-1"></a>Alguns pacotes possuem uma grande popularidade e são amplamente utilizados pela comunidade, como:</span>
-<span id="cb101-520"><a href="#cb101-520" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-521"><a href="#cb101-521" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`ggplot2`</span>: para visualização de dados.</span>
-<span id="cb101-522"><a href="#cb101-522" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`dplyr`</span>: para manipulação de dados.</span>
-<span id="cb101-523"><a href="#cb101-523" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`tidyr`</span>: para organização de dados.</span>
-<span id="cb101-524"><a href="#cb101-524" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`readr`</span>: para leitura de arquivos.</span>
-<span id="cb101-525"><a href="#cb101-525" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`stringr`</span>: para manipulação de strings.</span>
-<span id="cb101-526"><a href="#cb101-526" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`lubridate`</span>: para manipulação de datas.</span>
-<span id="cb101-527"><a href="#cb101-527" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`caret`</span>: para machine learning.</span>
-<span id="cb101-528"><a href="#cb101-528" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`tidyverse`</span>: para um conjunto de pacotes importantes</span>
-<span id="cb101-529"><a href="#cb101-529" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-478"><a href="#cb101-478" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-479"><a href="#cb101-479" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Dimensão: <span class="in">`dim()`</span>, calcula as dimensões de uma matriz ou data frame.</span>
+<span id="cb101-480"><a href="#cb101-480" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-481"><a href="#cb101-481" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r}</span></span>
+<span id="cb101-482"><a href="#cb101-482" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| code-fold: false</span></span>
+<span id="cb101-483"><a href="#cb101-483" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dim</span>(<span class="at">x =</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">3</span>))</span>
+<span id="cb101-484"><a href="#cb101-484" aria-hidden="true" tabindex="-1"></a>  <span class="in">```</span></span>
+<span id="cb101-485"><a href="#cb101-485" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-486"><a href="#cb101-486" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Número de Linhas e Colunas: <span class="in">`nrow()`</span> e <span class="in">`ncol()`</span>, calculam o número de linhas e colunas em uma matriz ou data frame, respectivamente.</span>
+<span id="cb101-487"><a href="#cb101-487" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-488"><a href="#cb101-488" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r}</span></span>
+<span id="cb101-489"><a href="#cb101-489" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| code-fold: false</span></span>
+<span id="cb101-490"><a href="#cb101-490" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nrow</span>(<span class="at">x =</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">3</span>))</span>
+<span id="cb101-491"><a href="#cb101-491" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ncol</span>(<span class="at">x =</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">3</span>))</span>
+<span id="cb101-492"><a href="#cb101-492" aria-hidden="true" tabindex="-1"></a>  <span class="in">```</span></span>
+<span id="cb101-493"><a href="#cb101-493" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-494"><a href="#cb101-494" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Classe: <span class="in">`class()`</span>, retorna a classe de um objeto em <span class="co">[</span><span class="ot">R</span><span class="co">]</span>.</span>
+<span id="cb101-495"><a href="#cb101-495" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-496"><a href="#cb101-496" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r}</span></span>
+<span id="cb101-497"><a href="#cb101-497" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| code-fold: false</span></span>
+<span id="cb101-498"><a href="#cb101-498" aria-hidden="true" tabindex="-1"></a>  <span class="fu">class</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>))</span>
+<span id="cb101-499"><a href="#cb101-499" aria-hidden="true" tabindex="-1"></a>  <span class="in">```</span></span>
+<span id="cb101-500"><a href="#cb101-500" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-501"><a href="#cb101-501" aria-hidden="true" tabindex="-1"></a><span class="fu">## Pacotes {#sec-pacotes}</span></span>
+<span id="cb101-502"><a href="#cb101-502" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-503"><a href="#cb101-503" aria-hidden="true" tabindex="-1"></a>O Uso de pacotes em <span class="co">[</span><span class="ot">R</span><span class="co">]</span> é fundamental para expandir as funcionalidades da linguagem e facilitar a realização de tarefas específicas. Pacotes são coleções de funções, dados e documentação que podem ser facilmente instalados e carregados em <span class="co">[</span><span class="ot">R</span><span class="co">]</span>. Existem milhares de pacotes disponíveis para diversas áreas, como estatística, ciência de dados, visualização, entre outras. Importante mencionar que, pacotes são criados por membros da comunidade e podem ser encontrados no repositório oficial do <span class="co">[</span><span class="ot">CRAN</span><span class="co">]</span> ou em outros repositórios, como o <span class="co">[</span><span class="ot">GitHub</span><span class="co">]</span>.</span>
+<span id="cb101-504"><a href="#cb101-504" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-505"><a href="#cb101-505" aria-hidden="true" tabindex="-1"></a><span class="fu">### Instalação e Carregamento de Pacotes</span></span>
+<span id="cb101-506"><a href="#cb101-506" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-507"><a href="#cb101-507" aria-hidden="true" tabindex="-1"></a>Para instalar e carregar um pacote em <span class="co">[</span><span class="ot">R</span><span class="co">]</span>, basta usar a função <span class="in">`install.packages()`</span> e <span class="in">`library()`</span>, passando o nome do pacote como argumento. Por exemplo, o pacote <span class="in">`ggplot2`</span>, que é amplamente utilizado para visualização de dados, basta executar:</span>
+<span id="cb101-508"><a href="#cb101-508" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-511"><a href="#cb101-511" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb101-512"><a href="#cb101-512" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
+<span id="cb101-513"><a href="#cb101-513" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb101-514"><a href="#cb101-514" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"ggplot2"</span>) <span class="co">#Instala o pacote ggplot2</span></span>
+<span id="cb101-515"><a href="#cb101-515" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) <span class="co">#Carrega o pacote ggplot2 para uso</span></span>
+<span id="cb101-516"><a href="#cb101-516" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb101-517"><a href="#cb101-517" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-518"><a href="#cb101-518" aria-hidden="true" tabindex="-1"></a><span class="fu">### Pacotes populares em [R]</span></span>
+<span id="cb101-519"><a href="#cb101-519" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-520"><a href="#cb101-520" aria-hidden="true" tabindex="-1"></a>Alguns pacotes possuem uma grande popularidade e são amplamente utilizados pela comunidade, como:</span>
+<span id="cb101-521"><a href="#cb101-521" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-522"><a href="#cb101-522" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`ggplot2`</span>: para visualização de dados.</span>
+<span id="cb101-523"><a href="#cb101-523" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`dplyr`</span>: para manipulação de dados.</span>
+<span id="cb101-524"><a href="#cb101-524" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`tidyr`</span>: para organização de dados.</span>
+<span id="cb101-525"><a href="#cb101-525" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`readr`</span>: para leitura de arquivos.</span>
+<span id="cb101-526"><a href="#cb101-526" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`stringr`</span>: para manipulação de strings.</span>
+<span id="cb101-527"><a href="#cb101-527" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`lubridate`</span>: para manipulação de datas.</span>
+<span id="cb101-528"><a href="#cb101-528" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`caret`</span>: para machine learning.</span>
+<span id="cb101-529"><a href="#cb101-529" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`tidyverse`</span>: para um conjunto de pacotes importantes</span>
 <span id="cb101-530"><a href="#cb101-530" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-531"><a href="#cb101-531" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--</span></span>
-<span id="cb101-532"><a href="#cb101-532" aria-hidden="true" tabindex="-1"></a><span class="co">É interessante usar pacotes como: leem; tidyverse... são pacotes que ajudam com funções mais fáceis para usar funções bem complexas complexas, colocando muitas vezes uma palavra ao invés de usar várias linhas de código. E para baixar esses pacotes e usá-los, é necessário seguir os seguintes passos: install.packages(“nome_do_pacote”) e depois  colocar library(nome_do_pacote) em cada sessão que for usar esse pacote é necessário colocar esse passo 2, já a instalação só precisa ser feita uma vez.</span></span>
-<span id="cb101-533"><a href="#cb101-533" aria-hidden="true" tabindex="-1"></a><span class="co">--&gt;</span></span>
-<span id="cb101-534"><a href="#cb101-534" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-535"><a href="#cb101-535" aria-hidden="true" tabindex="-1"></a><span class="fu">### Pacote `leem` {#sec-pacote-leem}</span></span>
-<span id="cb101-536"><a href="#cb101-536" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-537"><a href="#cb101-537" aria-hidden="true" tabindex="-1"></a>Na disciplina de Estatística e Probabilidade, o pacote <span class="in">`leem`</span> é uma ferramenta útil para realizar análises estatísticas e manipulação de dados. Ele oferece uma variedade de funções para calcular medidas de tendência central, variabilidade, gráficos, entre outras funcionalidades.</span>
-<span id="cb101-538"><a href="#cb101-538" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-539"><a href="#cb101-539" aria-hidden="true" tabindex="-1"></a>O pacote <span class="in">`leem`</span> é mantido pelo professor <span class="co">[</span><span class="ot">Ben Dêivide</span><span class="co">](https://bendeivide.github.io)</span> e pode ser instalado e carregado da seguinte forma:</span>
-<span id="cb101-540"><a href="#cb101-540" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-543"><a href="#cb101-543" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb101-544"><a href="#cb101-544" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
-<span id="cb101-545"><a href="#cb101-545" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb101-546"><a href="#cb101-546" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"leem"</span>) <span class="co">#Instala o pacote leem</span></span>
-<span id="cb101-547"><a href="#cb101-547" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leem) <span class="co">#Carrega o pacote leem para uso</span></span>
-<span id="cb101-548"><a href="#cb101-548" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb101-549"><a href="#cb101-549" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-550"><a href="#cb101-550" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Funções do pacote `leem`</span></span>
-<span id="cb101-551"><a href="#cb101-551" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-552"><a href="#cb101-552" aria-hidden="true" tabindex="-1"></a>Alguns exemplos de funções que serão utilizadas durante a disciplina são:</span>
-<span id="cb101-553"><a href="#cb101-553" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-554"><a href="#cb101-554" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`new_leem()`</span>: para criar um objeto do tipo <span class="in">`leem`</span>.</span>
-<span id="cb101-555"><a href="#cb101-555" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb101-556"><a href="#cb101-556" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r}</span></span>
-<span id="cb101-557"><a href="#cb101-557" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| code-fold: false</span></span>
-<span id="cb101-558"><a href="#cb101-558" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(leem)</span>
-<span id="cb101-559"><a href="#cb101-559" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-560"><a href="#cb101-560" aria-hidden="true" tabindex="-1"></a>  dados <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
-<span id="cb101-561"><a href="#cb101-561" aria-hidden="true" tabindex="-1"></a>  leem_obj <span class="ot">&lt;-</span> <span class="fu">new_leem</span>(<span class="at">x =</span> dados, <span class="at">variable =</span> <span class="dv">2</span>)</span>
-<span id="cb101-562"><a href="#cb101-562" aria-hidden="true" tabindex="-1"></a>  leem_obj</span>
-<span id="cb101-563"><a href="#cb101-563" aria-hidden="true" tabindex="-1"></a>  <span class="in">```</span></span>
-<span id="cb101-564"><a href="#cb101-564" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-565"><a href="#cb101-565" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`tabfreq()`</span>: para criar uma tabela de frequências.</span>
-<span id="cb101-566"><a href="#cb101-566" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-567"><a href="#cb101-567" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r}</span></span>
-<span id="cb101-568"><a href="#cb101-568" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| code-fold: false</span></span>
-<span id="cb101-569"><a href="#cb101-569" aria-hidden="true" tabindex="-1"></a>  tabf <span class="ot">&lt;-</span> <span class="fu">tabfreq</span>(leem_obj)</span>
-<span id="cb101-570"><a href="#cb101-570" aria-hidden="true" tabindex="-1"></a>  tabf</span>
-<span id="cb101-571"><a href="#cb101-571" aria-hidden="true" tabindex="-1"></a>  <span class="in">```</span></span>
-<span id="cb101-572"><a href="#cb101-572" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-573"><a href="#cb101-573" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`barplot()`</span>: para criar um gráfico de barras a partir de uma tabela de frequências.</span>
-<span id="cb101-574"><a href="#cb101-574" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-575"><a href="#cb101-575" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r}</span></span>
-<span id="cb101-576"><a href="#cb101-576" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| code-fold: false</span></span>
-<span id="cb101-577"><a href="#cb101-577" aria-hidden="true" tabindex="-1"></a>  <span class="fu">barplot</span>(tabf, <span class="at">main =</span> <span class="st">"Frequência dos dados"</span>, <span class="at">xlab =</span> <span class="st">"Valores"</span>, <span class="at">ylab =</span> <span class="st">"Frequência"</span>, <span class="at">barcol =</span> <span class="st">"steelblue"</span>)</span>
-<span id="cb101-578"><a href="#cb101-578" aria-hidden="true" tabindex="-1"></a>  <span class="in">```</span></span>
-<span id="cb101-579"><a href="#cb101-579" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-580"><a href="#cb101-580" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
-<span id="cb101-581"><a href="#cb101-581" aria-hidden="true" tabindex="-1"></a>Para descobrir mais funções do pacote <span class="in">`leem`</span> e suas aplicações, consulte a <span class="co">[</span><span class="ot">documentação oficial</span><span class="co">](https://bendeivide.github.io/leem/)</span>.</span>
-<span id="cb101-582"><a href="#cb101-582" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb101-583"><a href="#cb101-583" aria-hidden="true" tabindex="-1"></a><span class="fu">## Considerações finais</span></span>
-<span id="cb101-584"><a href="#cb101-584" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-585"><a href="#cb101-585" aria-hidden="true" tabindex="-1"></a>O R é uma ótima ferramenta para analisar dados estatísticos, de primeiro pode demorar para ser aprendida devido a sintaxe, mas depois ela recompensa com a velocidade e eficiência para resolver problemas complexos e inclusive se integrar com outras linguagens</span>
-<span id="cb101-586"><a href="#cb101-586" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-587"><a href="#cb101-587" aria-hidden="true" tabindex="-1"></a><span class="fu">### COMENTÁRIOS</span></span>
-<span id="cb101-588"><a href="#cb101-588" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-589"><a href="#cb101-589" aria-hidden="true" tabindex="-1"></a>Agora acho interessante responder algumas perguntas</span>
-<span id="cb101-590"><a href="#cb101-590" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-591"><a href="#cb101-591" aria-hidden="true" tabindex="-1"></a>1)  Porque usar R?</span>
-<span id="cb101-592"><a href="#cb101-592" aria-hidden="true" tabindex="-1"></a>2)  Quais outros locais posso programar em R, fora o RStudio?</span>
-<span id="cb101-593"><a href="#cb101-593" aria-hidden="true" tabindex="-1"></a>3)  Como aprendi a interpretar as mensagens de erro do R?</span>
-<span id="cb101-594"><a href="#cb101-594" aria-hidden="true" tabindex="-1"></a>4)  Quais comunidades/sites ajudam nesse processo de aprendizado?</span>
-<span id="cb101-595"><a href="#cb101-595" aria-hidden="true" tabindex="-1"></a>5)  Como garantir que minha análise seja reprodutível para outros?</span>
-<span id="cb101-596"><a href="#cb101-596" aria-hidden="true" tabindex="-1"></a>6)  Como o uso de projetos (.Rproj) ajudam na organização das pastas e arquivos?</span>
-<span id="cb101-597"><a href="#cb101-597" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-531"><a href="#cb101-531" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-532"><a href="#cb101-532" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--</span></span>
+<span id="cb101-533"><a href="#cb101-533" aria-hidden="true" tabindex="-1"></a><span class="co">É interessante usar pacotes como: leem; tidyverse... são pacotes que ajudam com funções mais fáceis para usar funções bem complexas complexas, colocando muitas vezes uma palavra ao invés de usar várias linhas de código. E para baixar esses pacotes e usá-los, é necessário seguir os seguintes passos: install.packages(“nome_do_pacote”) e depois  colocar library(nome_do_pacote) em cada sessão que for usar esse pacote é necessário colocar esse passo 2, já a instalação só precisa ser feita uma vez.</span></span>
+<span id="cb101-534"><a href="#cb101-534" aria-hidden="true" tabindex="-1"></a><span class="co">--&gt;</span></span>
+<span id="cb101-535"><a href="#cb101-535" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-536"><a href="#cb101-536" aria-hidden="true" tabindex="-1"></a><span class="fu">### Pacote `leem` {#sec-pacote-leem}</span></span>
+<span id="cb101-537"><a href="#cb101-537" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-538"><a href="#cb101-538" aria-hidden="true" tabindex="-1"></a>Na disciplina de Estatística e Probabilidade, o pacote <span class="in">`leem`</span> é uma ferramenta útil para realizar análises estatísticas e manipulação de dados. Ele oferece uma variedade de funções para calcular medidas de tendência central, variabilidade, gráficos, entre outras funcionalidades.</span>
+<span id="cb101-539"><a href="#cb101-539" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-540"><a href="#cb101-540" aria-hidden="true" tabindex="-1"></a>O pacote <span class="in">`leem`</span> é mantido pelo professor <span class="co">[</span><span class="ot">Ben Dêivide</span><span class="co">](https://bendeivide.github.io)</span> e pode ser instalado e carregado da seguinte forma:</span>
+<span id="cb101-541"><a href="#cb101-541" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-544"><a href="#cb101-544" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb101-545"><a href="#cb101-545" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
+<span id="cb101-546"><a href="#cb101-546" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb101-547"><a href="#cb101-547" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"leem"</span>) <span class="co">#Instala o pacote leem</span></span>
+<span id="cb101-548"><a href="#cb101-548" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leem) <span class="co">#Carrega o pacote leem para uso</span></span>
+<span id="cb101-549"><a href="#cb101-549" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb101-550"><a href="#cb101-550" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-551"><a href="#cb101-551" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Funções do pacote `leem`</span></span>
+<span id="cb101-552"><a href="#cb101-552" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-553"><a href="#cb101-553" aria-hidden="true" tabindex="-1"></a>Alguns exemplos de funções que serão utilizadas durante a disciplina são:</span>
+<span id="cb101-554"><a href="#cb101-554" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-555"><a href="#cb101-555" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`new_leem()`</span>: para criar um objeto do tipo <span class="in">`leem`</span>.</span>
+<span id="cb101-556"><a href="#cb101-556" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb101-557"><a href="#cb101-557" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r}</span></span>
+<span id="cb101-558"><a href="#cb101-558" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| code-fold: false</span></span>
+<span id="cb101-559"><a href="#cb101-559" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(leem)</span>
+<span id="cb101-560"><a href="#cb101-560" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-561"><a href="#cb101-561" aria-hidden="true" tabindex="-1"></a>  dados <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb101-562"><a href="#cb101-562" aria-hidden="true" tabindex="-1"></a>  leem_obj <span class="ot">&lt;-</span> <span class="fu">new_leem</span>(<span class="at">x =</span> dados, <span class="at">variable =</span> <span class="dv">2</span>)</span>
+<span id="cb101-563"><a href="#cb101-563" aria-hidden="true" tabindex="-1"></a>  leem_obj</span>
+<span id="cb101-564"><a href="#cb101-564" aria-hidden="true" tabindex="-1"></a>  <span class="in">```</span></span>
+<span id="cb101-565"><a href="#cb101-565" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-566"><a href="#cb101-566" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`tabfreq()`</span>: para criar uma tabela de frequências.</span>
+<span id="cb101-567"><a href="#cb101-567" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-568"><a href="#cb101-568" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r}</span></span>
+<span id="cb101-569"><a href="#cb101-569" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| code-fold: false</span></span>
+<span id="cb101-570"><a href="#cb101-570" aria-hidden="true" tabindex="-1"></a>  tabf <span class="ot">&lt;-</span> <span class="fu">tabfreq</span>(leem_obj)</span>
+<span id="cb101-571"><a href="#cb101-571" aria-hidden="true" tabindex="-1"></a>  tabf</span>
+<span id="cb101-572"><a href="#cb101-572" aria-hidden="true" tabindex="-1"></a>  <span class="in">```</span></span>
+<span id="cb101-573"><a href="#cb101-573" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-574"><a href="#cb101-574" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`barplot()`</span>: para criar um gráfico de barras a partir de uma tabela de frequências.</span>
+<span id="cb101-575"><a href="#cb101-575" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-576"><a href="#cb101-576" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r}</span></span>
+<span id="cb101-577"><a href="#cb101-577" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| code-fold: false</span></span>
+<span id="cb101-578"><a href="#cb101-578" aria-hidden="true" tabindex="-1"></a>  <span class="fu">barplot</span>(tabf, <span class="at">main =</span> <span class="st">"Frequência dos dados"</span>, <span class="at">xlab =</span> <span class="st">"Valores"</span>, <span class="at">ylab =</span> <span class="st">"Frequência"</span>, <span class="at">barcol =</span> <span class="st">"steelblue"</span>)</span>
+<span id="cb101-579"><a href="#cb101-579" aria-hidden="true" tabindex="-1"></a>  <span class="in">```</span></span>
+<span id="cb101-580"><a href="#cb101-580" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-581"><a href="#cb101-581" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb101-582"><a href="#cb101-582" aria-hidden="true" tabindex="-1"></a>Para descobrir mais funções do pacote <span class="in">`leem`</span> e suas aplicações, consulte a <span class="co">[</span><span class="ot">documentação oficial</span><span class="co">](https://bendeivide.github.io/leem/)</span>.</span>
+<span id="cb101-583"><a href="#cb101-583" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb101-584"><a href="#cb101-584" aria-hidden="true" tabindex="-1"></a><span class="fu">## Considerações finais</span></span>
+<span id="cb101-585"><a href="#cb101-585" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-586"><a href="#cb101-586" aria-hidden="true" tabindex="-1"></a>O R é uma ótima ferramenta para analisar dados estatísticos, de primeiro pode demorar para ser aprendida devido a sintaxe, mas depois ela recompensa com a velocidade e eficiência para resolver problemas complexos e inclusive se integrar com outras linguagens</span>
+<span id="cb101-587"><a href="#cb101-587" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-588"><a href="#cb101-588" aria-hidden="true" tabindex="-1"></a><span class="fu">### COMENTÁRIOS</span></span>
+<span id="cb101-589"><a href="#cb101-589" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-590"><a href="#cb101-590" aria-hidden="true" tabindex="-1"></a>Agora acho interessante responder algumas perguntas</span>
+<span id="cb101-591"><a href="#cb101-591" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-592"><a href="#cb101-592" aria-hidden="true" tabindex="-1"></a>1)  Porque usar R?</span>
+<span id="cb101-593"><a href="#cb101-593" aria-hidden="true" tabindex="-1"></a>2)  Quais outros locais posso programar em R, fora o RStudio?</span>
+<span id="cb101-594"><a href="#cb101-594" aria-hidden="true" tabindex="-1"></a>3)  Como aprendi a interpretar as mensagens de erro do R?</span>
+<span id="cb101-595"><a href="#cb101-595" aria-hidden="true" tabindex="-1"></a>4)  Quais comunidades/sites ajudam nesse processo de aprendizado?</span>
+<span id="cb101-596"><a href="#cb101-596" aria-hidden="true" tabindex="-1"></a>5)  Como garantir que minha análise seja reprodutível para outros?</span>
+<span id="cb101-597"><a href="#cb101-597" aria-hidden="true" tabindex="-1"></a>6)  Como o uso de projetos (.Rproj) ajudam na organização das pastas e arquivos?</span>
 <span id="cb101-598"><a href="#cb101-598" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-599"><a href="#cb101-599" aria-hidden="true" tabindex="-1"></a>Respondendo as questões acima</span>
-<span id="cb101-600"><a href="#cb101-600" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-599"><a href="#cb101-599" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-600"><a href="#cb101-600" aria-hidden="true" tabindex="-1"></a>Respondendo as questões acima</span>
 <span id="cb101-601"><a href="#cb101-601" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-602"><a href="#cb101-602" aria-hidden="true" tabindex="-1"></a>1)  O R foi desenvolvido por e para estatísticos e cientistas de dados, diferente de ferramentas de planilhas, ele permite manipular vários dados com uma grande precisão e garantir que qualquer análise possa ser repetida exatamente da mesma forma, fora que tem pacotes que podem ser instalados que cobrem quase todos os métodos estatísticos existentes, se não todos.</span>
-<span id="cb101-603"><a href="#cb101-603" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-604"><a href="#cb101-604" aria-hidden="true" tabindex="-1"></a>2)  Mesmo o RStudio sendo o padrão para programar em R, você pode usar o VS Code, o Jupyter Notebook (diretamente no terminal do sistema operacional) ou mesmo em plataformas na nuvem, como Posit Cloud e Google Colab.</span>
-<span id="cb101-605"><a href="#cb101-605" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-606"><a href="#cb101-606" aria-hidden="true" tabindex="-1"></a>3)  Interpretar erros em R é um processo de tradução, geralmente na mensagem de erro é indicado onde no código está o erro e porque está errado, logo acredito que no início, e mesmo depois, o segredo é copiar o código e jogar no ChatGPT e pergutar como arrumar e entender a causa da raiz.</span>
-<span id="cb101-607"><a href="#cb101-607" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-608"><a href="#cb101-608" aria-hidden="true" tabindex="-1"></a>4)  As fontes de apoio que acho interessantes são: </span>
-<span id="cb101-609"><a href="#cb101-609" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Site do Ben Deivide;</span>
-<span id="cb101-610"><a href="#cb101-610" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Vídeos no youtube;</span>
-<span id="cb101-611"><a href="#cb101-611" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-612"><a href="#cb101-612" aria-hidden="true" tabindex="-1"></a>5)   A reprodutibilidade garantida vem por meio de:</span>
-<span id="cb101-613"><a href="#cb101-613" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Scripts bem comentados (explicando o que e porque foi feito);</span>
-<span id="cb101-614"><a href="#cb101-614" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>R Markdown ou Quarto (unem o código, resultados e texto em um documento final, PDF ou HTML);</span>
-<span id="cb101-615"><a href="#cb101-615" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Controle de versões (pode ser feito através do GitHub, site muito usado junto ao R que rastreia mudanças no código; local onde inclusive pode ser achado mais projetos semelhantes ao seu);</span>
-<span id="cb101-616"><a href="#cb101-616" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-617"><a href="#cb101-617" aria-hidden="true" tabindex="-1"></a>6) O .Rproj é fundamental, já que ele quem define o seu diretório de   trabalho, ao abrir um projeto, o R já sabe onde estão os dados e onde deve salvar os gráficos. Ele isola o seu ambiente de trabalho, permitindo que você altere entre diferentes análises sem que esses dados interfiram um no outro.</span>
+<span id="cb101-602"><a href="#cb101-602" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-603"><a href="#cb101-603" aria-hidden="true" tabindex="-1"></a>1)  O R foi desenvolvido por e para estatísticos e cientistas de dados, diferente de ferramentas de planilhas, ele permite manipular vários dados com uma grande precisão e garantir que qualquer análise possa ser repetida exatamente da mesma forma, fora que tem pacotes que podem ser instalados que cobrem quase todos os métodos estatísticos existentes, se não todos.</span>
+<span id="cb101-604"><a href="#cb101-604" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-605"><a href="#cb101-605" aria-hidden="true" tabindex="-1"></a>2)  Mesmo o RStudio sendo o padrão para programar em R, você pode usar o VS Code, o Jupyter Notebook (diretamente no terminal do sistema operacional) ou mesmo em plataformas na nuvem, como Posit Cloud e Google Colab.</span>
+<span id="cb101-606"><a href="#cb101-606" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-607"><a href="#cb101-607" aria-hidden="true" tabindex="-1"></a>3)  Interpretar erros em R é um processo de tradução, geralmente na mensagem de erro é indicado onde no código está o erro e porque está errado, logo acredito que no início, e mesmo depois, o segredo é copiar o código e jogar no ChatGPT e pergutar como arrumar e entender a causa da raiz.</span>
+<span id="cb101-608"><a href="#cb101-608" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-609"><a href="#cb101-609" aria-hidden="true" tabindex="-1"></a>4)  As fontes de apoio que acho interessantes são: </span>
+<span id="cb101-610"><a href="#cb101-610" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Site do Ben Deivide;</span>
+<span id="cb101-611"><a href="#cb101-611" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Vídeos no youtube;</span>
+<span id="cb101-612"><a href="#cb101-612" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-613"><a href="#cb101-613" aria-hidden="true" tabindex="-1"></a>5)   A reprodutibilidade garantida vem por meio de:</span>
+<span id="cb101-614"><a href="#cb101-614" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Scripts bem comentados (explicando o que e porque foi feito);</span>
+<span id="cb101-615"><a href="#cb101-615" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>R Markdown ou Quarto (unem o código, resultados e texto em um documento final, PDF ou HTML);</span>
+<span id="cb101-616"><a href="#cb101-616" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Controle de versões (pode ser feito através do GitHub, site muito usado junto ao R que rastreia mudanças no código; local onde inclusive pode ser achado mais projetos semelhantes ao seu);</span>
+<span id="cb101-617"><a href="#cb101-617" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-618"><a href="#cb101-618" aria-hidden="true" tabindex="-1"></a>6) O .Rproj é fundamental, já que ele quem define o seu diretório de   trabalho, ao abrir um projeto, o R já sabe onde estão os dados e onde deve salvar os gráficos. Ele isola o seu ambiente de trabalho, permitindo que você altere entre diferentes análises sem que esses dados interfiram um no outro.</span>
+<span id="cb101-619"><a href="#cb101-619" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-620"><a href="#cb101-620" aria-hidden="true" tabindex="-1"></a><span class="fu">## Referências</span></span>
 </code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

@@ -34,7 +34,7 @@ execute:
 O [R] é uma linguagem de programação e ambiente de software de código aberto, e tem foco na computação estatística e análise de dados. Foi consolidada como uma das ferramentas padrão padrão na ciência de dados moderna, permitindo desde análises financeiras complexas até bioinformática. Assim o R, é uma linguagem que possui uma grande comunidade ativa, que possui uma grande comunidade ativa, que sempre está contribuindo para o desenvolvimento de recursos e pacotes, e por esse motivo é muito adotado o [R] é uma linguagem amplamente adotada por diversas áreas, como estatística e ciência de dados.
 <!--É interessante que você aprenda a programar em R por ele ser construído para ajudar com estatísticas e cientistas de dados, sendo um recurso gratuito e com uma comunidade gigantesca que participa efetivamente da criação de pacotes para a facilidade e melhor compreensão dos usuários.-->
 
-Seu diferencial é a sua capacidade de promover pesquisas reprodutíveis, e para isso integra o código, a análise e a visualização em u fluxo coeso. Este relatório, apresentará como realizar a configuração inicial para programar em [R], além de apresentar os conceitos básicos da linguagem e como ela pode ser útil para análises estatísticas e manipulação de dados.
+Seu diferencial é a sua capacidade de promover pesquisas reprodutíveis, e para isso integra o código, a análise e a visualização em um fluxo coeso. Este relatório, com base no livro de @Rbasico2022, apresentará como realizar a configuração inicial para programar em [R], além de apresentar os conceitos básicos da linguagem e como ela pode ser útil para análises estatísticas e manipulação de dados.
 
 
 
@@ -192,9 +192,10 @@ typeof(dados)
 class(dados)
 ```
 
-  ::: {.callout-note}
-  Acredito que é importante de mencionar já que funções falham por esperar um objeto, e isso é bom para ter uma ideia de qual é o problema, mas não vamos nos aprofundar muito nisso por serem conceitos mais comprexos
-  :::
+::: {.callout-note}
+Acredito que é importante de mencionar já que funções falham por esperar um objeto, e isso é bom para ter uma
+ideia de qual é o problema, mas não vamos nos aprofundar muito nisso por serem conceitos mais complexos
+:::
 
 #### Tipos de dados estruturados: {#subsec-tipos-dados-estruturados}
 
@@ -283,9 +284,9 @@ var2 = 20
 var3 <- mean(x = c(1, 2, 3, 4, 5))
 ```
 
-  ::: {.callout-note}
-  O <- pode ser usado em qualquer lugar do código, enquanto o = é restrito geralmente para a definição de argumentos dentro de funções.
-  :::
+::: {.callout-note}
+O <- pode ser usado em qualquer lugar do código, enquanto o = é restrito geralmente para a definição de argumentos dentro de funções.
+:::
 
 #### Operadores aritméticos: `+`, `-`, `*`, `/`, `^ ou **`, `%%` {#subsec-operadores-aritmeticos}
 
@@ -354,9 +355,9 @@ elemento_lista <- lista[["b"]]     # Acessa o elemento "b" da lista
 coluna_dataf <- dataframe$col1 # Acessa a coluna "col1" do data frame
 ```
 
-  ::: {.callout-note}
+::: {.callout-note}
 Veja a seção [tipos de dados](#sec-tipos-dados) para melhor entendimento do código acima.
-  :::
+:::
 
 ### Funções básicas: {#sec-funcoes}
 
@@ -597,3 +598,5 @@ Respondendo as questões acima
 - Controle de versões (pode ser feito através do GitHub, site muito usado junto ao R que rastreia mudanças no código; local onde inclusive pode ser achado mais projetos semelhantes ao seu);
 
 6) O .Rproj é fundamental, já que ele quem define o seu diretório de   trabalho, ao abrir um projeto, o R já sabe onde estão os dados e onde deve salvar os gráficos. Ele isola o seu ambiente de trabalho, permitindo que você altere entre diferentes análises sem que esses dados interfiram um no outro.
+
+## Referências
