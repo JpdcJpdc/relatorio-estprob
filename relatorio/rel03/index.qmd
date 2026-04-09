@@ -1,7 +1,7 @@
 ---
 # Só mude aqui!!!!
-author: "Nome do Aluno"
-title: "Relatório de Aula Prática 03"
+author: "João Pedro e Maria Eduarda Motta"
+title: "Segundo Relatório da Catapulta"
 bibliography: referencias.bib
 # A partir daqui nao faca alteracoes!!!!!
 link-citations: true
@@ -42,43 +42,102 @@ Descrever o objetivo principal da prática.
 
 ### Objetivos específicos
 
-- Coletar dados experimentais  
-- Aplicar estatística descritiva  
-- Construir gráficos  
-- Interpretar resultados  
-
----
-
-## 📚  Fundamentação Teórica
-
-Apresente os conceitos principais:
-
-- Média
-- Variância
-- Desvio padrão
-- Amostragem
-
-$$
-\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i
-$$
+- Fazer 40 lançamentos para a coleta dos dados  
+- Explicar como reproduzir o experimento
+- Fazer a tabulação dos dados
 
 ---
 
 ## ⚙️ Metodologia
 
 ::: {.callout-note}
-Descreva como o experimento foi realizado.
+O experimento será completamente descrito aqui.
 :::
 
-- Materiais utilizados  
-- Procedimento  
-- Número de repetições  
+### Procedimento
+- De primeira, o professor dividiu a sala em dois grandes grupos, para que realizássemos as coletas dos dados dessa vez, completamente "sozinhos" (no sentido de sem o auxílio do professor responsável)
+- Depois, nos dividimos cada um para uma tarefa específica, organizado o que cada um faria:
+-> Maria Eduarda -> Segurar a catapulta;
+-> Marcos -> Fazer o lançamento;
+-> João Pedro -> Tirar fotos do experimento;
+-> Wadmilson -> Guardar os dados de lançamento e variáveis usadas; 
+-> Igor e Lucas -> Ver onde a bolinha iria cair e fazer a medição da distância.
+- Em seguida organizamos a sala de modo a facilitar o lançamento, o que consiste em: tirar as mesas que estavam no percurso da catapulta, liberando o espaço para os lançamentos, colocar a mesa de sala (que utilizamos para ser o apoio da catapulta).
+- Quando os itens acima estavam organizados, fizemos as medições da altura da mesa de aula (78 cm); organizamos as variáveis da catapulta de forma "aleatória", para diferir do primeiro experimento (da forma, de cima para baixo: A- na primeira posição; B+ 100°; A+ na segunda posição; O- na terceira posição).
+- Assim iniciamos o experimento, e após alguns lançamentos notamos que os dados estavam bem próximos, então medimos os espaços do piso (2 quadrados de 2.5m e resolvemos calcular apenas a diferença de onde a bolinha cairia no terceiro quadrado do piso, assim facilitando muito a coleta dos dados).
+
+### Materiais utilizados
+Para esse procedimento utilizamos:
+- Uma mesa da sala de aula (de 78 cm);
+- Uma catapulta cedida pelo professor que ministra a aula;
+- Uma bolinha de pingue-pong, também cedida pelo professor que ministra a aula;
+- Uma trena, que o professor também cedeu para usarmos;
+
+### Número de repetições
+Fizemos ao todo 40 lançamentos seguidos
 
 ---
 
 ## 🔍 Resultados e Discussão
 
-Apresente e interprete os resultados obtidos a partir dos dados coletados.
+Primeiro acho interessante apresentar os dados obtidos nos lançamentos da catapulta em ordem, e depois mostrar esses dados do menor para o maior.
+
+```{r,eval = TRUE}
+library(leem)
+
+lancamentos <- c(96, 89, 89, 82.5, 43.5, 118.5, 115, 91, 79, 89, 73, 85, 119, 97.5, 102, 90, 88, 100, 91,86.5, 70, 91, 80, 78, 86.5, 68, 25, 79, 107, 67, 52.5, 81, 109, 83, 74, 84, 89, 82.5, 81, 70)
+
+print(lancamentos)
+
+lancamentos_organizados <- sort(lancamentos)
+
+print(lancamentos_organizados)
+
+```
+
+Com esses dados vamos fazer a tabulação
+
+```{r,eval = TRUE}
+library(leem)
+
+lanca2 <- new_leem(lancamentos, variable = "continuous")
+
+lancamentos_tabulados <- new_leem(lancamentos, variable = "continuous")
+
+lancamentos_tabulados<- tabfreq(lancamentos_tabulados)
+```
+
+É interessante avaliar as mudanças dos valores quando tabulados e os valores sortidos
+
+```{r,eval = TRUE}
+media_tab   <- mean(lanca2)
+print(paste("A Média pela tabela é:", round(media_tab, 2)))
+media_exata   <- mean(lancamentos)
+print(paste("A Média exata é:", round(media_exata, 2)))
+```
+
+Como podemos ver a média tabulada é menor que a média exata, isso porque na tabulação os dados do ponto médio são considerados como os "novos valores", visto que não visualizamos valor por valor, logo, se a maior parte dos números estiver acima do ponto médio, a média exata será maior que a tabulada, como aconteceu nesse caso.
+
+```{r,eval = TRUE}
+mediana_tab <- median(lanca2)
+print(paste("A Mediana pela tabela é:", round(mediana_tab, 2)))
+mediana_exata <- median(lancamentos)
+print(paste("A Mediana exata é:", round(mediana_exata, 2)))
+
+```
+
+Aqui temos uma diferença bem grande, e isso acontece porque ela é o valor central, então no nosso caso, com 40 dados, ela seria a média do elemento: 20° e 21°, não importando a extremidade dos valores, já na mediana tabulada a localização desse valor é perdida e nos é passada a mediana estimada, da tabulação.
+
+```{r,eval = TRUE}
+moda_tab <- mfreq(lancamentos_tabulados)
+print(paste("A Moda pela tabela é:", moda_tab))
+
+moda_exata <- mfreq(lanca2)
+
+print(paste("A Moda exata é:", moda_exata))
+```
+
+Aqui podemos
 
 - Descreva os principais resultados numéricos (média, variabilidade, etc.).
 - Comente o comportamento dos dados observados nos gráficos.
