@@ -80,6 +80,8 @@ Fizemos ao todo 40 lançamentos seguidos
 
 ## 🔍 Resultados e Discussão
 
+### Apresentando os resultados com comentários
+
 Primeiro acho interessante apresentar os dados obtidos nos lançamentos da catapulta em ordem, e depois mostrar esses dados do menor para o maior.
 
 ```{r,eval = TRUE}
@@ -105,22 +107,28 @@ lanca2 <- new_leem(lancamentos, variable = "continuous")
 lancamentos_tabulados <- new_leem(lancamentos, variable = "continuous")
 
 lancamentos_tabulados<- tabfreq(lancamentos_tabulados)
+
 ```
 
 É interessante avaliar as mudanças dos valores quando tabulados e os valores sortidos
 
 ```{r,eval = TRUE}
+
 media_tab   <- mean(lanca2)
 print(paste("A Média pela tabela é:", round(media_tab, 2)))
+
 media_exata   <- mean(lancamentos)
 print(paste("A Média exata é:", round(media_exata, 2)))
+
 ```
 
 Como podemos ver a média tabulada é menor que a média exata, isso porque na tabulação os dados do ponto médio são considerados como os "novos valores", visto que não visualizamos valor por valor, logo, se a maior parte dos números estiver acima do ponto médio, a média exata será maior que a tabulada, como aconteceu nesse caso.
 
 ```{r,eval = TRUE}
+
 mediana_tab <- median(lanca2)
 print(paste("A Mediana pela tabela é:", round(mediana_tab, 2)))
+
 mediana_exata <- median(lancamentos)
 print(paste("A Mediana exata é:", round(mediana_exata, 2)))
 
@@ -128,28 +136,69 @@ print(paste("A Mediana exata é:", round(mediana_exata, 2)))
 
 Aqui temos uma diferença bem grande, e isso acontece porque ela é o valor central, então no nosso caso, com 40 dados, ela seria a média do elemento: 20° e 21°, não importando a extremidade dos valores, já na mediana tabulada a localização desse valor é perdida e nos é passada a mediana estimada, da tabulação.
 
+(Acho que seria legal colocar o gráfico aqui pra conseguir demonstrar como essa mediana aparece nos dois casos e porque elas são diferentes, mas não consegui fazer isso)
+
 ```{r,eval = TRUE}
-moda_tab <- mfreq(lancamentos_tabulados)
+library(leem)
+
+moda_tab <- leem::mfreq(lancamentos_tabulados)
 print(paste("A Moda pela tabela é:", moda_tab))
 
-moda_exata <- mfreq(lanca2)
+lancamentos_exatos <- new_leem(lancamentos, variable = "discrete")
+
+moda_exata <- mfreq(lancamentos_exatos) #Deu certo mas ainda não sei direito o porque
 
 print(paste("A Moda exata é:", moda_exata))
+
 ```
 
-Aqui podemos
+Aqui podemos ver que a moda também é muito afetada quando comparamos os valores tabulados e os valores exatos, e isso acontece porque a tabulação olha para a classe 4 no caso, por ser a com valores mais recorrentes e pega o ponto médio dessa classe, diferente de olhar os valores um a um como na moda exata, que nos permite visualizar todos os dados e identificar quais se repetem.
 
-- Descreva os principais resultados numéricos (média, variabilidade, etc.).
-- Comente o comportamento dos dados observados nos gráficos.
-- Indique se há presença de valores discrepantes (outliers).
-- Avalie se os dados apresentam simetria ou tendência.
+```{r,eval = TRUE}
 
-Em seguida, discuta os resultados à luz dos conceitos teóricos:
+variancia_tab <- variance(lanca2)
+print(paste("A Variância pela tabela é:", round(variancia_tab, 2)))
 
-- Os resultados estão de acordo com o esperado?
-- Há grande variabilidade? O que isso significa no contexto do experimento?
-- Quais fatores podem ter influenciado os resultados?
-- Existem possíveis fontes de erro experimental?
+variancia_dados <- var(lancamentos)
+print(paste("A Variância exata é:", round(variancia_dados, 2)))
+
+```
+
+A variância diferente dos últimos resultados, é maior quando tabulada, e não com os valores exatos, isso acontece porque com os valores tabulados ela passa a tratar todos os resultados de cada classe como ponto médio, quando muitos dos dados exatos estão próximos desse centro da classe, a variância tabulada (geralmente) superestima a distância desses valores, com relação à média geral, já que ela mede a dispersão dos dados.
+
+```{r,eval = TRUE}
+
+desvio_padrao_tab <- sqrt(variancia_tab)
+print(paste("O Desvio Padrão pela tabela é:", round(desvio_padrao_tab, 2)))
+
+desvio_padrao_dados <- sd(lancamentos)
+print(paste("O Desvio Padrão exato é:", round(desvio_padrao_dados, 2)))
+
+```
+
+Assim como a variância, o desvio padrão ficou com o dado tabulado maior que o dado exato, isso acontece por os dados exatos estão muito espalhados na classe, e como as classes são largas, tendo quase 18 cm de intervalo, podemos dizer que quanto maior a classe, maior a incerteza. Sendo assim, maior o desvio padrão tabulado
+
+### Discutindo os resultados
+
+Depois de tudo isso, com os dados apresentados, podemos comentar a respeito de uma única discrepância: temos um dado de 25 cm, que difere muito de todos os outros dados, e está bem distante da média (cerca de 84.5 cm) e da mediana (cerca de 83.2 cm), e isso pode ter feito com que a média fosse puxada para baixo, assim como os valores muito mais altos (como 118.5 cm e 199 cm) podem ter puxado a média para cima. Isso tudo cria uma distribuição que não é simétrica, isso somado a alta variância (de 336.77 cm) e o desvio (de 18.35 cm) confirmam essa forma espalhada que os dados se encontram
+
+
+#### Comentando a respeito desses resultados
+
+1) Os resultados estão de acordo com o esperado?
+2) Há grande variabilidade? O que isso significa no contexto do experimento?
+3) Quais fatores podem ter influenciado os resultados?
+4) Existem possíveis fontes de erro experimental?
+
+Respostas
+
+1) Os resultados estão bons visto que a média e a mediana estão próximas, mas a diferença entre os dados tabulados e os exatos mostra a perda de precisão
+
+2) Nesse experimento tivemos uma variabilidade considerável, o desvio padrão (de 18.35 cm) e a média (de 84.55 cm) mostram uma variação considerável, mostrando que a catapulta não é perfeitamente consistente, o que é esperado de um experimento em aula.
+
+3) Acredito que a força elástica pode ter influenciado os resultados por conta do seu desgaste conforme realizávamos o experimento, o posicionamento também pode ter se modificado mesmo que um pouco por sermos nós alunos que segurávamos tudo, e durante o experimento, notamos que a diferença de posicionamento do nó do elástico (antes, em cima ou depois do metal que segura ele) essa diferença de posicionamento, influenciava ativamente na distância que a bolinha percorria se era maior ou menor, isso por conta de como esse posicionamento modifica a forma como o elástico da catapulta se comporta.
+
+4) Acredito que por ter sido feito em sala de aula, pode ter havido erros de medição (por conta de uma imprecisão na leitura da trena ou mesmo de onde exatamente a bolinha caiu); e também, como na responsta acima, a constante elástica ao longo do tempo pode ter sido alterada também.
 
 Procure não apenas descrever, mas **interpretar os dados**.
 
@@ -160,12 +209,6 @@ Depois de inserido as informaçõe no arquivo **referencias.bib**, use:
 - Segundo @Rbasico2022
 - Tudo é um objeto em R [@Rbasico2022]
 
-### 📊  Análise de Dados
-
-```{r}
-distancia <- c(10.2, 9.8, 10.5, 10.1, 9.9, 10.3)
-distancia
-```
 
 ## 🧠 Considerações finais
 
@@ -178,8 +221,5 @@ Apresente uma síntese dos principais pontos observados no experimento.
 
 Evite repetir apenas os resultados; foque nas **conclusões e reflexões** sobre a prática realizada.
 
-## Aprenda Quarto
-
-Acesse [Quarto](https://quarto.org/).
 
 ## 📖 Referências

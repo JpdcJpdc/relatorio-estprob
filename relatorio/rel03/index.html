@@ -117,12 +117,12 @@ div.csl-indent {
   </ul></li>
   <li><a href="#resultados-e-discussão" id="toc-resultados-e-discussão" class="nav-link" data-scroll-target="#resultados-e-discussão"><span class="header-section-number">4</span> 🔍 Resultados e Discussão</a>
   <ul class="collapse">
-  <li><a href="#exemplo-de-como-citar-uma-referência-bibliográfica" id="toc-exemplo-de-como-citar-uma-referência-bibliográfica" class="nav-link" data-scroll-target="#exemplo-de-como-citar-uma-referência-bibliográfica"><span class="header-section-number">4.1</span> 💬 Exemplo de como citar uma referência bibliográfica</a></li>
-  <li><a href="#análise-de-dados" id="toc-análise-de-dados" class="nav-link" data-scroll-target="#análise-de-dados"><span class="header-section-number">4.2</span> 📊 Análise de Dados</a></li>
+  <li><a href="#apresentando-os-resultados-com-comentários" id="toc-apresentando-os-resultados-com-comentários" class="nav-link" data-scroll-target="#apresentando-os-resultados-com-comentários"><span class="header-section-number">4.1</span> Apresentando os resultados com comentários</a></li>
+  <li><a href="#discutindo-os-resultados" id="toc-discutindo-os-resultados" class="nav-link" data-scroll-target="#discutindo-os-resultados"><span class="header-section-number">4.2</span> Discutindo os resultados</a></li>
+  <li><a href="#exemplo-de-como-citar-uma-referência-bibliográfica" id="toc-exemplo-de-como-citar-uma-referência-bibliográfica" class="nav-link" data-scroll-target="#exemplo-de-como-citar-uma-referência-bibliográfica"><span class="header-section-number">4.3</span> 💬 Exemplo de como citar uma referência bibliográfica</a></li>
   </ul></li>
   <li><a href="#considerações-finais" id="toc-considerações-finais" class="nav-link" data-scroll-target="#considerações-finais"><span class="header-section-number">5</span> 🧠 Considerações finais</a></li>
-  <li><a href="#aprenda-quarto" id="toc-aprenda-quarto" class="nav-link" data-scroll-target="#aprenda-quarto"><span class="header-section-number">6</span> Aprenda Quarto</a></li>
-  <li><a href="#referências" id="toc-referências" class="nav-link" data-scroll-target="#referências"><span class="header-section-number">7</span> 📖 Referências</a></li>
+  <li><a href="#referências" id="toc-referências" class="nav-link" data-scroll-target="#referências"><span class="header-section-number">6</span> 📖 Referências</a></li>
   </ul>
 </nav>
 </div>
@@ -163,7 +163,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Data de Publicação</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">09/04/2026, 00:31</p>
+      <p class="date">09/04/2026, 11:12</p>
     </div>
   </div>
   
@@ -236,6 +236,8 @@ Nota
 </section>
 <section id="resultados-e-discussão" class="level2" data-number="4">
 <h2 data-number="4" class="anchored" data-anchor-id="resultados-e-discussão"><span class="header-section-number">4</span> 🔍 Resultados e Discussão</h2>
+<section id="apresentando-os-resultados-com-comentários" class="level3" data-number="4.1">
+<h3 data-number="4.1" class="anchored" data-anchor-id="apresentando-os-resultados-com-comentários"><span class="header-section-number">4.1</span> Apresentando os resultados com comentários</h3>
 <p>Primeiro acho interessante apresentar os dados obtidos nos lançamentos da catapulta em ordem, e depois mostrar esses dados do menor para o maior.</p>
 <div class="cell">
 <details class="code-fold">
@@ -317,60 +319,98 @@ Nota
 </div>
 </div>
 <p>Aqui temos uma diferença bem grande, e isso acontece porque ela é o valor central, então no nosso caso, com 40 dados, ela seria a média do elemento: 20° e 21°, não importando a extremidade dos valores, já na mediana tabulada a localização desse valor é perdida e nos é passada a mediana estimada, da tabulação.</p>
+<p>(Acho que seria legal colocar o gráfico aqui pra conseguir demonstrar como essa mediana aparece nos dois casos e porque elas são diferentes, mas não consegui fazer isso)</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>moda_tab <span class="ot">&lt;-</span> <span class="fu">mfreq</span>(lancamentos_tabulados)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"A Moda pela tabela é:"</span>, moda_tab))</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leem)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>moda_tab <span class="ot">&lt;-</span> leem<span class="sc">::</span><span class="fu">mfreq</span>(lancamentos_tabulados)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"A Moda pela tabela é:"</span>, moda_tab))</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "A Moda pela tabela é: 83.02"</code></pre>
 </div>
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>moda_exata <span class="ot">&lt;-</span> <span class="fu">mfreq</span>(lanca2)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>lancamentos_exatos <span class="ot">&lt;-</span> <span class="fu">new_leem</span>(lancamentos, <span class="at">variable =</span> <span class="st">"discrete"</span>)</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"A Moda exata é:"</span>, moda_exata))</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>moda_exata <span class="ot">&lt;-</span> <span class="fu">mfreq</span>(lancamentos_exatos) <span class="co">#Deu certo mas ainda não sei direito o porque</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"A Moda exata é:"</span>, moda_exata))</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "A Moda exata é: 83.02"</code></pre>
+<pre><code>[1] "A Moda exata é: 89"</code></pre>
 </div>
 </div>
-<p>Aqui podemos</p>
-<ul>
-<li>Descreva os principais resultados numéricos (média, variabilidade, etc.).</li>
-<li>Comente o comportamento dos dados observados nos gráficos.</li>
-<li>Indique se há presença de valores discrepantes (outliers).</li>
-<li>Avalie se os dados apresentam simetria ou tendência.</li>
-</ul>
-<p>Em seguida, discuta os resultados à luz dos conceitos teóricos:</p>
-<ul>
+<p>Aqui podemos ver que a moda também é muito afetada quando comparamos os valores tabulados e os valores exatos, e isso acontece porque a tabulação olha para a classe 4 no caso, por ser a com valores mais recorrentes e pega o ponto médio dessa classe, diferente de olhar os valores um a um como na moda exata, que nos permite visualizar todos os dados e identificar quais se repetem.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>variancia_tab <span class="ot">&lt;-</span> <span class="fu">variance</span>(lanca2)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"A Variância pela tabela é:"</span>, <span class="fu">round</span>(variancia_tab, <span class="dv">2</span>)))</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "A Variância pela tabela é: 377"</code></pre>
+</div>
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>variancia_dados <span class="ot">&lt;-</span> <span class="fu">var</span>(lancamentos)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"A Variância exata é:"</span>, <span class="fu">round</span>(variancia_dados, <span class="dv">2</span>)))</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "A Variância exata é: 336.77"</code></pre>
+</div>
+</div>
+<p>A variância diferente dos últimos resultados, é maior quando tabulada, e não com os valores exatos, isso acontece porque com os valores tabulados ela passa a tratar todos os resultados de cada classe como ponto médio, quando muitos dos dados exatos estão próximos desse centro da classe, a variância tabulada (geralmente) superestima a distância desses valores, com relação à média geral, já que ela mede a dispersão dos dados.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>desvio_padrao_tab <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(variancia_tab)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"O Desvio Padrão pela tabela é:"</span>, <span class="fu">round</span>(desvio_padrao_tab, <span class="dv">2</span>)))</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "O Desvio Padrão pela tabela é: 19.42"</code></pre>
+</div>
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>desvio_padrao_dados <span class="ot">&lt;-</span> <span class="fu">sd</span>(lancamentos)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"O Desvio Padrão exato é:"</span>, <span class="fu">round</span>(desvio_padrao_dados, <span class="dv">2</span>)))</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "O Desvio Padrão exato é: 18.35"</code></pre>
+</div>
+</div>
+<p>Assim como a variância, o desvio padrão ficou com o dado tabulado maior que o dado exato, isso acontece por os dados exatos estão muito espalhados na classe, e como as classes são largas, tendo quase 18 cm de intervalo, podemos dizer que quanto maior a classe, maior a incerteza. Sendo assim, maior o desvio padrão tabulado</p>
+</section>
+<section id="discutindo-os-resultados" class="level3" data-number="4.2">
+<h3 data-number="4.2" class="anchored" data-anchor-id="discutindo-os-resultados"><span class="header-section-number">4.2</span> Discutindo os resultados</h3>
+<p>Depois de tudo isso, com os dados apresentados, podemos comentar a respeito de uma única discrepância: temos um dado de 25 cm, que difere muito de todos os outros dados, e está bem distante da média (cerca de 84.5 cm) e da mediana (cerca de 83.2 cm), e isso pode ter feito com que a média fosse puxada para baixo, assim como os valores muito mais altos (como 118.5 cm e 199 cm) podem ter puxado a média para cima. Isso tudo cria uma distribuição que não é simétrica, isso somado a alta variância (de 336.77 cm) e o desvio (de 18.35 cm) confirmam essa forma espalhada que os dados se encontram</p>
+<section id="comentando-a-respeito-desses-resultados" class="level4" data-number="4.2.1">
+<h4 data-number="4.2.1" class="anchored" data-anchor-id="comentando-a-respeito-desses-resultados"><span class="header-section-number">4.2.1</span> Comentando a respeito desses resultados</h4>
+<ol type="1">
 <li>Os resultados estão de acordo com o esperado?</li>
 <li>Há grande variabilidade? O que isso significa no contexto do experimento?</li>
 <li>Quais fatores podem ter influenciado os resultados?</li>
 <li>Existem possíveis fontes de erro experimental?</li>
-</ul>
+</ol>
+<p>Respostas</p>
+<ol type="1">
+<li><p>Os resultados estão bons visto que a média e a mediana estão próximas, mas a diferença entre os dados tabulados e os exatos mostra a perda de precisão</p></li>
+<li><p>Nesse experimento tivemos uma variabilidade considerável, o desvio padrão (de 18.35 cm) e a média (de 84.55 cm) mostram uma variação considerável, mostrando que a catapulta não é perfeitamente consistente, o que é esperado de um experimento em aula.</p></li>
+<li><p>Acredito que a força elástica pode ter influenciado os resultados por conta do seu desgaste conforme realizávamos o experimento, o posicionamento também pode ter se modificado mesmo que um pouco por sermos nós alunos que segurávamos tudo, e durante o experimento, notamos que a diferença de posicionamento do nó do elástico (antes, em cima ou depois do metal que segura ele) essa diferença de posicionamento, influenciava ativamente na distância que a bolinha percorria se era maior ou menor, isso por conta de como esse posicionamento modifica a forma como o elástico da catapulta se comporta.</p></li>
+<li><p>Acredito que por ter sido feito em sala de aula, pode ter havido erros de medição (por conta de uma imprecisão na leitura da trena ou mesmo de onde exatamente a bolinha caiu); e também, como na responsta acima, a constante elástica ao longo do tempo pode ter sido alterada também.</p></li>
+</ol>
 <p>Procure não apenas descrever, mas <strong>interpretar os dados</strong>.</p>
-<section id="exemplo-de-como-citar-uma-referência-bibliográfica" class="level3" data-number="4.1">
-<h3 data-number="4.1" class="anchored" data-anchor-id="exemplo-de-como-citar-uma-referência-bibliográfica"><span class="header-section-number">4.1</span> 💬 Exemplo de como citar uma referência bibliográfica</h3>
+</section>
+</section>
+<section id="exemplo-de-como-citar-uma-referência-bibliográfica" class="level3" data-number="4.3">
+<h3 data-number="4.3" class="anchored" data-anchor-id="exemplo-de-como-citar-uma-referência-bibliográfica"><span class="header-section-number">4.3</span> 💬 Exemplo de como citar uma referência bibliográfica</h3>
 <p>Depois de inserido as informaçõe no arquivo <strong>referencias.bib</strong>, use:</p>
 <ul>
 <li>Segundo <span class="citation" data-cites="Rbasico2022">Batista e Oliveira (<a href="#ref-Rbasico2022" role="doc-biblioref">2022</a>)</span></li>
 <li>Tudo é um objeto em R <span class="citation" data-cites="Rbasico2022">(<a href="#ref-Rbasico2022" role="doc-biblioref">Batista e Oliveira, 2022</a>)</span></li>
 </ul>
-</section>
-<section id="análise-de-dados" class="level3" data-number="4.2">
-<h3 data-number="4.2" class="anchored" data-anchor-id="análise-de-dados"><span class="header-section-number">4.2</span> 📊 Análise de Dados</h3>
-<div class="cell">
-<details class="code-fold">
-<summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>distancia <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">10.2</span>, <span class="fl">9.8</span>, <span class="fl">10.5</span>, <span class="fl">10.1</span>, <span class="fl">9.9</span>, <span class="fl">10.3</span>)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>distancia</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 10.2  9.8 10.5 10.1  9.9 10.3</code></pre>
-</div>
-</div>
 </section>
 </section>
 <section id="considerações-finais" class="level2" data-number="5">
@@ -384,18 +424,14 @@ Nota
 </ul>
 <p>Evite repetir apenas os resultados; foque nas <strong>conclusões e reflexões</strong> sobre a prática realizada.</p>
 </section>
-<section id="aprenda-quarto" class="level2" data-number="6">
-<h2 data-number="6" class="anchored" data-anchor-id="aprenda-quarto"><span class="header-section-number">6</span> Aprenda Quarto</h2>
-<p>Acesse <a href="https://quarto.org/">Quarto</a>.</p>
-</section>
-<section id="referências" class="level2" data-number="7">
+<section id="referências" class="level2" data-number="6">
 
 <!-- -->
 
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">7 📖 Referências</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">6 📖 Referências</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
 <div id="ref-Rbasico2022" class="csl-entry" role="listitem">
 BATISTA, B. D. O.; OLIVEIRA, D. A. B. J. <strong>R básico</strong>. 1. ed. Ouro Branco, MG: [s.n.], 2022. p. 321
 </div>
@@ -852,192 +888,231 @@ BATISTA, B. D. O.; OLIVEIRA, D. A. B. J. <strong>R básico</strong>. 1. ed. Ouro
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Código fonte</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Só mude aqui!!!!</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "João Pedro e Maria Eduarda Motta"</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Segundo Relatório da Catapulta"</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="an">bibliography:</span><span class="co"> referencias.bib</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co"># A partir daqui nao faca alteracoes!!!!!</span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="an">link-citations:</span><span class="co"> true</span></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="an">csl:</span><span class="co"> associacao-brasileira-de-normas-tecnicas-ipea.csl</span></span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "&lt;a href='https://bendeivide.github.io/courses/epaec/' target='_blank'&gt;Estatística e Probabilidade&lt;/a&gt; &lt;/br&gt; &lt;a href='https://bendeivide.github.io' target='_blank'&gt;Prof. Ben Dêivide (DEFIM/CAP/UFSJ)&lt;/a&gt;"</span></span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="an">include-before-body:</span><span class="co"> header.html</span></span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> now</span></span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="an">date-format:</span><span class="co"> "DD/MM/YYYY, HH:mm"</span></span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="an">lang:</span><span class="co"> pt-BR</span></span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
-<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: true</span></span>
-<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a><span class="co">    theme: bootstrap</span></span>
-<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a><span class="co">    #css: styles.css</span></span>
-<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: true</span></span>
-<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
-<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
-<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a><span class="co">  echo: true</span></span>
-<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
-<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a><span class="co">  message: false</span></span>
-<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a><span class="fu">## 📌 Introdução</span></span>
-<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a>Descreva o contexto da prática e sua importância.</span>
-<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Exemplo: análise da variabilidade em experimentos físicos utilizando uma catapulta.</span></span>
-<span id="cb20-34"><a href="#cb20-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-35"><a href="#cb20-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-36"><a href="#cb20-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-37"><a href="#cb20-37" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🎯 Objetivos</span></span>
-<span id="cb20-38"><a href="#cb20-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-39"><a href="#cb20-39" aria-hidden="true" tabindex="-1"></a><span class="fu">### Objetivo geral</span></span>
-<span id="cb20-40"><a href="#cb20-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-41"><a href="#cb20-41" aria-hidden="true" tabindex="-1"></a>Descrever o objetivo principal da prática.</span>
-<span id="cb20-42"><a href="#cb20-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-43"><a href="#cb20-43" aria-hidden="true" tabindex="-1"></a><span class="fu">### Objetivos específicos</span></span>
-<span id="cb20-44"><a href="#cb20-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-45"><a href="#cb20-45" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Fazer 40 lançamentos para a coleta dos dados  </span>
-<span id="cb20-46"><a href="#cb20-46" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Explicar como reproduzir o experimento</span>
-<span id="cb20-47"><a href="#cb20-47" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Fazer a tabulação dos dados</span>
-<span id="cb20-48"><a href="#cb20-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-49"><a href="#cb20-49" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb20-50"><a href="#cb20-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-51"><a href="#cb20-51" aria-hidden="true" tabindex="-1"></a><span class="fu">## ⚙️ Metodologia</span></span>
-<span id="cb20-52"><a href="#cb20-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-53"><a href="#cb20-53" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
-<span id="cb20-54"><a href="#cb20-54" aria-hidden="true" tabindex="-1"></a>O experimento será completamente descrito aqui.</span>
-<span id="cb20-55"><a href="#cb20-55" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb20-56"><a href="#cb20-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-57"><a href="#cb20-57" aria-hidden="true" tabindex="-1"></a><span class="fu">### Procedimento</span></span>
-<span id="cb20-58"><a href="#cb20-58" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>De primeira, o professor dividiu a sala em dois grandes grupos, para que realizássemos as coletas dos dados dessa vez, completamente "sozinhos" (no sentido de sem o auxílio do professor responsável)</span>
-<span id="cb20-59"><a href="#cb20-59" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Depois, nos dividimos cada um para uma tarefa específica, organizado o que cada um faria:</span>
-<span id="cb20-60"><a href="#cb20-60" aria-hidden="true" tabindex="-1"></a>-&gt; Maria Eduarda -&gt; Segurar a catapulta;</span>
-<span id="cb20-61"><a href="#cb20-61" aria-hidden="true" tabindex="-1"></a>-&gt; Marcos -&gt; Fazer o lançamento;</span>
-<span id="cb20-62"><a href="#cb20-62" aria-hidden="true" tabindex="-1"></a>-&gt; João Pedro -&gt; Tirar fotos do experimento;</span>
-<span id="cb20-63"><a href="#cb20-63" aria-hidden="true" tabindex="-1"></a>-&gt; Wadmilson -&gt; Guardar os dados de lançamento e variáveis usadas; </span>
-<span id="cb20-64"><a href="#cb20-64" aria-hidden="true" tabindex="-1"></a>-&gt; Igor e Lucas -&gt; Ver onde a bolinha iria cair e fazer a medição da distância.</span>
-<span id="cb20-65"><a href="#cb20-65" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Em seguida organizamos a sala de modo a facilitar o lançamento, o que consiste em: tirar as mesas que estavam no percurso da catapulta, liberando o espaço para os lançamentos, colocar a mesa de sala (que utilizamos para ser o apoio da catapulta).</span>
-<span id="cb20-66"><a href="#cb20-66" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Quando os itens acima estavam organizados, fizemos as medições da altura da mesa de aula (78 cm); organizamos as variáveis da catapulta de forma "aleatória", para diferir do primeiro experimento (da forma, de cima para baixo: A- na primeira posição; B+ 100°; A+ na segunda posição; O- na terceira posição).</span>
-<span id="cb20-67"><a href="#cb20-67" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Assim iniciamos o experimento, e após alguns lançamentos notamos que os dados estavam bem próximos, então medimos os espaços do piso (2 quadrados de 2.5m e resolvemos calcular apenas a diferença de onde a bolinha cairia no terceiro quadrado do piso, assim facilitando muito a coleta dos dados).</span>
-<span id="cb20-68"><a href="#cb20-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-69"><a href="#cb20-69" aria-hidden="true" tabindex="-1"></a><span class="fu">### Materiais utilizados</span></span>
-<span id="cb20-70"><a href="#cb20-70" aria-hidden="true" tabindex="-1"></a>Para esse procedimento utilizamos:</span>
-<span id="cb20-71"><a href="#cb20-71" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Uma mesa da sala de aula (de 78 cm);</span>
-<span id="cb20-72"><a href="#cb20-72" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Uma catapulta cedida pelo professor que ministra a aula;</span>
-<span id="cb20-73"><a href="#cb20-73" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Uma bolinha de pingue-pong, também cedida pelo professor que ministra a aula;</span>
-<span id="cb20-74"><a href="#cb20-74" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Uma trena, que o professor também cedeu para usarmos;</span>
-<span id="cb20-75"><a href="#cb20-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-76"><a href="#cb20-76" aria-hidden="true" tabindex="-1"></a><span class="fu">### Número de repetições</span></span>
-<span id="cb20-77"><a href="#cb20-77" aria-hidden="true" tabindex="-1"></a>Fizemos ao todo 40 lançamentos seguidos</span>
-<span id="cb20-78"><a href="#cb20-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-79"><a href="#cb20-79" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb20-80"><a href="#cb20-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-81"><a href="#cb20-81" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🔍 Resultados e Discussão</span></span>
-<span id="cb20-82"><a href="#cb20-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-83"><a href="#cb20-83" aria-hidden="true" tabindex="-1"></a>Primeiro acho interessante apresentar os dados obtidos nos lançamentos da catapulta em ordem, e depois mostrar esses dados do menor para o maior.</span>
-<span id="cb20-84"><a href="#cb20-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-85"><a href="#cb20-85" aria-hidden="true" tabindex="-1"></a><span class="in">```{r,eval = TRUE}</span></span>
-<span id="cb20-86"><a href="#cb20-86" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leem)</span>
-<span id="cb20-87"><a href="#cb20-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-88"><a href="#cb20-88" aria-hidden="true" tabindex="-1"></a>lancamentos <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">96</span>, <span class="dv">89</span>, <span class="dv">89</span>, <span class="fl">82.5</span>, <span class="fl">43.5</span>, <span class="fl">118.5</span>, <span class="dv">115</span>, <span class="dv">91</span>, <span class="dv">79</span>, <span class="dv">89</span>, <span class="dv">73</span>, <span class="dv">85</span>, <span class="dv">119</span>, <span class="fl">97.5</span>, <span class="dv">102</span>, <span class="dv">90</span>, <span class="dv">88</span>, <span class="dv">100</span>, <span class="dv">91</span>,<span class="fl">86.5</span>, <span class="dv">70</span>, <span class="dv">91</span>, <span class="dv">80</span>, <span class="dv">78</span>, <span class="fl">86.5</span>, <span class="dv">68</span>, <span class="dv">25</span>, <span class="dv">79</span>, <span class="dv">107</span>, <span class="dv">67</span>, <span class="fl">52.5</span>, <span class="dv">81</span>, <span class="dv">109</span>, <span class="dv">83</span>, <span class="dv">74</span>, <span class="dv">84</span>, <span class="dv">89</span>, <span class="fl">82.5</span>, <span class="dv">81</span>, <span class="dv">70</span>)</span>
-<span id="cb20-89"><a href="#cb20-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-90"><a href="#cb20-90" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(lancamentos)</span>
-<span id="cb20-91"><a href="#cb20-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-92"><a href="#cb20-92" aria-hidden="true" tabindex="-1"></a>lancamentos_organizados <span class="ot">&lt;-</span> <span class="fu">sort</span>(lancamentos)</span>
-<span id="cb20-93"><a href="#cb20-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-94"><a href="#cb20-94" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(lancamentos_organizados)</span>
-<span id="cb20-95"><a href="#cb20-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-96"><a href="#cb20-96" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb20-97"><a href="#cb20-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-98"><a href="#cb20-98" aria-hidden="true" tabindex="-1"></a>Com esses dados vamos fazer a tabulação</span>
-<span id="cb20-99"><a href="#cb20-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-100"><a href="#cb20-100" aria-hidden="true" tabindex="-1"></a><span class="in">```{r,eval = TRUE}</span></span>
-<span id="cb20-101"><a href="#cb20-101" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leem)</span>
-<span id="cb20-102"><a href="#cb20-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-103"><a href="#cb20-103" aria-hidden="true" tabindex="-1"></a>lanca2 <span class="ot">&lt;-</span> <span class="fu">new_leem</span>(lancamentos, <span class="at">variable =</span> <span class="st">"continuous"</span>)</span>
-<span id="cb20-104"><a href="#cb20-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-105"><a href="#cb20-105" aria-hidden="true" tabindex="-1"></a>lancamentos_tabulados <span class="ot">&lt;-</span> <span class="fu">new_leem</span>(lancamentos, <span class="at">variable =</span> <span class="st">"continuous"</span>)</span>
-<span id="cb20-106"><a href="#cb20-106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-107"><a href="#cb20-107" aria-hidden="true" tabindex="-1"></a>lancamentos_tabulados<span class="ot">&lt;-</span> <span class="fu">tabfreq</span>(lancamentos_tabulados)</span>
-<span id="cb20-108"><a href="#cb20-108" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb20-109"><a href="#cb20-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-110"><a href="#cb20-110" aria-hidden="true" tabindex="-1"></a>É interessante avaliar as mudanças dos valores quando tabulados e os valores sortidos</span>
-<span id="cb20-111"><a href="#cb20-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-112"><a href="#cb20-112" aria-hidden="true" tabindex="-1"></a><span class="in">```{r,eval = TRUE}</span></span>
-<span id="cb20-113"><a href="#cb20-113" aria-hidden="true" tabindex="-1"></a>media_tab   <span class="ot">&lt;-</span> <span class="fu">mean</span>(lanca2)</span>
-<span id="cb20-114"><a href="#cb20-114" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"A Média pela tabela é:"</span>, <span class="fu">round</span>(media_tab, <span class="dv">2</span>)))</span>
-<span id="cb20-115"><a href="#cb20-115" aria-hidden="true" tabindex="-1"></a>media_exata   <span class="ot">&lt;-</span> <span class="fu">mean</span>(lancamentos)</span>
-<span id="cb20-116"><a href="#cb20-116" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"A Média exata é:"</span>, <span class="fu">round</span>(media_exata, <span class="dv">2</span>)))</span>
-<span id="cb20-117"><a href="#cb20-117" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb20-118"><a href="#cb20-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-119"><a href="#cb20-119" aria-hidden="true" tabindex="-1"></a>Como podemos ver a média tabulada é menor que a média exata, isso porque na tabulação os dados do ponto médio são considerados como os "novos valores", visto que não visualizamos valor por valor, logo, se a maior parte dos números estiver acima do ponto médio, a média exata será maior que a tabulada, como aconteceu nesse caso.</span>
-<span id="cb20-120"><a href="#cb20-120" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-121"><a href="#cb20-121" aria-hidden="true" tabindex="-1"></a><span class="in">```{r,eval = TRUE}</span></span>
-<span id="cb20-122"><a href="#cb20-122" aria-hidden="true" tabindex="-1"></a>mediana_tab <span class="ot">&lt;-</span> <span class="fu">median</span>(lanca2)</span>
-<span id="cb20-123"><a href="#cb20-123" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"A Mediana pela tabela é:"</span>, <span class="fu">round</span>(mediana_tab, <span class="dv">2</span>)))</span>
-<span id="cb20-124"><a href="#cb20-124" aria-hidden="true" tabindex="-1"></a>mediana_exata <span class="ot">&lt;-</span> <span class="fu">median</span>(lancamentos)</span>
-<span id="cb20-125"><a href="#cb20-125" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"A Mediana exata é:"</span>, <span class="fu">round</span>(mediana_exata, <span class="dv">2</span>)))</span>
-<span id="cb20-126"><a href="#cb20-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-127"><a href="#cb20-127" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb20-128"><a href="#cb20-128" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-129"><a href="#cb20-129" aria-hidden="true" tabindex="-1"></a>Aqui temos uma diferença bem grande, e isso acontece porque ela é o valor central, então no nosso caso, com 40 dados, ela seria a média do elemento: 20° e 21°, não importando a extremidade dos valores, já na mediana tabulada a localização desse valor é perdida e nos é passada a mediana estimada, da tabulação.</span>
-<span id="cb20-130"><a href="#cb20-130" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-131"><a href="#cb20-131" aria-hidden="true" tabindex="-1"></a><span class="in">```{r,eval = TRUE}</span></span>
-<span id="cb20-132"><a href="#cb20-132" aria-hidden="true" tabindex="-1"></a>moda_tab <span class="ot">&lt;-</span> <span class="fu">mfreq</span>(lancamentos_tabulados)</span>
-<span id="cb20-133"><a href="#cb20-133" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"A Moda pela tabela é:"</span>, moda_tab))</span>
-<span id="cb20-134"><a href="#cb20-134" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-135"><a href="#cb20-135" aria-hidden="true" tabindex="-1"></a>moda_exata <span class="ot">&lt;-</span> <span class="fu">mfreq</span>(lanca2)</span>
-<span id="cb20-136"><a href="#cb20-136" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-137"><a href="#cb20-137" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"A Moda exata é:"</span>, moda_exata))</span>
-<span id="cb20-138"><a href="#cb20-138" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb20-139"><a href="#cb20-139" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-140"><a href="#cb20-140" aria-hidden="true" tabindex="-1"></a>Aqui podemos</span>
-<span id="cb20-141"><a href="#cb20-141" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-142"><a href="#cb20-142" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Descreva os principais resultados numéricos (média, variabilidade, etc.).</span>
-<span id="cb20-143"><a href="#cb20-143" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Comente o comportamento dos dados observados nos gráficos.</span>
-<span id="cb20-144"><a href="#cb20-144" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Indique se há presença de valores discrepantes (outliers).</span>
-<span id="cb20-145"><a href="#cb20-145" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Avalie se os dados apresentam simetria ou tendência.</span>
-<span id="cb20-146"><a href="#cb20-146" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-147"><a href="#cb20-147" aria-hidden="true" tabindex="-1"></a>Em seguida, discuta os resultados à luz dos conceitos teóricos:</span>
-<span id="cb20-148"><a href="#cb20-148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-149"><a href="#cb20-149" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Os resultados estão de acordo com o esperado?</span>
-<span id="cb20-150"><a href="#cb20-150" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Há grande variabilidade? O que isso significa no contexto do experimento?</span>
-<span id="cb20-151"><a href="#cb20-151" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Quais fatores podem ter influenciado os resultados?</span>
-<span id="cb20-152"><a href="#cb20-152" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Existem possíveis fontes de erro experimental?</span>
-<span id="cb20-153"><a href="#cb20-153" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-154"><a href="#cb20-154" aria-hidden="true" tabindex="-1"></a>Procure não apenas descrever, mas **interpretar os dados**.</span>
-<span id="cb20-155"><a href="#cb20-155" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-156"><a href="#cb20-156" aria-hidden="true" tabindex="-1"></a><span class="fu">### 💬 Exemplo de como citar uma referência bibliográfica</span></span>
-<span id="cb20-157"><a href="#cb20-157" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-158"><a href="#cb20-158" aria-hidden="true" tabindex="-1"></a>Depois de inserido as informaçõe no arquivo **referencias.bib**, use:</span>
-<span id="cb20-159"><a href="#cb20-159" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-160"><a href="#cb20-160" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Segundo @Rbasico2022</span>
-<span id="cb20-161"><a href="#cb20-161" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Tudo é um objeto em R <span class="co">[</span><span class="ot">@Rbasico2022</span><span class="co">]</span></span>
-<span id="cb20-162"><a href="#cb20-162" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-163"><a href="#cb20-163" aria-hidden="true" tabindex="-1"></a><span class="fu">### 📊  Análise de Dados</span></span>
-<span id="cb20-164"><a href="#cb20-164" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-167"><a href="#cb20-167" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb20-168"><a href="#cb20-168" aria-hidden="true" tabindex="-1"></a>distancia <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">10.2</span>, <span class="fl">9.8</span>, <span class="fl">10.5</span>, <span class="fl">10.1</span>, <span class="fl">9.9</span>, <span class="fl">10.3</span>)</span>
-<span id="cb20-169"><a href="#cb20-169" aria-hidden="true" tabindex="-1"></a>distancia</span>
-<span id="cb20-170"><a href="#cb20-170" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb20-171"><a href="#cb20-171" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-172"><a href="#cb20-172" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🧠 Considerações finais</span></span>
-<span id="cb20-173"><a href="#cb20-173" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-174"><a href="#cb20-174" aria-hidden="true" tabindex="-1"></a>Apresente uma síntese dos principais pontos observados no experimento.</span>
-<span id="cb20-175"><a href="#cb20-175" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-176"><a href="#cb20-176" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Retome o objetivo da prática e indique se ele foi alcançado.</span>
-<span id="cb20-177"><a href="#cb20-177" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Destaque os principais aprendizados obtidos.</span>
-<span id="cb20-178"><a href="#cb20-178" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Comente brevemente sobre a qualidade dos dados coletados.</span>
-<span id="cb20-179"><a href="#cb20-179" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Sugira possíveis melhorias no procedimento experimental.</span>
-<span id="cb20-180"><a href="#cb20-180" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-181"><a href="#cb20-181" aria-hidden="true" tabindex="-1"></a>Evite repetir apenas os resultados; foque nas **conclusões e reflexões** sobre a prática realizada.</span>
-<span id="cb20-182"><a href="#cb20-182" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-183"><a href="#cb20-183" aria-hidden="true" tabindex="-1"></a><span class="fu">## Aprenda Quarto</span></span>
-<span id="cb20-184"><a href="#cb20-184" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-185"><a href="#cb20-185" aria-hidden="true" tabindex="-1"></a>Acesse <span class="co">[</span><span class="ot">Quarto</span><span class="co">](https://quarto.org/)</span>.</span>
-<span id="cb20-186"><a href="#cb20-186" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-187"><a href="#cb20-187" aria-hidden="true" tabindex="-1"></a><span class="fu">## 📖 Referências</span></span>
-</code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Só mude aqui!!!!</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "João Pedro e Maria Eduarda Motta"</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Segundo Relatório da Catapulta"</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="an">bibliography:</span><span class="co"> referencias.bib</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="co"># A partir daqui nao faca alteracoes!!!!!</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="an">link-citations:</span><span class="co"> true</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="an">csl:</span><span class="co"> associacao-brasileira-de-normas-tecnicas-ipea.csl</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "&lt;a href='https://bendeivide.github.io/courses/epaec/' target='_blank'&gt;Estatística e Probabilidade&lt;/a&gt; &lt;/br&gt; &lt;a href='https://bendeivide.github.io' target='_blank'&gt;Prof. Ben Dêivide (DEFIM/CAP/UFSJ)&lt;/a&gt;"</span></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a><span class="an">include-before-body:</span><span class="co"> header.html</span></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> now</span></span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a><span class="an">date-format:</span><span class="co"> "DD/MM/YYYY, HH:mm"</span></span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a><span class="an">lang:</span><span class="co"> pt-BR</span></span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: true</span></span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a><span class="co">    theme: bootstrap</span></span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a><span class="co">    #css: styles.css</span></span>
+<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: true</span></span>
+<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
+<span id="cb26-23"><a href="#cb26-23" aria-hidden="true" tabindex="-1"></a><span class="co">  echo: true</span></span>
+<span id="cb26-24"><a href="#cb26-24" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
+<span id="cb26-25"><a href="#cb26-25" aria-hidden="true" tabindex="-1"></a><span class="co">  message: false</span></span>
+<span id="cb26-26"><a href="#cb26-26" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb26-27"><a href="#cb26-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-28"><a href="#cb26-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-29"><a href="#cb26-29" aria-hidden="true" tabindex="-1"></a><span class="fu">## 📌 Introdução</span></span>
+<span id="cb26-30"><a href="#cb26-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-31"><a href="#cb26-31" aria-hidden="true" tabindex="-1"></a>Descreva o contexto da prática e sua importância.</span>
+<span id="cb26-32"><a href="#cb26-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-33"><a href="#cb26-33" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Exemplo: análise da variabilidade em experimentos físicos utilizando uma catapulta.</span></span>
+<span id="cb26-34"><a href="#cb26-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-35"><a href="#cb26-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-36"><a href="#cb26-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-37"><a href="#cb26-37" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🎯 Objetivos</span></span>
+<span id="cb26-38"><a href="#cb26-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-39"><a href="#cb26-39" aria-hidden="true" tabindex="-1"></a><span class="fu">### Objetivo geral</span></span>
+<span id="cb26-40"><a href="#cb26-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-41"><a href="#cb26-41" aria-hidden="true" tabindex="-1"></a>Descrever o objetivo principal da prática.</span>
+<span id="cb26-42"><a href="#cb26-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-43"><a href="#cb26-43" aria-hidden="true" tabindex="-1"></a><span class="fu">### Objetivos específicos</span></span>
+<span id="cb26-44"><a href="#cb26-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-45"><a href="#cb26-45" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Fazer 40 lançamentos para a coleta dos dados  </span>
+<span id="cb26-46"><a href="#cb26-46" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Explicar como reproduzir o experimento</span>
+<span id="cb26-47"><a href="#cb26-47" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Fazer a tabulação dos dados</span>
+<span id="cb26-48"><a href="#cb26-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-49"><a href="#cb26-49" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb26-50"><a href="#cb26-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-51"><a href="#cb26-51" aria-hidden="true" tabindex="-1"></a><span class="fu">## ⚙️ Metodologia</span></span>
+<span id="cb26-52"><a href="#cb26-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-53"><a href="#cb26-53" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb26-54"><a href="#cb26-54" aria-hidden="true" tabindex="-1"></a>O experimento será completamente descrito aqui.</span>
+<span id="cb26-55"><a href="#cb26-55" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb26-56"><a href="#cb26-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-57"><a href="#cb26-57" aria-hidden="true" tabindex="-1"></a><span class="fu">### Procedimento</span></span>
+<span id="cb26-58"><a href="#cb26-58" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>De primeira, o professor dividiu a sala em dois grandes grupos, para que realizássemos as coletas dos dados dessa vez, completamente "sozinhos" (no sentido de sem o auxílio do professor responsável)</span>
+<span id="cb26-59"><a href="#cb26-59" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Depois, nos dividimos cada um para uma tarefa específica, organizado o que cada um faria:</span>
+<span id="cb26-60"><a href="#cb26-60" aria-hidden="true" tabindex="-1"></a>-&gt; Maria Eduarda -&gt; Segurar a catapulta;</span>
+<span id="cb26-61"><a href="#cb26-61" aria-hidden="true" tabindex="-1"></a>-&gt; Marcos -&gt; Fazer o lançamento;</span>
+<span id="cb26-62"><a href="#cb26-62" aria-hidden="true" tabindex="-1"></a>-&gt; João Pedro -&gt; Tirar fotos do experimento;</span>
+<span id="cb26-63"><a href="#cb26-63" aria-hidden="true" tabindex="-1"></a>-&gt; Wadmilson -&gt; Guardar os dados de lançamento e variáveis usadas; </span>
+<span id="cb26-64"><a href="#cb26-64" aria-hidden="true" tabindex="-1"></a>-&gt; Igor e Lucas -&gt; Ver onde a bolinha iria cair e fazer a medição da distância.</span>
+<span id="cb26-65"><a href="#cb26-65" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Em seguida organizamos a sala de modo a facilitar o lançamento, o que consiste em: tirar as mesas que estavam no percurso da catapulta, liberando o espaço para os lançamentos, colocar a mesa de sala (que utilizamos para ser o apoio da catapulta).</span>
+<span id="cb26-66"><a href="#cb26-66" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Quando os itens acima estavam organizados, fizemos as medições da altura da mesa de aula (78 cm); organizamos as variáveis da catapulta de forma "aleatória", para diferir do primeiro experimento (da forma, de cima para baixo: A- na primeira posição; B+ 100°; A+ na segunda posição; O- na terceira posição).</span>
+<span id="cb26-67"><a href="#cb26-67" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Assim iniciamos o experimento, e após alguns lançamentos notamos que os dados estavam bem próximos, então medimos os espaços do piso (2 quadrados de 2.5m e resolvemos calcular apenas a diferença de onde a bolinha cairia no terceiro quadrado do piso, assim facilitando muito a coleta dos dados).</span>
+<span id="cb26-68"><a href="#cb26-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-69"><a href="#cb26-69" aria-hidden="true" tabindex="-1"></a><span class="fu">### Materiais utilizados</span></span>
+<span id="cb26-70"><a href="#cb26-70" aria-hidden="true" tabindex="-1"></a>Para esse procedimento utilizamos:</span>
+<span id="cb26-71"><a href="#cb26-71" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Uma mesa da sala de aula (de 78 cm);</span>
+<span id="cb26-72"><a href="#cb26-72" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Uma catapulta cedida pelo professor que ministra a aula;</span>
+<span id="cb26-73"><a href="#cb26-73" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Uma bolinha de pingue-pong, também cedida pelo professor que ministra a aula;</span>
+<span id="cb26-74"><a href="#cb26-74" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Uma trena, que o professor também cedeu para usarmos;</span>
+<span id="cb26-75"><a href="#cb26-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-76"><a href="#cb26-76" aria-hidden="true" tabindex="-1"></a><span class="fu">### Número de repetições</span></span>
+<span id="cb26-77"><a href="#cb26-77" aria-hidden="true" tabindex="-1"></a>Fizemos ao todo 40 lançamentos seguidos</span>
+<span id="cb26-78"><a href="#cb26-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-79"><a href="#cb26-79" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb26-80"><a href="#cb26-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-81"><a href="#cb26-81" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🔍 Resultados e Discussão</span></span>
+<span id="cb26-82"><a href="#cb26-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-83"><a href="#cb26-83" aria-hidden="true" tabindex="-1"></a><span class="fu">### Apresentando os resultados com comentários</span></span>
+<span id="cb26-84"><a href="#cb26-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-85"><a href="#cb26-85" aria-hidden="true" tabindex="-1"></a>Primeiro acho interessante apresentar os dados obtidos nos lançamentos da catapulta em ordem, e depois mostrar esses dados do menor para o maior.</span>
+<span id="cb26-86"><a href="#cb26-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-87"><a href="#cb26-87" aria-hidden="true" tabindex="-1"></a><span class="in">```{r,eval = TRUE}</span></span>
+<span id="cb26-88"><a href="#cb26-88" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leem)</span>
+<span id="cb26-89"><a href="#cb26-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-90"><a href="#cb26-90" aria-hidden="true" tabindex="-1"></a>lancamentos <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">96</span>, <span class="dv">89</span>, <span class="dv">89</span>, <span class="fl">82.5</span>, <span class="fl">43.5</span>, <span class="fl">118.5</span>, <span class="dv">115</span>, <span class="dv">91</span>, <span class="dv">79</span>, <span class="dv">89</span>, <span class="dv">73</span>, <span class="dv">85</span>, <span class="dv">119</span>, <span class="fl">97.5</span>, <span class="dv">102</span>, <span class="dv">90</span>, <span class="dv">88</span>, <span class="dv">100</span>, <span class="dv">91</span>,<span class="fl">86.5</span>, <span class="dv">70</span>, <span class="dv">91</span>, <span class="dv">80</span>, <span class="dv">78</span>, <span class="fl">86.5</span>, <span class="dv">68</span>, <span class="dv">25</span>, <span class="dv">79</span>, <span class="dv">107</span>, <span class="dv">67</span>, <span class="fl">52.5</span>, <span class="dv">81</span>, <span class="dv">109</span>, <span class="dv">83</span>, <span class="dv">74</span>, <span class="dv">84</span>, <span class="dv">89</span>, <span class="fl">82.5</span>, <span class="dv">81</span>, <span class="dv">70</span>)</span>
+<span id="cb26-91"><a href="#cb26-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-92"><a href="#cb26-92" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(lancamentos)</span>
+<span id="cb26-93"><a href="#cb26-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-94"><a href="#cb26-94" aria-hidden="true" tabindex="-1"></a>lancamentos_organizados <span class="ot">&lt;-</span> <span class="fu">sort</span>(lancamentos)</span>
+<span id="cb26-95"><a href="#cb26-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-96"><a href="#cb26-96" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(lancamentos_organizados)</span>
+<span id="cb26-97"><a href="#cb26-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-98"><a href="#cb26-98" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-99"><a href="#cb26-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-100"><a href="#cb26-100" aria-hidden="true" tabindex="-1"></a>Com esses dados vamos fazer a tabulação</span>
+<span id="cb26-101"><a href="#cb26-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-102"><a href="#cb26-102" aria-hidden="true" tabindex="-1"></a><span class="in">```{r,eval = TRUE}</span></span>
+<span id="cb26-103"><a href="#cb26-103" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leem)</span>
+<span id="cb26-104"><a href="#cb26-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-105"><a href="#cb26-105" aria-hidden="true" tabindex="-1"></a>lanca2 <span class="ot">&lt;-</span> <span class="fu">new_leem</span>(lancamentos, <span class="at">variable =</span> <span class="st">"continuous"</span>)</span>
+<span id="cb26-106"><a href="#cb26-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-107"><a href="#cb26-107" aria-hidden="true" tabindex="-1"></a>lancamentos_tabulados <span class="ot">&lt;-</span> <span class="fu">new_leem</span>(lancamentos, <span class="at">variable =</span> <span class="st">"continuous"</span>)</span>
+<span id="cb26-108"><a href="#cb26-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-109"><a href="#cb26-109" aria-hidden="true" tabindex="-1"></a>lancamentos_tabulados<span class="ot">&lt;-</span> <span class="fu">tabfreq</span>(lancamentos_tabulados)</span>
+<span id="cb26-110"><a href="#cb26-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-111"><a href="#cb26-111" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-112"><a href="#cb26-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-113"><a href="#cb26-113" aria-hidden="true" tabindex="-1"></a>É interessante avaliar as mudanças dos valores quando tabulados e os valores sortidos</span>
+<span id="cb26-114"><a href="#cb26-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-115"><a href="#cb26-115" aria-hidden="true" tabindex="-1"></a><span class="in">```{r,eval = TRUE}</span></span>
+<span id="cb26-116"><a href="#cb26-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-117"><a href="#cb26-117" aria-hidden="true" tabindex="-1"></a>media_tab   <span class="ot">&lt;-</span> <span class="fu">mean</span>(lanca2)</span>
+<span id="cb26-118"><a href="#cb26-118" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"A Média pela tabela é:"</span>, <span class="fu">round</span>(media_tab, <span class="dv">2</span>)))</span>
+<span id="cb26-119"><a href="#cb26-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-120"><a href="#cb26-120" aria-hidden="true" tabindex="-1"></a>media_exata   <span class="ot">&lt;-</span> <span class="fu">mean</span>(lancamentos)</span>
+<span id="cb26-121"><a href="#cb26-121" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"A Média exata é:"</span>, <span class="fu">round</span>(media_exata, <span class="dv">2</span>)))</span>
+<span id="cb26-122"><a href="#cb26-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-123"><a href="#cb26-123" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-124"><a href="#cb26-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-125"><a href="#cb26-125" aria-hidden="true" tabindex="-1"></a>Como podemos ver a média tabulada é menor que a média exata, isso porque na tabulação os dados do ponto médio são considerados como os "novos valores", visto que não visualizamos valor por valor, logo, se a maior parte dos números estiver acima do ponto médio, a média exata será maior que a tabulada, como aconteceu nesse caso.</span>
+<span id="cb26-126"><a href="#cb26-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-127"><a href="#cb26-127" aria-hidden="true" tabindex="-1"></a><span class="in">```{r,eval = TRUE}</span></span>
+<span id="cb26-128"><a href="#cb26-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-129"><a href="#cb26-129" aria-hidden="true" tabindex="-1"></a>mediana_tab <span class="ot">&lt;-</span> <span class="fu">median</span>(lanca2)</span>
+<span id="cb26-130"><a href="#cb26-130" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"A Mediana pela tabela é:"</span>, <span class="fu">round</span>(mediana_tab, <span class="dv">2</span>)))</span>
+<span id="cb26-131"><a href="#cb26-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-132"><a href="#cb26-132" aria-hidden="true" tabindex="-1"></a>mediana_exata <span class="ot">&lt;-</span> <span class="fu">median</span>(lancamentos)</span>
+<span id="cb26-133"><a href="#cb26-133" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"A Mediana exata é:"</span>, <span class="fu">round</span>(mediana_exata, <span class="dv">2</span>)))</span>
+<span id="cb26-134"><a href="#cb26-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-135"><a href="#cb26-135" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-136"><a href="#cb26-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-137"><a href="#cb26-137" aria-hidden="true" tabindex="-1"></a>Aqui temos uma diferença bem grande, e isso acontece porque ela é o valor central, então no nosso caso, com 40 dados, ela seria a média do elemento: 20° e 21°, não importando a extremidade dos valores, já na mediana tabulada a localização desse valor é perdida e nos é passada a mediana estimada, da tabulação.</span>
+<span id="cb26-138"><a href="#cb26-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-139"><a href="#cb26-139" aria-hidden="true" tabindex="-1"></a>(Acho que seria legal colocar o gráfico aqui pra conseguir demonstrar como essa mediana aparece nos dois casos e porque elas são diferentes, mas não consegui fazer isso)</span>
+<span id="cb26-140"><a href="#cb26-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-141"><a href="#cb26-141" aria-hidden="true" tabindex="-1"></a><span class="in">```{r,eval = TRUE}</span></span>
+<span id="cb26-142"><a href="#cb26-142" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leem)</span>
+<span id="cb26-143"><a href="#cb26-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-144"><a href="#cb26-144" aria-hidden="true" tabindex="-1"></a>moda_tab <span class="ot">&lt;-</span> leem<span class="sc">::</span><span class="fu">mfreq</span>(lancamentos_tabulados)</span>
+<span id="cb26-145"><a href="#cb26-145" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"A Moda pela tabela é:"</span>, moda_tab))</span>
+<span id="cb26-146"><a href="#cb26-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-147"><a href="#cb26-147" aria-hidden="true" tabindex="-1"></a>lancamentos_exatos <span class="ot">&lt;-</span> <span class="fu">new_leem</span>(lancamentos, <span class="at">variable =</span> <span class="st">"discrete"</span>)</span>
+<span id="cb26-148"><a href="#cb26-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-149"><a href="#cb26-149" aria-hidden="true" tabindex="-1"></a>moda_exata <span class="ot">&lt;-</span> <span class="fu">mfreq</span>(lancamentos_exatos) <span class="co">#Deu certo mas ainda não sei direito o porque</span></span>
+<span id="cb26-150"><a href="#cb26-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-151"><a href="#cb26-151" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"A Moda exata é:"</span>, moda_exata))</span>
+<span id="cb26-152"><a href="#cb26-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-153"><a href="#cb26-153" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-154"><a href="#cb26-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-155"><a href="#cb26-155" aria-hidden="true" tabindex="-1"></a>Aqui podemos ver que a moda também é muito afetada quando comparamos os valores tabulados e os valores exatos, e isso acontece porque a tabulação olha para a classe 4 no caso, por ser a com valores mais recorrentes e pega o ponto médio dessa classe, diferente de olhar os valores um a um como na moda exata, que nos permite visualizar todos os dados e identificar quais se repetem.</span>
+<span id="cb26-156"><a href="#cb26-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-157"><a href="#cb26-157" aria-hidden="true" tabindex="-1"></a><span class="in">```{r,eval = TRUE}</span></span>
+<span id="cb26-158"><a href="#cb26-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-159"><a href="#cb26-159" aria-hidden="true" tabindex="-1"></a>variancia_tab <span class="ot">&lt;-</span> <span class="fu">variance</span>(lanca2)</span>
+<span id="cb26-160"><a href="#cb26-160" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"A Variância pela tabela é:"</span>, <span class="fu">round</span>(variancia_tab, <span class="dv">2</span>)))</span>
+<span id="cb26-161"><a href="#cb26-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-162"><a href="#cb26-162" aria-hidden="true" tabindex="-1"></a>variancia_dados <span class="ot">&lt;-</span> <span class="fu">var</span>(lancamentos)</span>
+<span id="cb26-163"><a href="#cb26-163" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"A Variância exata é:"</span>, <span class="fu">round</span>(variancia_dados, <span class="dv">2</span>)))</span>
+<span id="cb26-164"><a href="#cb26-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-165"><a href="#cb26-165" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-166"><a href="#cb26-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-167"><a href="#cb26-167" aria-hidden="true" tabindex="-1"></a>A variância diferente dos últimos resultados, é maior quando tabulada, e não com os valores exatos, isso acontece porque com os valores tabulados ela passa a tratar todos os resultados de cada classe como ponto médio, quando muitos dos dados exatos estão próximos desse centro da classe, a variância tabulada (geralmente) superestima a distância desses valores, com relação à média geral, já que ela mede a dispersão dos dados.</span>
+<span id="cb26-168"><a href="#cb26-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-169"><a href="#cb26-169" aria-hidden="true" tabindex="-1"></a><span class="in">```{r,eval = TRUE}</span></span>
+<span id="cb26-170"><a href="#cb26-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-171"><a href="#cb26-171" aria-hidden="true" tabindex="-1"></a>desvio_padrao_tab <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(variancia_tab)</span>
+<span id="cb26-172"><a href="#cb26-172" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"O Desvio Padrão pela tabela é:"</span>, <span class="fu">round</span>(desvio_padrao_tab, <span class="dv">2</span>)))</span>
+<span id="cb26-173"><a href="#cb26-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-174"><a href="#cb26-174" aria-hidden="true" tabindex="-1"></a>desvio_padrao_dados <span class="ot">&lt;-</span> <span class="fu">sd</span>(lancamentos)</span>
+<span id="cb26-175"><a href="#cb26-175" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"O Desvio Padrão exato é:"</span>, <span class="fu">round</span>(desvio_padrao_dados, <span class="dv">2</span>)))</span>
+<span id="cb26-176"><a href="#cb26-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-177"><a href="#cb26-177" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-178"><a href="#cb26-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-179"><a href="#cb26-179" aria-hidden="true" tabindex="-1"></a>Assim como a variância, o desvio padrão ficou com o dado tabulado maior que o dado exato, isso acontece por os dados exatos estão muito espalhados na classe, e como as classes são largas, tendo quase 18 cm de intervalo, podemos dizer que quanto maior a classe, maior a incerteza. Sendo assim, maior o desvio padrão tabulado</span>
+<span id="cb26-180"><a href="#cb26-180" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-181"><a href="#cb26-181" aria-hidden="true" tabindex="-1"></a><span class="fu">### Discutindo os resultados</span></span>
+<span id="cb26-182"><a href="#cb26-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-183"><a href="#cb26-183" aria-hidden="true" tabindex="-1"></a>Depois de tudo isso, com os dados apresentados, podemos comentar a respeito de uma única discrepância: temos um dado de 25 cm, que difere muito de todos os outros dados, e está bem distante da média (cerca de 84.5 cm) e da mediana (cerca de 83.2 cm), e isso pode ter feito com que a média fosse puxada para baixo, assim como os valores muito mais altos (como 118.5 cm e 199 cm) podem ter puxado a média para cima. Isso tudo cria uma distribuição que não é simétrica, isso somado a alta variância (de 336.77 cm) e o desvio (de 18.35 cm) confirmam essa forma espalhada que os dados se encontram</span>
+<span id="cb26-184"><a href="#cb26-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-185"><a href="#cb26-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-186"><a href="#cb26-186" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Comentando a respeito desses resultados</span></span>
+<span id="cb26-187"><a href="#cb26-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-188"><a href="#cb26-188" aria-hidden="true" tabindex="-1"></a>1) Os resultados estão de acordo com o esperado?</span>
+<span id="cb26-189"><a href="#cb26-189" aria-hidden="true" tabindex="-1"></a>2) Há grande variabilidade? O que isso significa no contexto do experimento?</span>
+<span id="cb26-190"><a href="#cb26-190" aria-hidden="true" tabindex="-1"></a>3) Quais fatores podem ter influenciado os resultados?</span>
+<span id="cb26-191"><a href="#cb26-191" aria-hidden="true" tabindex="-1"></a>4) Existem possíveis fontes de erro experimental?</span>
+<span id="cb26-192"><a href="#cb26-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-193"><a href="#cb26-193" aria-hidden="true" tabindex="-1"></a>Respostas</span>
+<span id="cb26-194"><a href="#cb26-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-195"><a href="#cb26-195" aria-hidden="true" tabindex="-1"></a>1) Os resultados estão bons visto que a média e a mediana estão próximas, mas a diferença entre os dados tabulados e os exatos mostra a perda de precisão</span>
+<span id="cb26-196"><a href="#cb26-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-197"><a href="#cb26-197" aria-hidden="true" tabindex="-1"></a>2) Nesse experimento tivemos uma variabilidade considerável, o desvio padrão (de 18.35 cm) e a média (de 84.55 cm) mostram uma variação considerável, mostrando que a catapulta não é perfeitamente consistente, o que é esperado de um experimento em aula.</span>
+<span id="cb26-198"><a href="#cb26-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-199"><a href="#cb26-199" aria-hidden="true" tabindex="-1"></a>3) Acredito que a força elástica pode ter influenciado os resultados por conta do seu desgaste conforme realizávamos o experimento, o posicionamento também pode ter se modificado mesmo que um pouco por sermos nós alunos que segurávamos tudo, e durante o experimento, notamos que a diferença de posicionamento do nó do elástico (antes, em cima ou depois do metal que segura ele) essa diferença de posicionamento, influenciava ativamente na distância que a bolinha percorria se era maior ou menor, isso por conta de como esse posicionamento modifica a forma como o elástico da catapulta se comporta.</span>
+<span id="cb26-200"><a href="#cb26-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-201"><a href="#cb26-201" aria-hidden="true" tabindex="-1"></a>4) Acredito que por ter sido feito em sala de aula, pode ter havido erros de medição (por conta de uma imprecisão na leitura da trena ou mesmo de onde exatamente a bolinha caiu); e também, como na responsta acima, a constante elástica ao longo do tempo pode ter sido alterada também.</span>
+<span id="cb26-202"><a href="#cb26-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-203"><a href="#cb26-203" aria-hidden="true" tabindex="-1"></a>Procure não apenas descrever, mas **interpretar os dados**.</span>
+<span id="cb26-204"><a href="#cb26-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-205"><a href="#cb26-205" aria-hidden="true" tabindex="-1"></a><span class="fu">### 💬 Exemplo de como citar uma referência bibliográfica</span></span>
+<span id="cb26-206"><a href="#cb26-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-207"><a href="#cb26-207" aria-hidden="true" tabindex="-1"></a>Depois de inserido as informaçõe no arquivo **referencias.bib**, use:</span>
+<span id="cb26-208"><a href="#cb26-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-209"><a href="#cb26-209" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Segundo @Rbasico2022</span>
+<span id="cb26-210"><a href="#cb26-210" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Tudo é um objeto em R <span class="co">[</span><span class="ot">@Rbasico2022</span><span class="co">]</span></span>
+<span id="cb26-211"><a href="#cb26-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-212"><a href="#cb26-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-213"><a href="#cb26-213" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🧠 Considerações finais</span></span>
+<span id="cb26-214"><a href="#cb26-214" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-215"><a href="#cb26-215" aria-hidden="true" tabindex="-1"></a>Apresente uma síntese dos principais pontos observados no experimento.</span>
+<span id="cb26-216"><a href="#cb26-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-217"><a href="#cb26-217" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Retome o objetivo da prática e indique se ele foi alcançado.</span>
+<span id="cb26-218"><a href="#cb26-218" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Destaque os principais aprendizados obtidos.</span>
+<span id="cb26-219"><a href="#cb26-219" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Comente brevemente sobre a qualidade dos dados coletados.</span>
+<span id="cb26-220"><a href="#cb26-220" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Sugira possíveis melhorias no procedimento experimental.</span>
+<span id="cb26-221"><a href="#cb26-221" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-222"><a href="#cb26-222" aria-hidden="true" tabindex="-1"></a>Evite repetir apenas os resultados; foque nas **conclusões e reflexões** sobre a prática realizada.</span>
+<span id="cb26-223"><a href="#cb26-223" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-224"><a href="#cb26-224" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-225"><a href="#cb26-225" aria-hidden="true" tabindex="-1"></a><span class="fu">## 📖 Referências</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
