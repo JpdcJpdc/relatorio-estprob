@@ -1,7 +1,7 @@
 ---
 # Só mude aqui!!!!
-author: "João Pedro e Maria Eduarda Motta"
-title: "Segundo Relatório da Catapulta"
+author: "João Delpasso e Maria Eduarda Motta"
+title: "Segundo Relatório do Experimento da Catapulta"
 bibliography: referencias.bib
 # A partir daqui nao faca alteracoes!!!!!
 link-citations: true
@@ -26,157 +26,156 @@ execute:
 ---
 
 
-## 📌 Introdução
+## Introdução
 
-Descreva o contexto da prática e sua importância.
-
-> Exemplo: análise da variabilidade em experimentos físicos utilizando uma catapulta.
+Neste relatório, será realizado mais uma coleta de dados utilizando a catapulta. Os dados serão utilizados para calcular e analisar medidas de dispersão, como a variância e o desvio padrão. O objetivo é compreender melhor a variabilidade dos dados coletados e como ela se relaciona com as medidas de tendência central, como a média e a mediana. A análise dos resultados permitirá avaliar a consistência do experimento, o quanto a distância de aterrissagem da bola de ping pong varia entre os lançamentos com os mesmos parâmetros iniciais.
 
 
-
-## 🎯 Objetivos
+## Objetivos
 
 ### Objetivo geral
 
-Descrever o objetivo principal da prática.
+Calcular e analisar as medidas de dispersão dos dados coletados a partir dos lançamentos da catapulta, para compreender a variabilidade dos resultados e sua relação com as medidas de tendência central.
 
 ### Objetivos específicos
 
-- Fazer 40 lançamentos para a coleta dos dados  
-- Explicar como reproduzir o experimento
-- Fazer a tabulação dos dados
+- Realizar a coleta de dados utilizando a catapulta.
+- Realizar a tabulação dos dados
+- Calcular as medidas de posição e dispersão para os dados exatos e tabulados.
+- Analisar a variabilidade dos dados e sua relação com as medidas de tendência central.
+- Discutir os resultados e possíveis fontes de variabilidade no experimento.
 
 ---
 
-## ⚙️ Metodologia
+## Fundamentação Teórica
 
-::: {.callout-note}
-O experimento será completamente descrito aqui.
-:::
+Para a análise dos dados coletados será feito um estudo com base no livro de Estatística & Probabilidade aplicada às Engenharias e Ciências, @EstaProb2024, serão aplicados os seguintes conceitos:
+
+- Variância
+
+  Essa medida indica o grau de dispersão dos dados em relação à média, ou seja o quanto os valores se afastam da média. A variância pode ser calculada com:
+
+  $$S^2 = \frac{1}{n-1}\sum_{i=1}^{n} (x_i - \bar{x})^2$${#eq-variancia}
+
+- Desvio padrão
+
+  Para facilitar a interpretação da variabilidade dos dados, o desvio padrão é utilizado, sendo a raiz quadrada da variância. Ele é expresso na mesma unidade dos dados originais, o que facilita a compreensão da dispersão em relação à média. O desvio padrão é calculado por:
+
+$$S = \sqrt{S^2}$${#eq-desvio-padrao}
+
+
+## Metodologia
 
 ### Procedimento
-- De primeira, o professor dividiu a sala em dois grandes grupos, para que realizássemos as coletas dos dados dessa vez, completamente "sozinhos" (no sentido de sem o auxílio do professor responsável)
-- Depois, nos dividimos cada um para uma tarefa específica, organizado o que cada um faria:
--> Maria Eduarda -> Segurar a catapulta;
--> Marcos -> Fazer o lançamento;
--> João Pedro -> Tirar fotos do experimento;
--> Wadmilson -> Guardar os dados de lançamento e variáveis usadas; 
--> Igor e Lucas -> Ver onde a bolinha iria cair e fazer a medição da distância.
-- Em seguida organizamos a sala de modo a facilitar o lançamento, o que consiste em: tirar as mesas que estavam no percurso da catapulta, liberando o espaço para os lançamentos, colocar a mesa de sala (que utilizamos para ser o apoio da catapulta).
-- Quando os itens acima estavam organizados, fizemos as medições da altura da mesa de aula (78 cm); organizamos as variáveis da catapulta de forma "aleatória", para diferir do primeiro experimento (da forma, de cima para baixo: A- na primeira posição; B+ 100°; A+ na segunda posição; O- na terceira posição).
-- Assim iniciamos o experimento, e após alguns lançamentos notamos que os dados estavam bem próximos, então medimos os espaços do piso (2 quadrados de 2.5m e resolvemos calcular apenas a diferença de onde a bolinha cairia no terceiro quadrado do piso, assim facilitando muito a coleta dos dados).
+O experimento foi realizado por um grupo de seis alunos, onde cada um desempenhou uma função específica para a coleta dos dados, dentre as funções, foram realizadas as tarefas de fixar a catapulta, realizar os lançamentos, aferir e medir a distância de aterrissagem da bola, registrar os dados e tirar fotos do experimento. O procedimento seguiu os seguintes passos:
+
+- Organização do espaço: 
+
+  A sala de aula foi organizada para facilitar os lançamentos, com a remoção de mesas que estavam no percurso da catapulta e a colocação de uma mesa para apoiar a catapulta.
+
+- Configuração da catapulta: 
+
+  A catapulta foi montada e posicionada em uma mesa da sala de aula, com uma altura de 78 cm. As variáveis da catapulta foram organizadas de forma aleatória:
+  - A- na primeira posição(de cima para baixo);
+  - B+ 100°;
+  - A+ na segunda posição;
+  - O- na terceira posição(de baixo para cima).
+
+![Imagem da catapulta configurada](imagens/catapulta.jpeg){width=80%}
+
+- Lançamento teste: 
+
+  Foi realizado um primeiro lançamento teste para verificar onde a bola de ping pong aterrissaria, e a partir disso, foi decidido medir com referência da segunda divisão do piso a partir do ponto de lançamento, facilitando a coleta dos dados. A referência está a 2.5 metros do ponto de lançamento, como mostrado na imagem abaixo:
+
+![Imagem do piso e o ponto de referência](imagens/referencia.jpeg){width=80%}
+
+- Lançamentos e coleta de dados: 
+
+  Foram realizados um total de 40 lançamentos consecutivos, com a mesma configuração da catapulta, e a distância de aterrissagem da bola de ping pong foi medida a partir da referência e registrada para cada lançamento.
+
+  ![Imagem da medição da distância](imagens/medicao.jpeg){width=80%}
 
 ### Materiais utilizados
-Para esse procedimento utilizamos:
-- Uma mesa da sala de aula (de 78 cm);
-- Uma catapulta cedida pelo professor que ministra a aula;
-- Uma bolinha de pingue-pong, também cedida pelo professor que ministra a aula;
-- Uma trena, que o professor também cedeu para usarmos;
 
-### Número de repetições
-Fizemos ao todo 40 lançamentos seguidos
+Para esse procedimento foram utilizados:
+
+- Uma mesa da sala de aula (de 78 cm);
+- Uma catapulta.
+- Uma bolinha de pingue-pong.
+- Uma trena.
+- Um caderno para registro dos dados.
 
 ---
 
-## 🔍 Resultados e Discussão
+## Resultados e Discussão
 
 ### Apresentando os resultados com comentários
 
-Primeiro acho interessante apresentar os dados obtidos nos lançamentos da catapulta em ordem, e depois mostrar esses dados do menor para o maior.
+Os Dados coletados nos 40 lançamentos foram os seguintes (em cm):
 
 ```{r,eval = TRUE}
+#| code-fold: false
+#| code-line-numbers: true
+dados <- read.csv("dados.csv")
+
+lancamentos <- dados$dist
+
+lancamentos
+```
+
+Como a medição foi feita a partir do ponto de referência, é preciso somar a distância medida com a distância do ponto de referência para obter a distância total percorrida pela bola. Assim, os dados corrigidos e ordenados são:
+
+```{r,eval = TRUE}
+#| code-fold: false
+#| code-line-numbers: true
+lancamentos <- sort(lancamentos) + 250
+lancamentos
+```
+
+Com os dados corrigidos, pode-se realizar a tabulação utilizando o pacote `leem`:
+
+```{r,eval = TRUE}
+#| code-fold: false
+#| code-line-numbers: true
 library(leem)
 
-lancamentos <- c(96, 89, 89, 82.5, 43.5, 118.5, 115, 91, 79, 89, 73, 85, 119, 97.5, 102, 90, 88, 100, 91,86.5, 70, 91, 80, 78, 86.5, 68, 25, 79, 107, 67, 52.5, 81, 109, 83, 74, 84, 89, 82.5, 81, 70)
+lancamentos_leem <- new_leem(lancamentos, variable = "continuous")
 
-print(lancamentos)
-
-lancamentos_organizados <- sort(lancamentos)
-
-print(lancamentos_organizados)
+lancamentos_tabulados <- tabfreq(lancamentos_leem)
+lancamentos_tabulados
 
 ```
 
-Com esses dados vamos fazer a tabulação
+
+As medidas de posição para os dados tabulados e exatos são:
+
+- Média: `r round(mean(lancamentos_leem), 2)` cm e `r round(mean(lancamentos), 2)` cm
+- Mediana: `r round(median(lancamentos_leem), 2)` cm e `r round(median(lancamentos), 2)` cm
+
+As medidas de dispersão com base nas equações @eq-variancia e @eq-desvio-padrao para os dados tabulados e exatos são:
+
+- Variância: `r round(variance(lancamentos_leem), 2)` cm² e `r round(var(lancamentos), 2)` cm²
+- Desvio padrão: `r round(sd(lancamentos_leem), 2)` cm e `r round(sd(lancamentos), 2)` cm
+
+
+::: {.callout-note}
+As medidas foram calculadas utilizando R dentro do Quarto, as funções utilizadas foram: `mean()`, `median()`, `var()`, `sd()` para os dados exatos, e as funções `mean()`, `median()`, `variance()` e `sd()` do pacote `leem` para os dados tabulados.
+:::
+
+A variância e desvio padrão são maiores quando calculados a partir dos dadostabulados, isso acontece porque com os valores tabulados ela passa a tratar todos os resultados de cada classe como ponto médio, quando muitos dos dados exatos estão próximos desse centro da classe, a variância tabulada (geralmente) superestima a distância desses valores, com relação à média geral, já que ela mede a dispersão dos dados.
+
+Com o grafico de barras da frequência dos lançamentos, é possível visualizar a distribuição dos dados e as posições da média e da mediana, mostrando a assimetria dos dados:
 
 ```{r,eval = TRUE}
-library(leem)
-
-lanca2 <- new_leem(lancamentos, variable = "continuous")
-
-lancamentos_tabulados <- new_leem(lancamentos, variable = "continuous")
-
-lancamentos_tabulados<- tabfreq(lancamentos_tabulados)
-
+#| code-fold: false
+#| code-line-numbers: true
+barplot(lancamentos_tabulados, main = "Frequência dos lançamentos", xlab = "Distância (cm)", ylab = "Frequência", barcol = "steelblue")
+abline(v = mean(lancamentos_leem), col = "red", lwd = 2, lty = 2)
+abline(v = median(lancamentos_leem), col = "green", lwd = 2, lty = 2)
+legend("topright", legend = c("Média", "Mediana"), col = c("red", "green"), lwd = 2, lty = 2)
 ```
 
-É interessante avaliar as mudanças dos valores quando tabulados e os valores sortidos
 
-```{r,eval = TRUE}
-
-media_tab   <- mean(lanca2)
-print(paste("A Média pela tabela é:", round(media_tab, 2)))
-
-media_exata   <- mean(lancamentos)
-print(paste("A Média exata é:", round(media_exata, 2)))
-
-```
-
-Como podemos ver a média tabulada é menor que a média exata, isso porque na tabulação os dados do ponto médio são considerados como os "novos valores", visto que não visualizamos valor por valor, logo, se a maior parte dos números estiver acima do ponto médio, a média exata será maior que a tabulada, como aconteceu nesse caso.
-
-```{r,eval = TRUE}
-
-mediana_tab <- median(lanca2)
-print(paste("A Mediana pela tabela é:", round(mediana_tab, 2)))
-
-mediana_exata <- median(lancamentos)
-print(paste("A Mediana exata é:", round(mediana_exata, 2)))
-
-```
-
-Aqui temos uma diferença bem grande, e isso acontece porque ela é o valor central, então no nosso caso, com 40 dados, ela seria a média do elemento: 20° e 21°, não importando a extremidade dos valores, já na mediana tabulada a localização desse valor é perdida e nos é passada a mediana estimada, da tabulação.
-
-(Acho que seria legal colocar o gráfico aqui pra conseguir demonstrar como essa mediana aparece nos dois casos e porque elas são diferentes, mas não consegui fazer isso)
-
-```{r,eval = TRUE}
-library(leem)
-
-moda_tab <- leem::mfreq(lancamentos_tabulados)
-print(paste("A Moda pela tabela é:", moda_tab))
-
-lancamentos_exatos <- new_leem(lancamentos, variable = "discrete")
-
-moda_exata <- mfreq(lancamentos_exatos) #Deu certo mas ainda não sei direito o porque
-
-print(paste("A Moda exata é:", moda_exata))
-
-```
-
-Aqui podemos ver que a moda também é muito afetada quando comparamos os valores tabulados e os valores exatos, e isso acontece porque a tabulação olha para a classe 4 no caso, por ser a com valores mais recorrentes e pega o ponto médio dessa classe, diferente de olhar os valores um a um como na moda exata, que nos permite visualizar todos os dados e identificar quais se repetem.
-
-```{r,eval = TRUE}
-
-variancia_tab <- variance(lanca2)
-print(paste("A Variância pela tabela é:", round(variancia_tab, 2)))
-
-variancia_dados <- var(lancamentos)
-print(paste("A Variância exata é:", round(variancia_dados, 2)))
-
-```
-
-A variância diferente dos últimos resultados, é maior quando tabulada, e não com os valores exatos, isso acontece porque com os valores tabulados ela passa a tratar todos os resultados de cada classe como ponto médio, quando muitos dos dados exatos estão próximos desse centro da classe, a variância tabulada (geralmente) superestima a distância desses valores, com relação à média geral, já que ela mede a dispersão dos dados.
-
-```{r,eval = TRUE}
-
-desvio_padrao_tab <- sqrt(variancia_tab)
-print(paste("O Desvio Padrão pela tabela é:", round(desvio_padrao_tab, 2)))
-
-desvio_padrao_dados <- sd(lancamentos)
-print(paste("O Desvio Padrão exato é:", round(desvio_padrao_dados, 2)))
-
-```
-
-Assim como a variância, o desvio padrão ficou com o dado tabulado maior que o dado exato, isso acontece por os dados exatos estão muito espalhados na classe, e como as classes são largas, tendo quase 18 cm de intervalo, podemos dizer que quanto maior a classe, maior a incerteza. Sendo assim, maior o desvio padrão tabulado
 
 ### Discutindo os resultados
 
