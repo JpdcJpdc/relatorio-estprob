@@ -124,7 +124,7 @@ Os Dados coletados nos 40 lançamentos foram os seguintes (em cm):
 ```{r,eval = TRUE}
 #| code-fold: false
 #| code-line-numbers: true
-dados <- read.csv("dados.csv")
+dados <- read.csv("dados.csv") + 250
 
 lancamentos <- dados$dist
 
@@ -136,7 +136,7 @@ Como a medição foi feita a partir do ponto de referência, é preciso somar a 
 ```{r,eval = TRUE}
 #| code-fold: false
 #| code-line-numbers: true
-lancamentos <- sort(lancamentos) + 250
+lancamentos <- sort(lancamentos)
 lancamentos
 ```
 
@@ -207,7 +207,7 @@ Respostas
 
 1) Os resultados estão bons visto que a média e a mediana estão próximas, mas a diferença entre os dados tabulados e os exatos mostra a perda de precisão
 
-2) Nesse experimento tivemos uma variabilidade considerável, o desvio padrão (de 18.35 cm) e a média (de 84.55 cm) mostram uma variação considerável, mostrando que a catapulta não é perfeitamente consistente, o que é esperado de um experimento em aula.
+2) Nesse experimento tivemos uma variabilidade considerável, o desvio padrão (de 18.35 cm) e a média (de 333.28 cm) mostram uma variação considerável, mostrando que a catapulta não é perfeitamente consistente, o que é esperado de um experimento em aula.
 
 3) Acredito que a força elástica pode ter influenciado os resultados por conta do seu desgaste conforme realizávamos o experimento, o posicionamento também pode ter se modificado mesmo que um pouco por sermos nós alunos que segurávamos tudo, e durante o experimento, notamos que a diferença de posicionamento do nó do elástico (antes, em cima ou depois do metal que segura ele) essa diferença de posicionamento, influenciava ativamente na distância que a bolinha percorria se era maior ou menor, isso por conta de como esse posicionamento modifica a forma como o elástico da catapulta se comporta.
 
