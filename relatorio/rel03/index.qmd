@@ -28,7 +28,9 @@ execute:
 
 ## Introdução
 
-Neste relatório, será realizado mais uma coleta de dados utilizando a catapulta. Os dados serão utilizados para calcular e analisar medidas de dispersão, como a variância e o desvio padrão. O objetivo é compreender melhor a variabilidade dos dados coletados e como ela se relaciona com as medidas de tendência central, como a média e a mediana. A análise dos resultados permitirá avaliar a consistência do experimento, o quanto a distância de aterrissagem da bola de ping pong varia entre os lançamentos com os mesmos parâmetros iniciais.
+Neste relatório, será realizado mais uma coleta de dados utilizando a catapulta. Os dados serão utilizados para calcular e analisar medidas de dispersão, como a variância e o desvio padrão, com o objetivo de compreender melhor a variabilidade dos dados coletados e como ela se relaciona com as medidas de tendência central, como a média e a mediana. 
+
+A análise dos resultados permitirá avaliar a consistência do experimento, o quanto a distância de aterrissagem da bola de ping pong varia entre os lançamentos com os mesmos parâmetros iniciais.
 
 
 ## Objetivos
@@ -39,6 +41,7 @@ Calcular e analisar as medidas de dispersão dos dados coletados a partir dos la
 
 ### Objetivos específicos
 
+- Compreender os conceitos de variância e desvio padrão e sua aplicação na análise de dados experimentais.
 - Realizar a coleta de dados utilizando a catapulta.
 - Realizar a tabulação dos dados
 - Calcular as medidas de posição e dispersão para os dados exatos e tabulados.
@@ -49,7 +52,7 @@ Calcular e analisar as medidas de dispersão dos dados coletados a partir dos la
 
 ## Fundamentação Teórica
 
-Para a análise dos dados coletados será feito um estudo com base no livro de Estatística & Probabilidade aplicada às Engenharias e Ciências, @EstaProb2024, serão aplicados os seguintes conceitos:
+Para a análise dos dados coletados será feito um estudo com base no livro de Estatística & Probabilidade aplicada às Engenharias e Ciências, @EstaProb2024, serão aplicados os conceitos de medidas de dispersão, que são fundamentais para entender a variabilidade dos dados em relação à média. As principais medidas de dispersão que serão abordadas são:
 
 - Variância
 
@@ -61,8 +64,13 @@ Para a análise dos dados coletados será feito um estudo com base no livro de E
 
   Para facilitar a interpretação da variabilidade dos dados, o desvio padrão é utilizado, sendo a raiz quadrada da variância. Ele é expresso na mesma unidade dos dados originais, o que facilita a compreensão da dispersão em relação à média. O desvio padrão é calculado por:
 
-$$S = \sqrt{S^2}$${#eq-desvio-padrao}
+  $$S = \sqrt{S^2}$${#eq-desvio-padrao}
 
+- Coeficiente de variação
+
+  Para comparar a variabilidade entre conjuntos de dados com médias diferentes, o coeficiente de variação é utilizado, sendo a razão entre o desvio padrão e a média, expressa em porcentagem. Ele é calculado por:
+
+  $$CV = \frac{S}{\bar{x}} \times 100\%$${#eq-coeficiente-variacao}
 
 ## Metodologia
 
@@ -157,12 +165,15 @@ As medidas de dispersão com base nas equações @eq-variancia e @eq-desvio-padr
 - Variância: `r round(variance(lancamentos_leem), 2)` cm² e `r round(var(lancamentos), 2)` cm²
 - Desvio padrão: `r round(sd(lancamentos_leem), 2)` cm e `r round(sd(lancamentos), 2)` cm
 
+Com o desvio padrão e a média, é possível calcular o coeficiente de variação utilizando a equação @eq-coeficiente-variacao:
+
+- Coeficiente de variação: `r round((sd(lancamentos_leem) / mean(lancamentos_leem)) * 100, 2)` % e `r round((sd(lancamentos) / mean(lancamentos)) * 100, 2)` %
 
 ::: {.callout-note}
 As medidas foram calculadas utilizando R dentro do Quarto, as funções utilizadas foram: `mean()`, `median()`, `var()`, `sd()` para os dados exatos, e as funções `mean()`, `median()`, `variance()` e `sd()` do pacote `leem` para os dados tabulados.
 :::
 
-A variância e desvio padrão são maiores quando calculados a partir dos dadostabulados, isso acontece porque com os valores tabulados ela passa a tratar todos os resultados de cada classe como ponto médio, quando muitos dos dados exatos estão próximos desse centro da classe, a variância tabulada (geralmente) superestima a distância desses valores, com relação à média geral, já que ela mede a dispersão dos dados.
+A variância e desvio padrão são maiores quando calculados a partir dos dados tabulados, isso acontece porque com os valores tabulados ela passa a tratar todos os resultados de cada classe como ponto médio, quando muitos dos dados exatos estão próximos desse centro da classe, a variância tabulada (geralmente) superestima a distância desses valores, com relação à média geral, já que ela mede a dispersão dos dados.
 
 Com o grafico de barras da frequência dos lançamentos, é possível visualizar a distribuição dos dados e as posições da média e da mediana, mostrando a assimetria dos dados:
 
@@ -179,8 +190,11 @@ legend("topright", legend = c("Média", "Mediana"), col = c("red", "green"), lwd
 
 ### Discutindo os resultados
 
-Depois de tudo isso, com os dados apresentados, podemos comentar a respeito de uma única discrepância: temos um dado de 25 cm, que difere muito de todos os outros dados, e está bem distante da média (cerca de 84.5 cm) e da mediana (cerca de 83.2 cm), e isso pode ter feito com que a média fosse puxada para baixo, assim como os valores muito mais altos (como 118.5 cm e 199 cm) podem ter puxado a média para cima. Isso tudo cria uma distribuição que não é simétrica, isso somado a alta variância (de 336.77 cm) e o desvio (de 18.35 cm) confirmam essa forma espalhada que os dados se encontram
+Com base nos calculos, pode-se oberservar que a média e a mediana estão proximas, porem a mediana é `r median(lancamentos_leem) - mean(lancamentos_leem)` cm maior que a média, o que mostra uma pequena assimetria dos dados, isso pode ser explicado por conta de valores menores porem infrequentes, que, por estarem mais distantes, diminuem o valor da média, enquanto a mediana, por ser o valor central, não é tão afetada por esses valores extremos. Essa assimetria é confirmada pelo gráfico de barras, onde é possível observar que a maioria dos dados estão concentrados em torno da média, mas há uma cauda mais longa para a esquerda.
 
+Em relação à variabilidade dos dados, o desvio padrão aparenta ser um valor 'alto' (de `r round(sd(lancamentos_leem), 2)` cm), o que indica que os lançamentos não são perfeitamente consistentes, o que é esperado em um experimento em sala de aula, onde as medições foram feitas manualmente e com base em um consenso da posição de aterrissagem da bola, o que introduz uma variabilidade adicional nos dados.
+
+Utilizando o coeficiente de variação, é possível comparar a variabilidade dos dados em relação à média, e nesse caso, o coeficiente de variação é de `r round((sd(lancamentos_leem) / mean(lancamentos_leem)) * 100, 2)` %, mostrando que, mesmo o desvio padrão aparenta ser um valor 'alto', em relação a média, a variabilidade é relativamente baixa, o que indica que os lançamentos possuem uma consistência em relação à média.
 
 #### Comentando a respeito desses resultados
 
@@ -199,26 +213,4 @@ Respostas
 
 4) Acredito que por ter sido feito em sala de aula, pode ter havido erros de medição (por conta de uma imprecisão na leitura da trena ou mesmo de onde exatamente a bolinha caiu); e também, como na responsta acima, a constante elástica ao longo do tempo pode ter sido alterada também.
 
-Procure não apenas descrever, mas **interpretar os dados**.
-
-### 💬 Exemplo de como citar uma referência bibliográfica
-
-Depois de inserido as informaçõe no arquivo **referencias.bib**, use:
-
-- Segundo @Rbasico2022
-- Tudo é um objeto em R [@Rbasico2022]
-
-
-## 🧠 Considerações finais
-
-Apresente uma síntese dos principais pontos observados no experimento.
-
-- Retome o objetivo da prática e indique se ele foi alcançado.
-- Destaque os principais aprendizados obtidos.
-- Comente brevemente sobre a qualidade dos dados coletados.
-- Sugira possíveis melhorias no procedimento experimental.
-
-Evite repetir apenas os resultados; foque nas **conclusões e reflexões** sobre a prática realizada.
-
-
-## 📖 Referências
+## Referências
