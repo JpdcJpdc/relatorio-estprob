@@ -29,10 +29,7 @@ execute:
 
 ## Introdução
 
-<!--Antes de mostrar como programar em R, vou mostrar porque aprender a programar em R.--> 
-
 O [R] é uma linguagem de programação e ambiente de software de código aberto, e tem foco na computação estatística e análise de dados. Foi consolidada como uma das ferramentas padrão padrão na ciência de dados moderna, permitindo desde análises financeiras complexas até bioinformática. Assim o R, é uma linguagem que possui uma grande comunidade ativa, que possui uma grande comunidade ativa, que sempre está contribuindo para o desenvolvimento de recursos e pacotes, e por esse motivo é muito adotado o [R] é uma linguagem amplamente adotada por diversas áreas, como estatística e ciência de dados.
-<!--É interessante que você aprenda a programar em R por ele ser construído para ajudar com estatísticas e cientistas de dados, sendo um recurso gratuito e com uma comunidade gigantesca que participa efetivamente da criação de pacotes para a facilidade e melhor compreensão dos usuários.-->
 
 Seu diferencial é a sua capacidade de promover pesquisas reprodutíveis, e para isso integra o código, a análise e a visualização em um fluxo coeso. Este relatório, com base no livro de @Rbasico2022, apresentará como realizar a configuração inicial para programar em [R], além de apresentar os conceitos básicos da linguagem e como ela pode ser útil para análises estatísticas e manipulação de dados.
 
@@ -43,16 +40,13 @@ Seu diferencial é a sua capacidade de promover pesquisas reprodutíveis, e para
 
 Realizar a instalação do R e do RStudio e aprender o básico da linguagem R.
 
-
 ### Objetivos específicos
 
-- [Instalação](#sec-setup) do [R] e [RStudio].
-- Primeiras impressões de [sintaxe](#sec-sintaxe) da linguagem [R].
-- Aprender conceitos básicos da linguagem [R].
-- Introdução ao uso de [pacotes](#sec-pacotes) em [R].
-- Breve introdução ao [pacote](#sec-pacote-leem) `leem`.
-
----
+  - [Instalação](#sec-setup) do [R] e [RStudio].
+  - Primeiras impressões de [sintaxe](#sec-sintaxe) da linguagem [R].
+  - Aprender conceitos básicos da linguagem [R].
+  - Introdução ao uso de [pacotes](#sec-pacotes) em [R].
+  - Breve introdução ao [pacote](#sec-pacote-leem) `leem`.
 
 ## Instalação do R e do RStudio {#sec-setup}
 
@@ -68,13 +62,22 @@ Para configuração do ambiente:
 - Instale o [RStudio].
 
 
-<!--Primeiro, o interessado deve instalar a linguagem R (no link: https://cran.r-project.org/bin/windows/base/), depois desse passo é interessante que o interessado baixe o RStudio (no link: https://www.rstudio.com/products/rstudio/download/), que no caso é a página específica do R, não é obrigatória a instalação do RStudio, mas ele facilita muito a programação, mostrando como ficarão os gráficos, pacotes e etc.-->
- 
+## Interface do R
 
-<!--Depois disso feito, é interessante que o interessado estude a sintaxe da linguagem R, para isso, vídeos no youtube e mesmo materiais didáticos como livros e exercícios feitos e resolvidos; tais coisas são essenciais para a melhor compreensão de como funciona e como programar em R, durante esse passo, também é bom que o interessado pratique fazer esses exercícios que ele já sabe a resolução para se familiarizar com a sintaxe e complexidade da linguagem, e depois disso comece a fazer exercícios simples observando seus conhecimentos e quais suas dúvidas/fraquezas-->
+[R] é uma linguagem interpretada, ou seja, não requer que o codigo passe por um compilador, mas sim um interpretador. Ao instalar o [R], o usuários está apenas instalando o programa que irá interpretar o codigo, para opera-lo é nescessario uma interface:
 
+::: {.callout-note}
+Diferente de um compilador, um interpretador não gera um arquivo executável, ele avalia o programa em tempo real.
+:::
 
----
+### Console
+
+O método mais simples de executar algum comando em [R], é utilizando um terminal com o console do [R], onde cada 'enter', irá mandar a linha para o interpretador que avaliará e retornará o produto do comando, para então aguardar por novos comandos.
+
+### R Studio
+
+O [RStudio] opera apenas como uma interface, com objetivo de facilitar ao usuário de criar programas de múltiplas linhas e arquivos, alem de ferramentas para melhor visualizar partes internas do ambiente, como variaáeis já declaradas, objetos e funções.
+
 
 ## Sintaxe {#sec-sintaxe}
 
@@ -89,26 +92,22 @@ Para chamar variaveis e funções em [R], basta escrever o nome da variável ou 
 idade <- 25
 nome <- "Giovana"
 
-function_exemplo <- function(x) {
-  return(x * 2)
-}
-
 idade
 nome
 
-function_exemplo(10)
+round(10.2) # arredonda o numero para o valor inteiro 
 
 ```
 
 ::: {.callout-note}
-Veja as seções de [operadores básicos](#sec-operadores), [tipos de dados](#sec-tipos-dados) e [funções básicas](#sec-funcoes) para entender melhor a sintaxe da linguagem [R] e o código acima.
+Veja as seções de [Operadores básicos](#sec-operadores), [Estruturas de dados](#sec-tipos-dados) e [Funções básicas](#sec-funcoes) para entender melhor a sintaxe da linguagem [R] e o código acima.
 :::
 
-### Tipos de dados: {#sec-tipos-dados}
+### Estruturas de dados: {#sec-tipos-dados}
 
-Linguagens de programação possuem diferentes tipos de dados para armazenar informações, os tipos de dados em [R] são:
+Linguagens de programação possuem diferentes jeitos de definir dados e armazenar informações, em [R] os dados são organizados em objetos, e cada objeto tem um tipo específico, que determina como os dados são armazenados e manipulados. 
 
-#### Tipos de dados básicos: {#subsec-tipos-dados-basicos}
+#### Tipos básicos: {#subsec-tipos-dados-basicos}
 
 - Numéricos: para armazenar números, como 1, 2.5, etc.
 
