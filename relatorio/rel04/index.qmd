@@ -1,7 +1,7 @@
 ---
 # Só mude aqui!!!!
-author: "Nome do Aluno"
-title: "Relatório de Aula Prática 04"
+author: "João Delpasso e Maria Eduarda Motta"
+title: "Relatório 04 - Distribuições de Probabilidade"
 bibliography: referencias.bib
 # A partir daqui nao faca alteracoes!!!!!
 link-citations: true
@@ -22,104 +22,368 @@ execute:
   echo: true
   warning: false
   message: false
+nocite: |
+  @ESTBAS, @EPAEC
 ---
 
+{{< include _links.md >}}
 
-## 📌 Introdução
+## Introdução {#sec-introducao}
 
-Descreva o contexto da prática e sua importância.
+  Distribuições de probabilidade são funções matemáticas que descrevem a probabilidade de ocorrência de diferentes resultados em um experimento aleatório. Estes modelos permitem analisar fenômenos incertos, tornando possíveis previsões e inferências sobre os dados.
 
-> Exemplo: análise da variabilidade em experimentos físicos utilizando uma catapulta.
+  Neste relatório, serão exploradas as distribuições Binomial, de Poisson e Normal, suas características, aplicações e como elas se relacionam com a estatística e a probabilidade. Também serão aprensetadas duas distribuições de variáveis contínuas e duas de variáveis discretas, destacando suas propriedades e uso. Será utilizado o [R] e o pacote `leem` para simular e visualizar essas distribuições.
 
+  Para complementar a compreensão, serão discutidos os conceitos de variáveis aleatórias, continuas e discretas, e como as distribuições de probabilidade se encaixam nesse contexto. 
 
+---
 
-## 🎯 Objetivos
+## Objetivos {#sec-objetivos}
 
-### Objetivo geral
-
-Descrever o objetivo principal da prática.
+  Apresentar e discutir possíveis aplicações das distribuições de probabilidade, destacando suas características e diferenças.
 
 ### Objetivos específicos
 
-- Coletar dados experimentais  
-- Aplicar estatística descritiva  
-- Construir gráficos  
-- Interpretar resultados  
+  - Formalizar o conceito de variáveis aleatórias, contínuas e discretas.
+  - Apresentar as distribuições de probabilidade Binomial, de Poisson e Normal de forma analítica.
+  - Apresentar duas distribuições de variáveis contínuas.
+  - Apresentar duas distribuições de variáveis discretas.
+  - Discutir as aplicações das distribuições de probabilidade.
+  - Utilizar o [R] e o pacote `leem` para simular e visualizar exemplo das distribuições de probabilidade.
 
 ---
 
-## 📚  Fundamentação Teórica
+## Variáveis Aleatórias {#sec-variaveis}
 
-Apresente os conceitos principais:
+  Variáveis aleatórias são funções que associam um número real a cada resultado possível de um experimento aleatório. Elas podem ser classificadas em dois tipos principais: variáveis discretas e variáveis contínuas.
 
-- Média
-- Variância
-- Desvio padrão
-- Amostragem
+### Variáveis Discretas {#sec-discretas}
 
-$$
-\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i
-$$
+  Variáveis discretas assumem um conjunto finito ou contável de valores. 
 
----
-
-## ⚙️ Metodologia
-
-::: {.callout-note}
-Descreva como o experimento foi realizado.
-:::
-
-- Materiais utilizados  
-- Procedimento  
-- Número de repetições  
-
----
-
-## 🔍 Resultados e Discussão
-
-Apresente e interprete os resultados obtidos a partir dos dados coletados.
-
-- Descreva os principais resultados numéricos (média, variabilidade, etc.).
-- Comente o comportamento dos dados observados nos gráficos.
-- Indique se há presença de valores discrepantes (outliers).
-- Avalie se os dados apresentam simetria ou tendência.
-
-Em seguida, discuta os resultados à luz dos conceitos teóricos:
-
-- Os resultados estão de acordo com o esperado?
-- Há grande variabilidade? O que isso significa no contexto do experimento?
-- Quais fatores podem ter influenciado os resultados?
-- Existem possíveis fontes de erro experimental?
-
-Procure não apenas descrever, mas **interpretar os dados**.
-
-### 💬 Exemplo de como citar uma referência bibliográfica
-
-Depois de inserido as informaçõe no arquivo **referencias.bib**, use:
-
-- Segundo @Rbasico2022
-- Tudo é um objeto em R [@Rbasico2022]
-
-### 📊  Análise de Dados
+  Exemplos:
+  - Número de caras em 10 lançamentos de uma moeda.
+  - Número de pessoas em um ambiente.
+  - Número de defeitos em um lote de produtos.
+  
+  Gráficos comuns para variáveis discretas incluem gráficos de barras e histogramas. Como exemplo:
 
 ```{r}
-distancia <- c(10.2, 9.8, 10.5, 10.1, 9.9, 10.3)
-distancia
+#| code-fold: true
+#| code-line-numbers: true
+#| results: hide
+library(leem)
+
+P(q = 10, dist = "binomial", 
+size = 20, prob = 0.75, 
+gui = "plot", lower.tail = NULL)
 ```
 
-## 🧠 Considerações finais
+### Variáveis Contínuas {#sec-continuas}
 
-Apresente uma síntese dos principais pontos observados no experimento.
+  Variáveis contínuas podem assumir qualquer valor Real dentro de um intervalo. 
 
-- Retome o objetivo da prática e indique se ele foi alcançado.
-- Destaque os principais aprendizados obtidos.
-- Comente brevemente sobre a qualidade dos dados coletados.
-- Sugira possíveis melhorias no procedimento experimental.
+  Exemplos:
+  - Comprimento de um objeto.
+  - Temperatura.
+  - Tempo gasto para completar uma tarefa.
 
-Evite repetir apenas os resultados; foque nas **conclusões e reflexões** sobre a prática realizada.
+  Variáveis contínuas são representadas gráficamente por histogramas e gráficos de densidade. Como exemplo:
 
-## Aprenda Quarto
+```{r}
+#| code-fold: true
+#| code-line-numbers: true
+#| results: hide
+P(q = 10, dist = "normal", 
+mean = 10, sd = 1,
+gui = "plot", lower.tail = TRUE)
+```
 
-Acesse [Quarto](https://quarto.org/).
 
-## 📖 Referências
+---
+
+## Distribuições de Probabilidade {#sec-distribuicoes}
+
+  As distribuições de probabilidade descrevem como os valores de uma variável aleatória estão distribuídos. Elas fornecem uma maneira de modelar e entender a incerteza associada a eventos aleatórios.
+
+### Distribuição Binomial {#sec-binomial}
+
+  A distribuição Binomial utiliza de variáveis discretas e é usada para modelar o número de sucessos em uma sequência de n experimentos independentes, onde cada experimento tem apenas dois resultados possíveis (sucesso ou fracasso) e a probabilidade de sucesso é constante. Uma variável aleatória que segue uma distribuição Binomial é denotada por $X \sim \text{Binomial}(n, p)$, onde $n$ é o número de experimentos e $p$ é a probabilidade de sucesso em cada experimento. 
+
+  Essa distribuição é caracterizada por dois parâmetros: o número de experimentos (n) e a probabilidade de sucesso em cada experimento (p). A função de massa de probabilidade da distribuição Binomial é dada por:
+
+  $$P(X = k) = \binom{n}{k} p^k (1-p)^{n-k}$$ {#eq-binomial}
+
+  Onde $k$ é o número de sucessos, $\binom{n}{k}$ é o coeficiente binomial, dado por $\frac{n!}{k!(n-k)!}$, $p$ é a probabilidade de sucesso e $1-p$ é a probabilidade de fracasso.
+
+#### Exemplo de aplicação da distribuição Binomial
+
+  Em sistemas mecatrônicos, é comum utilizar uma redundância de sensores para aumentar a confiabilidade do sistema. Por exemplo, imagine um sistema para evitar colisões em um veículo autônomo, o veículo pode ser equipado com múltiplos sensores de proximidade. 
+  
+  Para está demonstração, vamos considerar um cenário onde o veículo possui 5 sensores ultrassônicos idênticos, $n = 5$. Para garantir a segurança, o veículo só se movimenta se pelo menos 3 dos sensores forem validados, $k \geq 3$. Supondo que cada sensor tem 90% de funcionar corretamente, $p = 0.9$, consequentemente, $1-p = 0.1$, 10% de falha. A probabilidade de o veículo se movimentar com segurança pode ser calculada utilizando a distribuição Binomial, somando as probabilidades de obter 3, 4 ou 5 sucessos:
+
+  $$P(X \geq 3) = P(X = 3) + P(X = 4) + P(X = 5)$$
+
+
+  $$P(X = 3) = \binom{5}{3} (0.9)^3 (0.1)^2 = 0.0729$$
+
+  $$P(X = 4) = \binom{5}{4} (0.9)^4 (0.1)^1 = 0.32805$$
+
+  $$P(X = 5) = \binom{5}{5} (0.9)^5 (0.1)^0 = 0.59049$$
+
+  $$P(X \geq 3) = 0.0729 + 0.32805 + 0.59049 = 0.99144$$
+
+  Ou seja, a probabilidade de o veículo se movimentar com segurança é de aproximadamente 99.144%.
+
+  Com o [R] e o pacote `leem`, podemos calcular essa probabilidade de forma mais eficiente:
+
+```{r}
+#| code-fold: false
+#| code-line-numbers: true
+P(q = 2, # k - número de sucessos, q = 2 para P(X >= 3) pois lower.tail = FALSE calcula P(X > q)
+dist = "binomial", # Tipo de distribuição
+size = 5,  # n - número de experimentos
+prob = 0.9, # p - probabilidade de sucesso
+gui = "plot", 
+lower.tail = FALSE) # Calcula P(X >= 3)
+
+```
+
+### Distribuição de Poisson {#sec-poisson}
+
+  A distribuição de Poisson é uma distribuição de probabilidade de variáveis discretas derivada da [Distribuição Binomial](@subsec-binomial), para $n \to \infty$, que descreve a probabilidade de um número dado de eventos ocorrer em um intervalo fixo de tempo ou espaço, desde que esses eventos ocorram com uma taxa média constante e sejam independentes entre si. Uma variável aleatória que segue uma distribuição de Poisson é denotada por $X \sim \text{Poisson}(\lambda)$, onde $\lambda$ é a taxa média de eventos por intervalo.
+
+  A função de massa de probabilidade da distribuição de Poisson é dada por:
+
+  $$P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!}$$ {#eq-poisson}
+
+  Onde $k$ é o número de eventos, $\lambda$ é a taxa média de eventos e $e$ é a base do logaritmo natural.
+
+#### Exemplo de aplicação da distribuição de Poisson
+
+Em sistemas embarcados, é fundamental dimensionar corretamente a memória para evitar perda de dados. Por exemplo, uma Unidade de Controle Eletrônico (ECU) conectada a uma rede CAN, que recebe mensagens de forma contínua e aleatória.
+
+Considerando um cenário onde as mensagens chegam à ECU a uma taxa média de 12 mensagens a cada janela de 10 milissegundos, $\lambda = 12$. Para garantir o processamento, o buffer do microcontrolador suporta o armazenamento de até 18 mensagens. A falha (overflow) ocorre se chegarem mais mensagens que a capacidade, $X > 18$. 
+
+A probabilidade de o buffer transbordar pode ser calculada utilizando a distribuição de Poisson, subtraindo de 1 a soma das probabilidades de o buffer não transbordar (receber de 0 a 18 mensagens):
+
+$$P(X > 18) = 1 - P(X \leq 18)$$
+  
+$$P(X \leq 18) = \sum_{k=0}^{18} \frac{12^k e^{-12}}{k!}$$
+
+Expandindo o somatório, tem-se:
+
+$$P(X \leq 18) = \frac{12^0 e^{-12}}{0!} + \frac{12^1 e^{-12}}{1!} + \frac{12^2 e^{-12}}{2!} + ... + \frac{12^{18} e^{-12}}{18!}$$
+
+Os resultados individuais de cada termo do somatório podem ser calculados, mas é mais eficiente utilizar o [R] e o pacote `leem` para obter a probabilidade de forma rápida:
+
+```{r}
+#| code-fold: false
+#| code-line-numbers: true
+P(q = 18, # q = 18 para P(X > 18)
+dist = "poisson", # Tipo de distribuição
+lambda = 12, # λ - taxa média de eventos
+gui = "plot",
+lower.tail = FALSE) # Calcula P(X > 18)
+```
+
+Calcula-se:
+
+$$P(X > 18) = 0.03742$$
+
+
+### Distribuição Normal {#sec-normal}
+
+  A distribuição Normal, também conhecida como distribuição Gaussiana, é uma distribuição de probabilidade contínua que é simétrica em torno de sua média, mostrando que os dados próximos à média são mais frequentes em ocorrência do que os dados distantes da média. Uma variável aleatória que segue uma distribuição Normal é denotada por $X \sim \text{Normal}(\mu, \sigma^2)$, onde $\mu$ é a média e $\sigma^2$ é a variância.
+
+  Esta distribuição é a mais importante na estatística devido ao Teorema Central do Limite, que afirma que a soma de um grande número de variáveis aleatórias independentes e identicamente distribuídas tende a seguir uma distribuição Normal, independentemente da distribuição original das variáveis.
+
+  A função de densidade de probabilidade da distribuição Normal é dada por:
+
+  $$f(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{(x - \mu)^2}{2\sigma^2}}$$ {#eq-normal}
+
+  Onde $x$ é o valor da variável aleatória, $\mu$ é a média, $\sigma$ é o desvio padrão e $e$ é a base do logaritmo natural.
+
+  Diferente das distribuições discretizadas, uma distribuição contínua é calculada através da integração da região de interesse sob a curva da função de densidade de probabilidade. 
+
+#### Distribuição Normal Padrão {#sec-normal-padrao}
+
+  Para função que da origem a Distribuição Normal, calcular a integral de forma analítica é um trabalho complexo, por isso se recorre ao calculo numérico ou ao uso de tabelas de valores da função de distribuição acumulada (CDF) para obter as probabilidades associadas a intervalos específicos. Para simplificar os cálculos, é comum padronizar a variável aleatória Normal, transformando-a em uma variável aleatória que segue a Distribuição Normal Padrão.
+
+  A distribuição Normal Padrão é um caso especial da distribuição Normal onde a média é igual a 0 e o desvio padrão é igual a 1, ou seja, $Z \sim \text{Normal}(0, 1)$. A função de densidade de probabilidade da distribuição Normal Padrão é dada por:
+
+  $$f(z) = \frac{1}{\sqrt{2\pi}} e^{-\frac{z^2}{2}}$$ {#eq-normal-padrao}
+
+  Onde $z$ é o valor da variável aleatória padronizada. A distribuição Normal Padrão é amplamente utilizada para calcular probabilidades e quantis associados à distribuição Normal, facilitando a comparação entre diferentes conjuntos de dados e a realização de inferências estatísticas.
+
+  Para calcular a probabilidade de uma variável aleatória Normal estar dentro de um intervalo específico, é necessário padronizar os valores utilizando a fórmula:
+
+  $$Z = \frac{X - \mu}{\sigma}$$ {#eq-z-score}
+
+::: {.callout-note}
+ Regra Empírica (68-95-99.7): Em uma distribuição normal perfeita: 68% dos dados estão a 1 desvio padrão da média. 95% dos dados estão a 2 desvios padrões da média. 99,7% dos dados estão a 3 desvios padrões (o famoso "Três Sigma")
+:::
+
+#### Exemplo de aplicação da distribuição Normal
+
+  Em processos de usinagem e manufatura, é fundamental analisar as tolerâncias dimensionais para garantir o encaixe correto de peças mecânicas. Por exemplo, imagine a produção em série de um eixo de aço em um torno CNC, onde pequenas variações dimensionais são inevitáveis.Para esta demonstração, vamos considerar um cenário onde o diâmetro alvo do eixo é de 10.00 mm.
+
+  Devido à precisão da máquina, os diâmetros produzidos seguem uma distribuição Normal com média $\mu = 10.00$ mm e desvio padrão $\sigma = 0.05$ mm. Para que a peça seja aprovada no controle de qualidade, seu diâmetro deve estar entre o Limite Inferior de Especificação (LSL) de 9.90 mm e o Limite Superior (USL) de 10.10 mm. A probabilidade de uma peça ser aprovada (estar dentro da tolerância) pode ser calculada utilizando a distribuição Normal, convertendo os valores para a distribuição Normal Padrão ($Z$):
+
+$$P(9.90 \leq X \leq 10.10) = P\left(\frac{9.90 - 10.00}{0.05} \leq Z \leq \frac{10.10 - 10.00}{0.05}\right)$$
+
+$$P(9.90 \leq X \leq 10.10) = P(-2 \leq Z \leq 2)$$
+
+Como a resolução de forma analítica é complexa, utiliza-se ferramentas como o [R] e o pacote `leem` para calcular essa probabilidade:
+
+```{r}
+#| code-fold: false
+#| code-line-numbers: true
+P(q = (-2) %<=X<=% 2, # q = -2 <= Z <= 2
+dist = "normal", # Tipo de distribuição
+mean = 0, # μ - média da distribuição Normal Padrão
+sd = 1, # σ - desvio padrão da distribuição Normal Padrão
+gui = "plot")
+
+```
+
+$$P(9.90 \leq X \leq 10.10) = P(-2 \leq Z \leq 2) = 0.9545$$
+
+
+### Outras distribuições de probabilidade
+
+  Além das distribuições Binomial, de Poisson e Normal, existem diversas outras distribuições de probabilidade que são amplamente utilizadas em diferentes contextos.
+
+#### Distribuição Geométrica
+
+  A distribuição Geométrica é uma distribuição de probabilidade discreta que modela o número de tentativas necessárias para obter o primeiro sucesso em uma sequência de experimentos independentes, onde cada experimento tem apenas dois resultados possíveis (sucesso ou fracasso) e a probabilidade de sucesso é constante. Uma variável aleatória que segue uma distribuição Geométrica é denotada por $X \sim \text{Geometric}(p)$, onde $p$ é a probabilidade de sucesso em cada experimento.
+
+  $$P(X = k) = (1-p)^{k-1} p$$ {#eq-geometrica}
+
+  Em processos de inspeção de qualidade automatizados, modela-se a quantidade de tentativas necessárias até que um evento específico ocorra.
+
+  considere que a probabilidade de um braço robótico produzir uma solda defeituosa é de 5%, $p = 0.05$. A probabilidade de a primeira solda defeituosa ser encontrada exatamente na 4ª inspeção ($k = 4$) pode ser calculada utilizando a distribuição Geométrica. Isso significa que ocorrerão 3 inspeções bem-sucedidas (sem defeito) antes do primeiro "sucesso" estatístico (encontrar o defeito):
+
+  $$P(X = k) = (1 - p)^{k - 1} p$$
+
+  $$P(X = 4) = (1 - 0.05)^{4 - 1} (0.05)$$
+
+  $$P(X = 4) = (0.95)^3 (0.05)$$
+
+  $$P(X = 4) \approx 0.8573 \times 0.05 \approx 0.0428$$
+
+  No [R] e o pacote `leem`, a probabilidade pode ser calculada da seguinte forma:
+
+```{r}
+#| code-fold: false
+#| code-line-numbers: true
+P(q = 4,
+dist = "geom", # Tipo de distribuição
+prob = 0.05, # p - probabilidade de sucesso
+gui = "plot",
+lower.tail = NULL) 
+```
+
+#### Distribuição Hipergeométrica
+
+  A distribuição Hipergeométrica é uma distribuição de probabilidade discreta que modela o número de sucessos em uma amostra de tamanho fixo retirada sem reposição de uma população finita que contém um número específico de sucessos e fracassos. Uma variável aleatória que segue uma distribuição Hipergeométrica é denotada por $X \sim \text{Hypergeometric}(N, K, n)$, onde $N$ é o tamanho da população, $K$ é o número total de sucessos na população e $n$ é o tamanho da amostra.
+
+  $$P(X = k) = \frac{\binom{K}{k} \binom{N-K}{n-k}}{\binom{N}{n}}$$ {#eq-hipergeometrica}
+
+  Em processos de controle de qualidade, a distribuição Hipergeométrica pode ser utilizada para modelar a probabilidade de encontrar um número específico de itens defeituosos em uma amostra retirada de um lote.
+
+  Por exemplo, considere um lote de 100 peças, onde 10 são defeituosas ($N = 100$, $K = 10$). Se retirarmos uma amostra de 20 peças ($n = 20$), a probabilidade de encontrar exatamente 3 peças defeituosas na amostra ($k = 3$) pode ser calculada utilizando a distribuição Hipergeométrica:
+
+  $$P(X = k) = \frac{\binom{K}{k} \binom{N-K}{n-k}}{\binom{N}{n}}$$
+
+  $$P(X = 3) = \frac{\binom{10}{3} \binom{90}{17}}{\binom{100}{20}}$$
+
+  No [R] e o pacote `leem`, a probabilidade pode ser calculada da seguinte forma:
+
+```{r}
+#| code-fold: false
+#| code-line-numbers: true
+P(q = 3,
+dist = "hyper", # Tipo de distribuição
+m = 10,
+n = 90,
+k = 20,
+gui = "none",
+lower.tail = TRUE) 
+```
+
+#### Distribuição Exponencial
+
+  A distribuição Exponencial é uma distribuição de probabilidade contínua que modela o tempo entre eventos em um processo de Poisson, onde os eventos ocorrem de forma independente e a uma taxa constante. Uma variável aleatória que segue uma distribuição Exponencial é denotada por $X \sim \text{Exponential}(\lambda)$, onde $\lambda$ é a taxa média de eventos por unidade de tempo.
+
+  $$f(x) = \lambda e^{-\lambda x}$$ {#eq-exponencial}
+
+  Em sistemas de confiabilidade, a distribuição Exponencial é frequentemente utilizada para modelar o tempo até a falha de componentes eletrônicos ou mecânicos, permitindo prever a vida útil e planejar manutenções preventivas.
+
+  Exemplo: Considere um componente eletrônico que tem uma taxa média de falha de 0.01 falhas por hora ($\lambda = 0.01$). A probabilidade de o componente falhar dentro de 100 horas pode ser calculada utilizando a distribuição Exponencial:
+
+$$P(X \leq 100) = \int_{0}^{100} 0.01 e^{-0.01 x} dx$$
+
+$$P(X \leq 100) = 0.01 \cdot \int_{0}^{100} e^{-0.01 x} dx$$
+
+$$P(X \leq 100) = 0.01 \cdot \left[-\frac{1}{0.01} e^{-0.01 x}\right]_{0}^{100}$$
+
+$$P(X \leq 100) = \left[e^{-0.01 x}\right]_{0}^{100}$$
+
+
+$$P(X \leq 100) = e^{-0} - e^{-1} \approx 0.6321$$
+
+
+Com o `leem`:
+
+```{r}
+#| code-fold: false
+#| code-line-numbers: true
+P(q = 100,
+dist = "exp", # Tipo de distribuição
+rate = 0.01, # λ - taxa média de eventos
+gui = "plot",
+lower.tail = TRUE)
+``` 
+
+#### Distribuição T de Student
+
+  A distribuição T de Student é uma distribuição de probabilidade contínua que é usada para estimar a média de uma população quando o tamanho da amostra é pequeno e a variância populacional é desconhecida. Uma variável aleatória que segue uma distribuição T de Student é denotada por $X \sim t(\nu)$, onde $\nu$ é o número de graus de liberdade, geralmente calculado como o tamanho da amostra menos um ($\nu = n - 1$).
+
+ $$f(t) = \frac{\Gamma\left(\frac{\nu + 1}{2}\right)}{\sqrt{\nu \pi} \Gamma\left(\frac{\nu}{2}\right)} \left(1 + \frac{t^2}{\nu}\right)^{-\frac{\nu + 1}{2}}$$ {#eq-t-student}
+
+::: {.callout-note}
+A função $\Gamma$ é a função gama, que generaliza o fatorial para números reais e complexos. Para um número inteiro positivo $n$, $\Gamma(n) = (n-1)!$. 
+:::
+
+
+  Em análise de dados, a distribuição T de Student é frequentemente utilizada para realizar testes de hipóteses sobre a média de uma população, especialmente quando o tamanho da amostra é pequeno e a variância populacional é desconhecida.
+
+  Exemplo: Considere um estudo onde se deseja comparar a média de um grupo experimental com uma média conhecida. Suponha que temos uma amostra de 15 indivíduos ($n = 15$) e queremos testar se a média do grupo é significativamente diferente de 100. A média amostral é de 105 e o desvio padrão amostral é de 10. O número de graus de liberdade seria $\nu = n - 1 = 14$. A probabilidade associada ao valor observado pode ser calculada utilizando a distribuição T de Student:
+
+  $$P(\bar{X} \geq 105) = P\left(t \geq \frac{105 - 100}{10 / \sqrt{15}}\right)$$
+
+  $$P(\bar{X} \geq 105) = P\left(t \geq \frac{5}{10 / \sqrt{15}}\right)$$
+
+  $$P(\bar{X} \geq 105) = P\left(t \geq \frac{59}{\sqrt{15}}\right)$$
+
+  $$P(\bar{X} \geq 105) \approx P\left(t \geq 1.9365\right)$$
+
+
+  A função só pode ser calculada numericamente. Com o `leem`:
+```{r}
+#| code-fold: false
+#| code-line-numbers: true
+P(q = (105 - 100) / (10 / sqrt(15)),
+dist = "t-student", # Tipo de distribuição
+df = 14, # ν - número de graus de liberdade
+gui = "plot",
+lower.tail = FALSE)
+```
+
+$$P(\bar{X} \geq 105) \approx 0.03663$$
+
+## Considerações finais
+
+
+## Referências
