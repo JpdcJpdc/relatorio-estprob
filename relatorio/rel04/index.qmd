@@ -32,15 +32,15 @@ nocite: |
 
   Distribuições de probabilidade são funções matemáticas que descrevem a probabilidade de ocorrência de diferentes resultados em um experimento aleatório. Estes modelos permitem analisar fenômenos incertos, tornando possíveis previsões e inferências sobre os dados.
 
-  Neste relatório, serão exploradas as distribuições Binomial, de Poisson e Normal, suas características, aplicações e como elas se relacionam com a estatística e a probabilidade. Também serão aprensetadas duas distribuições de variáveis contínuas e duas de variáveis discretas, destacando suas propriedades e uso. Será utilizado o [R] e o pacote `leem` para simular e visualizar essas distribuições.
+  Neste relatório, serão exploradas as distribuições Binomial, de Poisson e Normal, suas características, aplicações e como elas se relacionam com a estatística e a probabilidade. Também serão apresentadas duas distribuições de variáveis contínuas e duas de variáveis discretas, destacando suas propriedades e uso. Para essas simulações e visualizações será utilizado o [R] e o pacote `leem` para simular e visualizar essas distribuições.
 
-  Para complementar a compreensão, serão discutidos os conceitos de variáveis aleatórias, continuas e discretas, e como as distribuições de probabilidade se encaixam nesse contexto. 
+  Para complementar o entendimento, serão discutidos os conceitos de variáveis aleatórias, continuas e discretas, e como as distribuições de probabilidade se encaixam nesse contexto. 
 
 ---
 
 ## Objetivos {#sec-objetivos}
 
-  Apresentar e discutir possíveis aplicações das distribuições de probabilidade, destacando suas características e diferenças.
+  Apresentar e discutir possíveis aplicações das distribuições de probabilidade, destacando suas características e diferenças teóricas e estatísticas.
 
 ### Objetivos específicos
 
@@ -59,14 +59,15 @@ nocite: |
 
 ### Variáveis Discretas {#sec-discretas}
 
-  Variáveis discretas assumem um conjunto finito ou contável de valores. 
+  Variáveis discretas assumem valores em um conjunto finito ou contável (infinito). Geralmente são resultados de contagens. 
 
   Exemplos:
   - Número de caras em 10 lançamentos de uma moeda.
   - Número de pessoas em um ambiente.
-  - Número de defeitos em um lote de produtos.
+  - Número de itens defeituosos em um lote de produtos.
   
-  Gráficos comuns para variáveis discretas incluem gráficos de barras e histogramas. Como exemplo:
+  Gráficos comuns para variáveis discretas incluem gráficos de barras e histogramas, já que eles destacam a probabilidade de cada valor.
+  Como exemplo:
 
 ```{r}
 #| code-fold: true
@@ -81,14 +82,15 @@ gui = "plot", lower.tail = NULL)
 
 ### Variáveis Contínuas {#sec-continuas}
 
-  Variáveis contínuas podem assumir qualquer valor Real dentro de um intervalo. 
+  Variáveis contínuas podem assumir qualquer valor dentro de um intervalo de números reais.
+  Diferente das discretas, elas não resultam das contagens, mas das medições (assim podem ter infinitas casas decimais)
 
   Exemplos:
   - Comprimento de um objeto.
-  - Temperatura.
+  - Temperatura ao longo do dia.
   - Tempo gasto para completar uma tarefa.
 
-  Variáveis contínuas são representadas gráficamente por histogramas e gráficos de densidade. Como exemplo:
+  Variáveis contínuas são representadas gráficamente por histogramas (com as áreas das barras somando 1) e gráficos de densidade (mostram a distribuição dessa probabilidade ao longo de uma curva contínua). Como exemplo:
 
 ```{r}
 #| code-fold: true
@@ -108,7 +110,7 @@ gui = "plot", lower.tail = TRUE)
 
 ### Distribuição Binomial {#sec-binomial}
 
-  A distribuição Binomial utiliza de variáveis discretas e é usada para modelar o número de sucessos em uma sequência de n experimentos independentes, onde cada experimento tem apenas dois resultados possíveis (sucesso ou fracasso) e a probabilidade de sucesso é constante. Uma variável aleatória que segue uma distribuição Binomial é denotada por $X \sim \text{Binomial}(n, p)$, onde $n$ é o número de experimentos e $p$ é a probabilidade de sucesso em cada experimento. 
+  A distribuição Binomial é aplicada a variáveis discretas e é usada para modelar o número de sucessos em uma sequência de n experimentos independentes, onde cada experimento tem apenas dois resultados possíveis (sucesso ou fracasso) com a probabilidade de sucesso sendo constante. Uma variável aleatória que segue uma distribuição Binomial é denotada por $X \sim \text{Binomial}(n, p)$, onde $n$ é o número de experimentos e $p$ é a probabilidade de sucesso em cada experimento. 
 
   Essa distribuição é caracterizada por dois parâmetros: o número de experimentos (n) e a probabilidade de sucesso em cada experimento (p). A função de massa de probabilidade da distribuição Binomial é dada por:
 
@@ -118,9 +120,9 @@ gui = "plot", lower.tail = TRUE)
 
 #### Exemplo de aplicação da distribuição Binomial
 
-  Em sistemas mecatrônicos, é comum utilizar uma redundância de sensores para aumentar a confiabilidade do sistema. Por exemplo, imagine um sistema para evitar colisões em um veículo autônomo, o veículo pode ser equipado com múltiplos sensores de proximidade. 
+  Em sistemas mecatrônicos, é comum utilizar uma redundância de sensores para aumentar a confiabilidade do sistema. Por exemplo, imagine um sistema para evitar colisões em um veículo autônomo, o veículo pode ser equipado com múltiplos sensores independentes para detectar obstáculos ne proximidade, se a probabilidade de falha de um sensor é de $q = 1-p$, essa distribuição permite calcular a probabilidade do sistema permanecer operacional caso o número k de sensores. 
   
-  Para está demonstração, vamos considerar um cenário onde o veículo possui 5 sensores ultrassônicos idênticos, $n = 5$. Para garantir a segurança, o veículo só se movimenta se pelo menos 3 dos sensores forem validados, $k \geq 3$. Supondo que cada sensor tem 90% de funcionar corretamente, $p = 0.9$, consequentemente, $1-p = 0.1$, 10% de falha. A probabilidade de o veículo se movimentar com segurança pode ser calculada utilizando a distribuição Binomial, somando as probabilidades de obter 3, 4 ou 5 sucessos:
+  Para esta demonstração, vamos considerar um cenário onde o veículo possui $n = 5$ sensores ultrassônicos idênticos. Para garantir a segurança, o veículo só se movimenta se pelo menos 3 dos sensores forem ativados, $k \geq 3$. Supondo que cada sensor tem 90% de funcionar corretamente, $p = 0.9$, consequentemente, $1-p = 0.1$, 10% de falha. A probabilidade de o veículo se movimentar com segurança pode ser calculada utilizando a distribuição Binomial, somando as probabilidades de obter 3, 4 ou 5 sucessos:
 
   $$P(X \geq 3) = P(X = 3) + P(X = 4) + P(X = 5)$$
 
@@ -151,7 +153,7 @@ lower.tail = FALSE) # Calcula P(X >= 3)
 
 ### Distribuição de Poisson {#sec-poisson}
 
-  A distribuição de Poisson é uma distribuição de probabilidade de variáveis discretas derivada da [Distribuição Binomial](@subsec-binomial), para $n \to \infty$, que descreve a probabilidade de um número dado de eventos ocorrer em um intervalo fixo de tempo ou espaço, desde que esses eventos ocorram com uma taxa média constante e sejam independentes entre si. Uma variável aleatória que segue uma distribuição de Poisson é denotada por $X \sim \text{Poisson}(\lambda)$, onde $\lambda$ é a taxa média de eventos por intervalo.
+  A distribuição de Poisson é muito utilizada para modelar o número de eventos que ocorrem em um intervalo fixo (de tempo ou espaço) pode ser entendida como um caso limite da [Distribuição Binomial](@subsec-binomial), para $n \to \infty$, e a probabilidade de sucesso muito pequena, desde que esses eventos ocorram com uma taxa média constante e sejam independentes entre si. Uma variável aleatória que segue uma distribuição de Poisson é denotada por $X \sim \text{Poisson}(\lambda)$, onde $\lambda$ é a taxa média de eventos por intervalo.
 
   A função de massa de probabilidade da distribuição de Poisson é dada por:
 
@@ -165,7 +167,7 @@ Em sistemas embarcados, é fundamental dimensionar corretamente a memória para 
 
 Considerando um cenário onde as mensagens chegam à ECU a uma taxa média de 12 mensagens a cada janela de 10 milissegundos, $\lambda = 12$. Para garantir o processamento, o buffer do microcontrolador suporta o armazenamento de até 18 mensagens. A falha (overflow) ocorre se chegarem mais mensagens que a capacidade, $X > 18$. 
 
-A probabilidade de o buffer transbordar pode ser calculada utilizando a distribuição de Poisson, subtraindo de 1 a soma das probabilidades de o buffer não transbordar (receber de 0 a 18 mensagens):
+A probabilidade de o buffer transbordar pode ser calculada utilizando a distribuição de Poisson, subtraindo de 1 a soma das probabilidades de o buffer suportar a carga (receber de 0 a 18 mensagens):
 
 $$P(X > 18) = 1 - P(X \leq 18)$$
   
@@ -236,6 +238,10 @@ $$P(9.90 \leq X \leq 10.10) = P(-2 \leq Z \leq 2)$$
 
 Como a resolução de forma analítica é complexa, utiliza-se ferramentas como o [R] e o pacote `leem` para calcular essa probabilidade:
 
+::: {.callout-note}
+ Como os valores foram padronizados, usaremos a distribuição Normal Padrão (Z ~ N(0,1)) no código para ter o gráfico da área de aceitação
+:::
+
 ```{r}
 #| code-fold: false
 #| code-line-numbers: true
@@ -257,12 +263,17 @@ $$P(9.90 \leq X \leq 10.10) = P(-2 \leq Z \leq 2) = 0.9545$$
 #### Distribuição Geométrica
 
   A distribuição Geométrica é uma distribuição de probabilidade discreta que modela o número de tentativas necessárias para obter o primeiro sucesso em uma sequência de experimentos independentes, onde cada experimento tem apenas dois resultados possíveis (sucesso ou fracasso) e a probabilidade de sucesso é constante. Uma variável aleatória que segue uma distribuição Geométrica é denotada por $X \sim \text{Geometric}(p)$, onde $p$ é a probabilidade de sucesso em cada experimento.
+  Diferente da Distribuição BInomial, a Geométrica teoricamente pode ir até o infinito.
 
   $$P(X = k) = (1-p)^{k-1} p$$ {#eq-geometrica}
 
   Em processos de inspeção de qualidade automatizados, modela-se a quantidade de tentativas necessárias até que um evento específico ocorra.
 
   considere que a probabilidade de um braço robótico produzir uma solda defeituosa é de 5%, $p = 0.05$. A probabilidade de a primeira solda defeituosa ser encontrada exatamente na 4ª inspeção ($k = 4$) pode ser calculada utilizando a distribuição Geométrica. Isso significa que ocorrerão 3 inspeções bem-sucedidas (sem defeito) antes do primeiro "sucesso" estatístico (encontrar o defeito):
+  
+::: {.callout-note}
+ Na Distribuição Geométrica, k é o numero da tentativa para o primeiro sucesso ocorrer, no caso, se o defeito é o sucesso e ocorre na 4° inspeção, tiveram 3 sucessos de soldegem (inspeções sem defeitos) e a 1° falha (solda com defeito) na 4° tentativa 
+:::
 
   $$P(X = k) = (1 - p)^{k - 1} p$$
 
@@ -332,7 +343,9 @@ $$P(X \leq 100) = \left[e^{-0.01 x}\right]_{0}^{100}$$
 
 
 $$P(X \leq 100) = e^{-0} - e^{-1} \approx 0.6321$$
-
+::: {.callout-note}
+ Na Distribuição Exponencial, uma curiosidade interessante é que a propriedade de falta de memória (uma característica única dela) que é fundamental em estudos de confiabilidade. Ela indica que a probabilidade de ocorrência de um evento futuro independente do tempo decorrido, é ideal para modelar componentes que não sofrem desgaste físico gradual, mas falham por conta de eventos aleatórios externos.
+:::
 
 Com o `leem`:
 
@@ -384,6 +397,48 @@ lower.tail = FALSE)
 $$P(\bar{X} \geq 105) \approx 0.03663$$
 
 ## Considerações finais
+
+### Dúvidas mais usuais
+
+1) Qual a diferença fundamental entre uma variável aleatória discreta e uma contínua quando usamos o pacote leem?
+
+2) O que acontece com o gráfico da Distribuição Binomial quando nós aumentamos o número de tentativas?
+
+3) Porque a Distribuição de Poisson pode ser chamada de distribuição de eventos raros?
+
+4) Porque a Distribuição Normal é considerada a distribuição padrão da natureza e engenharia?
+
+5) Sobre o impacto da redundancia na Distribuição Binomial, se aumentássemos o número de sensores de 5 para 7, como a probabilidade de segurança (k >= 3) se comportaria?
+
+6) Em quais situações o uso da Distribuição Binomial no teste dos sensores seria tecnicamente incorreto, exigindo usar a Hipergeométrica?
+
+7) A propriedade de falta de memória da Exponencial é realista para componentes que sofrem desgaste mecânico ao longo do tempo?
+
+8) Como o Teorema Central do Limite justifica usar a Distribuição Normal quando não conhecemos a distribuição original dos dados?
+
+### Respostas
+
+1) A diferença é o que o R conta, em variáveis discretas (valores isolados: 1, 2, 10,...), e em um gráfico do leem geralmente podemos ver barras separadas; agora em variáveis contínuas são medidas (pode ser qualquer valor real), e no leem vemos a chance de pegar uma medida entre duas outras, trabalhamos com o cálculo de áreas sob a curva de densidade.
+
+2) Conforme o número de tentativas aumenta, as barras ficam mais próximas e a distribuição se torna mais simétrica, o que nos mostra que no limite a Distribuição se aproxima da Normal.
+
+3) A Distribuição de Poisson modela ocorrências em um intervalo em que a chance de um evento acontecer é quase zero, mas no total do intervalo temos uma média, usando o leem, se tivermos uma média pequena, o gráfico apresenta uma forte assimetria positiva (estar mais a direita, assim como a cauda do gráfico) quando a média é pequena ela concentra as probabilidades em valores pequenos, o que nos mostra que é muito provável ter poucos eventos e muito raro ter 10.
+
+4) Com o Teorema do Limite Central, os erros de medição de um sensor tendem a se cancelar ou se somar na engenharia, ficando na maior parte das leituras perto da média, no leem usamos muito a função para calcular a cauda (parte rala) da distribuição, se o gráfico do leem mostra uma área quase invisível, o processo é bem seguro.
+
+5) Quando aumentamos o número de sensores mantendo o critério de funcionamento K >= 3, a probabilidade de segurança aumentaria muito, isso ocorre porque a Distribuição Binomial tem mais combinações de sucesso para atingir o requisito mínimo; o que aconteceria é que o somatório teria mais termos, deixando o sistema bem mais robusto a falhas individuais.
+
+6) A Distribuição Binomial será incorreta se testarmos sensores retirados em um lote pequeno e finito sem reposição. A Distribuição Binomial pressupõe que a probabilidade de sucesso é constante em todas as tentativas (como se tivesse reposição), já a Distribuição Hipergeométrica ajusta a probabilidade a cada retirada (isso porque a composição do lote muda. Se o lote total fosse de 20 sensores e tirássemos 5 para teste, a falta de um sensor alteraria a chance do próximo), e por isso é mais precisa.
+
+7) A propriedade de falta de memoria afirma que a probabilidade de falha é constante, independente de quanto tempo o componente já operou (ideal para modelar falhas aleatórias em componentes eletrônicos), mas falha em representar componentes mecânicos (que sofrem desgaste físico), para esses casos de envelhecimento, outras distribuições seriam mais adequadas do que a Distribuição Exponencial.
+
+8) O Teorema Central do Limite é fundamental por afirmar que independentemente da forma da distribuição original dos dados, a distribuição da média de uma grande amostra tenderá para uma Distribuição Normal conforme o tamanho da amostra aumenta (o que permite que engenheiros calculem probabilidades baseadas na curva de Gauss)
+
+
+
+
+
+
 
 
 ## Referências

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.36">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -10,9 +10,6 @@
 
 <title>Relatório 04 - Distribuições de Probabilidade</title>
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -85,17 +82,18 @@ div.csl-indent {
 <script src="index_files/libs/clipboard/clipboard.min.js"></script>
 <script src="index_files/libs/quarto-html/quarto.js" type="module"></script>
 <script src="index_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="index_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="index_files/libs/quarto-html/popper.min.js"></script>
 <script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="index_files/libs/quarto-html/anchor.min.js"></script>
 <link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="index_files/libs/bootstrap/bootstrap-efbb37e9afcc02144ebbc7afd12a776f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="index_files/libs/bootstrap/bootstrap-9e3ffae467580fdb927a41352e75a2e0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -151,7 +149,11 @@ window.Quarto = {
   <li><a href="#sec-normal" id="toc-sec-normal" class="nav-link" data-scroll-target="#sec-normal"><span class="header-section-number">4.3</span> Distribuição Normal</a></li>
   <li><a href="#outras-distribuições-de-probabilidade" id="toc-outras-distribuições-de-probabilidade" class="nav-link" data-scroll-target="#outras-distribuições-de-probabilidade"><span class="header-section-number">4.4</span> Outras distribuições de probabilidade</a></li>
   </ul></li>
-  <li><a href="#considerações-finais" id="toc-considerações-finais" class="nav-link" data-scroll-target="#considerações-finais"><span class="header-section-number">5</span> Considerações finais</a></li>
+  <li><a href="#considerações-finais" id="toc-considerações-finais" class="nav-link" data-scroll-target="#considerações-finais"><span class="header-section-number">5</span> Considerações finais</a>
+  <ul class="collapse">
+  <li><a href="#dúvidas-mais-usuais" id="toc-dúvidas-mais-usuais" class="nav-link" data-scroll-target="#dúvidas-mais-usuais"><span class="header-section-number">5.1</span> Dúvidas mais usuais</a></li>
+  <li><a href="#respostas" id="toc-respostas" class="nav-link" data-scroll-target="#respostas"><span class="header-section-number">5.2</span> Respostas</a></li>
+  </ul></li>
   <li><a href="#referências" id="toc-referências" class="nav-link" data-scroll-target="#referências"><span class="header-section-number">6</span> Referências</a></li>
   </ul>
 </nav>
@@ -193,7 +195,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Data de Publicação</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">10 de maio de 2026</p>
+      <p class="date">12 de maio de 2026</p>
     </div>
   </div>
   
@@ -208,13 +210,13 @@ window.Quarto = {
 <section id="sec-introducao" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="sec-introducao"><span class="header-section-number">1</span> Introdução</h2>
 <p>Distribuições de probabilidade são funções matemáticas que descrevem a probabilidade de ocorrência de diferentes resultados em um experimento aleatório. Estes modelos permitem analisar fenômenos incertos, tornando possíveis previsões e inferências sobre os dados.</p>
-<p>Neste relatório, serão exploradas as distribuições Binomial, de Poisson e Normal, suas características, aplicações e como elas se relacionam com a estatística e a probabilidade. Também serão aprensetadas duas distribuições de variáveis contínuas e duas de variáveis discretas, destacando suas propriedades e uso. Será utilizado o <a href="https://www.r-project.org/">R</a> e o pacote <code>leem</code> para simular e visualizar essas distribuições.</p>
-<p>Para complementar a compreensão, serão discutidos os conceitos de variáveis aleatórias, continuas e discretas, e como as distribuições de probabilidade se encaixam nesse contexto.</p>
+<p>Neste relatório, serão exploradas as distribuições Binomial, de Poisson e Normal, suas características, aplicações e como elas se relacionam com a estatística e a probabilidade. Também serão apresentadas duas distribuições de variáveis contínuas e duas de variáveis discretas, destacando suas propriedades e uso. Para essas simulações e visualizações será utilizado o <a href="https://www.r-project.org/">R</a> e o pacote <code>leem</code> para simular e visualizar essas distribuições.</p>
+<p>Para complementar o entendimento, serão discutidos os conceitos de variáveis aleatórias, continuas e discretas, e como as distribuições de probabilidade se encaixam nesse contexto.</p>
 <hr>
 </section>
 <section id="sec-objetivos" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="sec-objetivos"><span class="header-section-number">2</span> Objetivos</h2>
-<p>Apresentar e discutir possíveis aplicações das distribuições de probabilidade, destacando suas características e diferenças.</p>
+<p>Apresentar e discutir possíveis aplicações das distribuições de probabilidade, destacando suas características e diferenças teóricas e estatísticas.</p>
 <section id="objetivos-específicos" class="level3" data-number="2.1">
 <h3 data-number="2.1" class="anchored" data-anchor-id="objetivos-específicos"><span class="header-section-number">2.1</span> Objetivos específicos</h3>
 <ul>
@@ -233,9 +235,9 @@ window.Quarto = {
 <p>Variáveis aleatórias são funções que associam um número real a cada resultado possível de um experimento aleatório. Elas podem ser classificadas em dois tipos principais: variáveis discretas e variáveis contínuas.</p>
 <section id="sec-discretas" class="level3" data-number="3.1">
 <h3 data-number="3.1" class="anchored" data-anchor-id="sec-discretas"><span class="header-section-number">3.1</span> Variáveis Discretas</h3>
-<p>Variáveis discretas assumem um conjunto finito ou contável de valores.</p>
-<p>Exemplos: - Número de caras em 10 lançamentos de uma moeda. - Número de pessoas em um ambiente. - Número de defeitos em um lote de produtos.</p>
-<p>Gráficos comuns para variáveis discretas incluem gráficos de barras e histogramas. Como exemplo:</p>
+<p>Variáveis discretas assumem valores em um conjunto finito ou contável (infinito). Geralmente são resultados de contagens.</p>
+<p>Exemplos: - Número de caras em 10 lançamentos de uma moeda. - Número de pessoas em um ambiente. - Número de itens defeituosos em um lote de produtos.</p>
+<p>Gráficos comuns para variáveis discretas incluem gráficos de barras e histogramas, já que eles destacam a probabilidade de cada valor. Como exemplo:</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Código</summary>
@@ -256,9 +258,9 @@ window.Quarto = {
 </section>
 <section id="sec-continuas" class="level3" data-number="3.2">
 <h3 data-number="3.2" class="anchored" data-anchor-id="sec-continuas"><span class="header-section-number">3.2</span> Variáveis Contínuas</h3>
-<p>Variáveis contínuas podem assumir qualquer valor Real dentro de um intervalo.</p>
-<p>Exemplos: - Comprimento de um objeto. - Temperatura. - Tempo gasto para completar uma tarefa.</p>
-<p>Variáveis contínuas são representadas gráficamente por histogramas e gráficos de densidade. Como exemplo:</p>
+<p>Variáveis contínuas podem assumir qualquer valor dentro de um intervalo de números reais. Diferente das discretas, elas não resultam das contagens, mas das medições (assim podem ter infinitas casas decimais)</p>
+<p>Exemplos: - Comprimento de um objeto. - Temperatura ao longo do dia. - Tempo gasto para completar uma tarefa.</p>
+<p>Variáveis contínuas são representadas gráficamente por histogramas (com as áreas das barras somando 1) e gráficos de densidade (mostram a distribuição dessa probabilidade ao longo de uma curva contínua). Como exemplo:</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Código</summary>
@@ -282,14 +284,14 @@ window.Quarto = {
 <p>As distribuições de probabilidade descrevem como os valores de uma variável aleatória estão distribuídos. Elas fornecem uma maneira de modelar e entender a incerteza associada a eventos aleatórios.</p>
 <section id="sec-binomial" class="level3" data-number="4.1">
 <h3 data-number="4.1" class="anchored" data-anchor-id="sec-binomial"><span class="header-section-number">4.1</span> Distribuição Binomial</h3>
-<p>A distribuição Binomial utiliza de variáveis discretas e é usada para modelar o número de sucessos em uma sequência de n experimentos independentes, onde cada experimento tem apenas dois resultados possíveis (sucesso ou fracasso) e a probabilidade de sucesso é constante. Uma variável aleatória que segue uma distribuição Binomial é denotada por <span class="math inline">\(X \sim \text{Binomial}(n, p)\)</span>, onde <span class="math inline">\(n\)</span> é o número de experimentos e <span class="math inline">\(p\)</span> é a probabilidade de sucesso em cada experimento.</p>
+<p>A distribuição Binomial é aplicada a variáveis discretas e é usada para modelar o número de sucessos em uma sequência de n experimentos independentes, onde cada experimento tem apenas dois resultados possíveis (sucesso ou fracasso) com a probabilidade de sucesso sendo constante. Uma variável aleatória que segue uma distribuição Binomial é denotada por <span class="math inline">\(X \sim \text{Binomial}(n, p)\)</span>, onde <span class="math inline">\(n\)</span> é o número de experimentos e <span class="math inline">\(p\)</span> é a probabilidade de sucesso em cada experimento.</p>
 <p>Essa distribuição é caracterizada por dois parâmetros: o número de experimentos (n) e a probabilidade de sucesso em cada experimento (p). A função de massa de probabilidade da distribuição Binomial é dada por:</p>
 <p><span id="eq-binomial"><span class="math display">\[P(X = k) = \binom{n}{k} p^k (1-p)^{n-k} \tag{1}\]</span></span></p>
 <p>Onde <span class="math inline">\(k\)</span> é o número de sucessos, <span class="math inline">\(\binom{n}{k}\)</span> é o coeficiente binomial, dado por <span class="math inline">\(\frac{n!}{k!(n-k)!}\)</span>, <span class="math inline">\(p\)</span> é a probabilidade de sucesso e <span class="math inline">\(1-p\)</span> é a probabilidade de fracasso.</p>
 <section id="exemplo-de-aplicação-da-distribuição-binomial" class="level4" data-number="4.1.1">
 <h4 data-number="4.1.1" class="anchored" data-anchor-id="exemplo-de-aplicação-da-distribuição-binomial"><span class="header-section-number">4.1.1</span> Exemplo de aplicação da distribuição Binomial</h4>
-<p>Em sistemas mecatrônicos, é comum utilizar uma redundância de sensores para aumentar a confiabilidade do sistema. Por exemplo, imagine um sistema para evitar colisões em um veículo autônomo, o veículo pode ser equipado com múltiplos sensores de proximidade.</p>
-<p>Para está demonstração, vamos considerar um cenário onde o veículo possui 5 sensores ultrassônicos idênticos, <span class="math inline">\(n = 5\)</span>. Para garantir a segurança, o veículo só se movimenta se pelo menos 3 dos sensores forem validados, <span class="math inline">\(k \geq 3\)</span>. Supondo que cada sensor tem 90% de funcionar corretamente, <span class="math inline">\(p = 0.9\)</span>, consequentemente, <span class="math inline">\(1-p = 0.1\)</span>, 10% de falha. A probabilidade de o veículo se movimentar com segurança pode ser calculada utilizando a distribuição Binomial, somando as probabilidades de obter 3, 4 ou 5 sucessos:</p>
+<p>Em sistemas mecatrônicos, é comum utilizar uma redundância de sensores para aumentar a confiabilidade do sistema. Por exemplo, imagine um sistema para evitar colisões em um veículo autônomo, o veículo pode ser equipado com múltiplos sensores independentes para detectar obstáculos ne proximidade, se a probabilidade de falha de um sensor é de <span class="math inline">\(q = 1-p\)</span>, essa distribuição permite calcular a probabilidade do sistema permanecer operacional caso o número k de sensores.</p>
+<p>Para esta demonstração, vamos considerar um cenário onde o veículo possui <span class="math inline">\(n = 5\)</span> sensores ultrassônicos idênticos. Para garantir a segurança, o veículo só se movimenta se pelo menos 3 dos sensores forem ativados, <span class="math inline">\(k \geq 3\)</span>. Supondo que cada sensor tem 90% de funcionar corretamente, <span class="math inline">\(p = 0.9\)</span>, consequentemente, <span class="math inline">\(1-p = 0.1\)</span>, 10% de falha. A probabilidade de o veículo se movimentar com segurança pode ser calculada utilizando a distribuição Binomial, somando as probabilidades de obter 3, 4 ou 5 sucessos:</p>
 <p><span class="math display">\[P(X \geq 3) = P(X = 3) + P(X = 4) + P(X = 5)\]</span></p>
 <p><span class="math display">\[P(X = 3) = \binom{5}{3} (0.9)^3 (0.1)^2 = 0.0729\]</span></p>
 <p><span class="math display">\[P(X = 4) = \binom{5}{4} (0.9)^4 (0.1)^1 = 0.32805\]</span></p>
@@ -319,7 +321,7 @@ window.Quarto = {
 </section>
 <section id="sec-poisson" class="level3" data-number="4.2">
 <h3 data-number="4.2" class="anchored" data-anchor-id="sec-poisson"><span class="header-section-number">4.2</span> Distribuição de Poisson</h3>
-<p>A distribuição de Poisson é uma distribuição de probabilidade de variáveis discretas derivada da <a href="@subsec-binomial">Distribuição Binomial</a>, para <span class="math inline">\(n \to \infty\)</span>, que descreve a probabilidade de um número dado de eventos ocorrer em um intervalo fixo de tempo ou espaço, desde que esses eventos ocorram com uma taxa média constante e sejam independentes entre si. Uma variável aleatória que segue uma distribuição de Poisson é denotada por <span class="math inline">\(X \sim \text{Poisson}(\lambda)\)</span>, onde <span class="math inline">\(\lambda\)</span> é a taxa média de eventos por intervalo.</p>
+<p>A distribuição de Poisson é muito utilizada para modelar o número de eventos que ocorrem em um intervalo fixo (de tempo ou espaço) pode ser entendida como um caso limite da <a href="@subsec-binomial">Distribuição Binomial</a>, para <span class="math inline">\(n \to \infty\)</span>, e a probabilidade de sucesso muito pequena, desde que esses eventos ocorram com uma taxa média constante e sejam independentes entre si. Uma variável aleatória que segue uma distribuição de Poisson é denotada por <span class="math inline">\(X \sim \text{Poisson}(\lambda)\)</span>, onde <span class="math inline">\(\lambda\)</span> é a taxa média de eventos por intervalo.</p>
 <p>A função de massa de probabilidade da distribuição de Poisson é dada por:</p>
 <p><span id="eq-poisson"><span class="math display">\[P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!} \tag{2}\]</span></span></p>
 <p>Onde <span class="math inline">\(k\)</span> é o número de eventos, <span class="math inline">\(\lambda\)</span> é a taxa média de eventos e <span class="math inline">\(e\)</span> é a base do logaritmo natural.</p>
@@ -327,7 +329,7 @@ window.Quarto = {
 <h4 data-number="4.2.1" class="anchored" data-anchor-id="exemplo-de-aplicação-da-distribuição-de-poisson"><span class="header-section-number">4.2.1</span> Exemplo de aplicação da distribuição de Poisson</h4>
 <p>Em sistemas embarcados, é fundamental dimensionar corretamente a memória para evitar perda de dados. Por exemplo, uma Unidade de Controle Eletrônico (ECU) conectada a uma rede CAN, que recebe mensagens de forma contínua e aleatória.</p>
 <p>Considerando um cenário onde as mensagens chegam à ECU a uma taxa média de 12 mensagens a cada janela de 10 milissegundos, <span class="math inline">\(\lambda = 12\)</span>. Para garantir o processamento, o buffer do microcontrolador suporta o armazenamento de até 18 mensagens. A falha (overflow) ocorre se chegarem mais mensagens que a capacidade, <span class="math inline">\(X &gt; 18\)</span>.</p>
-<p>A probabilidade de o buffer transbordar pode ser calculada utilizando a distribuição de Poisson, subtraindo de 1 a soma das probabilidades de o buffer não transbordar (receber de 0 a 18 mensagens):</p>
+<p>A probabilidade de o buffer transbordar pode ser calculada utilizando a distribuição de Poisson, subtraindo de 1 a soma das probabilidades de o buffer suportar a carga (receber de 0 a 18 mensagens):</p>
 <p><span class="math display">\[P(X &gt; 18) = 1 - P(X \leq 18)\]</span></p>
 <p><span class="math display">\[P(X \leq 18) = \sum_{k=0}^{18} \frac{12^k e^{-12}}{k!}\]</span></p>
 <p>Expandindo o somatório, tem-se:</p>
@@ -391,6 +393,19 @@ Nota
 <p><span class="math display">\[P(9.90 \leq X \leq 10.10) = P\left(\frac{9.90 - 10.00}{0.05} \leq Z \leq \frac{10.10 - 10.00}{0.05}\right)\]</span></p>
 <p><span class="math display">\[P(9.90 \leq X \leq 10.10) = P(-2 \leq Z \leq 2)\]</span></p>
 <p>Como a resolução de forma analítica é complexa, utiliza-se ferramentas como o <a href="https://www.r-project.org/">R</a> e o pacote <code>leem</code> para calcular essa probabilidade:</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Como os valores foram padronizados, usaremos a distribuição Normal Padrão (Z ~ N(0,1)) no código para ter o gráfico da área de aceitação</p>
+</div>
+</div>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">P</span>(<span class="at">q =</span> (<span class="sc">-</span><span class="dv">2</span>) <span class="sc">%&lt;=X&lt;=%</span> <span class="dv">2</span>, <span class="co"># q = -2 &lt;= Z &lt;= 2</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a><span class="at">dist =</span> <span class="st">"normal"</span>, <span class="co"># Tipo de distribuição</span></span>
@@ -416,10 +431,23 @@ Nota
 <p>Além das distribuições Binomial, de Poisson e Normal, existem diversas outras distribuições de probabilidade que são amplamente utilizadas em diferentes contextos.</p>
 <section id="distribuição-geométrica" class="level4" data-number="4.4.1">
 <h4 data-number="4.4.1" class="anchored" data-anchor-id="distribuição-geométrica"><span class="header-section-number">4.4.1</span> Distribuição Geométrica</h4>
-<p>A distribuição Geométrica é uma distribuição de probabilidade discreta que modela o número de tentativas necessárias para obter o primeiro sucesso em uma sequência de experimentos independentes, onde cada experimento tem apenas dois resultados possíveis (sucesso ou fracasso) e a probabilidade de sucesso é constante. Uma variável aleatória que segue uma distribuição Geométrica é denotada por <span class="math inline">\(X \sim \text{Geometric}(p)\)</span>, onde <span class="math inline">\(p\)</span> é a probabilidade de sucesso em cada experimento.</p>
+<p>A distribuição Geométrica é uma distribuição de probabilidade discreta que modela o número de tentativas necessárias para obter o primeiro sucesso em uma sequência de experimentos independentes, onde cada experimento tem apenas dois resultados possíveis (sucesso ou fracasso) e a probabilidade de sucesso é constante. Uma variável aleatória que segue uma distribuição Geométrica é denotada por <span class="math inline">\(X \sim \text{Geometric}(p)\)</span>, onde <span class="math inline">\(p\)</span> é a probabilidade de sucesso em cada experimento. Diferente da Distribuição BInomial, a Geométrica teoricamente pode ir até o infinito.</p>
 <p><span id="eq-geometrica"><span class="math display">\[P(X = k) = (1-p)^{k-1} p \tag{6}\]</span></span></p>
 <p>Em processos de inspeção de qualidade automatizados, modela-se a quantidade de tentativas necessárias até que um evento específico ocorra.</p>
 <p>considere que a probabilidade de um braço robótico produzir uma solda defeituosa é de 5%, <span class="math inline">\(p = 0.05\)</span>. A probabilidade de a primeira solda defeituosa ser encontrada exatamente na 4ª inspeção (<span class="math inline">\(k = 4\)</span>) pode ser calculada utilizando a distribuição Geométrica. Isso significa que ocorrerão 3 inspeções bem-sucedidas (sem defeito) antes do primeiro “sucesso” estatístico (encontrar o defeito):</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Na Distribuição Geométrica, k é o numero da tentativa para o primeiro sucesso ocorrer, no caso, se o defeito é o sucesso e ocorre na 4° inspeção, tiveram 3 sucessos de soldegem (inspeções sem defeitos) e a 1° falha (solda com defeito) na 4° tentativa</p>
+</div>
+</div>
 <p><span class="math display">\[P(X = k) = (1 - p)^{k - 1} p\]</span></p>
 <p><span class="math display">\[P(X = 4) = (1 - 0.05)^{4 - 1} (0.05)\]</span></p>
 <p><span class="math display">\[P(X = 4) = (0.95)^3 (0.05)\]</span></p>
@@ -478,7 +506,7 @@ Nota
 <p><span class="math display">\[P(X \leq 100) = 0.01 \cdot \int_{0}^{100} e^{-0.01 x} dx\]</span></p>
 <p><span class="math display">\[P(X \leq 100) = 0.01 \cdot \left[-\frac{1}{0.01} e^{-0.01 x}\right]_{0}^{100}\]</span></p>
 <p><span class="math display">\[P(X \leq 100) = \left[e^{-0.01 x}\right]_{0}^{100}\]</span></p>
-<p><span class="math display">\[P(X \leq 100) = e^{-0} - e^{-1} \approx 0.6321\]</span></p>
+<p><span class="math display">\[P(X \leq 100) = e^{-0} - e^{-1} \approx 0.6321\]</span> ::: {.callout-note} Na Distribuição Exponencial, uma curiosidade interessante é que a propriedade de falta de memória (uma característica única dela) que é fundamental em estudos de confiabilidade. Ela indica que a probabilidade de ocorrência de um evento futuro independente do tempo decorrido, é ideal para modelar componentes que não sofrem desgaste físico gradual, mas falham por conta de eventos aleatórios externos. :::</p>
 <p>Com o <code>leem</code>:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">P</span>(<span class="at">q =</span> <span class="dv">100</span>,</span>
@@ -545,6 +573,32 @@ Nota
 </section>
 <section id="considerações-finais" class="level2" data-number="5">
 <h2 data-number="5" class="anchored" data-anchor-id="considerações-finais"><span class="header-section-number">5</span> Considerações finais</h2>
+<section id="dúvidas-mais-usuais" class="level3" data-number="5.1">
+<h3 data-number="5.1" class="anchored" data-anchor-id="dúvidas-mais-usuais"><span class="header-section-number">5.1</span> Dúvidas mais usuais</h3>
+<ol type="1">
+<li><p>Qual a diferença fundamental entre uma variável aleatória discreta e uma contínua quando usamos o pacote leem?</p></li>
+<li><p>O que acontece com o gráfico da Distribuição Binomial quando nós aumentamos o número de tentativas?</p></li>
+<li><p>Porque a Distribuição de Poisson pode ser chamada de distribuição de eventos raros?</p></li>
+<li><p>Porque a Distribuição Normal é considerada a distribuição padrão da natureza e engenharia?</p></li>
+<li><p>Sobre o impacto da redundancia na Distribuição Binomial, se aumentássemos o número de sensores de 5 para 7, como a probabilidade de segurança (k &gt;= 3) se comportaria?</p></li>
+<li><p>Em quais situações o uso da Distribuição Binomial no teste dos sensores seria tecnicamente incorreto, exigindo usar a Hipergeométrica?</p></li>
+<li><p>A propriedade de falta de memória da Exponencial é realista para componentes que sofrem desgaste mecânico ao longo do tempo?</p></li>
+<li><p>Como o Teorema Central do Limite justifica usar a Distribuição Normal quando não conhecemos a distribuição original dos dados?</p></li>
+</ol>
+</section>
+<section id="respostas" class="level3" data-number="5.2">
+<h3 data-number="5.2" class="anchored" data-anchor-id="respostas"><span class="header-section-number">5.2</span> Respostas</h3>
+<ol type="1">
+<li><p>A diferença é o que o R conta, em variáveis discretas (valores isolados: 1, 2, 10,…), e em um gráfico do leem geralmente podemos ver barras separadas; agora em variáveis contínuas são medidas (pode ser qualquer valor real), e no leem vemos a chance de pegar uma medida entre duas outras, trabalhamos com o cálculo de áreas sob a curva de densidade.</p></li>
+<li><p>Conforme o número de tentativas aumenta, as barras ficam mais próximas e a distribuição se torna mais simétrica, o que nos mostra que no limite a Distribuição se aproxima da Normal.</p></li>
+<li><p>A Distribuição de Poisson modela ocorrências em um intervalo em que a chance de um evento acontecer é quase zero, mas no total do intervalo temos uma média, usando o leem, se tivermos uma média pequena, o gráfico apresenta uma forte assimetria positiva (estar mais a direita, assim como a cauda do gráfico) quando a média é pequena ela concentra as probabilidades em valores pequenos, o que nos mostra que é muito provável ter poucos eventos e muito raro ter 10.</p></li>
+<li><p>Com o Teorema do Limite Central, os erros de medição de um sensor tendem a se cancelar ou se somar na engenharia, ficando na maior parte das leituras perto da média, no leem usamos muito a função para calcular a cauda (parte rala) da distribuição, se o gráfico do leem mostra uma área quase invisível, o processo é bem seguro.</p></li>
+<li><p>Quando aumentamos o número de sensores mantendo o critério de funcionamento K &gt;= 3, a probabilidade de segurança aumentaria muito, isso ocorre porque a Distribuição Binomial tem mais combinações de sucesso para atingir o requisito mínimo; o que aconteceria é que o somatório teria mais termos, deixando o sistema bem mais robusto a falhas individuais.</p></li>
+<li><p>A Distribuição Binomial será incorreta se testarmos sensores retirados em um lote pequeno e finito sem reposição. A Distribuição Binomial pressupõe que a probabilidade de sucesso é constante em todas as tentativas (como se tivesse reposição), já a Distribuição Hipergeométrica ajusta a probabilidade a cada retirada (isso porque a composição do lote muda. Se o lote total fosse de 20 sensores e tirássemos 5 para teste, a falta de um sensor alteraria a chance do próximo), e por isso é mais precisa.</p></li>
+<li><p>A propriedade de falta de memoria afirma que a probabilidade de falha é constante, independente de quanto tempo o componente já operou (ideal para modelar falhas aleatórias em componentes eletrônicos), mas falha em representar componentes mecânicos (que sofrem desgaste físico), para esses casos de envelhecimento, outras distribuições seriam mais adequadas do que a Distribuição Exponencial.</p></li>
+<li><p>O Teorema Central do Limite é fundamental por afirmar que independentemente da forma da distribuição original dos dados, a distribuição da média de uma grande amostra tenderá para uma Distribuição Normal conforme o tamanho da amostra aumenta (o que permite que engenheiros calculem probabilidades baseadas na curva de Gauss)</p></li>
+</ol>
+</section>
 </section>
 <section id="referências" class="level2" data-number="6">
 
@@ -1047,15 +1101,15 @@ CUSTÓDIO, T. N.; BATISTA, B. D. O. <strong><a href="https://bendeivide.github.i
 <span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a>  Distribuições de probabilidade são funções matemáticas que descrevem a probabilidade de ocorrência de diferentes resultados em um experimento aleatório. Estes modelos permitem analisar fenômenos incertos, tornando possíveis previsões e inferências sobre os dados.</span>
 <span id="cb18-34"><a href="#cb18-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-35"><a href="#cb18-35" aria-hidden="true" tabindex="-1"></a>  Neste relatório, serão exploradas as distribuições Binomial, de Poisson e Normal, suas características, aplicações e como elas se relacionam com a estatística e a probabilidade. Também serão aprensetadas duas distribuições de variáveis contínuas e duas de variáveis discretas, destacando suas propriedades e uso. Será utilizado o <span class="co">[</span><span class="ot">R</span><span class="co">]</span> e o pacote <span class="in">`leem`</span> para simular e visualizar essas distribuições.</span>
+<span id="cb18-35"><a href="#cb18-35" aria-hidden="true" tabindex="-1"></a>  Neste relatório, serão exploradas as distribuições Binomial, de Poisson e Normal, suas características, aplicações e como elas se relacionam com a estatística e a probabilidade. Também serão apresentadas duas distribuições de variáveis contínuas e duas de variáveis discretas, destacando suas propriedades e uso. Para essas simulações e visualizações será utilizado o <span class="co">[</span><span class="ot">R</span><span class="co">]</span> e o pacote <span class="in">`leem`</span> para simular e visualizar essas distribuições.</span>
 <span id="cb18-36"><a href="#cb18-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-37"><a href="#cb18-37" aria-hidden="true" tabindex="-1"></a>  Para complementar a compreensão, serão discutidos os conceitos de variáveis aleatórias, continuas e discretas, e como as distribuições de probabilidade se encaixam nesse contexto. </span>
+<span id="cb18-37"><a href="#cb18-37" aria-hidden="true" tabindex="-1"></a>  Para complementar o entendimento, serão discutidos os conceitos de variáveis aleatórias, continuas e discretas, e como as distribuições de probabilidade se encaixam nesse contexto. </span>
 <span id="cb18-38"><a href="#cb18-38" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-39"><a href="#cb18-39" aria-hidden="true" tabindex="-1"></a>---</span>
 <span id="cb18-40"><a href="#cb18-40" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-41"><a href="#cb18-41" aria-hidden="true" tabindex="-1"></a><span class="fu">## Objetivos {#sec-objetivos}</span></span>
 <span id="cb18-42"><a href="#cb18-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-43"><a href="#cb18-43" aria-hidden="true" tabindex="-1"></a>  Apresentar e discutir possíveis aplicações das distribuições de probabilidade, destacando suas características e diferenças.</span>
+<span id="cb18-43"><a href="#cb18-43" aria-hidden="true" tabindex="-1"></a>  Apresentar e discutir possíveis aplicações das distribuições de probabilidade, destacando suas características e diferenças teóricas e estatísticas.</span>
 <span id="cb18-44"><a href="#cb18-44" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-45"><a href="#cb18-45" aria-hidden="true" tabindex="-1"></a><span class="fu">### Objetivos específicos</span></span>
 <span id="cb18-46"><a href="#cb18-46" aria-hidden="true" tabindex="-1"></a></span>
@@ -1074,334 +1128,389 @@ CUSTÓDIO, T. N.; BATISTA, B. D. O. <strong><a href="https://bendeivide.github.i
 <span id="cb18-59"><a href="#cb18-59" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-60"><a href="#cb18-60" aria-hidden="true" tabindex="-1"></a><span class="fu">### Variáveis Discretas {#sec-discretas}</span></span>
 <span id="cb18-61"><a href="#cb18-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-62"><a href="#cb18-62" aria-hidden="true" tabindex="-1"></a>  Variáveis discretas assumem um conjunto finito ou contável de valores. </span>
+<span id="cb18-62"><a href="#cb18-62" aria-hidden="true" tabindex="-1"></a>  Variáveis discretas assumem valores em um conjunto finito ou contável (infinito). Geralmente são resultados de contagens. </span>
 <span id="cb18-63"><a href="#cb18-63" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-64"><a href="#cb18-64" aria-hidden="true" tabindex="-1"></a>  Exemplos:</span>
 <span id="cb18-65"><a href="#cb18-65" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>Número de caras em 10 lançamentos de uma moeda.</span>
 <span id="cb18-66"><a href="#cb18-66" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>Número de pessoas em um ambiente.</span>
-<span id="cb18-67"><a href="#cb18-67" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>Número de defeitos em um lote de produtos.</span>
+<span id="cb18-67"><a href="#cb18-67" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>Número de itens defeituosos em um lote de produtos.</span>
 <span id="cb18-68"><a href="#cb18-68" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb18-69"><a href="#cb18-69" aria-hidden="true" tabindex="-1"></a>  Gráficos comuns para variáveis discretas incluem gráficos de barras e histogramas. Como exemplo:</span>
-<span id="cb18-70"><a href="#cb18-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-73"><a href="#cb18-73" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb18-74"><a href="#cb18-74" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb18-75"><a href="#cb18-75" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
-<span id="cb18-76"><a href="#cb18-76" aria-hidden="true" tabindex="-1"></a><span class="co">#| results: hide</span></span>
-<span id="cb18-77"><a href="#cb18-77" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leem)</span>
-<span id="cb18-78"><a href="#cb18-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-79"><a href="#cb18-79" aria-hidden="true" tabindex="-1"></a><span class="fu">P</span>(<span class="at">q =</span> <span class="dv">10</span>, <span class="at">dist =</span> <span class="st">"binomial"</span>, </span>
-<span id="cb18-80"><a href="#cb18-80" aria-hidden="true" tabindex="-1"></a><span class="at">size =</span> <span class="dv">20</span>, <span class="at">prob =</span> <span class="fl">0.75</span>, </span>
-<span id="cb18-81"><a href="#cb18-81" aria-hidden="true" tabindex="-1"></a><span class="at">gui =</span> <span class="st">"plot"</span>, <span class="at">lower.tail =</span> <span class="cn">NULL</span>)</span>
-<span id="cb18-82"><a href="#cb18-82" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-83"><a href="#cb18-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-84"><a href="#cb18-84" aria-hidden="true" tabindex="-1"></a><span class="fu">### Variáveis Contínuas {#sec-continuas}</span></span>
-<span id="cb18-85"><a href="#cb18-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-86"><a href="#cb18-86" aria-hidden="true" tabindex="-1"></a>  Variáveis contínuas podem assumir qualquer valor Real dentro de um intervalo. </span>
-<span id="cb18-87"><a href="#cb18-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-88"><a href="#cb18-88" aria-hidden="true" tabindex="-1"></a>  Exemplos:</span>
-<span id="cb18-89"><a href="#cb18-89" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>Comprimento de um objeto.</span>
-<span id="cb18-90"><a href="#cb18-90" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>Temperatura.</span>
-<span id="cb18-91"><a href="#cb18-91" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>Tempo gasto para completar uma tarefa.</span>
-<span id="cb18-92"><a href="#cb18-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-93"><a href="#cb18-93" aria-hidden="true" tabindex="-1"></a>  Variáveis contínuas são representadas gráficamente por histogramas e gráficos de densidade. Como exemplo:</span>
+<span id="cb18-69"><a href="#cb18-69" aria-hidden="true" tabindex="-1"></a>  Gráficos comuns para variáveis discretas incluem gráficos de barras e histogramas, já que eles destacam a probabilidade de cada valor.</span>
+<span id="cb18-70"><a href="#cb18-70" aria-hidden="true" tabindex="-1"></a>  Como exemplo:</span>
+<span id="cb18-71"><a href="#cb18-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-74"><a href="#cb18-74" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-75"><a href="#cb18-75" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb18-76"><a href="#cb18-76" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
+<span id="cb18-77"><a href="#cb18-77" aria-hidden="true" tabindex="-1"></a><span class="co">#| results: hide</span></span>
+<span id="cb18-78"><a href="#cb18-78" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leem)</span>
+<span id="cb18-79"><a href="#cb18-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-80"><a href="#cb18-80" aria-hidden="true" tabindex="-1"></a><span class="fu">P</span>(<span class="at">q =</span> <span class="dv">10</span>, <span class="at">dist =</span> <span class="st">"binomial"</span>, </span>
+<span id="cb18-81"><a href="#cb18-81" aria-hidden="true" tabindex="-1"></a><span class="at">size =</span> <span class="dv">20</span>, <span class="at">prob =</span> <span class="fl">0.75</span>, </span>
+<span id="cb18-82"><a href="#cb18-82" aria-hidden="true" tabindex="-1"></a><span class="at">gui =</span> <span class="st">"plot"</span>, <span class="at">lower.tail =</span> <span class="cn">NULL</span>)</span>
+<span id="cb18-83"><a href="#cb18-83" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb18-84"><a href="#cb18-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-85"><a href="#cb18-85" aria-hidden="true" tabindex="-1"></a><span class="fu">### Variáveis Contínuas {#sec-continuas}</span></span>
+<span id="cb18-86"><a href="#cb18-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-87"><a href="#cb18-87" aria-hidden="true" tabindex="-1"></a>  Variáveis contínuas podem assumir qualquer valor dentro de um intervalo de números reais.</span>
+<span id="cb18-88"><a href="#cb18-88" aria-hidden="true" tabindex="-1"></a>  Diferente das discretas, elas não resultam das contagens, mas das medições (assim podem ter infinitas casas decimais)</span>
+<span id="cb18-89"><a href="#cb18-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-90"><a href="#cb18-90" aria-hidden="true" tabindex="-1"></a>  Exemplos:</span>
+<span id="cb18-91"><a href="#cb18-91" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>Comprimento de um objeto.</span>
+<span id="cb18-92"><a href="#cb18-92" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>Temperatura ao longo do dia.</span>
+<span id="cb18-93"><a href="#cb18-93" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>Tempo gasto para completar uma tarefa.</span>
 <span id="cb18-94"><a href="#cb18-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-97"><a href="#cb18-97" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb18-98"><a href="#cb18-98" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb18-99"><a href="#cb18-99" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
-<span id="cb18-100"><a href="#cb18-100" aria-hidden="true" tabindex="-1"></a><span class="co">#| results: hide</span></span>
-<span id="cb18-101"><a href="#cb18-101" aria-hidden="true" tabindex="-1"></a><span class="fu">P</span>(<span class="at">q =</span> <span class="dv">10</span>, <span class="at">dist =</span> <span class="st">"normal"</span>, </span>
-<span id="cb18-102"><a href="#cb18-102" aria-hidden="true" tabindex="-1"></a><span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> <span class="dv">1</span>,</span>
-<span id="cb18-103"><a href="#cb18-103" aria-hidden="true" tabindex="-1"></a><span class="at">gui =</span> <span class="st">"plot"</span>, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb18-104"><a href="#cb18-104" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-105"><a href="#cb18-105" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-106"><a href="#cb18-106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-107"><a href="#cb18-107" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb18-95"><a href="#cb18-95" aria-hidden="true" tabindex="-1"></a>  Variáveis contínuas são representadas gráficamente por histogramas (com as áreas das barras somando 1) e gráficos de densidade (mostram a distribuição dessa probabilidade ao longo de uma curva contínua). Como exemplo:</span>
+<span id="cb18-96"><a href="#cb18-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-99"><a href="#cb18-99" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-100"><a href="#cb18-100" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb18-101"><a href="#cb18-101" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
+<span id="cb18-102"><a href="#cb18-102" aria-hidden="true" tabindex="-1"></a><span class="co">#| results: hide</span></span>
+<span id="cb18-103"><a href="#cb18-103" aria-hidden="true" tabindex="-1"></a><span class="fu">P</span>(<span class="at">q =</span> <span class="dv">10</span>, <span class="at">dist =</span> <span class="st">"normal"</span>, </span>
+<span id="cb18-104"><a href="#cb18-104" aria-hidden="true" tabindex="-1"></a><span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> <span class="dv">1</span>,</span>
+<span id="cb18-105"><a href="#cb18-105" aria-hidden="true" tabindex="-1"></a><span class="at">gui =</span> <span class="st">"plot"</span>, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb18-106"><a href="#cb18-106" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb18-107"><a href="#cb18-107" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-108"><a href="#cb18-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-109"><a href="#cb18-109" aria-hidden="true" tabindex="-1"></a><span class="fu">## Distribuições de Probabilidade {#sec-distribuicoes}</span></span>
+<span id="cb18-109"><a href="#cb18-109" aria-hidden="true" tabindex="-1"></a>---</span>
 <span id="cb18-110"><a href="#cb18-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-111"><a href="#cb18-111" aria-hidden="true" tabindex="-1"></a>  As distribuições de probabilidade descrevem como os valores de uma variável aleatória estão distribuídos. Elas fornecem uma maneira de modelar e entender a incerteza associada a eventos aleatórios.</span>
+<span id="cb18-111"><a href="#cb18-111" aria-hidden="true" tabindex="-1"></a><span class="fu">## Distribuições de Probabilidade {#sec-distribuicoes}</span></span>
 <span id="cb18-112"><a href="#cb18-112" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-113"><a href="#cb18-113" aria-hidden="true" tabindex="-1"></a><span class="fu">### Distribuição Binomial {#sec-binomial}</span></span>
+<span id="cb18-113"><a href="#cb18-113" aria-hidden="true" tabindex="-1"></a>  As distribuições de probabilidade descrevem como os valores de uma variável aleatória estão distribuídos. Elas fornecem uma maneira de modelar e entender a incerteza associada a eventos aleatórios.</span>
 <span id="cb18-114"><a href="#cb18-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-115"><a href="#cb18-115" aria-hidden="true" tabindex="-1"></a>  A distribuição Binomial utiliza de variáveis discretas e é usada para modelar o número de sucessos em uma sequência de n experimentos independentes, onde cada experimento tem apenas dois resultados possíveis (sucesso ou fracasso) e a probabilidade de sucesso é constante. Uma variável aleatória que segue uma distribuição Binomial é denotada por $X \sim \text{Binomial}(n, p)$, onde $n$ é o número de experimentos e $p$ é a probabilidade de sucesso em cada experimento. </span>
+<span id="cb18-115"><a href="#cb18-115" aria-hidden="true" tabindex="-1"></a><span class="fu">### Distribuição Binomial {#sec-binomial}</span></span>
 <span id="cb18-116"><a href="#cb18-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-117"><a href="#cb18-117" aria-hidden="true" tabindex="-1"></a>  Essa distribuição é caracterizada por dois parâmetros: o número de experimentos (n) e a probabilidade de sucesso em cada experimento (p). A função de massa de probabilidade da distribuição Binomial é dada por:</span>
+<span id="cb18-117"><a href="#cb18-117" aria-hidden="true" tabindex="-1"></a>  A distribuição Binomial é aplicada a variáveis discretas e é usada para modelar o número de sucessos em uma sequência de n experimentos independentes, onde cada experimento tem apenas dois resultados possíveis (sucesso ou fracasso) com a probabilidade de sucesso sendo constante. Uma variável aleatória que segue uma distribuição Binomial é denotada por $X \sim \text{Binomial}(n, p)$, onde $n$ é o número de experimentos e $p$ é a probabilidade de sucesso em cada experimento. </span>
 <span id="cb18-118"><a href="#cb18-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-119"><a href="#cb18-119" aria-hidden="true" tabindex="-1"></a>  $$P(X = k) = \binom{n}{k} p^k (1-p)^{n-k}$$ {#eq-binomial}</span>
+<span id="cb18-119"><a href="#cb18-119" aria-hidden="true" tabindex="-1"></a>  Essa distribuição é caracterizada por dois parâmetros: o número de experimentos (n) e a probabilidade de sucesso em cada experimento (p). A função de massa de probabilidade da distribuição Binomial é dada por:</span>
 <span id="cb18-120"><a href="#cb18-120" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-121"><a href="#cb18-121" aria-hidden="true" tabindex="-1"></a>  Onde $k$ é o número de sucessos, $\binom{n}{k}$ é o coeficiente binomial, dado por $\frac{n!}{k!(n-k)!}$, $p$ é a probabilidade de sucesso e $1-p$ é a probabilidade de fracasso.</span>
+<span id="cb18-121"><a href="#cb18-121" aria-hidden="true" tabindex="-1"></a>  $$P(X = k) = \binom{n}{k} p^k (1-p)^{n-k}$$ {#eq-binomial}</span>
 <span id="cb18-122"><a href="#cb18-122" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-123"><a href="#cb18-123" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Exemplo de aplicação da distribuição Binomial</span></span>
+<span id="cb18-123"><a href="#cb18-123" aria-hidden="true" tabindex="-1"></a>  Onde $k$ é o número de sucessos, $\binom{n}{k}$ é o coeficiente binomial, dado por $\frac{n!}{k!(n-k)!}$, $p$ é a probabilidade de sucesso e $1-p$ é a probabilidade de fracasso.</span>
 <span id="cb18-124"><a href="#cb18-124" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-125"><a href="#cb18-125" aria-hidden="true" tabindex="-1"></a>  Em sistemas mecatrônicos, é comum utilizar uma redundância de sensores para aumentar a confiabilidade do sistema. Por exemplo, imagine um sistema para evitar colisões em um veículo autônomo, o veículo pode ser equipado com múltiplos sensores de proximidade. </span>
-<span id="cb18-126"><a href="#cb18-126" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb18-127"><a href="#cb18-127" aria-hidden="true" tabindex="-1"></a>  Para está demonstração, vamos considerar um cenário onde o veículo possui 5 sensores ultrassônicos idênticos, $n = 5$. Para garantir a segurança, o veículo só se movimenta se pelo menos 3 dos sensores forem validados, $k \geq 3$. Supondo que cada sensor tem 90% de funcionar corretamente, $p = 0.9$, consequentemente, $1-p = 0.1$, 10% de falha. A probabilidade de o veículo se movimentar com segurança pode ser calculada utilizando a distribuição Binomial, somando as probabilidades de obter 3, 4 ou 5 sucessos:</span>
-<span id="cb18-128"><a href="#cb18-128" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-129"><a href="#cb18-129" aria-hidden="true" tabindex="-1"></a>  $$P(X \geq 3) = P(X = 3) + P(X = 4) + P(X = 5)$$</span>
+<span id="cb18-125"><a href="#cb18-125" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Exemplo de aplicação da distribuição Binomial</span></span>
+<span id="cb18-126"><a href="#cb18-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-127"><a href="#cb18-127" aria-hidden="true" tabindex="-1"></a>  Em sistemas mecatrônicos, é comum utilizar uma redundância de sensores para aumentar a confiabilidade do sistema. Por exemplo, imagine um sistema para evitar colisões em um veículo autônomo, o veículo pode ser equipado com múltiplos sensores independentes para detectar obstáculos ne proximidade, se a probabilidade de falha de um sensor é de $q = 1-p$, essa distribuição permite calcular a probabilidade do sistema permanecer operacional caso o número k de sensores. </span>
+<span id="cb18-128"><a href="#cb18-128" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb18-129"><a href="#cb18-129" aria-hidden="true" tabindex="-1"></a>  Para esta demonstração, vamos considerar um cenário onde o veículo possui $n = 5$ sensores ultrassônicos idênticos. Para garantir a segurança, o veículo só se movimenta se pelo menos 3 dos sensores forem ativados, $k \geq 3$. Supondo que cada sensor tem 90% de funcionar corretamente, $p = 0.9$, consequentemente, $1-p = 0.1$, 10% de falha. A probabilidade de o veículo se movimentar com segurança pode ser calculada utilizando a distribuição Binomial, somando as probabilidades de obter 3, 4 ou 5 sucessos:</span>
 <span id="cb18-130"><a href="#cb18-130" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-131"><a href="#cb18-131" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-132"><a href="#cb18-132" aria-hidden="true" tabindex="-1"></a>  $$P(X = 3) = \binom{5}{3} (0.9)^3 (0.1)^2 = 0.0729$$</span>
+<span id="cb18-131"><a href="#cb18-131" aria-hidden="true" tabindex="-1"></a>  $$P(X \geq 3) = P(X = 3) + P(X = 4) + P(X = 5)$$</span>
+<span id="cb18-132"><a href="#cb18-132" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-133"><a href="#cb18-133" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-134"><a href="#cb18-134" aria-hidden="true" tabindex="-1"></a>  $$P(X = 4) = \binom{5}{4} (0.9)^4 (0.1)^1 = 0.32805$$</span>
+<span id="cb18-134"><a href="#cb18-134" aria-hidden="true" tabindex="-1"></a>  $$P(X = 3) = \binom{5}{3} (0.9)^3 (0.1)^2 = 0.0729$$</span>
 <span id="cb18-135"><a href="#cb18-135" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-136"><a href="#cb18-136" aria-hidden="true" tabindex="-1"></a>  $$P(X = 5) = \binom{5}{5} (0.9)^5 (0.1)^0 = 0.59049$$</span>
+<span id="cb18-136"><a href="#cb18-136" aria-hidden="true" tabindex="-1"></a>  $$P(X = 4) = \binom{5}{4} (0.9)^4 (0.1)^1 = 0.32805$$</span>
 <span id="cb18-137"><a href="#cb18-137" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-138"><a href="#cb18-138" aria-hidden="true" tabindex="-1"></a>  $$P(X \geq 3) = 0.0729 + 0.32805 + 0.59049 = 0.99144$$</span>
+<span id="cb18-138"><a href="#cb18-138" aria-hidden="true" tabindex="-1"></a>  $$P(X = 5) = \binom{5}{5} (0.9)^5 (0.1)^0 = 0.59049$$</span>
 <span id="cb18-139"><a href="#cb18-139" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-140"><a href="#cb18-140" aria-hidden="true" tabindex="-1"></a>  Ou seja, a probabilidade de o veículo se movimentar com segurança é de aproximadamente 99.144%.</span>
+<span id="cb18-140"><a href="#cb18-140" aria-hidden="true" tabindex="-1"></a>  $$P(X \geq 3) = 0.0729 + 0.32805 + 0.59049 = 0.99144$$</span>
 <span id="cb18-141"><a href="#cb18-141" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-142"><a href="#cb18-142" aria-hidden="true" tabindex="-1"></a>  Com o <span class="co">[</span><span class="ot">R</span><span class="co">]</span> e o pacote <span class="in">`leem`</span>, podemos calcular essa probabilidade de forma mais eficiente:</span>
+<span id="cb18-142"><a href="#cb18-142" aria-hidden="true" tabindex="-1"></a>  Ou seja, a probabilidade de o veículo se movimentar com segurança é de aproximadamente 99.144%.</span>
 <span id="cb18-143"><a href="#cb18-143" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-146"><a href="#cb18-146" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb18-147"><a href="#cb18-147" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
-<span id="cb18-148"><a href="#cb18-148" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
-<span id="cb18-149"><a href="#cb18-149" aria-hidden="true" tabindex="-1"></a><span class="fu">P</span>(<span class="at">q =</span> <span class="dv">2</span>, <span class="co"># k - número de sucessos, q = 2 para P(X &gt;= 3) pois lower.tail = FALSE calcula P(X &gt; q)</span></span>
-<span id="cb18-150"><a href="#cb18-150" aria-hidden="true" tabindex="-1"></a><span class="at">dist =</span> <span class="st">"binomial"</span>, <span class="co"># Tipo de distribuição</span></span>
-<span id="cb18-151"><a href="#cb18-151" aria-hidden="true" tabindex="-1"></a><span class="at">size =</span> <span class="dv">5</span>,  <span class="co"># n - número de experimentos</span></span>
-<span id="cb18-152"><a href="#cb18-152" aria-hidden="true" tabindex="-1"></a><span class="at">prob =</span> <span class="fl">0.9</span>, <span class="co"># p - probabilidade de sucesso</span></span>
-<span id="cb18-153"><a href="#cb18-153" aria-hidden="true" tabindex="-1"></a><span class="at">gui =</span> <span class="st">"plot"</span>, </span>
-<span id="cb18-154"><a href="#cb18-154" aria-hidden="true" tabindex="-1"></a><span class="at">lower.tail =</span> <span class="cn">FALSE</span>) <span class="co"># Calcula P(X &gt;= 3)</span></span>
-<span id="cb18-155"><a href="#cb18-155" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-156"><a href="#cb18-156" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb18-144"><a href="#cb18-144" aria-hidden="true" tabindex="-1"></a>  Com o <span class="co">[</span><span class="ot">R</span><span class="co">]</span> e o pacote <span class="in">`leem`</span>, podemos calcular essa probabilidade de forma mais eficiente:</span>
+<span id="cb18-145"><a href="#cb18-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-148"><a href="#cb18-148" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-149"><a href="#cb18-149" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
+<span id="cb18-150"><a href="#cb18-150" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
+<span id="cb18-151"><a href="#cb18-151" aria-hidden="true" tabindex="-1"></a><span class="fu">P</span>(<span class="at">q =</span> <span class="dv">2</span>, <span class="co"># k - número de sucessos, q = 2 para P(X &gt;= 3) pois lower.tail = FALSE calcula P(X &gt; q)</span></span>
+<span id="cb18-152"><a href="#cb18-152" aria-hidden="true" tabindex="-1"></a><span class="at">dist =</span> <span class="st">"binomial"</span>, <span class="co"># Tipo de distribuição</span></span>
+<span id="cb18-153"><a href="#cb18-153" aria-hidden="true" tabindex="-1"></a><span class="at">size =</span> <span class="dv">5</span>,  <span class="co"># n - número de experimentos</span></span>
+<span id="cb18-154"><a href="#cb18-154" aria-hidden="true" tabindex="-1"></a><span class="at">prob =</span> <span class="fl">0.9</span>, <span class="co"># p - probabilidade de sucesso</span></span>
+<span id="cb18-155"><a href="#cb18-155" aria-hidden="true" tabindex="-1"></a><span class="at">gui =</span> <span class="st">"plot"</span>, </span>
+<span id="cb18-156"><a href="#cb18-156" aria-hidden="true" tabindex="-1"></a><span class="at">lower.tail =</span> <span class="cn">FALSE</span>) <span class="co"># Calcula P(X &gt;= 3)</span></span>
 <span id="cb18-157"><a href="#cb18-157" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-158"><a href="#cb18-158" aria-hidden="true" tabindex="-1"></a><span class="fu">### Distribuição de Poisson {#sec-poisson}</span></span>
+<span id="cb18-158"><a href="#cb18-158" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb18-159"><a href="#cb18-159" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-160"><a href="#cb18-160" aria-hidden="true" tabindex="-1"></a>  A distribuição de Poisson é uma distribuição de probabilidade de variáveis discretas derivada da <span class="co">[</span><span class="ot">Distribuição Binomial</span><span class="co">](@subsec-binomial)</span>, para $n \to \infty$, que descreve a probabilidade de um número dado de eventos ocorrer em um intervalo fixo de tempo ou espaço, desde que esses eventos ocorram com uma taxa média constante e sejam independentes entre si. Uma variável aleatória que segue uma distribuição de Poisson é denotada por $X \sim \text{Poisson}(\lambda)$, onde $\lambda$ é a taxa média de eventos por intervalo.</span>
+<span id="cb18-160"><a href="#cb18-160" aria-hidden="true" tabindex="-1"></a><span class="fu">### Distribuição de Poisson {#sec-poisson}</span></span>
 <span id="cb18-161"><a href="#cb18-161" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-162"><a href="#cb18-162" aria-hidden="true" tabindex="-1"></a>  A função de massa de probabilidade da distribuição de Poisson é dada por:</span>
+<span id="cb18-162"><a href="#cb18-162" aria-hidden="true" tabindex="-1"></a>  A distribuição de Poisson é muito utilizada para modelar o número de eventos que ocorrem em um intervalo fixo (de tempo ou espaço) pode ser entendida como um caso limite da <span class="co">[</span><span class="ot">Distribuição Binomial</span><span class="co">](@subsec-binomial)</span>, para $n \to \infty$, e a probabilidade de sucesso muito pequena, desde que esses eventos ocorram com uma taxa média constante e sejam independentes entre si. Uma variável aleatória que segue uma distribuição de Poisson é denotada por $X \sim \text{Poisson}(\lambda)$, onde $\lambda$ é a taxa média de eventos por intervalo.</span>
 <span id="cb18-163"><a href="#cb18-163" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-164"><a href="#cb18-164" aria-hidden="true" tabindex="-1"></a>  $$P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!}$$ {#eq-poisson}</span>
+<span id="cb18-164"><a href="#cb18-164" aria-hidden="true" tabindex="-1"></a>  A função de massa de probabilidade da distribuição de Poisson é dada por:</span>
 <span id="cb18-165"><a href="#cb18-165" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-166"><a href="#cb18-166" aria-hidden="true" tabindex="-1"></a>  Onde $k$ é o número de eventos, $\lambda$ é a taxa média de eventos e $e$ é a base do logaritmo natural.</span>
+<span id="cb18-166"><a href="#cb18-166" aria-hidden="true" tabindex="-1"></a>  $$P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!}$$ {#eq-poisson}</span>
 <span id="cb18-167"><a href="#cb18-167" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-168"><a href="#cb18-168" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Exemplo de aplicação da distribuição de Poisson</span></span>
+<span id="cb18-168"><a href="#cb18-168" aria-hidden="true" tabindex="-1"></a>  Onde $k$ é o número de eventos, $\lambda$ é a taxa média de eventos e $e$ é a base do logaritmo natural.</span>
 <span id="cb18-169"><a href="#cb18-169" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-170"><a href="#cb18-170" aria-hidden="true" tabindex="-1"></a>Em sistemas embarcados, é fundamental dimensionar corretamente a memória para evitar perda de dados. Por exemplo, uma Unidade de Controle Eletrônico (ECU) conectada a uma rede CAN, que recebe mensagens de forma contínua e aleatória.</span>
+<span id="cb18-170"><a href="#cb18-170" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Exemplo de aplicação da distribuição de Poisson</span></span>
 <span id="cb18-171"><a href="#cb18-171" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-172"><a href="#cb18-172" aria-hidden="true" tabindex="-1"></a>Considerando um cenário onde as mensagens chegam à ECU a uma taxa média de 12 mensagens a cada janela de 10 milissegundos, $\lambda = 12$. Para garantir o processamento, o buffer do microcontrolador suporta o armazenamento de até 18 mensagens. A falha (overflow) ocorre se chegarem mais mensagens que a capacidade, $X &gt; 18$. </span>
+<span id="cb18-172"><a href="#cb18-172" aria-hidden="true" tabindex="-1"></a>Em sistemas embarcados, é fundamental dimensionar corretamente a memória para evitar perda de dados. Por exemplo, uma Unidade de Controle Eletrônico (ECU) conectada a uma rede CAN, que recebe mensagens de forma contínua e aleatória.</span>
 <span id="cb18-173"><a href="#cb18-173" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-174"><a href="#cb18-174" aria-hidden="true" tabindex="-1"></a>A probabilidade de o buffer transbordar pode ser calculada utilizando a distribuição de Poisson, subtraindo de 1 a soma das probabilidades de o buffer não transbordar (receber de 0 a 18 mensagens):</span>
+<span id="cb18-174"><a href="#cb18-174" aria-hidden="true" tabindex="-1"></a>Considerando um cenário onde as mensagens chegam à ECU a uma taxa média de 12 mensagens a cada janela de 10 milissegundos, $\lambda = 12$. Para garantir o processamento, o buffer do microcontrolador suporta o armazenamento de até 18 mensagens. A falha (overflow) ocorre se chegarem mais mensagens que a capacidade, $X &gt; 18$. </span>
 <span id="cb18-175"><a href="#cb18-175" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-176"><a href="#cb18-176" aria-hidden="true" tabindex="-1"></a>$$P(X &gt; 18) = 1 - P(X \leq 18)$$</span>
-<span id="cb18-177"><a href="#cb18-177" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb18-178"><a href="#cb18-178" aria-hidden="true" tabindex="-1"></a>$$P(X \leq 18) = \sum_{k=0}^{18} \frac{12^k e^{-12}}{k!}$$</span>
-<span id="cb18-179"><a href="#cb18-179" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-180"><a href="#cb18-180" aria-hidden="true" tabindex="-1"></a>Expandindo o somatório, tem-se:</span>
+<span id="cb18-176"><a href="#cb18-176" aria-hidden="true" tabindex="-1"></a>A probabilidade de o buffer transbordar pode ser calculada utilizando a distribuição de Poisson, subtraindo de 1 a soma das probabilidades de o buffer suportar a carga (receber de 0 a 18 mensagens):</span>
+<span id="cb18-177"><a href="#cb18-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-178"><a href="#cb18-178" aria-hidden="true" tabindex="-1"></a>$$P(X &gt; 18) = 1 - P(X \leq 18)$$</span>
+<span id="cb18-179"><a href="#cb18-179" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb18-180"><a href="#cb18-180" aria-hidden="true" tabindex="-1"></a>$$P(X \leq 18) = \sum_{k=0}^{18} \frac{12^k e^{-12}}{k!}$$</span>
 <span id="cb18-181"><a href="#cb18-181" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-182"><a href="#cb18-182" aria-hidden="true" tabindex="-1"></a>$$P(X \leq 18) = \frac{12^0 e^{-12}}{0!} + \frac{12^1 e^{-12}}{1!} + \frac{12^2 e^{-12}}{2!} + ... + \frac{12^{18} e^{-12}}{18!}$$</span>
+<span id="cb18-182"><a href="#cb18-182" aria-hidden="true" tabindex="-1"></a>Expandindo o somatório, tem-se:</span>
 <span id="cb18-183"><a href="#cb18-183" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-184"><a href="#cb18-184" aria-hidden="true" tabindex="-1"></a>Os resultados individuais de cada termo do somatório podem ser calculados, mas é mais eficiente utilizar o <span class="co">[</span><span class="ot">R</span><span class="co">]</span> e o pacote <span class="in">`leem`</span> para obter a probabilidade de forma rápida:</span>
+<span id="cb18-184"><a href="#cb18-184" aria-hidden="true" tabindex="-1"></a>$$P(X \leq 18) = \frac{12^0 e^{-12}}{0!} + \frac{12^1 e^{-12}}{1!} + \frac{12^2 e^{-12}}{2!} + ... + \frac{12^{18} e^{-12}}{18!}$$</span>
 <span id="cb18-185"><a href="#cb18-185" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-188"><a href="#cb18-188" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb18-189"><a href="#cb18-189" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
-<span id="cb18-190"><a href="#cb18-190" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
-<span id="cb18-191"><a href="#cb18-191" aria-hidden="true" tabindex="-1"></a><span class="fu">P</span>(<span class="at">q =</span> <span class="dv">18</span>, <span class="co"># q = 18 para P(X &gt; 18)</span></span>
-<span id="cb18-192"><a href="#cb18-192" aria-hidden="true" tabindex="-1"></a><span class="at">dist =</span> <span class="st">"poisson"</span>, <span class="co"># Tipo de distribuição</span></span>
-<span id="cb18-193"><a href="#cb18-193" aria-hidden="true" tabindex="-1"></a><span class="at">lambda =</span> <span class="dv">12</span>, <span class="co"># λ - taxa média de eventos</span></span>
-<span id="cb18-194"><a href="#cb18-194" aria-hidden="true" tabindex="-1"></a><span class="at">gui =</span> <span class="st">"plot"</span>,</span>
-<span id="cb18-195"><a href="#cb18-195" aria-hidden="true" tabindex="-1"></a><span class="at">lower.tail =</span> <span class="cn">FALSE</span>) <span class="co"># Calcula P(X &gt; 18)</span></span>
-<span id="cb18-196"><a href="#cb18-196" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-197"><a href="#cb18-197" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-198"><a href="#cb18-198" aria-hidden="true" tabindex="-1"></a>Calcula-se:</span>
+<span id="cb18-186"><a href="#cb18-186" aria-hidden="true" tabindex="-1"></a>Os resultados individuais de cada termo do somatório podem ser calculados, mas é mais eficiente utilizar o <span class="co">[</span><span class="ot">R</span><span class="co">]</span> e o pacote <span class="in">`leem`</span> para obter a probabilidade de forma rápida:</span>
+<span id="cb18-187"><a href="#cb18-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-190"><a href="#cb18-190" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-191"><a href="#cb18-191" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
+<span id="cb18-192"><a href="#cb18-192" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
+<span id="cb18-193"><a href="#cb18-193" aria-hidden="true" tabindex="-1"></a><span class="fu">P</span>(<span class="at">q =</span> <span class="dv">18</span>, <span class="co"># q = 18 para P(X &gt; 18)</span></span>
+<span id="cb18-194"><a href="#cb18-194" aria-hidden="true" tabindex="-1"></a><span class="at">dist =</span> <span class="st">"poisson"</span>, <span class="co"># Tipo de distribuição</span></span>
+<span id="cb18-195"><a href="#cb18-195" aria-hidden="true" tabindex="-1"></a><span class="at">lambda =</span> <span class="dv">12</span>, <span class="co"># λ - taxa média de eventos</span></span>
+<span id="cb18-196"><a href="#cb18-196" aria-hidden="true" tabindex="-1"></a><span class="at">gui =</span> <span class="st">"plot"</span>,</span>
+<span id="cb18-197"><a href="#cb18-197" aria-hidden="true" tabindex="-1"></a><span class="at">lower.tail =</span> <span class="cn">FALSE</span>) <span class="co"># Calcula P(X &gt; 18)</span></span>
+<span id="cb18-198"><a href="#cb18-198" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb18-199"><a href="#cb18-199" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-200"><a href="#cb18-200" aria-hidden="true" tabindex="-1"></a>$$P(X &gt; 18) = 0.03742$$</span>
+<span id="cb18-200"><a href="#cb18-200" aria-hidden="true" tabindex="-1"></a>Calcula-se:</span>
 <span id="cb18-201"><a href="#cb18-201" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-202"><a href="#cb18-202" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-203"><a href="#cb18-203" aria-hidden="true" tabindex="-1"></a><span class="fu">### Distribuição Normal {#sec-normal}</span></span>
+<span id="cb18-202"><a href="#cb18-202" aria-hidden="true" tabindex="-1"></a>$$P(X &gt; 18) = 0.03742$$</span>
+<span id="cb18-203"><a href="#cb18-203" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-204"><a href="#cb18-204" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-205"><a href="#cb18-205" aria-hidden="true" tabindex="-1"></a>  A distribuição Normal, também conhecida como distribuição Gaussiana, é uma distribuição de probabilidade contínua que é simétrica em torno de sua média, mostrando que os dados próximos à média são mais frequentes em ocorrência do que os dados distantes da média. Uma variável aleatória que segue uma distribuição Normal é denotada por $X \sim \text{Normal}(\mu, \sigma^2)$, onde $\mu$ é a média e $\sigma^2$ é a variância.</span>
+<span id="cb18-205"><a href="#cb18-205" aria-hidden="true" tabindex="-1"></a><span class="fu">### Distribuição Normal {#sec-normal}</span></span>
 <span id="cb18-206"><a href="#cb18-206" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-207"><a href="#cb18-207" aria-hidden="true" tabindex="-1"></a>  Esta distribuição é a mais importante na estatística devido ao Teorema Central do Limite, que afirma que a soma de um grande número de variáveis aleatórias independentes e identicamente distribuídas tende a seguir uma distribuição Normal, independentemente da distribuição original das variáveis.</span>
+<span id="cb18-207"><a href="#cb18-207" aria-hidden="true" tabindex="-1"></a>  A distribuição Normal, também conhecida como distribuição Gaussiana, é uma distribuição de probabilidade contínua que é simétrica em torno de sua média, mostrando que os dados próximos à média são mais frequentes em ocorrência do que os dados distantes da média. Uma variável aleatória que segue uma distribuição Normal é denotada por $X \sim \text{Normal}(\mu, \sigma^2)$, onde $\mu$ é a média e $\sigma^2$ é a variância.</span>
 <span id="cb18-208"><a href="#cb18-208" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-209"><a href="#cb18-209" aria-hidden="true" tabindex="-1"></a>  A função de densidade de probabilidade da distribuição Normal é dada por:</span>
+<span id="cb18-209"><a href="#cb18-209" aria-hidden="true" tabindex="-1"></a>  Esta distribuição é a mais importante na estatística devido ao Teorema Central do Limite, que afirma que a soma de um grande número de variáveis aleatórias independentes e identicamente distribuídas tende a seguir uma distribuição Normal, independentemente da distribuição original das variáveis.</span>
 <span id="cb18-210"><a href="#cb18-210" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-211"><a href="#cb18-211" aria-hidden="true" tabindex="-1"></a>  $$f(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{(x - \mu)^2}{2\sigma^2}}$$ {#eq-normal}</span>
+<span id="cb18-211"><a href="#cb18-211" aria-hidden="true" tabindex="-1"></a>  A função de densidade de probabilidade da distribuição Normal é dada por:</span>
 <span id="cb18-212"><a href="#cb18-212" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-213"><a href="#cb18-213" aria-hidden="true" tabindex="-1"></a>  Onde $x$ é o valor da variável aleatória, $\mu$ é a média, $\sigma$ é o desvio padrão e $e$ é a base do logaritmo natural.</span>
+<span id="cb18-213"><a href="#cb18-213" aria-hidden="true" tabindex="-1"></a>  $$f(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{(x - \mu)^2}{2\sigma^2}}$$ {#eq-normal}</span>
 <span id="cb18-214"><a href="#cb18-214" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-215"><a href="#cb18-215" aria-hidden="true" tabindex="-1"></a>  Diferente das distribuições discretizadas, uma distribuição contínua é calculada através da integração da região de interesse sob a curva da função de densidade de probabilidade. </span>
+<span id="cb18-215"><a href="#cb18-215" aria-hidden="true" tabindex="-1"></a>  Onde $x$ é o valor da variável aleatória, $\mu$ é a média, $\sigma$ é o desvio padrão e $e$ é a base do logaritmo natural.</span>
 <span id="cb18-216"><a href="#cb18-216" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-217"><a href="#cb18-217" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Distribuição Normal Padrão {#sec-normal-padrao}</span></span>
+<span id="cb18-217"><a href="#cb18-217" aria-hidden="true" tabindex="-1"></a>  Diferente das distribuições discretizadas, uma distribuição contínua é calculada através da integração da região de interesse sob a curva da função de densidade de probabilidade. </span>
 <span id="cb18-218"><a href="#cb18-218" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-219"><a href="#cb18-219" aria-hidden="true" tabindex="-1"></a>  Para função que da origem a Distribuição Normal, calcular a integral de forma analítica é um trabalho complexo, por isso se recorre ao calculo numérico ou ao uso de tabelas de valores da função de distribuição acumulada (CDF) para obter as probabilidades associadas a intervalos específicos. Para simplificar os cálculos, é comum padronizar a variável aleatória Normal, transformando-a em uma variável aleatória que segue a Distribuição Normal Padrão.</span>
+<span id="cb18-219"><a href="#cb18-219" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Distribuição Normal Padrão {#sec-normal-padrao}</span></span>
 <span id="cb18-220"><a href="#cb18-220" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-221"><a href="#cb18-221" aria-hidden="true" tabindex="-1"></a>  A distribuição Normal Padrão é um caso especial da distribuição Normal onde a média é igual a 0 e o desvio padrão é igual a 1, ou seja, $Z \sim \text{Normal}(0, 1)$. A função de densidade de probabilidade da distribuição Normal Padrão é dada por:</span>
+<span id="cb18-221"><a href="#cb18-221" aria-hidden="true" tabindex="-1"></a>  Para função que da origem a Distribuição Normal, calcular a integral de forma analítica é um trabalho complexo, por isso se recorre ao calculo numérico ou ao uso de tabelas de valores da função de distribuição acumulada (CDF) para obter as probabilidades associadas a intervalos específicos. Para simplificar os cálculos, é comum padronizar a variável aleatória Normal, transformando-a em uma variável aleatória que segue a Distribuição Normal Padrão.</span>
 <span id="cb18-222"><a href="#cb18-222" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-223"><a href="#cb18-223" aria-hidden="true" tabindex="-1"></a>  $$f(z) = \frac{1}{\sqrt{2\pi}} e^{-\frac{z^2}{2}}$$ {#eq-normal-padrao}</span>
+<span id="cb18-223"><a href="#cb18-223" aria-hidden="true" tabindex="-1"></a>  A distribuição Normal Padrão é um caso especial da distribuição Normal onde a média é igual a 0 e o desvio padrão é igual a 1, ou seja, $Z \sim \text{Normal}(0, 1)$. A função de densidade de probabilidade da distribuição Normal Padrão é dada por:</span>
 <span id="cb18-224"><a href="#cb18-224" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-225"><a href="#cb18-225" aria-hidden="true" tabindex="-1"></a>  Onde $z$ é o valor da variável aleatória padronizada. A distribuição Normal Padrão é amplamente utilizada para calcular probabilidades e quantis associados à distribuição Normal, facilitando a comparação entre diferentes conjuntos de dados e a realização de inferências estatísticas.</span>
+<span id="cb18-225"><a href="#cb18-225" aria-hidden="true" tabindex="-1"></a>  $$f(z) = \frac{1}{\sqrt{2\pi}} e^{-\frac{z^2}{2}}$$ {#eq-normal-padrao}</span>
 <span id="cb18-226"><a href="#cb18-226" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-227"><a href="#cb18-227" aria-hidden="true" tabindex="-1"></a>  Para calcular a probabilidade de uma variável aleatória Normal estar dentro de um intervalo específico, é necessário padronizar os valores utilizando a fórmula:</span>
+<span id="cb18-227"><a href="#cb18-227" aria-hidden="true" tabindex="-1"></a>  Onde $z$ é o valor da variável aleatória padronizada. A distribuição Normal Padrão é amplamente utilizada para calcular probabilidades e quantis associados à distribuição Normal, facilitando a comparação entre diferentes conjuntos de dados e a realização de inferências estatísticas.</span>
 <span id="cb18-228"><a href="#cb18-228" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-229"><a href="#cb18-229" aria-hidden="true" tabindex="-1"></a>  $$Z = \frac{X - \mu}{\sigma}$$ {#eq-z-score}</span>
+<span id="cb18-229"><a href="#cb18-229" aria-hidden="true" tabindex="-1"></a>  Para calcular a probabilidade de uma variável aleatória Normal estar dentro de um intervalo específico, é necessário padronizar os valores utilizando a fórmula:</span>
 <span id="cb18-230"><a href="#cb18-230" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-231"><a href="#cb18-231" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
-<span id="cb18-232"><a href="#cb18-232" aria-hidden="true" tabindex="-1"></a> Regra Empírica (68-95-99.7): Em uma distribuição normal perfeita: 68% dos dados estão a 1 desvio padrão da média. 95% dos dados estão a 2 desvios padrões da média. 99,7% dos dados estão a 3 desvios padrões (o famoso "Três Sigma")</span>
-<span id="cb18-233"><a href="#cb18-233" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb18-234"><a href="#cb18-234" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-235"><a href="#cb18-235" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Exemplo de aplicação da distribuição Normal</span></span>
+<span id="cb18-231"><a href="#cb18-231" aria-hidden="true" tabindex="-1"></a>  $$Z = \frac{X - \mu}{\sigma}$$ {#eq-z-score}</span>
+<span id="cb18-232"><a href="#cb18-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-233"><a href="#cb18-233" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb18-234"><a href="#cb18-234" aria-hidden="true" tabindex="-1"></a> Regra Empírica (68-95-99.7): Em uma distribuição normal perfeita: 68% dos dados estão a 1 desvio padrão da média. 95% dos dados estão a 2 desvios padrões da média. 99,7% dos dados estão a 3 desvios padrões (o famoso "Três Sigma")</span>
+<span id="cb18-235"><a href="#cb18-235" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb18-236"><a href="#cb18-236" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-237"><a href="#cb18-237" aria-hidden="true" tabindex="-1"></a>  Em processos de usinagem e manufatura, é fundamental analisar as tolerâncias dimensionais para garantir o encaixe correto de peças mecânicas. Por exemplo, imagine a produção em série de um eixo de aço em um torno CNC, onde pequenas variações dimensionais são inevitáveis.Para esta demonstração, vamos considerar um cenário onde o diâmetro alvo do eixo é de 10.00 mm.</span>
+<span id="cb18-237"><a href="#cb18-237" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Exemplo de aplicação da distribuição Normal</span></span>
 <span id="cb18-238"><a href="#cb18-238" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-239"><a href="#cb18-239" aria-hidden="true" tabindex="-1"></a>  Devido à precisão da máquina, os diâmetros produzidos seguem uma distribuição Normal com média $\mu = 10.00$ mm e desvio padrão $\sigma = 0.05$ mm. Para que a peça seja aprovada no controle de qualidade, seu diâmetro deve estar entre o Limite Inferior de Especificação (LSL) de 9.90 mm e o Limite Superior (USL) de 10.10 mm. A probabilidade de uma peça ser aprovada (estar dentro da tolerância) pode ser calculada utilizando a distribuição Normal, convertendo os valores para a distribuição Normal Padrão ($Z$):</span>
+<span id="cb18-239"><a href="#cb18-239" aria-hidden="true" tabindex="-1"></a>  Em processos de usinagem e manufatura, é fundamental analisar as tolerâncias dimensionais para garantir o encaixe correto de peças mecânicas. Por exemplo, imagine a produção em série de um eixo de aço em um torno CNC, onde pequenas variações dimensionais são inevitáveis.Para esta demonstração, vamos considerar um cenário onde o diâmetro alvo do eixo é de 10.00 mm.</span>
 <span id="cb18-240"><a href="#cb18-240" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-241"><a href="#cb18-241" aria-hidden="true" tabindex="-1"></a>$$P(9.90 \leq X \leq 10.10) = P\left(\frac{9.90 - 10.00}{0.05} \leq Z \leq \frac{10.10 - 10.00}{0.05}\right)$$</span>
+<span id="cb18-241"><a href="#cb18-241" aria-hidden="true" tabindex="-1"></a>  Devido à precisão da máquina, os diâmetros produzidos seguem uma distribuição Normal com média $\mu = 10.00$ mm e desvio padrão $\sigma = 0.05$ mm. Para que a peça seja aprovada no controle de qualidade, seu diâmetro deve estar entre o Limite Inferior de Especificação (LSL) de 9.90 mm e o Limite Superior (USL) de 10.10 mm. A probabilidade de uma peça ser aprovada (estar dentro da tolerância) pode ser calculada utilizando a distribuição Normal, convertendo os valores para a distribuição Normal Padrão ($Z$):</span>
 <span id="cb18-242"><a href="#cb18-242" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-243"><a href="#cb18-243" aria-hidden="true" tabindex="-1"></a>$$P(9.90 \leq X \leq 10.10) = P(-2 \leq Z \leq 2)$$</span>
+<span id="cb18-243"><a href="#cb18-243" aria-hidden="true" tabindex="-1"></a>$$P(9.90 \leq X \leq 10.10) = P\left(\frac{9.90 - 10.00}{0.05} \leq Z \leq \frac{10.10 - 10.00}{0.05}\right)$$</span>
 <span id="cb18-244"><a href="#cb18-244" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-245"><a href="#cb18-245" aria-hidden="true" tabindex="-1"></a>Como a resolução de forma analítica é complexa, utiliza-se ferramentas como o <span class="co">[</span><span class="ot">R</span><span class="co">]</span> e o pacote <span class="in">`leem`</span> para calcular essa probabilidade:</span>
+<span id="cb18-245"><a href="#cb18-245" aria-hidden="true" tabindex="-1"></a>$$P(9.90 \leq X \leq 10.10) = P(-2 \leq Z \leq 2)$$</span>
 <span id="cb18-246"><a href="#cb18-246" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-249"><a href="#cb18-249" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb18-250"><a href="#cb18-250" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
-<span id="cb18-251"><a href="#cb18-251" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
-<span id="cb18-252"><a href="#cb18-252" aria-hidden="true" tabindex="-1"></a><span class="fu">P</span>(<span class="at">q =</span> (<span class="sc">-</span><span class="dv">2</span>) <span class="sc">%&lt;=X&lt;=%</span> <span class="dv">2</span>, <span class="co"># q = -2 &lt;= Z &lt;= 2</span></span>
-<span id="cb18-253"><a href="#cb18-253" aria-hidden="true" tabindex="-1"></a><span class="at">dist =</span> <span class="st">"normal"</span>, <span class="co"># Tipo de distribuição</span></span>
-<span id="cb18-254"><a href="#cb18-254" aria-hidden="true" tabindex="-1"></a><span class="at">mean =</span> <span class="dv">0</span>, <span class="co"># μ - média da distribuição Normal Padrão</span></span>
-<span id="cb18-255"><a href="#cb18-255" aria-hidden="true" tabindex="-1"></a><span class="at">sd =</span> <span class="dv">1</span>, <span class="co"># σ - desvio padrão da distribuição Normal Padrão</span></span>
-<span id="cb18-256"><a href="#cb18-256" aria-hidden="true" tabindex="-1"></a><span class="at">gui =</span> <span class="st">"plot"</span>)</span>
-<span id="cb18-257"><a href="#cb18-257" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-258"><a href="#cb18-258" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-259"><a href="#cb18-259" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-260"><a href="#cb18-260" aria-hidden="true" tabindex="-1"></a>$$P(9.90 \leq X \leq 10.10) = P(-2 \leq Z \leq 2) = 0.9545$$</span>
-<span id="cb18-261"><a href="#cb18-261" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-262"><a href="#cb18-262" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-263"><a href="#cb18-263" aria-hidden="true" tabindex="-1"></a><span class="fu">### Outras distribuições de probabilidade</span></span>
-<span id="cb18-264"><a href="#cb18-264" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-265"><a href="#cb18-265" aria-hidden="true" tabindex="-1"></a>  Além das distribuições Binomial, de Poisson e Normal, existem diversas outras distribuições de probabilidade que são amplamente utilizadas em diferentes contextos.</span>
-<span id="cb18-266"><a href="#cb18-266" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-267"><a href="#cb18-267" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Distribuição Geométrica</span></span>
+<span id="cb18-247"><a href="#cb18-247" aria-hidden="true" tabindex="-1"></a>Como a resolução de forma analítica é complexa, utiliza-se ferramentas como o <span class="co">[</span><span class="ot">R</span><span class="co">]</span> e o pacote <span class="in">`leem`</span> para calcular essa probabilidade:</span>
+<span id="cb18-248"><a href="#cb18-248" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-249"><a href="#cb18-249" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb18-250"><a href="#cb18-250" aria-hidden="true" tabindex="-1"></a> Como os valores foram padronizados, usaremos a distribuição Normal Padrão (Z ~ N(0,1)) no código para ter o gráfico da área de aceitação</span>
+<span id="cb18-251"><a href="#cb18-251" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb18-252"><a href="#cb18-252" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-255"><a href="#cb18-255" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-256"><a href="#cb18-256" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
+<span id="cb18-257"><a href="#cb18-257" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
+<span id="cb18-258"><a href="#cb18-258" aria-hidden="true" tabindex="-1"></a><span class="fu">P</span>(<span class="at">q =</span> (<span class="sc">-</span><span class="dv">2</span>) <span class="sc">%&lt;=X&lt;=%</span> <span class="dv">2</span>, <span class="co"># q = -2 &lt;= Z &lt;= 2</span></span>
+<span id="cb18-259"><a href="#cb18-259" aria-hidden="true" tabindex="-1"></a><span class="at">dist =</span> <span class="st">"normal"</span>, <span class="co"># Tipo de distribuição</span></span>
+<span id="cb18-260"><a href="#cb18-260" aria-hidden="true" tabindex="-1"></a><span class="at">mean =</span> <span class="dv">0</span>, <span class="co"># μ - média da distribuição Normal Padrão</span></span>
+<span id="cb18-261"><a href="#cb18-261" aria-hidden="true" tabindex="-1"></a><span class="at">sd =</span> <span class="dv">1</span>, <span class="co"># σ - desvio padrão da distribuição Normal Padrão</span></span>
+<span id="cb18-262"><a href="#cb18-262" aria-hidden="true" tabindex="-1"></a><span class="at">gui =</span> <span class="st">"plot"</span>)</span>
+<span id="cb18-263"><a href="#cb18-263" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-264"><a href="#cb18-264" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb18-265"><a href="#cb18-265" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-266"><a href="#cb18-266" aria-hidden="true" tabindex="-1"></a>$$P(9.90 \leq X \leq 10.10) = P(-2 \leq Z \leq 2) = 0.9545$$</span>
+<span id="cb18-267"><a href="#cb18-267" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-268"><a href="#cb18-268" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-269"><a href="#cb18-269" aria-hidden="true" tabindex="-1"></a>  A distribuição Geométrica é uma distribuição de probabilidade discreta que modela o número de tentativas necessárias para obter o primeiro sucesso em uma sequência de experimentos independentes, onde cada experimento tem apenas dois resultados possíveis (sucesso ou fracasso) e a probabilidade de sucesso é constante. Uma variável aleatória que segue uma distribuição Geométrica é denotada por $X \sim \text{Geometric}(p)$, onde $p$ é a probabilidade de sucesso em cada experimento.</span>
+<span id="cb18-269"><a href="#cb18-269" aria-hidden="true" tabindex="-1"></a><span class="fu">### Outras distribuições de probabilidade</span></span>
 <span id="cb18-270"><a href="#cb18-270" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-271"><a href="#cb18-271" aria-hidden="true" tabindex="-1"></a>  $$P(X = k) = (1-p)^{k-1} p$$ {#eq-geometrica}</span>
+<span id="cb18-271"><a href="#cb18-271" aria-hidden="true" tabindex="-1"></a>  Além das distribuições Binomial, de Poisson e Normal, existem diversas outras distribuições de probabilidade que são amplamente utilizadas em diferentes contextos.</span>
 <span id="cb18-272"><a href="#cb18-272" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-273"><a href="#cb18-273" aria-hidden="true" tabindex="-1"></a>  Em processos de inspeção de qualidade automatizados, modela-se a quantidade de tentativas necessárias até que um evento específico ocorra.</span>
+<span id="cb18-273"><a href="#cb18-273" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Distribuição Geométrica</span></span>
 <span id="cb18-274"><a href="#cb18-274" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-275"><a href="#cb18-275" aria-hidden="true" tabindex="-1"></a>  considere que a probabilidade de um braço robótico produzir uma solda defeituosa é de 5%, $p = 0.05$. A probabilidade de a primeira solda defeituosa ser encontrada exatamente na 4ª inspeção ($k = 4$) pode ser calculada utilizando a distribuição Geométrica. Isso significa que ocorrerão 3 inspeções bem-sucedidas (sem defeito) antes do primeiro "sucesso" estatístico (encontrar o defeito):</span>
-<span id="cb18-276"><a href="#cb18-276" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-277"><a href="#cb18-277" aria-hidden="true" tabindex="-1"></a>  $$P(X = k) = (1 - p)^{k - 1} p$$</span>
-<span id="cb18-278"><a href="#cb18-278" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-279"><a href="#cb18-279" aria-hidden="true" tabindex="-1"></a>  $$P(X = 4) = (1 - 0.05)^{4 - 1} (0.05)$$</span>
-<span id="cb18-280"><a href="#cb18-280" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-281"><a href="#cb18-281" aria-hidden="true" tabindex="-1"></a>  $$P(X = 4) = (0.95)^3 (0.05)$$</span>
-<span id="cb18-282"><a href="#cb18-282" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-283"><a href="#cb18-283" aria-hidden="true" tabindex="-1"></a>  $$P(X = 4) \approx 0.8573 \times 0.05 \approx 0.0428$$</span>
-<span id="cb18-284"><a href="#cb18-284" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-285"><a href="#cb18-285" aria-hidden="true" tabindex="-1"></a>  No <span class="co">[</span><span class="ot">R</span><span class="co">]</span> e o pacote <span class="in">`leem`</span>, a probabilidade pode ser calculada da seguinte forma:</span>
-<span id="cb18-286"><a href="#cb18-286" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-289"><a href="#cb18-289" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb18-290"><a href="#cb18-290" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
-<span id="cb18-291"><a href="#cb18-291" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
-<span id="cb18-292"><a href="#cb18-292" aria-hidden="true" tabindex="-1"></a><span class="fu">P</span>(<span class="at">q =</span> <span class="dv">4</span>,</span>
-<span id="cb18-293"><a href="#cb18-293" aria-hidden="true" tabindex="-1"></a><span class="at">dist =</span> <span class="st">"geom"</span>, <span class="co"># Tipo de distribuição</span></span>
-<span id="cb18-294"><a href="#cb18-294" aria-hidden="true" tabindex="-1"></a><span class="at">prob =</span> <span class="fl">0.05</span>, <span class="co"># p - probabilidade de sucesso</span></span>
-<span id="cb18-295"><a href="#cb18-295" aria-hidden="true" tabindex="-1"></a><span class="at">gui =</span> <span class="st">"plot"</span>,</span>
-<span id="cb18-296"><a href="#cb18-296" aria-hidden="true" tabindex="-1"></a><span class="at">lower.tail =</span> <span class="cn">NULL</span>) </span>
-<span id="cb18-297"><a href="#cb18-297" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-298"><a href="#cb18-298" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-299"><a href="#cb18-299" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Distribuição Hipergeométrica</span></span>
-<span id="cb18-300"><a href="#cb18-300" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-301"><a href="#cb18-301" aria-hidden="true" tabindex="-1"></a>  A distribuição Hipergeométrica é uma distribuição de probabilidade discreta que modela o número de sucessos em uma amostra de tamanho fixo retirada sem reposição de uma população finita que contém um número específico de sucessos e fracassos. Uma variável aleatória que segue uma distribuição Hipergeométrica é denotada por $X \sim \text{Hypergeometric}(N, K, n)$, onde $N$ é o tamanho da população, $K$ é o número total de sucessos na população e $n$ é o tamanho da amostra.</span>
-<span id="cb18-302"><a href="#cb18-302" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-303"><a href="#cb18-303" aria-hidden="true" tabindex="-1"></a>  $$P(X = k) = \frac{\binom{K}{k} \binom{N-K}{n-k}}{\binom{N}{n}}$$ {#eq-hipergeometrica}</span>
-<span id="cb18-304"><a href="#cb18-304" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-305"><a href="#cb18-305" aria-hidden="true" tabindex="-1"></a>  Em processos de controle de qualidade, a distribuição Hipergeométrica pode ser utilizada para modelar a probabilidade de encontrar um número específico de itens defeituosos em uma amostra retirada de um lote.</span>
-<span id="cb18-306"><a href="#cb18-306" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-307"><a href="#cb18-307" aria-hidden="true" tabindex="-1"></a>  Por exemplo, considere um lote de 100 peças, onde 10 são defeituosas ($N = 100$, $K = 10$). Se retirarmos uma amostra de 20 peças ($n = 20$), a probabilidade de encontrar exatamente 3 peças defeituosas na amostra ($k = 3$) pode ser calculada utilizando a distribuição Hipergeométrica:</span>
-<span id="cb18-308"><a href="#cb18-308" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-309"><a href="#cb18-309" aria-hidden="true" tabindex="-1"></a>  $$P(X = k) = \frac{\binom{K}{k} \binom{N-K}{n-k}}{\binom{N}{n}}$$</span>
-<span id="cb18-310"><a href="#cb18-310" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-311"><a href="#cb18-311" aria-hidden="true" tabindex="-1"></a>  $$P(X = 3) = \frac{\binom{10}{3} \binom{90}{17}}{\binom{100}{20}}$$</span>
-<span id="cb18-312"><a href="#cb18-312" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-313"><a href="#cb18-313" aria-hidden="true" tabindex="-1"></a>  No <span class="co">[</span><span class="ot">R</span><span class="co">]</span> e o pacote <span class="in">`leem`</span>, a probabilidade pode ser calculada da seguinte forma:</span>
-<span id="cb18-314"><a href="#cb18-314" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-317"><a href="#cb18-317" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb18-318"><a href="#cb18-318" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
-<span id="cb18-319"><a href="#cb18-319" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
-<span id="cb18-320"><a href="#cb18-320" aria-hidden="true" tabindex="-1"></a><span class="fu">P</span>(<span class="at">q =</span> <span class="dv">3</span>,</span>
-<span id="cb18-321"><a href="#cb18-321" aria-hidden="true" tabindex="-1"></a><span class="at">dist =</span> <span class="st">"hyper"</span>, <span class="co"># Tipo de distribuição</span></span>
-<span id="cb18-322"><a href="#cb18-322" aria-hidden="true" tabindex="-1"></a><span class="at">m =</span> <span class="dv">10</span>,</span>
-<span id="cb18-323"><a href="#cb18-323" aria-hidden="true" tabindex="-1"></a><span class="at">n =</span> <span class="dv">90</span>,</span>
-<span id="cb18-324"><a href="#cb18-324" aria-hidden="true" tabindex="-1"></a><span class="at">k =</span> <span class="dv">20</span>,</span>
-<span id="cb18-325"><a href="#cb18-325" aria-hidden="true" tabindex="-1"></a><span class="at">gui =</span> <span class="st">"none"</span>,</span>
-<span id="cb18-326"><a href="#cb18-326" aria-hidden="true" tabindex="-1"></a><span class="at">lower.tail =</span> <span class="cn">TRUE</span>) </span>
-<span id="cb18-327"><a href="#cb18-327" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-328"><a href="#cb18-328" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-329"><a href="#cb18-329" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Distribuição Exponencial</span></span>
-<span id="cb18-330"><a href="#cb18-330" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-331"><a href="#cb18-331" aria-hidden="true" tabindex="-1"></a>  A distribuição Exponencial é uma distribuição de probabilidade contínua que modela o tempo entre eventos em um processo de Poisson, onde os eventos ocorrem de forma independente e a uma taxa constante. Uma variável aleatória que segue uma distribuição Exponencial é denotada por $X \sim \text{Exponential}(\lambda)$, onde $\lambda$ é a taxa média de eventos por unidade de tempo.</span>
-<span id="cb18-332"><a href="#cb18-332" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-333"><a href="#cb18-333" aria-hidden="true" tabindex="-1"></a>  $$f(x) = \lambda e^{-\lambda x}$$ {#eq-exponencial}</span>
-<span id="cb18-334"><a href="#cb18-334" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-335"><a href="#cb18-335" aria-hidden="true" tabindex="-1"></a>  Em sistemas de confiabilidade, a distribuição Exponencial é frequentemente utilizada para modelar o tempo até a falha de componentes eletrônicos ou mecânicos, permitindo prever a vida útil e planejar manutenções preventivas.</span>
-<span id="cb18-336"><a href="#cb18-336" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-337"><a href="#cb18-337" aria-hidden="true" tabindex="-1"></a>  Exemplo: Considere um componente eletrônico que tem uma taxa média de falha de 0.01 falhas por hora ($\lambda = 0.01$). A probabilidade de o componente falhar dentro de 100 horas pode ser calculada utilizando a distribuição Exponencial:</span>
-<span id="cb18-338"><a href="#cb18-338" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-339"><a href="#cb18-339" aria-hidden="true" tabindex="-1"></a>$$P(X \leq 100) = \int_{0}^{100} 0.01 e^{-0.01 x} dx$$</span>
-<span id="cb18-340"><a href="#cb18-340" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-341"><a href="#cb18-341" aria-hidden="true" tabindex="-1"></a>$$P(X \leq 100) = 0.01 \cdot \int_{0}^{100} e^{-0.01 x} dx$$</span>
-<span id="cb18-342"><a href="#cb18-342" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-343"><a href="#cb18-343" aria-hidden="true" tabindex="-1"></a>$$P(X \leq 100) = 0.01 \cdot \left<span class="co">[</span><span class="ot">-\frac{1}{0.01} e^{-0.01 x}\right</span><span class="co">]</span>_{0}^{100}$$</span>
-<span id="cb18-344"><a href="#cb18-344" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-345"><a href="#cb18-345" aria-hidden="true" tabindex="-1"></a>$$P(X \leq 100) = \left<span class="co">[</span><span class="ot">e^{-0.01 x}\right</span><span class="co">]</span>_{0}^{100}$$</span>
-<span id="cb18-346"><a href="#cb18-346" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-275"><a href="#cb18-275" aria-hidden="true" tabindex="-1"></a>  A distribuição Geométrica é uma distribuição de probabilidade discreta que modela o número de tentativas necessárias para obter o primeiro sucesso em uma sequência de experimentos independentes, onde cada experimento tem apenas dois resultados possíveis (sucesso ou fracasso) e a probabilidade de sucesso é constante. Uma variável aleatória que segue uma distribuição Geométrica é denotada por $X \sim \text{Geometric}(p)$, onde $p$ é a probabilidade de sucesso em cada experimento.</span>
+<span id="cb18-276"><a href="#cb18-276" aria-hidden="true" tabindex="-1"></a>  Diferente da Distribuição BInomial, a Geométrica teoricamente pode ir até o infinito.</span>
+<span id="cb18-277"><a href="#cb18-277" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-278"><a href="#cb18-278" aria-hidden="true" tabindex="-1"></a>  $$P(X = k) = (1-p)^{k-1} p$$ {#eq-geometrica}</span>
+<span id="cb18-279"><a href="#cb18-279" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-280"><a href="#cb18-280" aria-hidden="true" tabindex="-1"></a>  Em processos de inspeção de qualidade automatizados, modela-se a quantidade de tentativas necessárias até que um evento específico ocorra.</span>
+<span id="cb18-281"><a href="#cb18-281" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-282"><a href="#cb18-282" aria-hidden="true" tabindex="-1"></a>  considere que a probabilidade de um braço robótico produzir uma solda defeituosa é de 5%, $p = 0.05$. A probabilidade de a primeira solda defeituosa ser encontrada exatamente na 4ª inspeção ($k = 4$) pode ser calculada utilizando a distribuição Geométrica. Isso significa que ocorrerão 3 inspeções bem-sucedidas (sem defeito) antes do primeiro "sucesso" estatístico (encontrar o defeito):</span>
+<span id="cb18-283"><a href="#cb18-283" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb18-284"><a href="#cb18-284" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb18-285"><a href="#cb18-285" aria-hidden="true" tabindex="-1"></a> Na Distribuição Geométrica, k é o numero da tentativa para o primeiro sucesso ocorrer, no caso, se o defeito é o sucesso e ocorre na 4° inspeção, tiveram 3 sucessos de soldegem (inspeções sem defeitos) e a 1° falha (solda com defeito) na 4° tentativa </span>
+<span id="cb18-286"><a href="#cb18-286" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb18-287"><a href="#cb18-287" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-288"><a href="#cb18-288" aria-hidden="true" tabindex="-1"></a>  $$P(X = k) = (1 - p)^{k - 1} p$$</span>
+<span id="cb18-289"><a href="#cb18-289" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-290"><a href="#cb18-290" aria-hidden="true" tabindex="-1"></a>  $$P(X = 4) = (1 - 0.05)^{4 - 1} (0.05)$$</span>
+<span id="cb18-291"><a href="#cb18-291" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-292"><a href="#cb18-292" aria-hidden="true" tabindex="-1"></a>  $$P(X = 4) = (0.95)^3 (0.05)$$</span>
+<span id="cb18-293"><a href="#cb18-293" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-294"><a href="#cb18-294" aria-hidden="true" tabindex="-1"></a>  $$P(X = 4) \approx 0.8573 \times 0.05 \approx 0.0428$$</span>
+<span id="cb18-295"><a href="#cb18-295" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-296"><a href="#cb18-296" aria-hidden="true" tabindex="-1"></a>  No <span class="co">[</span><span class="ot">R</span><span class="co">]</span> e o pacote <span class="in">`leem`</span>, a probabilidade pode ser calculada da seguinte forma:</span>
+<span id="cb18-297"><a href="#cb18-297" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-300"><a href="#cb18-300" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-301"><a href="#cb18-301" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
+<span id="cb18-302"><a href="#cb18-302" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
+<span id="cb18-303"><a href="#cb18-303" aria-hidden="true" tabindex="-1"></a><span class="fu">P</span>(<span class="at">q =</span> <span class="dv">4</span>,</span>
+<span id="cb18-304"><a href="#cb18-304" aria-hidden="true" tabindex="-1"></a><span class="at">dist =</span> <span class="st">"geom"</span>, <span class="co"># Tipo de distribuição</span></span>
+<span id="cb18-305"><a href="#cb18-305" aria-hidden="true" tabindex="-1"></a><span class="at">prob =</span> <span class="fl">0.05</span>, <span class="co"># p - probabilidade de sucesso</span></span>
+<span id="cb18-306"><a href="#cb18-306" aria-hidden="true" tabindex="-1"></a><span class="at">gui =</span> <span class="st">"plot"</span>,</span>
+<span id="cb18-307"><a href="#cb18-307" aria-hidden="true" tabindex="-1"></a><span class="at">lower.tail =</span> <span class="cn">NULL</span>) </span>
+<span id="cb18-308"><a href="#cb18-308" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb18-309"><a href="#cb18-309" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-310"><a href="#cb18-310" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Distribuição Hipergeométrica</span></span>
+<span id="cb18-311"><a href="#cb18-311" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-312"><a href="#cb18-312" aria-hidden="true" tabindex="-1"></a>  A distribuição Hipergeométrica é uma distribuição de probabilidade discreta que modela o número de sucessos em uma amostra de tamanho fixo retirada sem reposição de uma população finita que contém um número específico de sucessos e fracassos. Uma variável aleatória que segue uma distribuição Hipergeométrica é denotada por $X \sim \text{Hypergeometric}(N, K, n)$, onde $N$ é o tamanho da população, $K$ é o número total de sucessos na população e $n$ é o tamanho da amostra.</span>
+<span id="cb18-313"><a href="#cb18-313" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-314"><a href="#cb18-314" aria-hidden="true" tabindex="-1"></a>  $$P(X = k) = \frac{\binom{K}{k} \binom{N-K}{n-k}}{\binom{N}{n}}$$ {#eq-hipergeometrica}</span>
+<span id="cb18-315"><a href="#cb18-315" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-316"><a href="#cb18-316" aria-hidden="true" tabindex="-1"></a>  Em processos de controle de qualidade, a distribuição Hipergeométrica pode ser utilizada para modelar a probabilidade de encontrar um número específico de itens defeituosos em uma amostra retirada de um lote.</span>
+<span id="cb18-317"><a href="#cb18-317" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-318"><a href="#cb18-318" aria-hidden="true" tabindex="-1"></a>  Por exemplo, considere um lote de 100 peças, onde 10 são defeituosas ($N = 100$, $K = 10$). Se retirarmos uma amostra de 20 peças ($n = 20$), a probabilidade de encontrar exatamente 3 peças defeituosas na amostra ($k = 3$) pode ser calculada utilizando a distribuição Hipergeométrica:</span>
+<span id="cb18-319"><a href="#cb18-319" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-320"><a href="#cb18-320" aria-hidden="true" tabindex="-1"></a>  $$P(X = k) = \frac{\binom{K}{k} \binom{N-K}{n-k}}{\binom{N}{n}}$$</span>
+<span id="cb18-321"><a href="#cb18-321" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-322"><a href="#cb18-322" aria-hidden="true" tabindex="-1"></a>  $$P(X = 3) = \frac{\binom{10}{3} \binom{90}{17}}{\binom{100}{20}}$$</span>
+<span id="cb18-323"><a href="#cb18-323" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-324"><a href="#cb18-324" aria-hidden="true" tabindex="-1"></a>  No <span class="co">[</span><span class="ot">R</span><span class="co">]</span> e o pacote <span class="in">`leem`</span>, a probabilidade pode ser calculada da seguinte forma:</span>
+<span id="cb18-325"><a href="#cb18-325" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-328"><a href="#cb18-328" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-329"><a href="#cb18-329" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
+<span id="cb18-330"><a href="#cb18-330" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
+<span id="cb18-331"><a href="#cb18-331" aria-hidden="true" tabindex="-1"></a><span class="fu">P</span>(<span class="at">q =</span> <span class="dv">3</span>,</span>
+<span id="cb18-332"><a href="#cb18-332" aria-hidden="true" tabindex="-1"></a><span class="at">dist =</span> <span class="st">"hyper"</span>, <span class="co"># Tipo de distribuição</span></span>
+<span id="cb18-333"><a href="#cb18-333" aria-hidden="true" tabindex="-1"></a><span class="at">m =</span> <span class="dv">10</span>,</span>
+<span id="cb18-334"><a href="#cb18-334" aria-hidden="true" tabindex="-1"></a><span class="at">n =</span> <span class="dv">90</span>,</span>
+<span id="cb18-335"><a href="#cb18-335" aria-hidden="true" tabindex="-1"></a><span class="at">k =</span> <span class="dv">20</span>,</span>
+<span id="cb18-336"><a href="#cb18-336" aria-hidden="true" tabindex="-1"></a><span class="at">gui =</span> <span class="st">"none"</span>,</span>
+<span id="cb18-337"><a href="#cb18-337" aria-hidden="true" tabindex="-1"></a><span class="at">lower.tail =</span> <span class="cn">TRUE</span>) </span>
+<span id="cb18-338"><a href="#cb18-338" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb18-339"><a href="#cb18-339" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-340"><a href="#cb18-340" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Distribuição Exponencial</span></span>
+<span id="cb18-341"><a href="#cb18-341" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-342"><a href="#cb18-342" aria-hidden="true" tabindex="-1"></a>  A distribuição Exponencial é uma distribuição de probabilidade contínua que modela o tempo entre eventos em um processo de Poisson, onde os eventos ocorrem de forma independente e a uma taxa constante. Uma variável aleatória que segue uma distribuição Exponencial é denotada por $X \sim \text{Exponential}(\lambda)$, onde $\lambda$ é a taxa média de eventos por unidade de tempo.</span>
+<span id="cb18-343"><a href="#cb18-343" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-344"><a href="#cb18-344" aria-hidden="true" tabindex="-1"></a>  $$f(x) = \lambda e^{-\lambda x}$$ {#eq-exponencial}</span>
+<span id="cb18-345"><a href="#cb18-345" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-346"><a href="#cb18-346" aria-hidden="true" tabindex="-1"></a>  Em sistemas de confiabilidade, a distribuição Exponencial é frequentemente utilizada para modelar o tempo até a falha de componentes eletrônicos ou mecânicos, permitindo prever a vida útil e planejar manutenções preventivas.</span>
 <span id="cb18-347"><a href="#cb18-347" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-348"><a href="#cb18-348" aria-hidden="true" tabindex="-1"></a>$$P(X \leq 100) = e^{-0} - e^{-1} \approx 0.6321$$</span>
+<span id="cb18-348"><a href="#cb18-348" aria-hidden="true" tabindex="-1"></a>  Exemplo: Considere um componente eletrônico que tem uma taxa média de falha de 0.01 falhas por hora ($\lambda = 0.01$). A probabilidade de o componente falhar dentro de 100 horas pode ser calculada utilizando a distribuição Exponencial:</span>
 <span id="cb18-349"><a href="#cb18-349" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-350"><a href="#cb18-350" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-351"><a href="#cb18-351" aria-hidden="true" tabindex="-1"></a>Com o <span class="in">`leem`</span>:</span>
-<span id="cb18-352"><a href="#cb18-352" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-355"><a href="#cb18-355" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb18-356"><a href="#cb18-356" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
-<span id="cb18-357"><a href="#cb18-357" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
-<span id="cb18-358"><a href="#cb18-358" aria-hidden="true" tabindex="-1"></a><span class="fu">P</span>(<span class="at">q =</span> <span class="dv">100</span>,</span>
-<span id="cb18-359"><a href="#cb18-359" aria-hidden="true" tabindex="-1"></a><span class="at">dist =</span> <span class="st">"exp"</span>, <span class="co"># Tipo de distribuição</span></span>
-<span id="cb18-360"><a href="#cb18-360" aria-hidden="true" tabindex="-1"></a><span class="at">rate =</span> <span class="fl">0.01</span>, <span class="co"># λ - taxa média de eventos</span></span>
-<span id="cb18-361"><a href="#cb18-361" aria-hidden="true" tabindex="-1"></a><span class="at">gui =</span> <span class="st">"plot"</span>,</span>
-<span id="cb18-362"><a href="#cb18-362" aria-hidden="true" tabindex="-1"></a><span class="at">lower.tail =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb18-363"><a href="#cb18-363" aria-hidden="true" tabindex="-1"></a><span class="in">```</span> </span>
-<span id="cb18-364"><a href="#cb18-364" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-365"><a href="#cb18-365" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Distribuição T de Student</span></span>
-<span id="cb18-366"><a href="#cb18-366" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-367"><a href="#cb18-367" aria-hidden="true" tabindex="-1"></a>  A distribuição T de Student é uma distribuição de probabilidade contínua que é usada para estimar a média de uma população quando o tamanho da amostra é pequeno e a variância populacional é desconhecida. Uma variável aleatória que segue uma distribuição T de Student é denotada por $X \sim t(\nu)$, onde $\nu$ é o número de graus de liberdade, geralmente calculado como o tamanho da amostra menos um ($\nu = n - 1$).</span>
-<span id="cb18-368"><a href="#cb18-368" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-369"><a href="#cb18-369" aria-hidden="true" tabindex="-1"></a> $$f(t) = \frac{\Gamma\left(\frac{\nu + 1}{2}\right)}{\sqrt{\nu \pi} \Gamma\left(\frac{\nu}{2}\right)} \left(1 + \frac{t^2}{\nu}\right)^{-\frac{\nu + 1}{2}}$$ {#eq-t-student}</span>
-<span id="cb18-370"><a href="#cb18-370" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-371"><a href="#cb18-371" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
-<span id="cb18-372"><a href="#cb18-372" aria-hidden="true" tabindex="-1"></a>A função $\Gamma$ é a função gama, que generaliza o fatorial para números reais e complexos. Para um número inteiro positivo $n$, $\Gamma(n) = (n-1)!$. </span>
-<span id="cb18-373"><a href="#cb18-373" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb18-374"><a href="#cb18-374" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-375"><a href="#cb18-375" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-376"><a href="#cb18-376" aria-hidden="true" tabindex="-1"></a>  Em análise de dados, a distribuição T de Student é frequentemente utilizada para realizar testes de hipóteses sobre a média de uma população, especialmente quando o tamanho da amostra é pequeno e a variância populacional é desconhecida.</span>
+<span id="cb18-350"><a href="#cb18-350" aria-hidden="true" tabindex="-1"></a>$$P(X \leq 100) = \int_{0}^{100} 0.01 e^{-0.01 x} dx$$</span>
+<span id="cb18-351"><a href="#cb18-351" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-352"><a href="#cb18-352" aria-hidden="true" tabindex="-1"></a>$$P(X \leq 100) = 0.01 \cdot \int_{0}^{100} e^{-0.01 x} dx$$</span>
+<span id="cb18-353"><a href="#cb18-353" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-354"><a href="#cb18-354" aria-hidden="true" tabindex="-1"></a>$$P(X \leq 100) = 0.01 \cdot \left<span class="co">[</span><span class="ot">-\frac{1}{0.01} e^{-0.01 x}\right</span><span class="co">]</span>_{0}^{100}$$</span>
+<span id="cb18-355"><a href="#cb18-355" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-356"><a href="#cb18-356" aria-hidden="true" tabindex="-1"></a>$$P(X \leq 100) = \left<span class="co">[</span><span class="ot">e^{-0.01 x}\right</span><span class="co">]</span>_{0}^{100}$$</span>
+<span id="cb18-357"><a href="#cb18-357" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-358"><a href="#cb18-358" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-359"><a href="#cb18-359" aria-hidden="true" tabindex="-1"></a>$$P(X \leq 100) = e^{-0} - e^{-1} \approx 0.6321$$</span>
+<span id="cb18-360"><a href="#cb18-360" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb18-361"><a href="#cb18-361" aria-hidden="true" tabindex="-1"></a> Na Distribuição Exponencial, uma curiosidade interessante é que a propriedade de falta de memória (uma característica única dela) que é fundamental em estudos de confiabilidade. Ela indica que a probabilidade de ocorrência de um evento futuro independente do tempo decorrido, é ideal para modelar componentes que não sofrem desgaste físico gradual, mas falham por conta de eventos aleatórios externos.</span>
+<span id="cb18-362"><a href="#cb18-362" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb18-363"><a href="#cb18-363" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-364"><a href="#cb18-364" aria-hidden="true" tabindex="-1"></a>Com o <span class="in">`leem`</span>:</span>
+<span id="cb18-365"><a href="#cb18-365" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-368"><a href="#cb18-368" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-369"><a href="#cb18-369" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
+<span id="cb18-370"><a href="#cb18-370" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
+<span id="cb18-371"><a href="#cb18-371" aria-hidden="true" tabindex="-1"></a><span class="fu">P</span>(<span class="at">q =</span> <span class="dv">100</span>,</span>
+<span id="cb18-372"><a href="#cb18-372" aria-hidden="true" tabindex="-1"></a><span class="at">dist =</span> <span class="st">"exp"</span>, <span class="co"># Tipo de distribuição</span></span>
+<span id="cb18-373"><a href="#cb18-373" aria-hidden="true" tabindex="-1"></a><span class="at">rate =</span> <span class="fl">0.01</span>, <span class="co"># λ - taxa média de eventos</span></span>
+<span id="cb18-374"><a href="#cb18-374" aria-hidden="true" tabindex="-1"></a><span class="at">gui =</span> <span class="st">"plot"</span>,</span>
+<span id="cb18-375"><a href="#cb18-375" aria-hidden="true" tabindex="-1"></a><span class="at">lower.tail =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb18-376"><a href="#cb18-376" aria-hidden="true" tabindex="-1"></a><span class="in">```</span> </span>
 <span id="cb18-377"><a href="#cb18-377" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-378"><a href="#cb18-378" aria-hidden="true" tabindex="-1"></a>  Exemplo: Considere um estudo onde se deseja comparar a média de um grupo experimental com uma média conhecida. Suponha que temos uma amostra de 15 indivíduos ($n = 15$) e queremos testar se a média do grupo é significativamente diferente de 100. A média amostral é de 105 e o desvio padrão amostral é de 10. O número de graus de liberdade seria $\nu = n - 1 = 14$. A probabilidade associada ao valor observado pode ser calculada utilizando a distribuição T de Student:</span>
+<span id="cb18-378"><a href="#cb18-378" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Distribuição T de Student</span></span>
 <span id="cb18-379"><a href="#cb18-379" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-380"><a href="#cb18-380" aria-hidden="true" tabindex="-1"></a>  $$P(\bar{X} \geq 105) = P\left(t \geq \frac{105 - 100}{10 / \sqrt{15}}\right)$$</span>
+<span id="cb18-380"><a href="#cb18-380" aria-hidden="true" tabindex="-1"></a>  A distribuição T de Student é uma distribuição de probabilidade contínua que é usada para estimar a média de uma população quando o tamanho da amostra é pequeno e a variância populacional é desconhecida. Uma variável aleatória que segue uma distribuição T de Student é denotada por $X \sim t(\nu)$, onde $\nu$ é o número de graus de liberdade, geralmente calculado como o tamanho da amostra menos um ($\nu = n - 1$).</span>
 <span id="cb18-381"><a href="#cb18-381" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-382"><a href="#cb18-382" aria-hidden="true" tabindex="-1"></a>  $$P(\bar{X} \geq 105) = P\left(t \geq \frac{5}{10 / \sqrt{15}}\right)$$</span>
+<span id="cb18-382"><a href="#cb18-382" aria-hidden="true" tabindex="-1"></a> $$f(t) = \frac{\Gamma\left(\frac{\nu + 1}{2}\right)}{\sqrt{\nu \pi} \Gamma\left(\frac{\nu}{2}\right)} \left(1 + \frac{t^2}{\nu}\right)^{-\frac{\nu + 1}{2}}$$ {#eq-t-student}</span>
 <span id="cb18-383"><a href="#cb18-383" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-384"><a href="#cb18-384" aria-hidden="true" tabindex="-1"></a>  $$P(\bar{X} \geq 105) = P\left(t \geq \frac{59}{\sqrt{15}}\right)$$</span>
-<span id="cb18-385"><a href="#cb18-385" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-386"><a href="#cb18-386" aria-hidden="true" tabindex="-1"></a>  $$P(\bar{X} \geq 105) \approx P\left(t \geq 1.9365\right)$$</span>
+<span id="cb18-384"><a href="#cb18-384" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb18-385"><a href="#cb18-385" aria-hidden="true" tabindex="-1"></a>A função $\Gamma$ é a função gama, que generaliza o fatorial para números reais e complexos. Para um número inteiro positivo $n$, $\Gamma(n) = (n-1)!$. </span>
+<span id="cb18-386"><a href="#cb18-386" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb18-387"><a href="#cb18-387" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-388"><a href="#cb18-388" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-389"><a href="#cb18-389" aria-hidden="true" tabindex="-1"></a>  A função só pode ser calculada numericamente. Com o <span class="in">`leem`</span>:</span>
-<span id="cb18-392"><a href="#cb18-392" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb18-393"><a href="#cb18-393" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
-<span id="cb18-394"><a href="#cb18-394" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
-<span id="cb18-395"><a href="#cb18-395" aria-hidden="true" tabindex="-1"></a><span class="fu">P</span>(<span class="at">q =</span> (<span class="dv">105</span> <span class="sc">-</span> <span class="dv">100</span>) <span class="sc">/</span> (<span class="dv">10</span> <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">15</span>)),</span>
-<span id="cb18-396"><a href="#cb18-396" aria-hidden="true" tabindex="-1"></a><span class="at">dist =</span> <span class="st">"t-student"</span>, <span class="co"># Tipo de distribuição</span></span>
-<span id="cb18-397"><a href="#cb18-397" aria-hidden="true" tabindex="-1"></a><span class="at">df =</span> <span class="dv">14</span>, <span class="co"># ν - número de graus de liberdade</span></span>
-<span id="cb18-398"><a href="#cb18-398" aria-hidden="true" tabindex="-1"></a><span class="at">gui =</span> <span class="st">"plot"</span>,</span>
-<span id="cb18-399"><a href="#cb18-399" aria-hidden="true" tabindex="-1"></a><span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb18-400"><a href="#cb18-400" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb18-389"><a href="#cb18-389" aria-hidden="true" tabindex="-1"></a>  Em análise de dados, a distribuição T de Student é frequentemente utilizada para realizar testes de hipóteses sobre a média de uma população, especialmente quando o tamanho da amostra é pequeno e a variância populacional é desconhecida.</span>
+<span id="cb18-390"><a href="#cb18-390" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-391"><a href="#cb18-391" aria-hidden="true" tabindex="-1"></a>  Exemplo: Considere um estudo onde se deseja comparar a média de um grupo experimental com uma média conhecida. Suponha que temos uma amostra de 15 indivíduos ($n = 15$) e queremos testar se a média do grupo é significativamente diferente de 100. A média amostral é de 105 e o desvio padrão amostral é de 10. O número de graus de liberdade seria $\nu = n - 1 = 14$. A probabilidade associada ao valor observado pode ser calculada utilizando a distribuição T de Student:</span>
+<span id="cb18-392"><a href="#cb18-392" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-393"><a href="#cb18-393" aria-hidden="true" tabindex="-1"></a>  $$P(\bar{X} \geq 105) = P\left(t \geq \frac{105 - 100}{10 / \sqrt{15}}\right)$$</span>
+<span id="cb18-394"><a href="#cb18-394" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-395"><a href="#cb18-395" aria-hidden="true" tabindex="-1"></a>  $$P(\bar{X} \geq 105) = P\left(t \geq \frac{5}{10 / \sqrt{15}}\right)$$</span>
+<span id="cb18-396"><a href="#cb18-396" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-397"><a href="#cb18-397" aria-hidden="true" tabindex="-1"></a>  $$P(\bar{X} \geq 105) = P\left(t \geq \frac{59}{\sqrt{15}}\right)$$</span>
+<span id="cb18-398"><a href="#cb18-398" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-399"><a href="#cb18-399" aria-hidden="true" tabindex="-1"></a>  $$P(\bar{X} \geq 105) \approx P\left(t \geq 1.9365\right)$$</span>
+<span id="cb18-400"><a href="#cb18-400" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-401"><a href="#cb18-401" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-402"><a href="#cb18-402" aria-hidden="true" tabindex="-1"></a>$$P(\bar{X} \geq 105) \approx 0.03663$$</span>
-<span id="cb18-403"><a href="#cb18-403" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-404"><a href="#cb18-404" aria-hidden="true" tabindex="-1"></a><span class="fu">## Considerações finais</span></span>
-<span id="cb18-405"><a href="#cb18-405" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-406"><a href="#cb18-406" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-407"><a href="#cb18-407" aria-hidden="true" tabindex="-1"></a><span class="fu">## Referências</span></span>
+<span id="cb18-402"><a href="#cb18-402" aria-hidden="true" tabindex="-1"></a>  A função só pode ser calculada numericamente. Com o <span class="in">`leem`</span>:</span>
+<span id="cb18-405"><a href="#cb18-405" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-406"><a href="#cb18-406" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
+<span id="cb18-407"><a href="#cb18-407" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
+<span id="cb18-408"><a href="#cb18-408" aria-hidden="true" tabindex="-1"></a><span class="fu">P</span>(<span class="at">q =</span> (<span class="dv">105</span> <span class="sc">-</span> <span class="dv">100</span>) <span class="sc">/</span> (<span class="dv">10</span> <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">15</span>)),</span>
+<span id="cb18-409"><a href="#cb18-409" aria-hidden="true" tabindex="-1"></a><span class="at">dist =</span> <span class="st">"t-student"</span>, <span class="co"># Tipo de distribuição</span></span>
+<span id="cb18-410"><a href="#cb18-410" aria-hidden="true" tabindex="-1"></a><span class="at">df =</span> <span class="dv">14</span>, <span class="co"># ν - número de graus de liberdade</span></span>
+<span id="cb18-411"><a href="#cb18-411" aria-hidden="true" tabindex="-1"></a><span class="at">gui =</span> <span class="st">"plot"</span>,</span>
+<span id="cb18-412"><a href="#cb18-412" aria-hidden="true" tabindex="-1"></a><span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb18-413"><a href="#cb18-413" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb18-414"><a href="#cb18-414" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-415"><a href="#cb18-415" aria-hidden="true" tabindex="-1"></a>$$P(\bar{X} \geq 105) \approx 0.03663$$</span>
+<span id="cb18-416"><a href="#cb18-416" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-417"><a href="#cb18-417" aria-hidden="true" tabindex="-1"></a><span class="fu">## Considerações finais</span></span>
+<span id="cb18-418"><a href="#cb18-418" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-419"><a href="#cb18-419" aria-hidden="true" tabindex="-1"></a><span class="fu">### Dúvidas mais usuais</span></span>
+<span id="cb18-420"><a href="#cb18-420" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-421"><a href="#cb18-421" aria-hidden="true" tabindex="-1"></a>1) Qual a diferença fundamental entre uma variável aleatória discreta e uma contínua quando usamos o pacote leem?</span>
+<span id="cb18-422"><a href="#cb18-422" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-423"><a href="#cb18-423" aria-hidden="true" tabindex="-1"></a>2) O que acontece com o gráfico da Distribuição Binomial quando nós aumentamos o número de tentativas?</span>
+<span id="cb18-424"><a href="#cb18-424" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-425"><a href="#cb18-425" aria-hidden="true" tabindex="-1"></a>3) Porque a Distribuição de Poisson pode ser chamada de distribuição de eventos raros?</span>
+<span id="cb18-426"><a href="#cb18-426" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-427"><a href="#cb18-427" aria-hidden="true" tabindex="-1"></a>4) Porque a Distribuição Normal é considerada a distribuição padrão da natureza e engenharia?</span>
+<span id="cb18-428"><a href="#cb18-428" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-429"><a href="#cb18-429" aria-hidden="true" tabindex="-1"></a>5) Sobre o impacto da redundancia na Distribuição Binomial, se aumentássemos o número de sensores de 5 para 7, como a probabilidade de segurança (k &gt;= 3) se comportaria?</span>
+<span id="cb18-430"><a href="#cb18-430" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-431"><a href="#cb18-431" aria-hidden="true" tabindex="-1"></a>6) Em quais situações o uso da Distribuição Binomial no teste dos sensores seria tecnicamente incorreto, exigindo usar a Hipergeométrica?</span>
+<span id="cb18-432"><a href="#cb18-432" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-433"><a href="#cb18-433" aria-hidden="true" tabindex="-1"></a>7) A propriedade de falta de memória da Exponencial é realista para componentes que sofrem desgaste mecânico ao longo do tempo?</span>
+<span id="cb18-434"><a href="#cb18-434" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-435"><a href="#cb18-435" aria-hidden="true" tabindex="-1"></a>8) Como o Teorema Central do Limite justifica usar a Distribuição Normal quando não conhecemos a distribuição original dos dados?</span>
+<span id="cb18-436"><a href="#cb18-436" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-437"><a href="#cb18-437" aria-hidden="true" tabindex="-1"></a><span class="fu">### Respostas</span></span>
+<span id="cb18-438"><a href="#cb18-438" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-439"><a href="#cb18-439" aria-hidden="true" tabindex="-1"></a>1) A diferença é o que o R conta, em variáveis discretas (valores isolados: 1, 2, 10,...), e em um gráfico do leem geralmente podemos ver barras separadas; agora em variáveis contínuas são medidas (pode ser qualquer valor real), e no leem vemos a chance de pegar uma medida entre duas outras, trabalhamos com o cálculo de áreas sob a curva de densidade.</span>
+<span id="cb18-440"><a href="#cb18-440" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-441"><a href="#cb18-441" aria-hidden="true" tabindex="-1"></a>2) Conforme o número de tentativas aumenta, as barras ficam mais próximas e a distribuição se torna mais simétrica, o que nos mostra que no limite a Distribuição se aproxima da Normal.</span>
+<span id="cb18-442"><a href="#cb18-442" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-443"><a href="#cb18-443" aria-hidden="true" tabindex="-1"></a>3) A Distribuição de Poisson modela ocorrências em um intervalo em que a chance de um evento acontecer é quase zero, mas no total do intervalo temos uma média, usando o leem, se tivermos uma média pequena, o gráfico apresenta uma forte assimetria positiva (estar mais a direita, assim como a cauda do gráfico) quando a média é pequena ela concentra as probabilidades em valores pequenos, o que nos mostra que é muito provável ter poucos eventos e muito raro ter 10.</span>
+<span id="cb18-444"><a href="#cb18-444" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-445"><a href="#cb18-445" aria-hidden="true" tabindex="-1"></a>4) Com o Teorema do Limite Central, os erros de medição de um sensor tendem a se cancelar ou se somar na engenharia, ficando na maior parte das leituras perto da média, no leem usamos muito a função para calcular a cauda (parte rala) da distribuição, se o gráfico do leem mostra uma área quase invisível, o processo é bem seguro.</span>
+<span id="cb18-446"><a href="#cb18-446" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-447"><a href="#cb18-447" aria-hidden="true" tabindex="-1"></a>5) Quando aumentamos o número de sensores mantendo o critério de funcionamento K &gt;= 3, a probabilidade de segurança aumentaria muito, isso ocorre porque a Distribuição Binomial tem mais combinações de sucesso para atingir o requisito mínimo; o que aconteceria é que o somatório teria mais termos, deixando o sistema bem mais robusto a falhas individuais.</span>
+<span id="cb18-448"><a href="#cb18-448" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-449"><a href="#cb18-449" aria-hidden="true" tabindex="-1"></a>6) A Distribuição Binomial será incorreta se testarmos sensores retirados em um lote pequeno e finito sem reposição. A Distribuição Binomial pressupõe que a probabilidade de sucesso é constante em todas as tentativas (como se tivesse reposição), já a Distribuição Hipergeométrica ajusta a probabilidade a cada retirada (isso porque a composição do lote muda. Se o lote total fosse de 20 sensores e tirássemos 5 para teste, a falta de um sensor alteraria a chance do próximo), e por isso é mais precisa.</span>
+<span id="cb18-450"><a href="#cb18-450" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-451"><a href="#cb18-451" aria-hidden="true" tabindex="-1"></a>7) A propriedade de falta de memoria afirma que a probabilidade de falha é constante, independente de quanto tempo o componente já operou (ideal para modelar falhas aleatórias em componentes eletrônicos), mas falha em representar componentes mecânicos (que sofrem desgaste físico), para esses casos de envelhecimento, outras distribuições seriam mais adequadas do que a Distribuição Exponencial.</span>
+<span id="cb18-452"><a href="#cb18-452" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-453"><a href="#cb18-453" aria-hidden="true" tabindex="-1"></a>8) O Teorema Central do Limite é fundamental por afirmar que independentemente da forma da distribuição original dos dados, a distribuição da média de uma grande amostra tenderá para uma Distribuição Normal conforme o tamanho da amostra aumenta (o que permite que engenheiros calculem probabilidades baseadas na curva de Gauss)</span>
+<span id="cb18-454"><a href="#cb18-454" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-455"><a href="#cb18-455" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-456"><a href="#cb18-456" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-457"><a href="#cb18-457" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-458"><a href="#cb18-458" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-459"><a href="#cb18-459" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-460"><a href="#cb18-460" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-461"><a href="#cb18-461" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-462"><a href="#cb18-462" aria-hidden="true" tabindex="-1"></a><span class="fu">## Referências</span></span>
 </code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
