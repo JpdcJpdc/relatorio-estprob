@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -10,6 +10,9 @@
 
 <title>Relatório 04 - Distribuições de Probabilidade</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -82,18 +85,17 @@ div.csl-indent {
 <script src="index_files/libs/clipboard/clipboard.min.js"></script>
 <script src="index_files/libs/quarto-html/quarto.js" type="module"></script>
 <script src="index_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="index_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="index_files/libs/quarto-html/popper.min.js"></script>
 <script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="index_files/libs/quarto-html/anchor.min.js"></script>
 <link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="index_files/libs/bootstrap/bootstrap-9e3ffae467580fdb927a41352e75a2e0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="index_files/libs/bootstrap/bootstrap-efbb37e9afcc02144ebbc7afd12a776f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -493,6 +495,19 @@ Nota
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] NA</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Aviso
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>O <code>leem</code> não está funcionando para a distribuição Hipergeométrica… Aguardando correção do pacote.</p>
 </div>
 </div>
 </section>
@@ -1392,125 +1407,128 @@ CUSTÓDIO, T. N.; BATISTA, B. D. O. <strong><a href="https://bendeivide.github.i
 <span id="cb18-337"><a href="#cb18-337" aria-hidden="true" tabindex="-1"></a><span class="at">lower.tail =</span> <span class="cn">TRUE</span>) </span>
 <span id="cb18-338"><a href="#cb18-338" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb18-339"><a href="#cb18-339" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-340"><a href="#cb18-340" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Distribuição Exponencial</span></span>
-<span id="cb18-341"><a href="#cb18-341" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-342"><a href="#cb18-342" aria-hidden="true" tabindex="-1"></a>  A distribuição Exponencial é uma distribuição de probabilidade contínua que modela o tempo entre eventos em um processo de Poisson, onde os eventos ocorrem de forma independente e a uma taxa constante. Uma variável aleatória que segue uma distribuição Exponencial é denotada por $X \sim \text{Exponential}(\lambda)$, onde $\lambda$ é a taxa média de eventos por unidade de tempo.</span>
-<span id="cb18-343"><a href="#cb18-343" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-344"><a href="#cb18-344" aria-hidden="true" tabindex="-1"></a>  $$f(x) = \lambda e^{-\lambda x}$$ {#eq-exponencial}</span>
-<span id="cb18-345"><a href="#cb18-345" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-346"><a href="#cb18-346" aria-hidden="true" tabindex="-1"></a>  Em sistemas de confiabilidade, a distribuição Exponencial é frequentemente utilizada para modelar o tempo até a falha de componentes eletrônicos ou mecânicos, permitindo prever a vida útil e planejar manutenções preventivas.</span>
-<span id="cb18-347"><a href="#cb18-347" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-348"><a href="#cb18-348" aria-hidden="true" tabindex="-1"></a>  Exemplo: Considere um componente eletrônico que tem uma taxa média de falha de 0.01 falhas por hora ($\lambda = 0.01$). A probabilidade de o componente falhar dentro de 100 horas pode ser calculada utilizando a distribuição Exponencial:</span>
-<span id="cb18-349"><a href="#cb18-349" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-350"><a href="#cb18-350" aria-hidden="true" tabindex="-1"></a>$$P(X \leq 100) = \int_{0}^{100} 0.01 e^{-0.01 x} dx$$</span>
-<span id="cb18-351"><a href="#cb18-351" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-352"><a href="#cb18-352" aria-hidden="true" tabindex="-1"></a>$$P(X \leq 100) = 0.01 \cdot \int_{0}^{100} e^{-0.01 x} dx$$</span>
-<span id="cb18-353"><a href="#cb18-353" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-354"><a href="#cb18-354" aria-hidden="true" tabindex="-1"></a>$$P(X \leq 100) = 0.01 \cdot \left<span class="co">[</span><span class="ot">-\frac{1}{0.01} e^{-0.01 x}\right</span><span class="co">]</span>_{0}^{100}$$</span>
-<span id="cb18-355"><a href="#cb18-355" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-356"><a href="#cb18-356" aria-hidden="true" tabindex="-1"></a>$$P(X \leq 100) = \left<span class="co">[</span><span class="ot">e^{-0.01 x}\right</span><span class="co">]</span>_{0}^{100}$$</span>
-<span id="cb18-357"><a href="#cb18-357" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-340"><a href="#cb18-340" aria-hidden="true" tabindex="-1"></a>::: {.callout-warning}</span>
+<span id="cb18-341"><a href="#cb18-341" aria-hidden="true" tabindex="-1"></a>O <span class="in">`leem`</span> não está funcionando para a distribuição Hipergeométrica... Aguardando correção do pacote.</span>
+<span id="cb18-342"><a href="#cb18-342" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb18-343"><a href="#cb18-343" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Distribuição Exponencial</span></span>
+<span id="cb18-344"><a href="#cb18-344" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-345"><a href="#cb18-345" aria-hidden="true" tabindex="-1"></a>  A distribuição Exponencial é uma distribuição de probabilidade contínua que modela o tempo entre eventos em um processo de Poisson, onde os eventos ocorrem de forma independente e a uma taxa constante. Uma variável aleatória que segue uma distribuição Exponencial é denotada por $X \sim \text{Exponential}(\lambda)$, onde $\lambda$ é a taxa média de eventos por unidade de tempo.</span>
+<span id="cb18-346"><a href="#cb18-346" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-347"><a href="#cb18-347" aria-hidden="true" tabindex="-1"></a>  $$f(x) = \lambda e^{-\lambda x}$$ {#eq-exponencial}</span>
+<span id="cb18-348"><a href="#cb18-348" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-349"><a href="#cb18-349" aria-hidden="true" tabindex="-1"></a>  Em sistemas de confiabilidade, a distribuição Exponencial é frequentemente utilizada para modelar o tempo até a falha de componentes eletrônicos ou mecânicos, permitindo prever a vida útil e planejar manutenções preventivas.</span>
+<span id="cb18-350"><a href="#cb18-350" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-351"><a href="#cb18-351" aria-hidden="true" tabindex="-1"></a>  Exemplo: Considere um componente eletrônico que tem uma taxa média de falha de 0.01 falhas por hora ($\lambda = 0.01$). A probabilidade de o componente falhar dentro de 100 horas pode ser calculada utilizando a distribuição Exponencial:</span>
+<span id="cb18-352"><a href="#cb18-352" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-353"><a href="#cb18-353" aria-hidden="true" tabindex="-1"></a>$$P(X \leq 100) = \int_{0}^{100} 0.01 e^{-0.01 x} dx$$</span>
+<span id="cb18-354"><a href="#cb18-354" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-355"><a href="#cb18-355" aria-hidden="true" tabindex="-1"></a>$$P(X \leq 100) = 0.01 \cdot \int_{0}^{100} e^{-0.01 x} dx$$</span>
+<span id="cb18-356"><a href="#cb18-356" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-357"><a href="#cb18-357" aria-hidden="true" tabindex="-1"></a>$$P(X \leq 100) = 0.01 \cdot \left<span class="co">[</span><span class="ot">-\frac{1}{0.01} e^{-0.01 x}\right</span><span class="co">]</span>_{0}^{100}$$</span>
 <span id="cb18-358"><a href="#cb18-358" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-359"><a href="#cb18-359" aria-hidden="true" tabindex="-1"></a>$$P(X \leq 100) = e^{-0} - e^{-1} \approx 0.6321$$</span>
-<span id="cb18-360"><a href="#cb18-360" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
-<span id="cb18-361"><a href="#cb18-361" aria-hidden="true" tabindex="-1"></a> Na Distribuição Exponencial, uma curiosidade interessante é que a propriedade de falta de memória (uma característica única dela) que é fundamental em estudos de confiabilidade. Ela indica que a probabilidade de ocorrência de um evento futuro independente do tempo decorrido, é ideal para modelar componentes que não sofrem desgaste físico gradual, mas falham por conta de eventos aleatórios externos.</span>
-<span id="cb18-362"><a href="#cb18-362" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb18-363"><a href="#cb18-363" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-364"><a href="#cb18-364" aria-hidden="true" tabindex="-1"></a>Com o <span class="in">`leem`</span>:</span>
-<span id="cb18-365"><a href="#cb18-365" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-368"><a href="#cb18-368" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb18-369"><a href="#cb18-369" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
-<span id="cb18-370"><a href="#cb18-370" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
-<span id="cb18-371"><a href="#cb18-371" aria-hidden="true" tabindex="-1"></a><span class="fu">P</span>(<span class="at">q =</span> <span class="dv">100</span>,</span>
-<span id="cb18-372"><a href="#cb18-372" aria-hidden="true" tabindex="-1"></a><span class="at">dist =</span> <span class="st">"exp"</span>, <span class="co"># Tipo de distribuição</span></span>
-<span id="cb18-373"><a href="#cb18-373" aria-hidden="true" tabindex="-1"></a><span class="at">rate =</span> <span class="fl">0.01</span>, <span class="co"># λ - taxa média de eventos</span></span>
-<span id="cb18-374"><a href="#cb18-374" aria-hidden="true" tabindex="-1"></a><span class="at">gui =</span> <span class="st">"plot"</span>,</span>
-<span id="cb18-375"><a href="#cb18-375" aria-hidden="true" tabindex="-1"></a><span class="at">lower.tail =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb18-376"><a href="#cb18-376" aria-hidden="true" tabindex="-1"></a><span class="in">```</span> </span>
-<span id="cb18-377"><a href="#cb18-377" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-378"><a href="#cb18-378" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Distribuição T de Student</span></span>
-<span id="cb18-379"><a href="#cb18-379" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-380"><a href="#cb18-380" aria-hidden="true" tabindex="-1"></a>  A distribuição T de Student é uma distribuição de probabilidade contínua que é usada para estimar a média de uma população quando o tamanho da amostra é pequeno e a variância populacional é desconhecida. Uma variável aleatória que segue uma distribuição T de Student é denotada por $X \sim t(\nu)$, onde $\nu$ é o número de graus de liberdade, geralmente calculado como o tamanho da amostra menos um ($\nu = n - 1$).</span>
-<span id="cb18-381"><a href="#cb18-381" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-382"><a href="#cb18-382" aria-hidden="true" tabindex="-1"></a> $$f(t) = \frac{\Gamma\left(\frac{\nu + 1}{2}\right)}{\sqrt{\nu \pi} \Gamma\left(\frac{\nu}{2}\right)} \left(1 + \frac{t^2}{\nu}\right)^{-\frac{\nu + 1}{2}}$$ {#eq-t-student}</span>
-<span id="cb18-383"><a href="#cb18-383" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-384"><a href="#cb18-384" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
-<span id="cb18-385"><a href="#cb18-385" aria-hidden="true" tabindex="-1"></a>A função $\Gamma$ é a função gama, que generaliza o fatorial para números reais e complexos. Para um número inteiro positivo $n$, $\Gamma(n) = (n-1)!$. </span>
-<span id="cb18-386"><a href="#cb18-386" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb18-387"><a href="#cb18-387" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-388"><a href="#cb18-388" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-389"><a href="#cb18-389" aria-hidden="true" tabindex="-1"></a>  Em análise de dados, a distribuição T de Student é frequentemente utilizada para realizar testes de hipóteses sobre a média de uma população, especialmente quando o tamanho da amostra é pequeno e a variância populacional é desconhecida.</span>
+<span id="cb18-359"><a href="#cb18-359" aria-hidden="true" tabindex="-1"></a>$$P(X \leq 100) = \left<span class="co">[</span><span class="ot">e^{-0.01 x}\right</span><span class="co">]</span>_{0}^{100}$$</span>
+<span id="cb18-360"><a href="#cb18-360" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-361"><a href="#cb18-361" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-362"><a href="#cb18-362" aria-hidden="true" tabindex="-1"></a>$$P(X \leq 100) = e^{-0} - e^{-1} \approx 0.6321$$</span>
+<span id="cb18-363"><a href="#cb18-363" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb18-364"><a href="#cb18-364" aria-hidden="true" tabindex="-1"></a> Na Distribuição Exponencial, uma curiosidade interessante é que a propriedade de falta de memória (uma característica única dela) que é fundamental em estudos de confiabilidade. Ela indica que a probabilidade de ocorrência de um evento futuro independente do tempo decorrido, é ideal para modelar componentes que não sofrem desgaste físico gradual, mas falham por conta de eventos aleatórios externos.</span>
+<span id="cb18-365"><a href="#cb18-365" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb18-366"><a href="#cb18-366" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-367"><a href="#cb18-367" aria-hidden="true" tabindex="-1"></a>Com o <span class="in">`leem`</span>:</span>
+<span id="cb18-368"><a href="#cb18-368" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-371"><a href="#cb18-371" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-372"><a href="#cb18-372" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
+<span id="cb18-373"><a href="#cb18-373" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
+<span id="cb18-374"><a href="#cb18-374" aria-hidden="true" tabindex="-1"></a><span class="fu">P</span>(<span class="at">q =</span> <span class="dv">100</span>,</span>
+<span id="cb18-375"><a href="#cb18-375" aria-hidden="true" tabindex="-1"></a><span class="at">dist =</span> <span class="st">"exp"</span>, <span class="co"># Tipo de distribuição</span></span>
+<span id="cb18-376"><a href="#cb18-376" aria-hidden="true" tabindex="-1"></a><span class="at">rate =</span> <span class="fl">0.01</span>, <span class="co"># λ - taxa média de eventos</span></span>
+<span id="cb18-377"><a href="#cb18-377" aria-hidden="true" tabindex="-1"></a><span class="at">gui =</span> <span class="st">"plot"</span>,</span>
+<span id="cb18-378"><a href="#cb18-378" aria-hidden="true" tabindex="-1"></a><span class="at">lower.tail =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb18-379"><a href="#cb18-379" aria-hidden="true" tabindex="-1"></a><span class="in">```</span> </span>
+<span id="cb18-380"><a href="#cb18-380" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-381"><a href="#cb18-381" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Distribuição T de Student</span></span>
+<span id="cb18-382"><a href="#cb18-382" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-383"><a href="#cb18-383" aria-hidden="true" tabindex="-1"></a>  A distribuição T de Student é uma distribuição de probabilidade contínua que é usada para estimar a média de uma população quando o tamanho da amostra é pequeno e a variância populacional é desconhecida. Uma variável aleatória que segue uma distribuição T de Student é denotada por $X \sim t(\nu)$, onde $\nu$ é o número de graus de liberdade, geralmente calculado como o tamanho da amostra menos um ($\nu = n - 1$).</span>
+<span id="cb18-384"><a href="#cb18-384" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-385"><a href="#cb18-385" aria-hidden="true" tabindex="-1"></a> $$f(t) = \frac{\Gamma\left(\frac{\nu + 1}{2}\right)}{\sqrt{\nu \pi} \Gamma\left(\frac{\nu}{2}\right)} \left(1 + \frac{t^2}{\nu}\right)^{-\frac{\nu + 1}{2}}$$ {#eq-t-student}</span>
+<span id="cb18-386"><a href="#cb18-386" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-387"><a href="#cb18-387" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb18-388"><a href="#cb18-388" aria-hidden="true" tabindex="-1"></a>A função $\Gamma$ é a função gama, que generaliza o fatorial para números reais e complexos. Para um número inteiro positivo $n$, $\Gamma(n) = (n-1)!$. </span>
+<span id="cb18-389"><a href="#cb18-389" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb18-390"><a href="#cb18-390" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-391"><a href="#cb18-391" aria-hidden="true" tabindex="-1"></a>  Exemplo: Considere um estudo onde se deseja comparar a média de um grupo experimental com uma média conhecida. Suponha que temos uma amostra de 15 indivíduos ($n = 15$) e queremos testar se a média do grupo é significativamente diferente de 100. A média amostral é de 105 e o desvio padrão amostral é de 10. O número de graus de liberdade seria $\nu = n - 1 = 14$. A probabilidade associada ao valor observado pode ser calculada utilizando a distribuição T de Student:</span>
-<span id="cb18-392"><a href="#cb18-392" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-393"><a href="#cb18-393" aria-hidden="true" tabindex="-1"></a>  $$P(\bar{X} \geq 105) = P\left(t \geq \frac{105 - 100}{10 / \sqrt{15}}\right)$$</span>
-<span id="cb18-394"><a href="#cb18-394" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-395"><a href="#cb18-395" aria-hidden="true" tabindex="-1"></a>  $$P(\bar{X} \geq 105) = P\left(t \geq \frac{5}{10 / \sqrt{15}}\right)$$</span>
-<span id="cb18-396"><a href="#cb18-396" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-397"><a href="#cb18-397" aria-hidden="true" tabindex="-1"></a>  $$P(\bar{X} \geq 105) = P\left(t \geq \frac{59}{\sqrt{15}}\right)$$</span>
-<span id="cb18-398"><a href="#cb18-398" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-399"><a href="#cb18-399" aria-hidden="true" tabindex="-1"></a>  $$P(\bar{X} \geq 105) \approx P\left(t \geq 1.9365\right)$$</span>
-<span id="cb18-400"><a href="#cb18-400" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-391"><a href="#cb18-391" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-392"><a href="#cb18-392" aria-hidden="true" tabindex="-1"></a>  Em análise de dados, a distribuição T de Student é frequentemente utilizada para realizar testes de hipóteses sobre a média de uma população, especialmente quando o tamanho da amostra é pequeno e a variância populacional é desconhecida.</span>
+<span id="cb18-393"><a href="#cb18-393" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-394"><a href="#cb18-394" aria-hidden="true" tabindex="-1"></a>  Exemplo: Considere um estudo onde se deseja comparar a média de um grupo experimental com uma média conhecida. Suponha que temos uma amostra de 15 indivíduos ($n = 15$) e queremos testar se a média do grupo é significativamente diferente de 100. A média amostral é de 105 e o desvio padrão amostral é de 10. O número de graus de liberdade seria $\nu = n - 1 = 14$. A probabilidade associada ao valor observado pode ser calculada utilizando a distribuição T de Student:</span>
+<span id="cb18-395"><a href="#cb18-395" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-396"><a href="#cb18-396" aria-hidden="true" tabindex="-1"></a>  $$P(\bar{X} \geq 105) = P\left(t \geq \frac{105 - 100}{10 / \sqrt{15}}\right)$$</span>
+<span id="cb18-397"><a href="#cb18-397" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-398"><a href="#cb18-398" aria-hidden="true" tabindex="-1"></a>  $$P(\bar{X} \geq 105) = P\left(t \geq \frac{5}{10 / \sqrt{15}}\right)$$</span>
+<span id="cb18-399"><a href="#cb18-399" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-400"><a href="#cb18-400" aria-hidden="true" tabindex="-1"></a>  $$P(\bar{X} \geq 105) = P\left(t \geq \frac{59}{\sqrt{15}}\right)$$</span>
 <span id="cb18-401"><a href="#cb18-401" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-402"><a href="#cb18-402" aria-hidden="true" tabindex="-1"></a>  A função só pode ser calculada numericamente. Com o <span class="in">`leem`</span>:</span>
-<span id="cb18-405"><a href="#cb18-405" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb18-406"><a href="#cb18-406" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
-<span id="cb18-407"><a href="#cb18-407" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
-<span id="cb18-408"><a href="#cb18-408" aria-hidden="true" tabindex="-1"></a><span class="fu">P</span>(<span class="at">q =</span> (<span class="dv">105</span> <span class="sc">-</span> <span class="dv">100</span>) <span class="sc">/</span> (<span class="dv">10</span> <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">15</span>)),</span>
-<span id="cb18-409"><a href="#cb18-409" aria-hidden="true" tabindex="-1"></a><span class="at">dist =</span> <span class="st">"t-student"</span>, <span class="co"># Tipo de distribuição</span></span>
-<span id="cb18-410"><a href="#cb18-410" aria-hidden="true" tabindex="-1"></a><span class="at">df =</span> <span class="dv">14</span>, <span class="co"># ν - número de graus de liberdade</span></span>
-<span id="cb18-411"><a href="#cb18-411" aria-hidden="true" tabindex="-1"></a><span class="at">gui =</span> <span class="st">"plot"</span>,</span>
-<span id="cb18-412"><a href="#cb18-412" aria-hidden="true" tabindex="-1"></a><span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb18-413"><a href="#cb18-413" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-414"><a href="#cb18-414" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-415"><a href="#cb18-415" aria-hidden="true" tabindex="-1"></a>$$P(\bar{X} \geq 105) \approx 0.03663$$</span>
-<span id="cb18-416"><a href="#cb18-416" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-417"><a href="#cb18-417" aria-hidden="true" tabindex="-1"></a><span class="fu">## Considerações finais</span></span>
-<span id="cb18-418"><a href="#cb18-418" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-419"><a href="#cb18-419" aria-hidden="true" tabindex="-1"></a><span class="fu">### Dúvidas mais usuais</span></span>
-<span id="cb18-420"><a href="#cb18-420" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-421"><a href="#cb18-421" aria-hidden="true" tabindex="-1"></a>1) Qual a diferença fundamental entre uma variável aleatória discreta e uma contínua quando usamos o pacote leem?</span>
-<span id="cb18-422"><a href="#cb18-422" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-423"><a href="#cb18-423" aria-hidden="true" tabindex="-1"></a>2) O que acontece com o gráfico da Distribuição Binomial quando nós aumentamos o número de tentativas?</span>
-<span id="cb18-424"><a href="#cb18-424" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-425"><a href="#cb18-425" aria-hidden="true" tabindex="-1"></a>3) Porque a Distribuição de Poisson pode ser chamada de distribuição de eventos raros?</span>
-<span id="cb18-426"><a href="#cb18-426" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-427"><a href="#cb18-427" aria-hidden="true" tabindex="-1"></a>4) Porque a Distribuição Normal é considerada a distribuição padrão da natureza e engenharia?</span>
-<span id="cb18-428"><a href="#cb18-428" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-429"><a href="#cb18-429" aria-hidden="true" tabindex="-1"></a>5) Sobre o impacto da redundancia na Distribuição Binomial, se aumentássemos o número de sensores de 5 para 7, como a probabilidade de segurança (k &gt;= 3) se comportaria?</span>
-<span id="cb18-430"><a href="#cb18-430" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-431"><a href="#cb18-431" aria-hidden="true" tabindex="-1"></a>6) Em quais situações o uso da Distribuição Binomial no teste dos sensores seria tecnicamente incorreto, exigindo usar a Hipergeométrica?</span>
-<span id="cb18-432"><a href="#cb18-432" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-433"><a href="#cb18-433" aria-hidden="true" tabindex="-1"></a>7) A propriedade de falta de memória da Exponencial é realista para componentes que sofrem desgaste mecânico ao longo do tempo?</span>
-<span id="cb18-434"><a href="#cb18-434" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-435"><a href="#cb18-435" aria-hidden="true" tabindex="-1"></a>8) Como o Teorema Central do Limite justifica usar a Distribuição Normal quando não conhecemos a distribuição original dos dados?</span>
-<span id="cb18-436"><a href="#cb18-436" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-437"><a href="#cb18-437" aria-hidden="true" tabindex="-1"></a><span class="fu">### Respostas</span></span>
-<span id="cb18-438"><a href="#cb18-438" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-439"><a href="#cb18-439" aria-hidden="true" tabindex="-1"></a>1) A diferença é o que o R conta, em variáveis discretas (valores isolados: 1, 2, 10,...), e em um gráfico do leem geralmente podemos ver barras separadas; agora em variáveis contínuas são medidas (pode ser qualquer valor real), e no leem vemos a chance de pegar uma medida entre duas outras, trabalhamos com o cálculo de áreas sob a curva de densidade.</span>
-<span id="cb18-440"><a href="#cb18-440" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-441"><a href="#cb18-441" aria-hidden="true" tabindex="-1"></a>2) Conforme o número de tentativas aumenta, as barras ficam mais próximas e a distribuição se torna mais simétrica, o que nos mostra que no limite a Distribuição se aproxima da Normal.</span>
-<span id="cb18-442"><a href="#cb18-442" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-443"><a href="#cb18-443" aria-hidden="true" tabindex="-1"></a>3) A Distribuição de Poisson modela ocorrências em um intervalo em que a chance de um evento acontecer é quase zero, mas no total do intervalo temos uma média, usando o leem, se tivermos uma média pequena, o gráfico apresenta uma forte assimetria positiva (estar mais a direita, assim como a cauda do gráfico) quando a média é pequena ela concentra as probabilidades em valores pequenos, o que nos mostra que é muito provável ter poucos eventos e muito raro ter 10.</span>
-<span id="cb18-444"><a href="#cb18-444" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-445"><a href="#cb18-445" aria-hidden="true" tabindex="-1"></a>4) Com o Teorema do Limite Central, os erros de medição de um sensor tendem a se cancelar ou se somar na engenharia, ficando na maior parte das leituras perto da média, no leem usamos muito a função para calcular a cauda (parte rala) da distribuição, se o gráfico do leem mostra uma área quase invisível, o processo é bem seguro.</span>
-<span id="cb18-446"><a href="#cb18-446" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-447"><a href="#cb18-447" aria-hidden="true" tabindex="-1"></a>5) Quando aumentamos o número de sensores mantendo o critério de funcionamento K &gt;= 3, a probabilidade de segurança aumentaria muito, isso ocorre porque a Distribuição Binomial tem mais combinações de sucesso para atingir o requisito mínimo; o que aconteceria é que o somatório teria mais termos, deixando o sistema bem mais robusto a falhas individuais.</span>
-<span id="cb18-448"><a href="#cb18-448" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-449"><a href="#cb18-449" aria-hidden="true" tabindex="-1"></a>6) A Distribuição Binomial será incorreta se testarmos sensores retirados em um lote pequeno e finito sem reposição. A Distribuição Binomial pressupõe que a probabilidade de sucesso é constante em todas as tentativas (como se tivesse reposição), já a Distribuição Hipergeométrica ajusta a probabilidade a cada retirada (isso porque a composição do lote muda. Se o lote total fosse de 20 sensores e tirássemos 5 para teste, a falta de um sensor alteraria a chance do próximo), e por isso é mais precisa.</span>
-<span id="cb18-450"><a href="#cb18-450" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-451"><a href="#cb18-451" aria-hidden="true" tabindex="-1"></a>7) A propriedade de falta de memoria afirma que a probabilidade de falha é constante, independente de quanto tempo o componente já operou (ideal para modelar falhas aleatórias em componentes eletrônicos), mas falha em representar componentes mecânicos (que sofrem desgaste físico), para esses casos de envelhecimento, outras distribuições seriam mais adequadas do que a Distribuição Exponencial.</span>
-<span id="cb18-452"><a href="#cb18-452" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-453"><a href="#cb18-453" aria-hidden="true" tabindex="-1"></a>8) O Teorema Central do Limite é fundamental por afirmar que independentemente da forma da distribuição original dos dados, a distribuição da média de uma grande amostra tenderá para uma Distribuição Normal conforme o tamanho da amostra aumenta (o que permite que engenheiros calculem probabilidades baseadas na curva de Gauss)</span>
-<span id="cb18-454"><a href="#cb18-454" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-402"><a href="#cb18-402" aria-hidden="true" tabindex="-1"></a>  $$P(\bar{X} \geq 105) \approx P\left(t \geq 1.9365\right)$$</span>
+<span id="cb18-403"><a href="#cb18-403" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-404"><a href="#cb18-404" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-405"><a href="#cb18-405" aria-hidden="true" tabindex="-1"></a>  A função só pode ser calculada numericamente. Com o <span class="in">`leem`</span>:</span>
+<span id="cb18-408"><a href="#cb18-408" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-409"><a href="#cb18-409" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
+<span id="cb18-410"><a href="#cb18-410" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
+<span id="cb18-411"><a href="#cb18-411" aria-hidden="true" tabindex="-1"></a><span class="fu">P</span>(<span class="at">q =</span> (<span class="dv">105</span> <span class="sc">-</span> <span class="dv">100</span>) <span class="sc">/</span> (<span class="dv">10</span> <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">15</span>)),</span>
+<span id="cb18-412"><a href="#cb18-412" aria-hidden="true" tabindex="-1"></a><span class="at">dist =</span> <span class="st">"t-student"</span>, <span class="co"># Tipo de distribuição</span></span>
+<span id="cb18-413"><a href="#cb18-413" aria-hidden="true" tabindex="-1"></a><span class="at">df =</span> <span class="dv">14</span>, <span class="co"># ν - número de graus de liberdade</span></span>
+<span id="cb18-414"><a href="#cb18-414" aria-hidden="true" tabindex="-1"></a><span class="at">gui =</span> <span class="st">"plot"</span>,</span>
+<span id="cb18-415"><a href="#cb18-415" aria-hidden="true" tabindex="-1"></a><span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb18-416"><a href="#cb18-416" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb18-417"><a href="#cb18-417" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-418"><a href="#cb18-418" aria-hidden="true" tabindex="-1"></a>$$P(\bar{X} \geq 105) \approx 0.03663$$</span>
+<span id="cb18-419"><a href="#cb18-419" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-420"><a href="#cb18-420" aria-hidden="true" tabindex="-1"></a><span class="fu">## Considerações finais</span></span>
+<span id="cb18-421"><a href="#cb18-421" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-422"><a href="#cb18-422" aria-hidden="true" tabindex="-1"></a><span class="fu">### Dúvidas mais usuais</span></span>
+<span id="cb18-423"><a href="#cb18-423" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-424"><a href="#cb18-424" aria-hidden="true" tabindex="-1"></a>1) Qual a diferença fundamental entre uma variável aleatória discreta e uma contínua quando usamos o pacote leem?</span>
+<span id="cb18-425"><a href="#cb18-425" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-426"><a href="#cb18-426" aria-hidden="true" tabindex="-1"></a>2) O que acontece com o gráfico da Distribuição Binomial quando nós aumentamos o número de tentativas?</span>
+<span id="cb18-427"><a href="#cb18-427" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-428"><a href="#cb18-428" aria-hidden="true" tabindex="-1"></a>3) Porque a Distribuição de Poisson pode ser chamada de distribuição de eventos raros?</span>
+<span id="cb18-429"><a href="#cb18-429" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-430"><a href="#cb18-430" aria-hidden="true" tabindex="-1"></a>4) Porque a Distribuição Normal é considerada a distribuição padrão da natureza e engenharia?</span>
+<span id="cb18-431"><a href="#cb18-431" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-432"><a href="#cb18-432" aria-hidden="true" tabindex="-1"></a>5) Sobre o impacto da redundancia na Distribuição Binomial, se aumentássemos o número de sensores de 5 para 7, como a probabilidade de segurança (k &gt;= 3) se comportaria?</span>
+<span id="cb18-433"><a href="#cb18-433" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-434"><a href="#cb18-434" aria-hidden="true" tabindex="-1"></a>6) Em quais situações o uso da Distribuição Binomial no teste dos sensores seria tecnicamente incorreto, exigindo usar a Hipergeométrica?</span>
+<span id="cb18-435"><a href="#cb18-435" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-436"><a href="#cb18-436" aria-hidden="true" tabindex="-1"></a>7) A propriedade de falta de memória da Exponencial é realista para componentes que sofrem desgaste mecânico ao longo do tempo?</span>
+<span id="cb18-437"><a href="#cb18-437" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-438"><a href="#cb18-438" aria-hidden="true" tabindex="-1"></a>8) Como o Teorema Central do Limite justifica usar a Distribuição Normal quando não conhecemos a distribuição original dos dados?</span>
+<span id="cb18-439"><a href="#cb18-439" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-440"><a href="#cb18-440" aria-hidden="true" tabindex="-1"></a><span class="fu">### Respostas</span></span>
+<span id="cb18-441"><a href="#cb18-441" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-442"><a href="#cb18-442" aria-hidden="true" tabindex="-1"></a>1) A diferença é o que o R conta, em variáveis discretas (valores isolados: 1, 2, 10,...), e em um gráfico do leem geralmente podemos ver barras separadas; agora em variáveis contínuas são medidas (pode ser qualquer valor real), e no leem vemos a chance de pegar uma medida entre duas outras, trabalhamos com o cálculo de áreas sob a curva de densidade.</span>
+<span id="cb18-443"><a href="#cb18-443" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-444"><a href="#cb18-444" aria-hidden="true" tabindex="-1"></a>2) Conforme o número de tentativas aumenta, as barras ficam mais próximas e a distribuição se torna mais simétrica, o que nos mostra que no limite a Distribuição se aproxima da Normal.</span>
+<span id="cb18-445"><a href="#cb18-445" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-446"><a href="#cb18-446" aria-hidden="true" tabindex="-1"></a>3) A Distribuição de Poisson modela ocorrências em um intervalo em que a chance de um evento acontecer é quase zero, mas no total do intervalo temos uma média, usando o leem, se tivermos uma média pequena, o gráfico apresenta uma forte assimetria positiva (estar mais a direita, assim como a cauda do gráfico) quando a média é pequena ela concentra as probabilidades em valores pequenos, o que nos mostra que é muito provável ter poucos eventos e muito raro ter 10.</span>
+<span id="cb18-447"><a href="#cb18-447" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-448"><a href="#cb18-448" aria-hidden="true" tabindex="-1"></a>4) Com o Teorema do Limite Central, os erros de medição de um sensor tendem a se cancelar ou se somar na engenharia, ficando na maior parte das leituras perto da média, no leem usamos muito a função para calcular a cauda (parte rala) da distribuição, se o gráfico do leem mostra uma área quase invisível, o processo é bem seguro.</span>
+<span id="cb18-449"><a href="#cb18-449" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-450"><a href="#cb18-450" aria-hidden="true" tabindex="-1"></a>5) Quando aumentamos o número de sensores mantendo o critério de funcionamento K &gt;= 3, a probabilidade de segurança aumentaria muito, isso ocorre porque a Distribuição Binomial tem mais combinações de sucesso para atingir o requisito mínimo; o que aconteceria é que o somatório teria mais termos, deixando o sistema bem mais robusto a falhas individuais.</span>
+<span id="cb18-451"><a href="#cb18-451" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-452"><a href="#cb18-452" aria-hidden="true" tabindex="-1"></a>6) A Distribuição Binomial será incorreta se testarmos sensores retirados em um lote pequeno e finito sem reposição. A Distribuição Binomial pressupõe que a probabilidade de sucesso é constante em todas as tentativas (como se tivesse reposição), já a Distribuição Hipergeométrica ajusta a probabilidade a cada retirada (isso porque a composição do lote muda. Se o lote total fosse de 20 sensores e tirássemos 5 para teste, a falta de um sensor alteraria a chance do próximo), e por isso é mais precisa.</span>
+<span id="cb18-453"><a href="#cb18-453" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-454"><a href="#cb18-454" aria-hidden="true" tabindex="-1"></a>7) A propriedade de falta de memoria afirma que a probabilidade de falha é constante, independente de quanto tempo o componente já operou (ideal para modelar falhas aleatórias em componentes eletrônicos), mas falha em representar componentes mecânicos (que sofrem desgaste físico), para esses casos de envelhecimento, outras distribuições seriam mais adequadas do que a Distribuição Exponencial.</span>
 <span id="cb18-455"><a href="#cb18-455" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-456"><a href="#cb18-456" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-456"><a href="#cb18-456" aria-hidden="true" tabindex="-1"></a>8) O Teorema Central do Limite é fundamental por afirmar que independentemente da forma da distribuição original dos dados, a distribuição da média de uma grande amostra tenderá para uma Distribuição Normal conforme o tamanho da amostra aumenta (o que permite que engenheiros calculem probabilidades baseadas na curva de Gauss)</span>
 <span id="cb18-457"><a href="#cb18-457" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-458"><a href="#cb18-458" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-459"><a href="#cb18-459" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-460"><a href="#cb18-460" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-461"><a href="#cb18-461" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-462"><a href="#cb18-462" aria-hidden="true" tabindex="-1"></a><span class="fu">## Referências</span></span>
+<span id="cb18-462"><a href="#cb18-462" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-463"><a href="#cb18-463" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-464"><a href="#cb18-464" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-465"><a href="#cb18-465" aria-hidden="true" tabindex="-1"></a><span class="fu">## Referências</span></span>
 </code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

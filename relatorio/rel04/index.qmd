@@ -323,6 +323,9 @@ gui = "none",
 lower.tail = TRUE) 
 ```
 
+::: {.callout-warning}
+O `leem` não está funcionando para a distribuição Hipergeométrica... Aguardando correção do pacote.
+:::
 #### Distribuição Exponencial
 
   A distribuição Exponencial é uma distribuição de probabilidade contínua que modela o tempo entre eventos em um processo de Poisson, onde os eventos ocorrem de forma independente e a uma taxa constante. Uma variável aleatória que segue uma distribuição Exponencial é denotada por $X \sim \text{Exponential}(\lambda)$, onde $\lambda$ é a taxa média de eventos por unidade de tempo.
