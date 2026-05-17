@@ -1,7 +1,7 @@
 ---
 # Só mude aqui!!!!
-author: "Nome do Aluno"
-title: "Relatório de Aula Prática XX"
+author: "João Delpasso e Maria Eduarda Motta"
+title: "Relatório 05: Teorema Central do Limite"
 bibliography: referencias.bib
 # A partir daqui nao faca alteracoes!!!!!
 link-citations: true
@@ -27,99 +27,164 @@ execute:
 
 ## 📌 Introdução
 
-Descreva o contexto da prática e sua importância.
-
-> Exemplo: análise da variabilidade em experimentos físicos utilizando uma catapulta.
-
-
+O estudo do comportamento assintótico de variáveis aleatórias estuda o que ocorre com suas distribuições quando o número de ensaios ou o tamanho da amostra (n) tende ao infinito. O cálculo direto de funções de probabilidade discreta, como a Binomial, envolve combinatórias e potências que, eram inviáveis de calcular manualmente para grandes valores de n e, hoje, exigem otimização algorítmica. Este relatório aborda as conexões entre as distribuições Binomial, Poisson e Normal, que validam essas transições.
 
 ## 🎯 Objetivos
 
 ### Objetivo geral
 
-Descrever o objetivo principal da prática.
+Demonstrar analiticamente como a distribuição Binomial converge para as distribuições de Poisson e Normal, e como a de Poisson também converge para a Normal. Busca responder critérios de convergência, ao comportamento do erro dessas aproximações e ao impacto geométrico e analítico da correção de continuidade.
 
 ### Objetivos específicos
 
-- Coletar dados experimentais  
-- Aplicar estatística descritiva  
-- Construir gráficos  
-- Interpretar resultados  
+- Demonstrar a convergência analítica
+- Discutir a relevancia do método
+-
+-
 
 ---
 
 ## 📚  Fundamentação Teórica
 
-Apresente os conceitos principais:
+### O que garante que as aproximações funcionem?
+Aqui entram os Teoremas de Limite:
 
-- Média
-- Variância
-- Desvio padrão
-- Amostragem
+As aproximações não são meras suposições empíricas; são sustentadas por teoremas de convergência em lei (ou convergência em distribuição).
+
+#### Convergência da Binomial para a Poisson (Teorema de Poisson):
+
+Seja $X_n \sim \text{Binomial}(n, p_n)$. Se fizermos $n \to \infty$ e $p_n \to 0$ de tal forma que $n \cdot p_n \to \lambda$ (onde $\lambda > 0$ é constante), a Função Massa de Probabilidade (FMP) da Binomial converge pontualmente para a FMP da Poisson:
 
 $$
-\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i
+\lim_{n \to \infty} \binom{n}{k} p^k(1-p)^{n-k} = \frac{e^{-\lambda} \lambda^k}{k!}
 $$
+
+#### Convergência para a Normal (Teorema de de Moivre-Laplace e TCL):
+
+A convergência da Binomial e da Poisson para a Normal é um caso do Teorema Central do Limite (TCL). A Binomial pode ser vista como soma de n variáveis de Bernoulli independentes e distribuídas. 
+O TCL garante que a soma padronizada de variáveis aleatórias independentes com média e variância finitas converge em distribuição para a Normal Padrão $\mathcal{N}(0,1)$ à medida que $n \to \infty$.
+
+#### Como quantificar a qualidade/erro delas?
+
+A proximidade entre a distribuição exata e a aproximada pode ser medida analiticamente. Para a transição Binomial $\to$ Poisson, (o Teorema de Le Cam estabelece um limite superior para o erro absoluto total). Se X é a soma de variáveis de Bernoulli independentes com probabilidades $p_i$, e $Y \sim \text{Poisson}(\lambda)$ com $\lambda = \sum p_i$, então:
+
+$$
+\sum_{k=0}^{\infty} |P(X = k) - P(Y = k)| \le2 \sum_{i=1}^{n} p_i^2
+$$
+
+No caso em que todas as probabilidades são iguais $(p_1 = p_2 = ... = p)$, o limite do erro é $2np^2$. Isso explica por que a aproximação é excelente quando p é muito pequeno: mesmo que n seja grande, o termo $p^2$ penaliza e reduz o erro total.
+
+Para as aproximações pela Normal, o Teorema de Berry-Esseen quantifica a taxa de convergência do TCL, mostrando que o erro máximo entre a função de distribuição acumulada real e a aproximação Normal é limitado por:
+
+$$
+|F_n(x) - \Phi(x)| \le \frac{C \cdot \rho}{\sigma^3 \sqrt{n}}
+$$
+
+Onde C é uma constante universal e $\rho$ é o terceiro momento absoluto. Isso prova que o erro decresce a uma taxa proporcional a $1/\sqrt{n}$.
+
+#### Por que a Correção de Continuidade é necessária?
+
+A transição de uma distribuição discreta (Binomial ou Poisson) para uma contínua (Normal) tem um dilema matemático.
+Para uma variável contínua Y, a probabilidade pontual $P(Y = k) = 0$. No entanto, na distribuição discreta original, $P(X = k) > 0$.
+
+A Correção de Continuidade de Yates resolve isso geometricamente associa o valor inteiro k ao intervalo de base unitária $[k - 0,5; k + 0,5]$ sob a curva Normal.
+
+Ajustamos os limites de integração para que a área sob a densidade contínua corresponda ao retângulo da probabilidade discreta:
+Para calcular $P(X \le k)$, aproximamos por $P(Y \le k + 0,5)$.
+Para calcular $P(X \ge k)$, aproximamos por $P(Y \ge k - 0,5)$.
+
 
 ---
 
 ## ⚙️ Metodologia
 
 ::: {.callout-note}
-Descreva como o experimento foi realizado.
+Para garantir que os erros quantificados nos teoremas anteriores sejam desprezíveis na prática, adotam-se os seguintes critérios:
 :::
 
-- Materiais utilizados  
-- Procedimento  
-- Número de repetições  
+```text).
+[ Distribuição Binomial (n,p) ]
 
----
+------------------------------------------------------------------------
+         |                                               |
+ Se n >= 20 e p <= 0.05                         Se np >= 5 e n(1-p) >= 5
+         |                                               |
+         ▼                                               ▼
+[ Aproximação: Poisson ]                       [ Aproximação: Normal ]
+  (λ = n * p)                                     (μ = np, σ² = npq)
+         |                                               |
+         |          Requer Correção de Continuidade      |
+         
+ -----------------------------------------------------------------------
+                    Se λ > 20 (para Poisson)
+                               |
+                               |
+                               ▼
+                    [ Distribuição Normal ]
+```
 
 ## 🔍 Resultados e Discussão
 
-Apresente e interprete os resultados obtidos a partir dos dados coletados.
+Para testar a convergência, analisamos um cenário limite.
+Seja uma variável $X \sim \text{Binomial}(n = 100,p = 0,1)$. Queremos calcular a probabilidade de obtermos exatamente 12 sucessos $(P(X = 12))$.
+Média $(\mu): 100 \cdot 0,1 = 10$
+Variância $(\sigma^2): 100 \cdot 0,1 \cdot 0,9 = 9 \implies \sigma = 3$
+Taxas de Poisson: $\lambda = 10$
+Comparando os métodos de cálculo:
 
-- Descreva os principais resultados numéricos (média, variabilidade, etc.).
-- Comente o comportamento dos dados observados nos gráficos.
-- Indique se há presença de valores discrepantes (outliers).
-- Avalie se os dados apresentam simetria ou tendência.
+1) Cálculo Exato - Binomial:
 
-Em seguida, discuta os resultados à luz dos conceitos teóricos:
+$$
+P(X = 12) = \binom{100}{12} (0,1)^{12}(0,9)^{88} = \mathbf{0,094779}
+$$
+2) Sem correção - por Poisson:
 
-- Os resultados estão de acordo com o esperado?
-- Há grande variabilidade? O que isso significa no contexto do experimento?
-- Quais fatores podem ter influenciado os resultados?
-- Existem possíveis fontes de erro experimental?
+$$
+P(X = 12) = \approx \frac{e^{-10} \cdot 10^{12}}{12!} = \mathbf{0,094784}
+$$
+::: {.callout-note}
+Para garantir que os erros quantificados nos teoremas anteriores sejam desprezíveis na prática, adotam-se os seguintes critérios:
+:::
 
-Procure não apenas descrever, mas **interpretar os dados**.
+Como $p = 0,1$ é baixo, o Teorema de Le Cam prevê um pequeno erro, a diferença foi de só $0,000005$
 
-### 💬 Exemplo de como citar uma referência bibliográfica
+
+
+### 💬 Referência bibliográfica
 
 Depois de inserido as informaçõe no arquivo **referencias.bib**, use:
 
-- Segundo @Rbasico2022
-- Tudo é um objeto em R [@Rbasico2022]
 
-### 📊  Análise de Dados
+### 📊  Perguntas interessantes
 
-```{r}
-distancia <- c(10.2, 9.8, 10.5, 10.1, 9.9, 10.3)
-distancia
-```
+1) Se a aproximação da Binomial pela Normal funciona melhor quando $\rho \approx 0,5$, o que acontece com a qualidade da aproximação se $\rho$ for muito pequeno, $\rho = 0,01$, esmo com um $n$ muito grande?
+
+2) Porque a correção de continuidade de Yates se torna irrelevante e é descartada a medida que $n \to \infty$?
+
+3) A Distribuição de Poisson é chamada também de "Lei dos Eventos Raros". Podemos afirmar que ela só serve para aproximar a Binomial se o evento nunca acontecer?
+
+4) Em termos de Teoria da Medida e Espaço Amostral, qual é a transformação conceitual que ocorre quando aproximamos a Poisson ou Binommial pela Normal?
+
+Resoluções
+
+1) Se $\rho$ for muito pequeno, a Distribuição Binomial será muito assimétrica para direita, para a aproximação normal seja válida, o $n$ precisa ser muito maior que o normal, para que consiga "empurrar" a média $\mu = np$ para longe do zero. Se o $n$ não for grande o suficiente para compensar o valor do $\rho$, a aproximação vai falhar (já que a Normal vai de $-\infty$ a $+\infty$), nesses cenários por $\rho \to 0 $, a Distribuição de Poisson é mais precisa.
+
+2) A correção consiste em somar ou subtrair 0,5 unidades para transformar um ponto discreto em um intervalo continuo, a medida que $n \to \infty$, a variância da Binomial $(np (1- \rho) )$ ou da Poisson $(\lambda)$ também cresce, assim faz o desvio padrão $(\sigma)$ aumentar. Quando calculamos a variável padronizada $$Z = \frac{X \pm 0,5 - \mu}{\sigma}$$ Como $\sigma \to \infty$ quando $n \to \infty$, o impacto do termo $\frac{0,5}{\sigma}$ decresce até estar perto de zero.
+
+3) O evento é raro individualmente (a probabilidade $\rho$ de um único ensaio ser um sucesso tende a zero) como o número de ensaios $(n)$ tende ao infinito, o número de sucessos esperado $\lambda = n\rho$ é uma constante maior que zero.
+
+4) A transformação muda a natureza da variável aleatória e o cálculo da sua medida de probabilidade. A Binomial e a Poisson operam sobre um espaço amostral discreto e contável (contido nos números inteiros não negativos), a probabilidade é calculada por uma Função Massa de Probabilidade, que faz somatórios de pontos de massa isolados.
 
 ## 🧠 Considerações finais
 
-Apresente uma síntese dos principais pontos observados no experimento.
+Dessa forma podemos conclui que essa aproximação faz muito sentido, mesmo que tenhamos computadores e softwares, por três motivos principais:
 
-- Retome o objetivo da prática e indique se ele foi alcançado.
-- Destaque os principais aprendizados obtidos.
-- Comente brevemente sobre a qualidade dos dados coletados.
-- Sugira possíveis melhorias no procedimento experimental.
+1) Viabilidade em larga escala: quando tem volumes muito grande de dados, é consumida muita memória e tempo para processar, e substituir isso por uma equação contínua (como a Distribuição Normal) permite que os dados sejam calculados de forma infinitamente mais rápida.
 
-Evite repetir apenas os resultados; foque nas **conclusões e reflexões** sobre a prática realizada.
+2) Teorema Central do Limite: essa aproximação mostra que o comportamento de muitos eventos aleatórios e independentes sempre vai convergir pro equilibrio perfeito da curva Normal. O que passa aos cientistas de dados como os dados se comportam no mundo real.
 
-## Aprenda Quarto
+3) Simplicidade para modelos teóricos: equações ou testes de hipóteses algébricas, é muito mais fácil de manipular as funções contínuas da Distribuição Normal do que somatórios discretos e fatoriais enormes (da Binomial ou da Poisson).
 
-Acesse [Quarto](https://quarto.org/).
+Assim vemos que antes a aproximação era uma necessidade, e hoje ela é uma estratégia para otimizar os algorítmos.
 
 ## 📖 Referências
