@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -10,6 +10,9 @@
 
 <title>Relatório 05: Teorema Central do Limite</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -56,24 +59,43 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="index_files/libs/clipboard/clipboard.min.js"></script>
 <script src="index_files/libs/quarto-html/quarto.js" type="module"></script>
 <script src="index_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="index_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="index_files/libs/quarto-html/popper.min.js"></script>
 <script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="index_files/libs/quarto-html/anchor.min.js"></script>
 <link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="index_files/libs/bootstrap/bootstrap-9e3ffae467580fdb927a41352e75a2e0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="index_files/libs/bootstrap/bootstrap-efbb37e9afcc02144ebbc7afd12a776f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -112,24 +134,24 @@ window.Quarto = {
     <h2 id="toc-title">Índice</h2>
    
   <ul>
-  <li><a href="#introdução" id="toc-introdução" class="nav-link active" data-scroll-target="#introdução"><span class="header-section-number">1</span> 📌 Introdução</a></li>
-  <li><a href="#objetivos" id="toc-objetivos" class="nav-link" data-scroll-target="#objetivos"><span class="header-section-number">2</span> 🎯 Objetivos</a>
+  <li><a href="#introdução" id="toc-introdução" class="nav-link active" data-scroll-target="#introdução"><span class="header-section-number">1</span> Introdução</a></li>
+  <li><a href="#objetivos" id="toc-objetivos" class="nav-link" data-scroll-target="#objetivos"><span class="header-section-number">2</span> Objetivos</a>
   <ul class="collapse">
   <li><a href="#objetivo-geral" id="toc-objetivo-geral" class="nav-link" data-scroll-target="#objetivo-geral"><span class="header-section-number">2.1</span> Objetivo geral</a></li>
   <li><a href="#objetivos-específicos" id="toc-objetivos-específicos" class="nav-link" data-scroll-target="#objetivos-específicos"><span class="header-section-number">2.2</span> Objetivos específicos</a></li>
   </ul></li>
-  <li><a href="#fundamentação-teórica" id="toc-fundamentação-teórica" class="nav-link" data-scroll-target="#fundamentação-teórica"><span class="header-section-number">3</span> 📚 Fundamentação Teórica</a>
+  <li><a href="#fundamentação-teórica" id="toc-fundamentação-teórica" class="nav-link" data-scroll-target="#fundamentação-teórica"><span class="header-section-number">3</span> Fundamentação Teórica</a>
   <ul class="collapse">
   <li><a href="#o-que-garante-que-as-aproximações-funcionem" id="toc-o-que-garante-que-as-aproximações-funcionem" class="nav-link" data-scroll-target="#o-que-garante-que-as-aproximações-funcionem"><span class="header-section-number">3.1</span> O que garante que as aproximações funcionem?</a></li>
   </ul></li>
-  <li><a href="#metodologia" id="toc-metodologia" class="nav-link" data-scroll-target="#metodologia"><span class="header-section-number">4</span> ⚙️ Metodologia</a></li>
-  <li><a href="#resultados-e-discussão" id="toc-resultados-e-discussão" class="nav-link" data-scroll-target="#resultados-e-discussão"><span class="header-section-number">5</span> 🔍 Resultados e Discussão</a>
+  <li><a href="#metodologia" id="toc-metodologia" class="nav-link" data-scroll-target="#metodologia"><span class="header-section-number">4</span> Metodologia</a></li>
+  <li><a href="#resultados-e-discussão" id="toc-resultados-e-discussão" class="nav-link" data-scroll-target="#resultados-e-discussão"><span class="header-section-number">5</span> Resultados e Discussão</a>
   <ul class="collapse">
-  <li><a href="#referência-bibliográfica" id="toc-referência-bibliográfica" class="nav-link" data-scroll-target="#referência-bibliográfica"><span class="header-section-number">5.1</span> 💬 Referência bibliográfica</a></li>
-  <li><a href="#perguntas-interessantes" id="toc-perguntas-interessantes" class="nav-link" data-scroll-target="#perguntas-interessantes"><span class="header-section-number">5.2</span> 📊 Perguntas interessantes</a></li>
+  <li><a href="#aplicação-prática-controle-de-qualidade-aproximação-normal" id="toc-aplicação-prática-controle-de-qualidade-aproximação-normal" class="nav-link" data-scroll-target="#aplicação-prática-controle-de-qualidade-aproximação-normal"><span class="header-section-number">5.1</span> Aplicação Prática: Controle de Qualidade (Aproximação Normal)</a></li>
+  <li><a href="#perguntas-interessantes" id="toc-perguntas-interessantes" class="nav-link" data-scroll-target="#perguntas-interessantes"><span class="header-section-number">5.2</span> Perguntas interessantes</a></li>
   </ul></li>
-  <li><a href="#considerações-finais" id="toc-considerações-finais" class="nav-link" data-scroll-target="#considerações-finais"><span class="header-section-number">6</span> 🧠 Considerações finais</a></li>
-  <li><a href="#referências" id="toc-referências" class="nav-link" data-scroll-target="#referências"><span class="header-section-number">7</span> 📖 Referências</a></li>
+  <li><a href="#considerações-finais" id="toc-considerações-finais" class="nav-link" data-scroll-target="#considerações-finais"><span class="header-section-number">6</span> Considerações finais</a></li>
+  <li><a href="#referências" id="toc-referências" class="nav-link" data-scroll-target="#referências"><span class="header-section-number">7</span> Referências</a></li>
   </ul>
 </nav>
 </div>
@@ -170,7 +192,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Data de Publicação</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">17 de maio de 2026</p>
+      <p class="date">19 de maio de 2026</p>
     </div>
   </div>
   
@@ -183,11 +205,11 @@ window.Quarto = {
 
 
 <section id="introdução" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="introdução"><span class="header-section-number">1</span> 📌 Introdução</h2>
+<h2 data-number="1" class="anchored" data-anchor-id="introdução"><span class="header-section-number">1</span> Introdução</h2>
 <p>O estudo do comportamento assintótico de variáveis aleatórias estuda o que ocorre com suas distribuições quando o número de ensaios ou o tamanho da amostra (n) tende ao infinito. O cálculo direto de funções de probabilidade discreta, como a Binomial, envolve combinatórias e potências que, eram inviáveis de calcular manualmente para grandes valores de n e, hoje, exigem otimização algorítmica. Este relatório aborda as conexões entre as distribuições Binomial, Poisson e Normal, que validam essas transições.</p>
 </section>
 <section id="objetivos" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="objetivos"><span class="header-section-number">2</span> 🎯 Objetivos</h2>
+<h2 data-number="2" class="anchored" data-anchor-id="objetivos"><span class="header-section-number">2</span> Objetivos</h2>
 <section id="objetivo-geral" class="level3" data-number="2.1">
 <h3 data-number="2.1" class="anchored" data-anchor-id="objetivo-geral"><span class="header-section-number">2.1</span> Objetivo geral</h3>
 <p>Demonstrar analiticamente como a distribuição Binomial converge para as distribuições de Poisson e Normal, e como a de Poisson também converge para a Normal. Busca responder critérios de convergência, ao comportamento do erro dessas aproximações e ao impacto geométrico e analítico da correção de continuidade.</p>
@@ -197,14 +219,12 @@ window.Quarto = {
 <ul>
 <li>Demonstrar a convergência analítica</li>
 <li>Discutir a relevancia do método</li>
-<li></li>
-<li></li>
 </ul>
 <hr>
 </section>
 </section>
 <section id="fundamentação-teórica" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="fundamentação-teórica"><span class="header-section-number">3</span> 📚 Fundamentação Teórica</h2>
+<h2 data-number="3" class="anchored" data-anchor-id="fundamentação-teórica"><span class="header-section-number">3</span> Fundamentação Teórica</h2>
 <section id="o-que-garante-que-as-aproximações-funcionem" class="level3" data-number="3.1">
 <h3 data-number="3.1" class="anchored" data-anchor-id="o-que-garante-que-as-aproximações-funcionem"><span class="header-section-number">3.1</span> O que garante que as aproximações funcionem?</h3>
 <p>Aqui entram os Teoremas de Limite:</p>
@@ -219,9 +239,47 @@ window.Quarto = {
 <section id="convergência-para-a-normal-teorema-de-de-moivre-laplace-e-tcl" class="level4" data-number="3.1.2">
 <h4 data-number="3.1.2" class="anchored" data-anchor-id="convergência-para-a-normal-teorema-de-de-moivre-laplace-e-tcl"><span class="header-section-number">3.1.2</span> Convergência para a Normal (Teorema de de Moivre-Laplace e TCL):</h4>
 <p>A convergência da Binomial e da Poisson para a Normal é um caso do Teorema Central do Limite (TCL). A Binomial pode ser vista como soma de n variáveis de Bernoulli independentes e distribuídas. O TCL garante que a soma padronizada de variáveis aleatórias independentes com média e variância finitas converge em distribuição para a Normal Padrão <span class="math inline">\(\mathcal{N}(0,1)\)</span> à medida que <span class="math inline">\(n \to \infty\)</span>.</p>
+<p>A demonstração de maior rigor analítico dá-se através da convergência da Função Geradora de Momentos (FGM).</p>
+<p>Seja <span class="math inline">\(X \sim \text{Binomial}(n, p)\)</span>, com média <span class="math inline">\(\mu = np\)</span> e variância <span class="math inline">\(\sigma^2 = np(1-p)\)</span>. A FGM de <span class="math inline">\(X\)</span> é: <span class="math display">\[M_X(t) = (1 - p + pe^t)^n\]</span></p>
+<p>Padronizando a variável para <span class="math inline">\(Z\)</span>: <span class="math display">\[Z = \frac{X - np}{\sqrt{np(1-p)}}\]</span></p>
+<p>A FGM da variável padronizada <span class="math inline">\(Z\)</span> é dada por: <span class="math display">\[M_Z(t) = e^{-t\frac{np}{\sqrt{np(1-p)}}} \left( 1 - p + p \cdot e^{\frac{t}{\sqrt{np(1-p)}}} \right)^n\]</span></p>
+<p>Aplicando o logaritmo natural e utilizando a expansão em Série de Taylor para o termo exponencial em torno de <span class="math inline">\(t=0\)</span>, verifica-se que à medida que <span class="math inline">\(n \to \infty\)</span>, os termos de ordem superior tendem a zero. O limite simplifica-se para: <span class="math display">\[\lim_{n \to \infty} M_Z(t) = e^{t^2/2}\]</span></p>
+<p>Este resultado corresponde exatamente à Função Geradora de Momentos da distribuição Normal Padrão <span class="math inline">\(\mathcal{N}(0,1)\)</span>, comprovando analiticamente a convergência em distribuição.</p>
 </section>
-<section id="como-quantificar-a-qualidadeerro-delas" class="level4" data-number="3.1.3">
-<h4 data-number="3.1.3" class="anchored" data-anchor-id="como-quantificar-a-qualidadeerro-delas"><span class="header-section-number">3.1.3</span> Como quantificar a qualidade/erro delas?</h4>
+<section id="convergência-da-poisson-para-a-normal" class="level4" data-number="3.1.3">
+<h4 data-number="3.1.3" class="anchored" data-anchor-id="convergência-da-poisson-para-a-normal"><span class="header-section-number">3.1.3</span> Convergência da Poisson para a Normal</h4>
+<p>Seja <span class="math inline">\(X \sim \text{Poisson}(\lambda)\)</span>, uma forma de demonstrar a convergência é utilizando a função geradora de momentos (MGF) da Poisson, que para <span class="math inline">\(X\)</span> é dada por:</p>
+<p><span class="math display">\[M_X(t) = e^{\lambda(e^t - 1)}\]</span></p>
+<p>Padronizando <span class="math inline">\(X\)</span> para obter a variável <span class="math inline">\(Z = \frac{X - \lambda}{\sqrt{\lambda}}\)</span>, a MGF de <span class="math inline">\(Z\)</span> é:</p>
+<p><span class="math display">\[M_Z(t) = E[e^{tZ}] = E\left[\exp\left(t \frac{X - \lambda}{\sqrt{\lambda}}\right)\right] = e^{-t\sqrt{\lambda}} E\left[e^{\frac{t}{\sqrt{\lambda}}X}\right]\]</span></p>
+<p>Simplificando, tem-se:</p>
+<p><span class="math display">\[M_Z(t) = e^{-t\sqrt{\lambda}} M_X\left(\frac{t}{\sqrt{\lambda}}\right) = e^{-t\sqrt{\lambda}} \exp\left[\lambda\left(e^{t/\sqrt{\lambda}} - 1\right)\right]\]</span></p>
+<p>O Logaritmo da equação é:</p>
+<p><span class="math display">\[\ln M_Z(t) = -t\sqrt{\lambda} + \lambda\left(e^{t/\sqrt{\lambda}} - 1\right)\]</span></p>
+<p>E finalmente, utilizando a expansão de Taylor para <span class="math inline">\(e^{t/\sqrt{\lambda}}\)</span> em torno de <span class="math inline">\(t=0\)</span>:</p>
+<p><span class="math display">\[\ln M_Z(t) = -t\sqrt{\lambda} + \lambda\left( \left(1 + \frac{t}{\sqrt{\lambda}} + \frac{t^2}{2\lambda} + \frac{t^3}{6\lambda\sqrt{\lambda}} + \dots \right) - 1 \right)\]</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A série de Taylor para <span class="math inline">\(e^x\)</span> é dada por: <span class="math display">\[e^x = \sum_{n=0}^{\infty} \frac{x^n}{n!} = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \dots\]</span></p>
+</div>
+</div>
+<p><span class="math display">\[\ln M_Z(t) = -t\sqrt{\lambda} + t\sqrt{\lambda} + \frac{t^2}{2} + \frac{t^3}{6\sqrt{\lambda}} + \dots\]</span></p>
+<p><span class="math display">\[\ln M_Z(t) = \frac{t^2}{2} + \frac{t^3}{6\sqrt{\lambda}} + \dots\]</span></p>
+<p>Logo, à medida que <span class="math inline">\(\lambda \to \infty\)</span>, os termos de ordem superior a <span class="math inline">\(t^2\)</span> se tornam insignificantes, e a MGF de <span class="math inline">\(Z\)</span> converge para:</p>
+<p><span class="math display">\[\lim_{\lambda \to \infty} \ln M_Z(t) = \frac{t^2}{2}\]</span></p>
+<p><span class="math display">\[\lim_{\lambda \to \infty} M_Z(t) = e^{t^2/2}\]</span></p>
+<p>No final, a MGF de <span class="math inline">\(Z\)</span> converge para a MGF da Normal Padrão, o que implica que <span class="math inline">\(Z\)</span> converge em distribuição para <span class="math inline">\(\mathcal{N}(0,1)\)</span>.</p>
+</section>
+<section id="como-quantificar-a-qualidadeerro-delas" class="level4" data-number="3.1.4">
+<h4 data-number="3.1.4" class="anchored" data-anchor-id="como-quantificar-a-qualidadeerro-delas"><span class="header-section-number">3.1.4</span> Como quantificar a qualidade/erro delas?</h4>
 <p>A proximidade entre a distribuição exata e a aproximada pode ser medida analiticamente. Para a transição Binomial <span class="math inline">\(\to\)</span> Poisson, (o Teorema de Le Cam estabelece um limite superior para o erro absoluto total). Se X é a soma de variáveis de Bernoulli independentes com probabilidades <span class="math inline">\(p_i\)</span>, e <span class="math inline">\(Y \sim \text{Poisson}(\lambda)\)</span> com <span class="math inline">\(\lambda = \sum p_i\)</span>, então:</p>
 <p><span class="math display">\[
 \sum_{k=0}^{\infty} |P(X = k) - P(Y = k)| \le2 \sum_{i=1}^{n} p_i^2
@@ -233,8 +291,8 @@ window.Quarto = {
 \]</span></p>
 <p>Onde C é uma constante universal e <span class="math inline">\(\rho\)</span> é o terceiro momento absoluto. Isso prova que o erro decresce a uma taxa proporcional a <span class="math inline">\(1/\sqrt{n}\)</span>.</p>
 </section>
-<section id="por-que-a-correção-de-continuidade-é-necessária" class="level4" data-number="3.1.4">
-<h4 data-number="3.1.4" class="anchored" data-anchor-id="por-que-a-correção-de-continuidade-é-necessária"><span class="header-section-number">3.1.4</span> Por que a Correção de Continuidade é necessária?</h4>
+<section id="por-que-a-correção-de-continuidade-é-necessária" class="level4" data-number="3.1.5">
+<h4 data-number="3.1.5" class="anchored" data-anchor-id="por-que-a-correção-de-continuidade-é-necessária"><span class="header-section-number">3.1.5</span> Por que a Correção de Continuidade é necessária?</h4>
 <p>A transição de uma distribuição discreta (Binomial ou Poisson) para uma contínua (Normal) tem um dilema matemático. Para uma variável contínua Y, a probabilidade pontual <span class="math inline">\(P(Y = k) = 0\)</span>. No entanto, na distribuição discreta original, <span class="math inline">\(P(X = k) &gt; 0\)</span>.</p>
 <p>A Correção de Continuidade de Yates resolve isso geometricamente associa o valor inteiro k ao intervalo de base unitária <span class="math inline">\([k - 0,5; k + 0,5]\)</span> sob a curva Normal.</p>
 <p>Ajustamos os limites de integração para que a área sob a densidade contínua corresponda ao retângulo da probabilidade discreta: Para calcular <span class="math inline">\(P(X \le k)\)</span>, aproximamos por <span class="math inline">\(P(Y \le k + 0,5)\)</span>. Para calcular <span class="math inline">\(P(X \ge k)\)</span>, aproximamos por <span class="math inline">\(P(Y \ge k - 0,5)\)</span>.</p>
@@ -243,7 +301,7 @@ window.Quarto = {
 </section>
 </section>
 <section id="metodologia" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="metodologia"><span class="header-section-number">4</span> ⚙️ Metodologia</h2>
+<h2 data-number="4" class="anchored" data-anchor-id="metodologia"><span class="header-section-number">4</span> Metodologia</h2>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -277,7 +335,7 @@ Nota
                     [ Distribuição Normal ]</code></pre>
 </section>
 <section id="resultados-e-discussão" class="level2" data-number="5">
-<h2 data-number="5" class="anchored" data-anchor-id="resultados-e-discussão"><span class="header-section-number">5</span> 🔍 Resultados e Discussão</h2>
+<h2 data-number="5" class="anchored" data-anchor-id="resultados-e-discussão"><span class="header-section-number">5</span> Resultados e Discussão</h2>
 <p>Para testar a convergência, analisamos um cenário limite. Seja uma variável <span class="math inline">\(X \sim \text{Binomial}(n = 100,p = 0,1)\)</span>. Queremos calcular a probabilidade de obtermos exatamente 12 sucessos <span class="math inline">\((P(X = 12))\)</span>. Média <span class="math inline">\((\mu): 100 \cdot 0,1 = 10\)</span> Variância <span class="math inline">\((\sigma^2): 100 \cdot 0,1 \cdot 0,9 = 9 \implies \sigma = 3\)</span> Taxas de Poisson: <span class="math inline">\(\lambda = 10\)</span> Comparando os métodos de cálculo:</p>
 <ol type="1">
 <li>Cálculo Exato - Binomial:</li>
@@ -287,14 +345,41 @@ P(X = 12) = \binom{100}{12} (0,1)^{12}(0,9)^{88} = \mathbf{0,094779}
 \]</span> 2) Sem correção - por Poisson:</p>
 <p><span class="math display">\[
 P(X = 12) = \approx \frac{e^{-10} \cdot 10^{12}}{12!} = \mathbf{0,094784}
-\]</span> ::: {.callout-note} Para garantir que os erros quantificados nos teoremas anteriores sejam desprezíveis na prática, adotam-se os seguintes critérios: :::</p>
+\]</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Para garantir que os erros quantificados nos teoremas anteriores sejam desprezíveis na prática, adotam-se os seguintes critérios:</p>
+</div>
+</div>
 <p>Como <span class="math inline">\(p = 0,1\)</span> é baixo, o Teorema de Le Cam prevê um pequeno erro, a diferença foi de só <span class="math inline">\(0,000005\)</span></p>
-<section id="referência-bibliográfica" class="level3" data-number="5.1">
-<h3 data-number="5.1" class="anchored" data-anchor-id="referência-bibliográfica"><span class="header-section-number">5.1</span> 💬 Referência bibliográfica</h3>
-<p>Depois de inserido as informaçõe no arquivo <strong>referencias.bib</strong>, use:</p>
+<section id="aplicação-prática-controle-de-qualidade-aproximação-normal" class="level3" data-number="5.1">
+<h3 data-number="5.1" class="anchored" data-anchor-id="aplicação-prática-controle-de-qualidade-aproximação-normal"><span class="header-section-number">5.1</span> Aplicação Prática: Controle de Qualidade (Aproximação Normal)</h3>
+<p>Para demonstrar a aplicabilidade da convergência para a Normal, considere um lote industrial de componentes eletrônicos onde a taxa histórica de defeitos é de <span class="math inline">\(4\%\)</span>. Ao extrair uma amostra de <span class="math inline">\(n = 200\)</span> componentes, busca-se a probabilidade de encontrar exatamente <span class="math inline">\(10\)</span> componentes defeituosos.</p>
+<p>Verificação dos Critérios de Convergência:</p>
+<ul>
+<li><span class="math inline">\(n = 200\)</span>; <span class="math inline">\(p = 0,04\)</span></li>
+<li><span class="math inline">\(np = 200 \cdot 0,04 = 8 \ge 5\)</span> (Critério satisfeito)</li>
+<li><span class="math inline">\(n(1-p) = 200 \cdot 0,96 = 192 \ge 5\)</span> (Critério satisfeito)</li>
+</ul>
+<p>Parâmetros Assintóticos:</p>
+<ul>
+<li><span class="math inline">\(\mu = np = 8\)</span></li>
+<li><span class="math inline">\(\sigma = \sqrt{np(1-p)} = \sqrt{7,68} \approx 2,77\)</span></li>
+</ul>
+<p>Correção de Continuidade e Padronização: Para calcular <span class="math inline">\(P(X = 10)\)</span>, aplica-se a correção de Yates, avaliando o intervalo contínuo <span class="math inline">\(P(9,5 &lt; Y &lt; 10,5)\)</span>: <span class="math display">\[Z_1 = \frac{9,5 - 8}{2,77} \approx 0,54\]</span> <span class="math display">\[Z_2 = \frac{10,5 - 8}{2,77} \approx 0,90\]</span></p>
+<p>Utilizando a Tabela da Normal Padrão: <span class="math display">\[P(0,54 &lt; Z &lt; 0,90) = P(Z &lt; 0,90) - P(Z &lt; 0,54) = 0,8159 - 0,7054 = \mathbf{0,1105}\]</span></p>
+<p>A probabilidade aproximada é de <span class="math inline">\(11,05\%\)</span>. Este método oferece extrema eficiência computacional em relação ao cálculo do fatorial <span class="math inline">\(\binom{200}{10}\)</span>.</p>
 </section>
 <section id="perguntas-interessantes" class="level3" data-number="5.2">
-<h3 data-number="5.2" class="anchored" data-anchor-id="perguntas-interessantes"><span class="header-section-number">5.2</span> 📊 Perguntas interessantes</h3>
+<h3 data-number="5.2" class="anchored" data-anchor-id="perguntas-interessantes"><span class="header-section-number">5.2</span> Perguntas interessantes</h3>
 <ol type="1">
 <li><p>Se a aproximação da Binomial pela Normal funciona melhor quando <span class="math inline">\(\rho \approx 0,5\)</span>, o que acontece com a qualidade da aproximação se <span class="math inline">\(\rho\)</span> for muito pequeno, <span class="math inline">\(\rho = 0,01\)</span>, esmo com um <span class="math inline">\(n\)</span> muito grande?</p></li>
 <li><p>Porque a correção de continuidade de Yates se torna irrelevante e é descartada a medida que <span class="math inline">\(n \to \infty\)</span>?</p></li>
@@ -303,7 +388,7 @@ P(X = 12) = \approx \frac{e^{-10} \cdot 10^{12}}{12!} = \mathbf{0,094784}
 </ol>
 <p>Resoluções</p>
 <ol type="1">
-<li><p>Se <span class="math inline">\(\rho\)</span> for muito pequeno, a Distribuição Binomial será muito assimétrica para direita, para a aproximação normal seja válida, o <span class="math inline">\(n\)</span> precisa ser muito maior que o normal, para que consiga “empurrar” a média <span class="math inline">\(\mu = np\)</span> para longe do zero. Se o <span class="math inline">\(n\)</span> não for grande o suficiente para compensar o valor do <span class="math inline">\(\rho\)</span>, a aproximação vai falhar (já que a Normal vai de <span class="math inline">\(-\infty\)</span> a <span class="math inline">\(+\infty\)</span>), nesses cenários por $ $, a Distribuição de Poisson é mais precisa.</p></li>
+<li><p>Se <span class="math inline">\(\rho\)</span> for muito pequeno, a Distribuição Binomial será muito assimétrica para direita, para a aproximação normal seja válida, o <span class="math inline">\(n\)</span> precisa ser muito maior que o normal, para que consiga “empurrar” a média <span class="math inline">\(\mu = np\)</span> para longe do zero. Se o <span class="math inline">\(n\)</span> não for grande o suficiente para compensar o valor do <span class="math inline">\(\rho\)</span>, a aproximação vai falhar (já que a Normal vai de <span class="math inline">\(-\infty\)</span> a <span class="math inline">\(+\infty\)</span>), nesses cenários por <span class="math inline">\(\rho \to 0\)</span>, a Distribuição de Poisson é mais precisa.</p></li>
 <li><p>A correção consiste em somar ou subtrair 0,5 unidades para transformar um ponto discreto em um intervalo continuo, a medida que <span class="math inline">\(n \to \infty\)</span>, a variância da Binomial <span class="math inline">\((np (1- \rho) )\)</span> ou da Poisson <span class="math inline">\((\lambda)\)</span> também cresce, assim faz o desvio padrão <span class="math inline">\((\sigma)\)</span> aumentar. Quando calculamos a variável padronizada <span class="math display">\[Z = \frac{X \pm 0,5 - \mu}{\sigma}\]</span> Como <span class="math inline">\(\sigma \to \infty\)</span> quando <span class="math inline">\(n \to \infty\)</span>, o impacto do termo <span class="math inline">\(\frac{0,5}{\sigma}\)</span> decresce até estar perto de zero.</p></li>
 <li><p>O evento é raro individualmente (a probabilidade <span class="math inline">\(\rho\)</span> de um único ensaio ser um sucesso tende a zero) como o número de ensaios <span class="math inline">\((n)\)</span> tende ao infinito, o número de sucessos esperado <span class="math inline">\(\lambda = n\rho\)</span> é uma constante maior que zero.</p></li>
 <li><p>A transformação muda a natureza da variável aleatória e o cálculo da sua medida de probabilidade. A Binomial e a Poisson operam sobre um espaço amostral discreto e contável (contido nos números inteiros não negativos), a probabilidade é calculada por uma Função Massa de Probabilidade, que faz somatórios de pontos de massa isolados.</p></li>
@@ -311,7 +396,7 @@ P(X = 12) = \approx \frac{e^{-10} \cdot 10^{12}}{12!} = \mathbf{0,094784}
 </section>
 </section>
 <section id="considerações-finais" class="level2" data-number="6">
-<h2 data-number="6" class="anchored" data-anchor-id="considerações-finais"><span class="header-section-number">6</span> 🧠 Considerações finais</h2>
+<h2 data-number="6" class="anchored" data-anchor-id="considerações-finais"><span class="header-section-number">6</span> Considerações finais</h2>
 <p>Dessa forma podemos conclui que essa aproximação faz muito sentido, mesmo que tenhamos computadores e softwares, por três motivos principais:</p>
 <ol type="1">
 <li><p>Viabilidade em larga escala: quando tem volumes muito grande de dados, é consumida muita memória e tempo para processar, e substituir isso por uma equação contínua (como a Distribuição Normal) permite que os dados sejam calculados de forma infinitamente mais rápida.</p></li>
@@ -321,12 +406,20 @@ P(X = 12) = \approx \frac{e^{-10} \cdot 10^{12}}{12!} = \mathbf{0,094784}
 <p>Assim vemos que antes a aproximação era uma necessidade, e hoje ela é uma estratégia para otimizar os algorítmos.</p>
 </section>
 <section id="referências" class="level2" data-number="7">
-<h2 data-number="7" class="anchored" data-anchor-id="referências"><span class="header-section-number">7</span> 📖 Referências</h2>
+
 <!-- -->
+
 
 </section>
 
-</main>
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">7 Referências</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
+<div id="ref-magalhaes2015" class="csl-entry" role="listitem">
+MAGALHÃES, M. N. <strong>Probabilidade e Vari<span>á</span>veis Aleat<span>ó</span>rias</strong>. 3. ed. S<span>ã</span>o Paulo: Edusp, 2015.
+</div>
+<div id="ref-meyer1983" class="csl-entry" role="listitem">
+MEYER, P. L. <strong>Probabilidade: Aplica<span>ç</span><span>õ</span>es <span>à</span> Estat<span>ı́</span>stica</strong>. 2. ed. Rio de Janeiro: LTC, 1983.
+</div>
+</div></section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -803,172 +896,253 @@ P(X = 12) = \approx \frac{e^{-10} \cdot 10^{12}}{12!} = \mathbf{0,094784}
 <span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="co">  echo: true</span></span>
 <span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
 <span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="co">  message: false</span></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="fu">## 📌 Introdução</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="an">nocite:</span><span class="co"> |</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="co">  @magalhaes2015, @meyer1983</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>O estudo do comportamento assintótico de variáveis aleatórias estuda o que ocorre com suas distribuições quando o número de ensaios ou o tamanho da amostra (n) tende ao infinito. O cálculo direto de funções de probabilidade discreta, como a Binomial, envolve combinatórias e potências que, eram inviáveis de calcular manualmente para grandes valores de n e, hoje, exigem otimização algorítmica. Este relatório aborda as conexões entre as distribuições Binomial, Poisson e Normal, que validam essas transições.</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="fu">## Introdução</span></span>
 <span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🎯 Objetivos</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>O estudo do comportamento assintótico de variáveis aleatórias estuda o que ocorre com suas distribuições quando o número de ensaios ou o tamanho da amostra (n) tende ao infinito. O cálculo direto de funções de probabilidade discreta, como a Binomial, envolve combinatórias e potências que, eram inviáveis de calcular manualmente para grandes valores de n e, hoje, exigem otimização algorítmica. Este relatório aborda as conexões entre as distribuições Binomial, Poisson e Normal, que validam essas transições.</span>
 <span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="fu">### Objetivo geral</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="fu">## Objetivos</span></span>
 <span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>Demonstrar analiticamente como a distribuição Binomial converge para as distribuições de Poisson e Normal, e como a de Poisson também converge para a Normal. Busca responder critérios de convergência, ao comportamento do erro dessas aproximações e ao impacto geométrico e analítico da correção de continuidade.</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="fu">### Objetivo geral</span></span>
 <span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="fu">### Objetivos específicos</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>Demonstrar analiticamente como a distribuição Binomial converge para as distribuições de Poisson e Normal, e como a de Poisson também converge para a Normal. Busca responder critérios de convergência, ao comportamento do erro dessas aproximações e ao impacto geométrico e analítico da correção de continuidade.</span>
 <span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Demonstrar a convergência analítica</span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Discutir a relevancia do método</span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>-</span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>-</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="fu">### Objetivos específicos</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Demonstrar a convergência analítica</span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Discutir a relevancia do método</span>
 <span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="fu">## 📚  Fundamentação Teórica</span></span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a><span class="fu">### O que garante que as aproximações funcionem?</span></span>
-<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>Aqui entram os Teoremas de Limite:</span>
-<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>As aproximações não são meras suposições empíricas; são sustentadas por teoremas de convergência em lei (ou convergência em distribuição).</span>
-<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Convergência da Binomial para a Poisson (Teorema de Poisson):</span></span>
-<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>Seja $X_n \sim \text{Binomial}(n, p_n)$. Se fizermos $n \to \infty$ e $p_n \to 0$ de tal forma que $n \cdot p_n \to \lambda$ (onde $\lambda &gt; 0$ é constante), a Função Massa de Probabilidade (FMP) da Binomial converge pontualmente para a FMP da Poisson:</span>
-<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>\lim_{n \to \infty} \binom{n}{k} p^k(1-p)^{n-k} = \frac{e^{-\lambda} \lambda^k}{k!}</span>
-<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Convergência para a Normal (Teorema de de Moivre-Laplace e TCL):</span></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a><span class="fu">## Fundamentação Teórica</span></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a><span class="fu">### O que garante que as aproximações funcionem?</span></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>Aqui entram os Teoremas de Limite:</span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>As aproximações não são meras suposições empíricas; são sustentadas por teoremas de convergência em lei (ou convergência em distribuição).</span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Convergência da Binomial para a Poisson (Teorema de Poisson):</span></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>Seja $X_n \sim \text{Binomial}(n, p_n)$. Se fizermos $n \to \infty$ e $p_n \to 0$ de tal forma que $n \cdot p_n \to \lambda$ (onde $\lambda &gt; 0$ é constante), a Função Massa de Probabilidade (FMP) da Binomial converge pontualmente para a FMP da Poisson:</span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>\lim_{n \to \infty} \binom{n}{k} p^k(1-p)^{n-k} = \frac{e^{-\lambda} \lambda^k}{k!}</span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>A convergência da Binomial e da Poisson para a Normal é um caso do Teorema Central do Limite (TCL). A Binomial pode ser vista como soma de n variáveis de Bernoulli independentes e distribuídas. </span>
-<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>O TCL garante que a soma padronizada de variáveis aleatórias independentes com média e variância finitas converge em distribuição para a Normal Padrão $\mathcal{N}(0,1)$ à medida que $n \to \infty$.</span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Convergência para a Normal (Teorema de de Moivre-Laplace e TCL):</span></span>
 <span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Como quantificar a qualidade/erro delas?</span></span>
-<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>A proximidade entre a distribuição exata e a aproximada pode ser medida analiticamente. Para a transição Binomial $\to$ Poisson, (o Teorema de Le Cam estabelece um limite superior para o erro absoluto total). Se X é a soma de variáveis de Bernoulli independentes com probabilidades $p_i$, e $Y \sim \text{Poisson}(\lambda)$ com $\lambda = \sum p_i$, então:</span>
-<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>\sum_{k=0}^{\infty} |P(X = k) - P(Y = k)| \le2 \sum_{i=1}^{n} p_i^2</span>
-<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>A convergência da Binomial e da Poisson para a Normal é um caso do Teorema Central do Limite (TCL). A Binomial pode ser vista como soma de n variáveis de Bernoulli independentes e distribuídas. </span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>O TCL garante que a soma padronizada de variáveis aleatórias independentes com média e variância finitas converge em distribuição para a Normal Padrão $\mathcal{N}(0,1)$ à medida que $n \to \infty$. </span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>A demonstração de maior rigor analítico dá-se através da convergência da Função Geradora de Momentos (FGM).</span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>Seja $X \sim \text{Binomial}(n, p)$, com média $\mu = np$ e variância $\sigma^2 = np(1-p)$. A FGM de $X$ é:</span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>$$M_X(t) = (1 - p + pe^t)^n$$</span>
 <span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>No caso em que todas as probabilidades são iguais $(p_1 = p_2 = ... = p)$, o limite do erro é $2np^2$. Isso explica por que a aproximação é excelente quando p é muito pequeno: mesmo que n seja grande, o termo $p^2$ penaliza e reduz o erro total.</span>
-<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a>Para as aproximações pela Normal, o Teorema de Berry-Esseen quantifica a taxa de convergência do TCL, mostrando que o erro máximo entre a função de distribuição acumulada real e a aproximação Normal é limitado por:</span>
-<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>F_n(x) - \Phi(x)<span class="pp">|</span> \le \frac{C \cdot \rho}{\sigma^3 \sqrt{n}}</span>
-<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a>Onde C é uma constante universal e $\rho$ é o terceiro momento absoluto. Isso prova que o erro decresce a uma taxa proporcional a $1/\sqrt{n}$.</span>
-<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Por que a Correção de Continuidade é necessária?</span></span>
-<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a>A transição de uma distribuição discreta (Binomial ou Poisson) para uma contínua (Normal) tem um dilema matemático.</span>
-<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a>Para uma variável contínua Y, a probabilidade pontual $P(Y = k) = 0$. No entanto, na distribuição discreta original, $P(X = k) &gt; 0$.</span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>Padronizando a variável para $Z$:</span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>$$Z = \frac{X - np}{\sqrt{np(1-p)}}$$</span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a>A FGM da variável padronizada $Z$ é dada por:</span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a>$$M_Z(t) = e^{-t\frac{np}{\sqrt{np(1-p)}}} \left( 1 - p + p \cdot e^{\frac{t}{\sqrt{np(1-p)}}} \right)^n$$</span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a>Aplicando o logaritmo natural e utilizando a expansão em Série de Taylor para o termo exponencial em torno de $t=0$, verifica-se que à medida que $n \to \infty$, os termos de ordem superior tendem a zero. O limite simplifica-se para:</span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a>$$\lim_{n \to \infty} M_Z(t) = e^{t^2/2}$$</span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a>Este resultado corresponde exatamente à Função Geradora de Momentos da distribuição Normal Padrão $\mathcal{N}(0,1)$, comprovando analiticamente a convergência em distribuição.</span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Convergência da Poisson para a Normal</span></span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a>Seja $X \sim \text{Poisson}(\lambda)$, uma forma de demonstrar a convergência é utilizando a função geradora de momentos (MGF) da Poisson, que para $X$ é dada por:</span>
 <span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a>A Correção de Continuidade de Yates resolve isso geometricamente associa o valor inteiro k ao intervalo de base unitária $<span class="co">[</span><span class="ot">k - 0,5; k + 0,5</span><span class="co">]</span>$ sob a curva Normal.</span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a>$$M_X(t) = e^{\lambda(e^t - 1)}$$</span>
 <span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a>Ajustamos os limites de integração para que a área sob a densidade contínua corresponda ao retângulo da probabilidade discreta:</span>
-<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a>Para calcular $P(X \le k)$, aproximamos por $P(Y \le k + 0,5)$.</span>
-<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a>Para calcular $P(X \ge k)$, aproximamos por $P(Y \ge k - 0,5)$.</span>
-<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a>Padronizando $X$ para obter a variável $Z = \frac{X - \lambda}{\sqrt{\lambda}}$, a MGF de $Z$ é:</span>
+<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a>$$M_Z(t) = E<span class="co">[</span><span class="ot">e^{tZ}</span><span class="co">]</span> = E\left<span class="co">[</span><span class="ot">\exp\left(t \frac{X - \lambda}{\sqrt{\lambda}}\right)\right</span><span class="co">]</span> = e^{-t\sqrt{\lambda}} E\left<span class="co">[</span><span class="ot">e^{\frac{t}{\sqrt{\lambda}}X}\right</span><span class="co">]</span>$$</span>
 <span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a>Simplificando, tem-se:</span>
 <span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a><span class="fu">## ⚙️ Metodologia</span></span>
+<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a>$$M_Z(t) = e^{-t\sqrt{\lambda}} M_X\left(\frac{t}{\sqrt{\lambda}}\right) = e^{-t\sqrt{\lambda}} \exp\left<span class="co">[</span><span class="ot">\lambda\left(e^{t/\sqrt{\lambda}} - 1\right)\right</span><span class="co">]</span>$$</span>
 <span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
-<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a>Para garantir que os erros quantificados nos teoremas anteriores sejam desprezíveis na prática, adotam-se os seguintes critérios:</span>
-<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a>O Logaritmo da equação é:</span>
+<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a>$$\ln M_Z(t) = -t\sqrt{\lambda} + \lambda\left(e^{t/\sqrt{\lambda}} - 1\right)$$</span>
 <span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a><span class="in">```text).</span></span>
-<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a><span class="in">[ Distribuição Binomial (n,p) ]</span></span>
-<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a><span class="in">------------------------------------------------------------------------</span></span>
-<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a><span class="in">         |                                               |</span></span>
-<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a><span class="in"> Se n &gt;= 20 e p &lt;= 0.05                         Se np &gt;= 5 e n(1-p) &gt;= 5</span></span>
-<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a><span class="in">         |                                               |</span></span>
-<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a><span class="in">         ▼                                               ▼</span></span>
-<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a><span class="in">[ Aproximação: Poisson ]                       [ Aproximação: Normal ]</span></span>
-<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a><span class="in">  (λ = n * p)                                     (μ = np, σ² = npq)</span></span>
-<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a><span class="in">         |                                               |</span></span>
-<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a><span class="in">         |          Requer Correção de Continuidade      |</span></span>
-<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a><span class="in">         </span></span>
-<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a><span class="in"> -----------------------------------------------------------------------</span></span>
-<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a><span class="in">                    Se λ &gt; 20 (para Poisson)</span></span>
-<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a><span class="in">                               |</span></span>
-<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a><span class="in">                               |</span></span>
-<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a><span class="in">                               ▼</span></span>
-<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a><span class="in">                    [ Distribuição Normal ]</span></span>
-<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a>E finalmente, utilizando a expansão de Taylor para $e^{t/\sqrt{\lambda}}$ em torno de $t=0$:</span>
+<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a>$$\ln M_Z(t) = -t\sqrt{\lambda} + \lambda\left( \left(1 + \frac{t}{\sqrt{\lambda}} + \frac{t^2}{2\lambda} + \frac{t^3}{6\lambda\sqrt{\lambda}} + \dots \right) - 1 \right)$$</span>
+<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a>A série de Taylor para $e^x$ é dada por:</span>
+<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a>$$e^x = \sum_{n=0}^{\infty} \frac{x^n}{n!} = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \dots$$</span>
+<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a>$$\ln M_Z(t) = -t\sqrt{\lambda} + t\sqrt{\lambda} + \frac{t^2}{2} + \frac{t^3}{6\sqrt{\lambda}} + \dots$$</span>
+<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a>$$\ln M_Z(t) = \frac{t^2}{2} + \frac{t^3}{6\sqrt{\lambda}} + \dots$$</span>
+<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a>Logo, à medida que $\lambda \to \infty$, os termos de ordem superior a $t^2$ se tornam insignificantes, e a MGF de $Z$ converge para:</span>
+<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a>$$\lim_{\lambda \to \infty} \ln M_Z(t) = \frac{t^2}{2}$$</span>
+<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a>$$\lim_{\lambda \to \infty} M_Z(t) = e^{t^2/2}$$</span>
+<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a>No final, a MGF de $Z$ converge para a MGF da Normal Padrão, o que implica que $Z$ converge em distribuição para $\mathcal{N}(0,1)$.</span>
 <span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🔍 Resultados e Discussão</span></span>
+<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Como quantificar a qualidade/erro delas?</span></span>
 <span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a>Para testar a convergência, analisamos um cenário limite.</span>
-<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a>Seja uma variável $X \sim \text{Binomial}(n = 100,p = 0,1)$. Queremos calcular a probabilidade de obtermos exatamente 12 sucessos $(P(X = 12))$.</span>
-<span id="cb2-130"><a href="#cb2-130" aria-hidden="true" tabindex="-1"></a>Média $(\mu): 100 \cdot 0,1 = 10$</span>
-<span id="cb2-131"><a href="#cb2-131" aria-hidden="true" tabindex="-1"></a>Variância $(\sigma^2): 100 \cdot 0,1 \cdot 0,9 = 9 \implies \sigma = 3$</span>
-<span id="cb2-132"><a href="#cb2-132" aria-hidden="true" tabindex="-1"></a>Taxas de Poisson: $\lambda = 10$</span>
-<span id="cb2-133"><a href="#cb2-133" aria-hidden="true" tabindex="-1"></a>Comparando os métodos de cálculo:</span>
-<span id="cb2-134"><a href="#cb2-134" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-135"><a href="#cb2-135" aria-hidden="true" tabindex="-1"></a>1) Cálculo Exato - Binomial:</span>
-<span id="cb2-136"><a href="#cb2-136" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-137"><a href="#cb2-137" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb2-138"><a href="#cb2-138" aria-hidden="true" tabindex="-1"></a>P(X = 12) = \binom{100}{12} (0,1)^{12}(0,9)^{88} = \mathbf{0,094779}</span>
-<span id="cb2-139"><a href="#cb2-139" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb2-140"><a href="#cb2-140" aria-hidden="true" tabindex="-1"></a>2) Sem correção - por Poisson:</span>
+<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a>A proximidade entre a distribuição exata e a aproximada pode ser medida analiticamente. Para a transição Binomial $\to$ Poisson, (o Teorema de Le Cam estabelece um limite superior para o erro absoluto total). Se X é a soma de variáveis de Bernoulli independentes com probabilidades $p_i$, e $Y \sim \text{Poisson}(\lambda)$ com $\lambda = \sum p_i$, então:</span>
+<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-130"><a href="#cb2-130" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-131"><a href="#cb2-131" aria-hidden="true" tabindex="-1"></a>\sum_{k=0}^{\infty} |P(X = k) - P(Y = k)| \le2 \sum_{i=1}^{n} p_i^2</span>
+<span id="cb2-132"><a href="#cb2-132" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-133"><a href="#cb2-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-134"><a href="#cb2-134" aria-hidden="true" tabindex="-1"></a>No caso em que todas as probabilidades são iguais $(p_1 = p_2 = ... = p)$, o limite do erro é $2np^2$. Isso explica por que a aproximação é excelente quando p é muito pequeno: mesmo que n seja grande, o termo $p^2$ penaliza e reduz o erro total.</span>
+<span id="cb2-135"><a href="#cb2-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-136"><a href="#cb2-136" aria-hidden="true" tabindex="-1"></a>Para as aproximações pela Normal, o Teorema de Berry-Esseen quantifica a taxa de convergência do TCL, mostrando que o erro máximo entre a função de distribuição acumulada real e a aproximação Normal é limitado por:</span>
+<span id="cb2-137"><a href="#cb2-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-138"><a href="#cb2-138" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-139"><a href="#cb2-139" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>F_n(x) - \Phi(x)<span class="pp">|</span> \le \frac{C \cdot \rho}{\sigma^3 \sqrt{n}}</span>
+<span id="cb2-140"><a href="#cb2-140" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb2-141"><a href="#cb2-141" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-142"><a href="#cb2-142" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb2-143"><a href="#cb2-143" aria-hidden="true" tabindex="-1"></a>P(X = 12) = \approx \frac{e^{-10} \cdot 10^{12}}{12!} = \mathbf{0,094784}</span>
-<span id="cb2-144"><a href="#cb2-144" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb2-145"><a href="#cb2-145" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
-<span id="cb2-146"><a href="#cb2-146" aria-hidden="true" tabindex="-1"></a>Para garantir que os erros quantificados nos teoremas anteriores sejam desprezíveis na prática, adotam-se os seguintes critérios:</span>
-<span id="cb2-147"><a href="#cb2-147" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb2-142"><a href="#cb2-142" aria-hidden="true" tabindex="-1"></a>Onde C é uma constante universal e $\rho$ é o terceiro momento absoluto. Isso prova que o erro decresce a uma taxa proporcional a $1/\sqrt{n}$.</span>
+<span id="cb2-143"><a href="#cb2-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-144"><a href="#cb2-144" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Por que a Correção de Continuidade é necessária?</span></span>
+<span id="cb2-145"><a href="#cb2-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-146"><a href="#cb2-146" aria-hidden="true" tabindex="-1"></a>A transição de uma distribuição discreta (Binomial ou Poisson) para uma contínua (Normal) tem um dilema matemático.</span>
+<span id="cb2-147"><a href="#cb2-147" aria-hidden="true" tabindex="-1"></a>Para uma variável contínua Y, a probabilidade pontual $P(Y = k) = 0$. No entanto, na distribuição discreta original, $P(X = k) &gt; 0$.</span>
 <span id="cb2-148"><a href="#cb2-148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-149"><a href="#cb2-149" aria-hidden="true" tabindex="-1"></a>Como $p = 0,1$ é baixo, o Teorema de Le Cam prevê um pequeno erro, a diferença foi de só $0,000005$</span>
+<span id="cb2-149"><a href="#cb2-149" aria-hidden="true" tabindex="-1"></a>A Correção de Continuidade de Yates resolve isso geometricamente associa o valor inteiro k ao intervalo de base unitária $<span class="co">[</span><span class="ot">k - 0,5; k + 0,5</span><span class="co">]</span>$ sob a curva Normal.</span>
 <span id="cb2-150"><a href="#cb2-150" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-151"><a href="#cb2-151" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-152"><a href="#cb2-152" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-153"><a href="#cb2-153" aria-hidden="true" tabindex="-1"></a><span class="fu">### 💬 Referência bibliográfica</span></span>
+<span id="cb2-151"><a href="#cb2-151" aria-hidden="true" tabindex="-1"></a>Ajustamos os limites de integração para que a área sob a densidade contínua corresponda ao retângulo da probabilidade discreta:</span>
+<span id="cb2-152"><a href="#cb2-152" aria-hidden="true" tabindex="-1"></a>Para calcular $P(X \le k)$, aproximamos por $P(Y \le k + 0,5)$.</span>
+<span id="cb2-153"><a href="#cb2-153" aria-hidden="true" tabindex="-1"></a>Para calcular $P(X \ge k)$, aproximamos por $P(Y \ge k - 0,5)$.</span>
 <span id="cb2-154"><a href="#cb2-154" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-155"><a href="#cb2-155" aria-hidden="true" tabindex="-1"></a>Depois de inserido as informaçõe no arquivo **referencias.bib**, use:</span>
-<span id="cb2-156"><a href="#cb2-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-155"><a href="#cb2-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-156"><a href="#cb2-156" aria-hidden="true" tabindex="-1"></a>---</span>
 <span id="cb2-157"><a href="#cb2-157" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-158"><a href="#cb2-158" aria-hidden="true" tabindex="-1"></a><span class="fu">### 📊  Perguntas interessantes</span></span>
+<span id="cb2-158"><a href="#cb2-158" aria-hidden="true" tabindex="-1"></a><span class="fu">## Metodologia</span></span>
 <span id="cb2-159"><a href="#cb2-159" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-160"><a href="#cb2-160" aria-hidden="true" tabindex="-1"></a>1) Se a aproximação da Binomial pela Normal funciona melhor quando $\rho \approx 0,5$, o que acontece com a qualidade da aproximação se $\rho$ for muito pequeno, $\rho = 0,01$, esmo com um $n$ muito grande?</span>
-<span id="cb2-161"><a href="#cb2-161" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-162"><a href="#cb2-162" aria-hidden="true" tabindex="-1"></a>2) Porque a correção de continuidade de Yates se torna irrelevante e é descartada a medida que $n \to \infty$?</span>
+<span id="cb2-160"><a href="#cb2-160" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb2-161"><a href="#cb2-161" aria-hidden="true" tabindex="-1"></a>Para garantir que os erros quantificados nos teoremas anteriores sejam desprezíveis na prática, adotam-se os seguintes critérios:</span>
+<span id="cb2-162"><a href="#cb2-162" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb2-163"><a href="#cb2-163" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-164"><a href="#cb2-164" aria-hidden="true" tabindex="-1"></a>3) A Distribuição de Poisson é chamada também de "Lei dos Eventos Raros". Podemos afirmar que ela só serve para aproximar a Binomial se o evento nunca acontecer?</span>
-<span id="cb2-165"><a href="#cb2-165" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-166"><a href="#cb2-166" aria-hidden="true" tabindex="-1"></a>4) Em termos de Teoria da Medida e Espaço Amostral, qual é a transformação conceitual que ocorre quando aproximamos a Poisson ou Binommial pela Normal?</span>
-<span id="cb2-167"><a href="#cb2-167" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-168"><a href="#cb2-168" aria-hidden="true" tabindex="-1"></a>Resoluções</span>
-<span id="cb2-169"><a href="#cb2-169" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-170"><a href="#cb2-170" aria-hidden="true" tabindex="-1"></a>1) Se $\rho$ for muito pequeno, a Distribuição Binomial será muito assimétrica para direita, para a aproximação normal seja válida, o $n$ precisa ser muito maior que o normal, para que consiga "empurrar" a média $\mu = np$ para longe do zero. Se o $n$ não for grande o suficiente para compensar o valor do $\rho$, a aproximação vai falhar (já que a Normal vai de $-\infty$ a $+\infty$), nesses cenários por $\rho \to 0 $, a Distribuição de Poisson é mais precisa.</span>
-<span id="cb2-171"><a href="#cb2-171" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-172"><a href="#cb2-172" aria-hidden="true" tabindex="-1"></a>2) A correção consiste em somar ou subtrair 0,5 unidades para transformar um ponto discreto em um intervalo continuo, a medida que $n \to \infty$, a variância da Binomial $(np (1- \rho) )$ ou da Poisson $(\lambda)$ também cresce, assim faz o desvio padrão $(\sigma)$ aumentar. Quando calculamos a variável padronizada $$Z = \frac{X \pm 0,5 - \mu}{\sigma}$$ Como $\sigma \to \infty$ quando $n \to \infty$, o impacto do termo $\frac{0,5}{\sigma}$ decresce até estar perto de zero.</span>
-<span id="cb2-173"><a href="#cb2-173" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-174"><a href="#cb2-174" aria-hidden="true" tabindex="-1"></a>3) O evento é raro individualmente (a probabilidade $\rho$ de um único ensaio ser um sucesso tende a zero) como o número de ensaios $(n)$ tende ao infinito, o número de sucessos esperado $\lambda = n\rho$ é uma constante maior que zero.</span>
-<span id="cb2-175"><a href="#cb2-175" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-176"><a href="#cb2-176" aria-hidden="true" tabindex="-1"></a>4) A transformação muda a natureza da variável aleatória e o cálculo da sua medida de probabilidade. A Binomial e a Poisson operam sobre um espaço amostral discreto e contável (contido nos números inteiros não negativos), a probabilidade é calculada por uma Função Massa de Probabilidade, que faz somatórios de pontos de massa isolados.</span>
-<span id="cb2-177"><a href="#cb2-177" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-178"><a href="#cb2-178" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🧠 Considerações finais</span></span>
-<span id="cb2-179"><a href="#cb2-179" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-180"><a href="#cb2-180" aria-hidden="true" tabindex="-1"></a>Dessa forma podemos conclui que essa aproximação faz muito sentido, mesmo que tenhamos computadores e softwares, por três motivos principais:</span>
-<span id="cb2-181"><a href="#cb2-181" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-182"><a href="#cb2-182" aria-hidden="true" tabindex="-1"></a>1) Viabilidade em larga escala: quando tem volumes muito grande de dados, é consumida muita memória e tempo para processar, e substituir isso por uma equação contínua (como a Distribuição Normal) permite que os dados sejam calculados de forma infinitamente mais rápida.</span>
-<span id="cb2-183"><a href="#cb2-183" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-184"><a href="#cb2-184" aria-hidden="true" tabindex="-1"></a>2) Teorema Central do Limite: essa aproximação mostra que o comportamento de muitos eventos aleatórios e independentes sempre vai convergir pro equilibrio perfeito da curva Normal. O que passa aos cientistas de dados como os dados se comportam no mundo real.</span>
-<span id="cb2-185"><a href="#cb2-185" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-186"><a href="#cb2-186" aria-hidden="true" tabindex="-1"></a>3) Simplicidade para modelos teóricos: equações ou testes de hipóteses algébricas, é muito mais fácil de manipular as funções contínuas da Distribuição Normal do que somatórios discretos e fatoriais enormes (da Binomial ou da Poisson).</span>
-<span id="cb2-187"><a href="#cb2-187" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-188"><a href="#cb2-188" aria-hidden="true" tabindex="-1"></a>Assim vemos que antes a aproximação era uma necessidade, e hoje ela é uma estratégia para otimizar os algorítmos.</span>
-<span id="cb2-189"><a href="#cb2-189" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-190"><a href="#cb2-190" aria-hidden="true" tabindex="-1"></a><span class="fu">## 📖 Referências</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb2-164"><a href="#cb2-164" aria-hidden="true" tabindex="-1"></a><span class="in">```text).</span></span>
+<span id="cb2-165"><a href="#cb2-165" aria-hidden="true" tabindex="-1"></a><span class="in">[ Distribuição Binomial (n,p) ]</span></span>
+<span id="cb2-166"><a href="#cb2-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-167"><a href="#cb2-167" aria-hidden="true" tabindex="-1"></a><span class="in">------------------------------------------------------------------------</span></span>
+<span id="cb2-168"><a href="#cb2-168" aria-hidden="true" tabindex="-1"></a><span class="in">         |                                               |</span></span>
+<span id="cb2-169"><a href="#cb2-169" aria-hidden="true" tabindex="-1"></a><span class="in"> Se n &gt;= 20 e p &lt;= 0.05                         Se np &gt;= 5 e n(1-p) &gt;= 5</span></span>
+<span id="cb2-170"><a href="#cb2-170" aria-hidden="true" tabindex="-1"></a><span class="in">         |                                               |</span></span>
+<span id="cb2-171"><a href="#cb2-171" aria-hidden="true" tabindex="-1"></a><span class="in">         ▼                                               ▼</span></span>
+<span id="cb2-172"><a href="#cb2-172" aria-hidden="true" tabindex="-1"></a><span class="in">[ Aproximação: Poisson ]                       [ Aproximação: Normal ]</span></span>
+<span id="cb2-173"><a href="#cb2-173" aria-hidden="true" tabindex="-1"></a><span class="in">  (λ = n * p)                                     (μ = np, σ² = npq)</span></span>
+<span id="cb2-174"><a href="#cb2-174" aria-hidden="true" tabindex="-1"></a><span class="in">         |                                               |</span></span>
+<span id="cb2-175"><a href="#cb2-175" aria-hidden="true" tabindex="-1"></a><span class="in">         |          Requer Correção de Continuidade      |</span></span>
+<span id="cb2-176"><a href="#cb2-176" aria-hidden="true" tabindex="-1"></a><span class="in">         </span></span>
+<span id="cb2-177"><a href="#cb2-177" aria-hidden="true" tabindex="-1"></a><span class="in"> -----------------------------------------------------------------------</span></span>
+<span id="cb2-178"><a href="#cb2-178" aria-hidden="true" tabindex="-1"></a><span class="in">                    Se λ &gt; 20 (para Poisson)</span></span>
+<span id="cb2-179"><a href="#cb2-179" aria-hidden="true" tabindex="-1"></a><span class="in">                               |</span></span>
+<span id="cb2-180"><a href="#cb2-180" aria-hidden="true" tabindex="-1"></a><span class="in">                               |</span></span>
+<span id="cb2-181"><a href="#cb2-181" aria-hidden="true" tabindex="-1"></a><span class="in">                               ▼</span></span>
+<span id="cb2-182"><a href="#cb2-182" aria-hidden="true" tabindex="-1"></a><span class="in">                    [ Distribuição Normal ]</span></span>
+<span id="cb2-183"><a href="#cb2-183" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-184"><a href="#cb2-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-185"><a href="#cb2-185" aria-hidden="true" tabindex="-1"></a><span class="fu">## Resultados e Discussão</span></span>
+<span id="cb2-186"><a href="#cb2-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-187"><a href="#cb2-187" aria-hidden="true" tabindex="-1"></a>Para testar a convergência, analisamos um cenário limite.</span>
+<span id="cb2-188"><a href="#cb2-188" aria-hidden="true" tabindex="-1"></a>Seja uma variável $X \sim \text{Binomial}(n = 100,p = 0,1)$. Queremos calcular a probabilidade de obtermos exatamente 12 sucessos $(P(X = 12))$.</span>
+<span id="cb2-189"><a href="#cb2-189" aria-hidden="true" tabindex="-1"></a>Média $(\mu): 100 \cdot 0,1 = 10$</span>
+<span id="cb2-190"><a href="#cb2-190" aria-hidden="true" tabindex="-1"></a>Variância $(\sigma^2): 100 \cdot 0,1 \cdot 0,9 = 9 \implies \sigma = 3$</span>
+<span id="cb2-191"><a href="#cb2-191" aria-hidden="true" tabindex="-1"></a>Taxas de Poisson: $\lambda = 10$</span>
+<span id="cb2-192"><a href="#cb2-192" aria-hidden="true" tabindex="-1"></a>Comparando os métodos de cálculo:</span>
+<span id="cb2-193"><a href="#cb2-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-194"><a href="#cb2-194" aria-hidden="true" tabindex="-1"></a>1) Cálculo Exato - Binomial:</span>
+<span id="cb2-195"><a href="#cb2-195" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-196"><a href="#cb2-196" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-197"><a href="#cb2-197" aria-hidden="true" tabindex="-1"></a>P(X = 12) = \binom{100}{12} (0,1)^{12}(0,9)^{88} = \mathbf{0,094779}</span>
+<span id="cb2-198"><a href="#cb2-198" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-199"><a href="#cb2-199" aria-hidden="true" tabindex="-1"></a>2) Sem correção - por Poisson:</span>
+<span id="cb2-200"><a href="#cb2-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-201"><a href="#cb2-201" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-202"><a href="#cb2-202" aria-hidden="true" tabindex="-1"></a>P(X = 12) = \approx \frac{e^{-10} \cdot 10^{12}}{12!} = \mathbf{0,094784}</span>
+<span id="cb2-203"><a href="#cb2-203" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-204"><a href="#cb2-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-205"><a href="#cb2-205" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb2-206"><a href="#cb2-206" aria-hidden="true" tabindex="-1"></a>Para garantir que os erros quantificados nos teoremas anteriores sejam desprezíveis na prática, adotam-se os seguintes critérios:</span>
+<span id="cb2-207"><a href="#cb2-207" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb2-208"><a href="#cb2-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-209"><a href="#cb2-209" aria-hidden="true" tabindex="-1"></a>Como $p = 0,1$ é baixo, o Teorema de Le Cam prevê um pequeno erro, a diferença foi de só $0,000005$</span>
+<span id="cb2-210"><a href="#cb2-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-211"><a href="#cb2-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-212"><a href="#cb2-212" aria-hidden="true" tabindex="-1"></a><span class="fu">### Aplicação Prática: Controle de Qualidade (Aproximação Normal)</span></span>
+<span id="cb2-213"><a href="#cb2-213" aria-hidden="true" tabindex="-1"></a>Para demonstrar a aplicabilidade da convergência para a Normal, considere um lote industrial de componentes eletrônicos onde a taxa histórica de defeitos é de $4\%$. Ao extrair uma amostra de $n = 200$ componentes, busca-se a probabilidade de encontrar exatamente $10$ componentes defeituosos.</span>
+<span id="cb2-214"><a href="#cb2-214" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-215"><a href="#cb2-215" aria-hidden="true" tabindex="-1"></a>Verificação dos Critérios de Convergência:</span>
+<span id="cb2-216"><a href="#cb2-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-217"><a href="#cb2-217" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$n = 200$; $p = 0,04$</span>
+<span id="cb2-218"><a href="#cb2-218" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$np = 200 \cdot 0,04 = 8 \ge 5$ (Critério satisfeito)</span>
+<span id="cb2-219"><a href="#cb2-219" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$n(1-p) = 200 \cdot 0,96 = 192 \ge 5$ (Critério satisfeito)</span>
+<span id="cb2-220"><a href="#cb2-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-221"><a href="#cb2-221" aria-hidden="true" tabindex="-1"></a>Parâmetros Assintóticos:</span>
+<span id="cb2-222"><a href="#cb2-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-223"><a href="#cb2-223" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$\mu = np = 8$</span>
+<span id="cb2-224"><a href="#cb2-224" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$\sigma = \sqrt{np(1-p)} = \sqrt{7,68} \approx 2,77$</span>
+<span id="cb2-225"><a href="#cb2-225" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-226"><a href="#cb2-226" aria-hidden="true" tabindex="-1"></a>Correção de Continuidade e Padronização:</span>
+<span id="cb2-227"><a href="#cb2-227" aria-hidden="true" tabindex="-1"></a>Para calcular $P(X = 10)$, aplica-se a correção de Yates, avaliando o intervalo contínuo $P(9,5 &lt; Y &lt; 10,5)$:</span>
+<span id="cb2-228"><a href="#cb2-228" aria-hidden="true" tabindex="-1"></a>$$Z_1 = \frac{9,5 - 8}{2,77} \approx 0,54$$</span>
+<span id="cb2-229"><a href="#cb2-229" aria-hidden="true" tabindex="-1"></a>$$Z_2 = \frac{10,5 - 8}{2,77} \approx 0,90$$</span>
+<span id="cb2-230"><a href="#cb2-230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-231"><a href="#cb2-231" aria-hidden="true" tabindex="-1"></a>Utilizando a Tabela da Normal Padrão:</span>
+<span id="cb2-232"><a href="#cb2-232" aria-hidden="true" tabindex="-1"></a>$$P(0,54 &lt; Z &lt; 0,90) = P(Z &lt; 0,90) - P(Z &lt; 0,54) = 0,8159 - 0,7054 = \mathbf{0,1105}$$</span>
+<span id="cb2-233"><a href="#cb2-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-234"><a href="#cb2-234" aria-hidden="true" tabindex="-1"></a>A probabilidade aproximada é de $11,05\%$. Este método oferece extrema eficiência computacional em relação ao cálculo do fatorial $\binom{200}{10}$.</span>
+<span id="cb2-235"><a href="#cb2-235" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-236"><a href="#cb2-236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-237"><a href="#cb2-237" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-238"><a href="#cb2-238" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-239"><a href="#cb2-239" aria-hidden="true" tabindex="-1"></a><span class="fu">### Perguntas interessantes</span></span>
+<span id="cb2-240"><a href="#cb2-240" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-241"><a href="#cb2-241" aria-hidden="true" tabindex="-1"></a>1) Se a aproximação da Binomial pela Normal funciona melhor quando $\rho \approx 0,5$, o que acontece com a qualidade da aproximação se $\rho$ for muito pequeno, $\rho = 0,01$, esmo com um $n$ muito grande?</span>
+<span id="cb2-242"><a href="#cb2-242" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-243"><a href="#cb2-243" aria-hidden="true" tabindex="-1"></a>2) Porque a correção de continuidade de Yates se torna irrelevante e é descartada a medida que $n \to \infty$?</span>
+<span id="cb2-244"><a href="#cb2-244" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-245"><a href="#cb2-245" aria-hidden="true" tabindex="-1"></a>3) A Distribuição de Poisson é chamada também de "Lei dos Eventos Raros". Podemos afirmar que ela só serve para aproximar a Binomial se o evento nunca acontecer?</span>
+<span id="cb2-246"><a href="#cb2-246" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-247"><a href="#cb2-247" aria-hidden="true" tabindex="-1"></a>4) Em termos de Teoria da Medida e Espaço Amostral, qual é a transformação conceitual que ocorre quando aproximamos a Poisson ou Binommial pela Normal?</span>
+<span id="cb2-248"><a href="#cb2-248" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-249"><a href="#cb2-249" aria-hidden="true" tabindex="-1"></a>Resoluções</span>
+<span id="cb2-250"><a href="#cb2-250" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-251"><a href="#cb2-251" aria-hidden="true" tabindex="-1"></a>1) Se $\rho$ for muito pequeno, a Distribuição Binomial será muito assimétrica para direita, para a aproximação normal seja válida, o $n$ precisa ser muito maior que o normal, para que consiga "empurrar" a média $\mu = np$ para longe do zero. Se o $n$ não for grande o suficiente para compensar o valor do $\rho$, a aproximação vai falhar (já que a Normal vai de $-\infty$ a $+\infty$), nesses cenários por $\rho \to 0$, a Distribuição de Poisson é mais precisa.</span>
+<span id="cb2-252"><a href="#cb2-252" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-253"><a href="#cb2-253" aria-hidden="true" tabindex="-1"></a>2) A correção consiste em somar ou subtrair 0,5 unidades para transformar um ponto discreto em um intervalo continuo, a medida que $n \to \infty$, a variância da Binomial $(np (1- \rho) )$ ou da Poisson $(\lambda)$ também cresce, assim faz o desvio padrão $(\sigma)$ aumentar. Quando calculamos a variável padronizada $$Z = \frac{X \pm 0,5 - \mu}{\sigma}$$ Como $\sigma \to \infty$ quando $n \to \infty$, o impacto do termo $\frac{0,5}{\sigma}$ decresce até estar perto de zero.</span>
+<span id="cb2-254"><a href="#cb2-254" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-255"><a href="#cb2-255" aria-hidden="true" tabindex="-1"></a>3) O evento é raro individualmente (a probabilidade $\rho$ de um único ensaio ser um sucesso tende a zero) como o número de ensaios $(n)$ tende ao infinito, o número de sucessos esperado $\lambda = n\rho$ é uma constante maior que zero.</span>
+<span id="cb2-256"><a href="#cb2-256" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-257"><a href="#cb2-257" aria-hidden="true" tabindex="-1"></a>4) A transformação muda a natureza da variável aleatória e o cálculo da sua medida de probabilidade. A Binomial e a Poisson operam sobre um espaço amostral discreto e contável (contido nos números inteiros não negativos), a probabilidade é calculada por uma Função Massa de Probabilidade, que faz somatórios de pontos de massa isolados.</span>
+<span id="cb2-258"><a href="#cb2-258" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-259"><a href="#cb2-259" aria-hidden="true" tabindex="-1"></a><span class="fu">## Considerações finais</span></span>
+<span id="cb2-260"><a href="#cb2-260" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-261"><a href="#cb2-261" aria-hidden="true" tabindex="-1"></a>Dessa forma podemos conclui que essa aproximação faz muito sentido, mesmo que tenhamos computadores e softwares, por três motivos principais:</span>
+<span id="cb2-262"><a href="#cb2-262" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-263"><a href="#cb2-263" aria-hidden="true" tabindex="-1"></a>1) Viabilidade em larga escala: quando tem volumes muito grande de dados, é consumida muita memória e tempo para processar, e substituir isso por uma equação contínua (como a Distribuição Normal) permite que os dados sejam calculados de forma infinitamente mais rápida.</span>
+<span id="cb2-264"><a href="#cb2-264" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-265"><a href="#cb2-265" aria-hidden="true" tabindex="-1"></a>2) Teorema Central do Limite: essa aproximação mostra que o comportamento de muitos eventos aleatórios e independentes sempre vai convergir pro equilibrio perfeito da curva Normal. O que passa aos cientistas de dados como os dados se comportam no mundo real.</span>
+<span id="cb2-266"><a href="#cb2-266" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-267"><a href="#cb2-267" aria-hidden="true" tabindex="-1"></a>3) Simplicidade para modelos teóricos: equações ou testes de hipóteses algébricas, é muito mais fácil de manipular as funções contínuas da Distribuição Normal do que somatórios discretos e fatoriais enormes (da Binomial ou da Poisson).</span>
+<span id="cb2-268"><a href="#cb2-268" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-269"><a href="#cb2-269" aria-hidden="true" tabindex="-1"></a>Assim vemos que antes a aproximação era uma necessidade, e hoje ela é uma estratégia para otimizar os algorítmos.</span>
+<span id="cb2-270"><a href="#cb2-270" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-271"><a href="#cb2-271" aria-hidden="true" tabindex="-1"></a><span class="fu">## Referências</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

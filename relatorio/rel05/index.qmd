@@ -22,14 +22,16 @@ execute:
   echo: true
   warning: false
   message: false
+nocite: |
+  @magalhaes2015, @meyer1983
 ---
 
 
-## 📌 Introdução
+## Introdução
 
 O estudo do comportamento assintótico de variáveis aleatórias estuda o que ocorre com suas distribuições quando o número de ensaios ou o tamanho da amostra (n) tende ao infinito. O cálculo direto de funções de probabilidade discreta, como a Binomial, envolve combinatórias e potências que, eram inviáveis de calcular manualmente para grandes valores de n e, hoje, exigem otimização algorítmica. Este relatório aborda as conexões entre as distribuições Binomial, Poisson e Normal, que validam essas transições.
 
-## 🎯 Objetivos
+## Objetivos
 
 ### Objetivo geral
 
@@ -39,12 +41,11 @@ Demonstrar analiticamente como a distribuição Binomial converge para as distri
 
 - Demonstrar a convergência analítica
 - Discutir a relevancia do método
--
--
+
 
 ---
 
-## 📚  Fundamentação Teórica
+## Fundamentação Teórica
 
 ### O que garante que as aproximações funcionem?
 Aqui entram os Teoremas de Limite:
@@ -59,10 +60,68 @@ $$
 \lim_{n \to \infty} \binom{n}{k} p^k(1-p)^{n-k} = \frac{e^{-\lambda} \lambda^k}{k!}
 $$
 
+
+
 #### Convergência para a Normal (Teorema de de Moivre-Laplace e TCL):
 
 A convergência da Binomial e da Poisson para a Normal é um caso do Teorema Central do Limite (TCL). A Binomial pode ser vista como soma de n variáveis de Bernoulli independentes e distribuídas. 
-O TCL garante que a soma padronizada de variáveis aleatórias independentes com média e variância finitas converge em distribuição para a Normal Padrão $\mathcal{N}(0,1)$ à medida que $n \to \infty$.
+O TCL garante que a soma padronizada de variáveis aleatórias independentes com média e variância finitas converge em distribuição para a Normal Padrão $\mathcal{N}(0,1)$ à medida que $n \to \infty$. 
+
+A demonstração de maior rigor analítico dá-se através da convergência da Função Geradora de Momentos (FGM).
+
+Seja $X \sim \text{Binomial}(n, p)$, com média $\mu = np$ e variância $\sigma^2 = np(1-p)$. A FGM de $X$ é:
+$$M_X(t) = (1 - p + pe^t)^n$$
+
+Padronizando a variável para $Z$:
+$$Z = \frac{X - np}{\sqrt{np(1-p)}}$$
+
+A FGM da variável padronizada $Z$ é dada por:
+$$M_Z(t) = e^{-t\frac{np}{\sqrt{np(1-p)}}} \left( 1 - p + p \cdot e^{\frac{t}{\sqrt{np(1-p)}}} \right)^n$$
+
+Aplicando o logaritmo natural e utilizando a expansão em Série de Taylor para o termo exponencial em torno de $t=0$, verifica-se que à medida que $n \to \infty$, os termos de ordem superior tendem a zero. O limite simplifica-se para:
+$$\lim_{n \to \infty} M_Z(t) = e^{t^2/2}$$
+
+Este resultado corresponde exatamente à Função Geradora de Momentos da distribuição Normal Padrão $\mathcal{N}(0,1)$, comprovando analiticamente a convergência em distribuição.
+
+#### Convergência da Poisson para a Normal
+
+Seja $X \sim \text{Poisson}(\lambda)$, uma forma de demonstrar a convergência é utilizando a função geradora de momentos (MGF) da Poisson, que para $X$ é dada por:
+
+$$M_X(t) = e^{\lambda(e^t - 1)}$$
+
+Padronizando $X$ para obter a variável $Z = \frac{X - \lambda}{\sqrt{\lambda}}$, a MGF de $Z$ é:
+
+
+$$M_Z(t) = E[e^{tZ}] = E\left[\exp\left(t \frac{X - \lambda}{\sqrt{\lambda}}\right)\right] = e^{-t\sqrt{\lambda}} E\left[e^{\frac{t}{\sqrt{\lambda}}X}\right]$$
+
+Simplificando, tem-se:
+
+$$M_Z(t) = e^{-t\sqrt{\lambda}} M_X\left(\frac{t}{\sqrt{\lambda}}\right) = e^{-t\sqrt{\lambda}} \exp\left[\lambda\left(e^{t/\sqrt{\lambda}} - 1\right)\right]$$
+
+O Logaritmo da equação é:
+
+$$\ln M_Z(t) = -t\sqrt{\lambda} + \lambda\left(e^{t/\sqrt{\lambda}} - 1\right)$$
+
+E finalmente, utilizando a expansão de Taylor para $e^{t/\sqrt{\lambda}}$ em torno de $t=0$:
+
+$$\ln M_Z(t) = -t\sqrt{\lambda} + \lambda\left( \left(1 + \frac{t}{\sqrt{\lambda}} + \frac{t^2}{2\lambda} + \frac{t^3}{6\lambda\sqrt{\lambda}} + \dots \right) - 1 \right)$$
+
+::: {.callout-note}
+A série de Taylor para $e^x$ é dada por:
+$$e^x = \sum_{n=0}^{\infty} \frac{x^n}{n!} = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \dots$$
+:::
+
+$$\ln M_Z(t) = -t\sqrt{\lambda} + t\sqrt{\lambda} + \frac{t^2}{2} + \frac{t^3}{6\sqrt{\lambda}} + \dots$$
+
+$$\ln M_Z(t) = \frac{t^2}{2} + \frac{t^3}{6\sqrt{\lambda}} + \dots$$
+
+Logo, à medida que $\lambda \to \infty$, os termos de ordem superior a $t^2$ se tornam insignificantes, e a MGF de $Z$ converge para:
+
+$$\lim_{\lambda \to \infty} \ln M_Z(t) = \frac{t^2}{2}$$
+
+$$\lim_{\lambda \to \infty} M_Z(t) = e^{t^2/2}$$
+
+No final, a MGF de $Z$ converge para a MGF da Normal Padrão, o que implica que $Z$ converge em distribuição para $\mathcal{N}(0,1)$.
 
 #### Como quantificar a qualidade/erro delas?
 
@@ -96,7 +155,7 @@ Para calcular $P(X \ge k)$, aproximamos por $P(Y \ge k - 0,5)$.
 
 ---
 
-## ⚙️ Metodologia
+## Metodologia
 
 ::: {.callout-note}
 Para garantir que os erros quantificados nos teoremas anteriores sejam desprezíveis na prática, adotam-se os seguintes critérios:
@@ -123,7 +182,7 @@ Para garantir que os erros quantificados nos teoremas anteriores sejam desprezí
                     [ Distribuição Normal ]
 ```
 
-## 🔍 Resultados e Discussão
+## Resultados e Discussão
 
 Para testar a convergência, analisamos um cenário limite.
 Seja uma variável $X \sim \text{Binomial}(n = 100,p = 0,1)$. Queremos calcular a probabilidade de obtermos exatamente 12 sucessos $(P(X = 12))$.
@@ -142,6 +201,7 @@ $$
 $$
 P(X = 12) = \approx \frac{e^{-10} \cdot 10^{12}}{12!} = \mathbf{0,094784}
 $$
+
 ::: {.callout-note}
 Para garantir que os erros quantificados nos teoremas anteriores sejam desprezíveis na prática, adotam-se os seguintes critérios:
 :::
@@ -149,13 +209,34 @@ Para garantir que os erros quantificados nos teoremas anteriores sejam desprezí
 Como $p = 0,1$ é baixo, o Teorema de Le Cam prevê um pequeno erro, a diferença foi de só $0,000005$
 
 
+### Aplicação Prática: Controle de Qualidade (Aproximação Normal)
+Para demonstrar a aplicabilidade da convergência para a Normal, considere um lote industrial de componentes eletrônicos onde a taxa histórica de defeitos é de $4\%$. Ao extrair uma amostra de $n = 200$ componentes, busca-se a probabilidade de encontrar exatamente $10$ componentes defeituosos.
 
-### 💬 Referência bibliográfica
+Verificação dos Critérios de Convergência:
 
-Depois de inserido as informaçõe no arquivo **referencias.bib**, use:
+- $n = 200$; $p = 0,04$
+- $np = 200 \cdot 0,04 = 8 \ge 5$ (Critério satisfeito)
+- $n(1-p) = 200 \cdot 0,96 = 192 \ge 5$ (Critério satisfeito)
+
+Parâmetros Assintóticos:
+
+- $\mu = np = 8$
+- $\sigma = \sqrt{np(1-p)} = \sqrt{7,68} \approx 2,77$
+
+Correção de Continuidade e Padronização:
+Para calcular $P(X = 10)$, aplica-se a correção de Yates, avaliando o intervalo contínuo $P(9,5 < Y < 10,5)$:
+$$Z_1 = \frac{9,5 - 8}{2,77} \approx 0,54$$
+$$Z_2 = \frac{10,5 - 8}{2,77} \approx 0,90$$
+
+Utilizando a Tabela da Normal Padrão:
+$$P(0,54 < Z < 0,90) = P(Z < 0,90) - P(Z < 0,54) = 0,8159 - 0,7054 = \mathbf{0,1105}$$
+
+A probabilidade aproximada é de $11,05\%$. Este método oferece extrema eficiência computacional em relação ao cálculo do fatorial $\binom{200}{10}$.
 
 
-### 📊  Perguntas interessantes
+
+
+### Perguntas interessantes
 
 1) Se a aproximação da Binomial pela Normal funciona melhor quando $\rho \approx 0,5$, o que acontece com a qualidade da aproximação se $\rho$ for muito pequeno, $\rho = 0,01$, esmo com um $n$ muito grande?
 
@@ -167,7 +248,7 @@ Depois de inserido as informaçõe no arquivo **referencias.bib**, use:
 
 Resoluções
 
-1) Se $\rho$ for muito pequeno, a Distribuição Binomial será muito assimétrica para direita, para a aproximação normal seja válida, o $n$ precisa ser muito maior que o normal, para que consiga "empurrar" a média $\mu = np$ para longe do zero. Se o $n$ não for grande o suficiente para compensar o valor do $\rho$, a aproximação vai falhar (já que a Normal vai de $-\infty$ a $+\infty$), nesses cenários por $\rho \to 0 $, a Distribuição de Poisson é mais precisa.
+1) Se $\rho$ for muito pequeno, a Distribuição Binomial será muito assimétrica para direita, para a aproximação normal seja válida, o $n$ precisa ser muito maior que o normal, para que consiga "empurrar" a média $\mu = np$ para longe do zero. Se o $n$ não for grande o suficiente para compensar o valor do $\rho$, a aproximação vai falhar (já que a Normal vai de $-\infty$ a $+\infty$), nesses cenários por $\rho \to 0$, a Distribuição de Poisson é mais precisa.
 
 2) A correção consiste em somar ou subtrair 0,5 unidades para transformar um ponto discreto em um intervalo continuo, a medida que $n \to \infty$, a variância da Binomial $(np (1- \rho) )$ ou da Poisson $(\lambda)$ também cresce, assim faz o desvio padrão $(\sigma)$ aumentar. Quando calculamos a variável padronizada $$Z = \frac{X \pm 0,5 - \mu}{\sigma}$$ Como $\sigma \to \infty$ quando $n \to \infty$, o impacto do termo $\frac{0,5}{\sigma}$ decresce até estar perto de zero.
 
@@ -175,7 +256,7 @@ Resoluções
 
 4) A transformação muda a natureza da variável aleatória e o cálculo da sua medida de probabilidade. A Binomial e a Poisson operam sobre um espaço amostral discreto e contável (contido nos números inteiros não negativos), a probabilidade é calculada por uma Função Massa de Probabilidade, que faz somatórios de pontos de massa isolados.
 
-## 🧠 Considerações finais
+## Considerações finais
 
 Dessa forma podemos conclui que essa aproximação faz muito sentido, mesmo que tenhamos computadores e softwares, por três motivos principais:
 
@@ -187,4 +268,4 @@ Dessa forma podemos conclui que essa aproximação faz muito sentido, mesmo que 
 
 Assim vemos que antes a aproximação era uma necessidade, e hoje ela é uma estratégia para otimizar os algorítmos.
 
-## 📖 Referências
+## Referências
