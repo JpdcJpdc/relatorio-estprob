@@ -1,7 +1,7 @@
 ---
 # Só mude aqui!!!!
-author: "Nome do Aluno"
-title: "Relatório de Aula Prática XX"
+author: "João Delpasso e Maria Eduarda Motta"
+title: "Relatório 06: Distribuição Qui-quadrado"
 bibliography: referencias.bib
 # A partir daqui nao faca alteracoes!!!!!
 link-citations: true
@@ -22,104 +22,128 @@ execute:
   echo: true
   warning: false
   message: false
+nocite: |
+  @assis_teste_hipoteses
 ---
 
 
-## 📌 Introdução
+## Introdução
 
-Descreva o contexto da prática e sua importância.
+A estatística utiliza amplamente a distribuição Qui-quadrado ($\chi^2$). Ela serve como base para diversos cálculos, especialmente quando busca-se compreender e testar a variação (variância) de uma população. Matematicamente, a distribuição $\chi^2$ se forma ao tomar diversas variáveis normais independentes, elevando cada uma ao quadrado e somando-as. 
 
-> Exemplo: análise da variabilidade em experimentos físicos utilizando uma catapulta.
+Trabalhando com amostras se torna essencial conhecer a relação exata entre a variância da amostra ($S^2$) e a variância de toda a população normal ($\sigma^2$). Este relatório explica e demonstra essa ligação. Mostra como a fórmula da variância amostral segue a distribuição Qui-quadrado, o que representa um passo fundamental para a realização de testes de hipóteses sobre a variância, conforme ensinado na literatura estatística.
 
+## Objetivos
 
-
-## 🎯 Objetivos
-
-### Objetivo geral
-
-Descrever o objetivo principal da prática.
+O objetivo principal deste relatório é explicar a distribuição Qui-quadrado e demonstrar matematicamente a sua relação com a variância de uma amostra retirada de uma população normal.
 
 ### Objetivos específicos
 
-- Coletar dados experimentais  
-- Aplicar estatística descritiva  
-- Construir gráficos  
-- Interpretar resultados  
+* Apresentar o desenvolvimento matemático que liga a variância da amostra com a variância da população.
+* Comprovar o funcionamento da teoria por meio de uma simulação prática no computador utilizando a linguagem R.
+
+## Metodologia
+
+Este relatório foi elaborado com base no livro de @assis_teste_hipoteses. O trabalho divide-se em duas partes principais:
+
+1. Parte Teórica (Matemática): Utilizam-se as regras de probabilidade do livro para explicar a fórmula que conecta a variância da amostra com a variância da população. Analisa-se a equação $\chi^2 = \frac{(n-1)S^2}{\sigma^2}$ e mostra-se o seu comportamento utilizando os graus de liberdade adequados.
+
+2. Simulação Prática (Código): Para provar que a teoria funciona na prática, será utilizada a linguagem R. Esse código sorteia diversos números (simulando dados reais de uma distribuição normal) e gera um gráfico para evidenciar que os resultados da amostra formam exatamente o mesmo desenho da curva teórica da distribuição Qui-quadrado.
 
 ---
 
-## 📚  Fundamentação Teórica
+## Resultados e Discussão
 
-Apresente os conceitos principais:
+### Fundamentação Teórica e Demonstração Analítica
 
-- Média
-- Variância
-- Desvio padrão
-- Amostragem
+A base para compreender a distribuição Qui-quadrado e sua utilidade na inferência estatística reside na sua relação direta com a distribuição Normal. Considere uma variável aleatória $Z$ com distribuição normal padrão, ou seja, $Z \sim N(0,1)$. O quadrado dessa variável, $Z^2$, resulta em uma distribuição Qui-quadrado com 1 grau de liberdade, denotada por $\chi^2_1$. Se houver um conjunto de $k$ variáveis aleatórias independentes $Z_1, Z_2, \dots, Z_k$, todas seguindo o modelo $N(0,1)$, a soma de seus quadrados resultará em uma distribuição Qui-quadrado com $k$ graus de liberdade:
 
-$$
-\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i
-$$
+$$\sum_{i=1}^{k} Z_i^2 \sim \chi^2_k$$
 
----
+Para estabelecer a conexão com a variância amostral, parte-se de uma amostra aleatória $X_1, X_2, \dots, X_n$ extraída de uma população normalmente distribuída, com média $\mu$ e variância $\sigma^2$ (logo, $X_i \sim N(\mu, \sigma^2)$).
 
-## ⚙️ Metodologia
+A variância amostral ($S^2$) é o estimador não viesado da variância populacional, definido matematicamente como:
 
-::: {.callout-note}
-Descreva como o experimento foi realizado.
-:::
+$$S^2 = \frac{1}{n-1} \sum_{i=1}^{n} (X_i - \bar{X})^2$$
 
-- Materiais utilizados  
-- Procedimento  
-- Número de repetições  
+O desenvolvimento analítico começa padronizando cada observação $X_i$ em relação aos parâmetros populacionais, o que gera uma soma de normais padrões ao quadrado:
 
----
+$$\sum_{i=1}^{n} \left( \frac{X_i - \mu}{\sigma} \right)^2 \sim \chi^2_n$$
 
-## 🔍 Resultados e Discussão
+É possível particionar a soma de quadrados do numerador ao somar e subtrair a média amostral $\bar{X}$ dentro dos parênteses:
 
-Apresente e interprete os resultados obtidos a partir dos dados coletados.
+$$\sum_{i=1}^{n} (X_i - \mu)^2 = \sum_{i=1}^{n} [(X_i - \bar{X}) + (\bar{X} - \mu)]^2$$
 
-- Descreva os principais resultados numéricos (média, variabilidade, etc.).
-- Comente o comportamento dos dados observados nos gráficos.
-- Indique se há presença de valores discrepantes (outliers).
-- Avalie se os dados apresentam simetria ou tendência.
+Expandindo o produto notável e aplicando o somatório, o termo cruzado é eliminado (uma vez que a soma dos desvios em relação à média amostral é zero, $\sum (X_i - \bar{X}) = 0$). A equação resultante é:
 
-Em seguida, discuta os resultados à luz dos conceitos teóricos:
+$$\sum_{i=1}^{n} (X_i - \mu)^2 = \sum_{i=1}^{n} (X_i - \bar{X})^2 + n(\bar{X} - \mu)^2$$
 
-- Os resultados estão de acordo com o esperado?
-- Há grande variabilidade? O que isso significa no contexto do experimento?
-- Quais fatores podem ter influenciado os resultados?
-- Existem possíveis fontes de erro experimental?
+Para retornar à padronização inicial, divide-se a igualdade inteira pela variância populacional $\sigma^2$:
 
-Procure não apenas descrever, mas **interpretar os dados**.
+$$\sum_{i=1}^{n} \left( \frac{X_i - \mu}{\sigma} \right)^2 = \frac{\sum_{i=1}^{n} (X_i - \bar{X})^2}{\sigma^2} + \left( \frac{\bar{X} - \mu}{\sigma/\sqrt{n}} \right)^2$$
 
-### 💬 Exemplo de como citar uma referência bibliográfica
+A análise de cada componente da expressão acima revela a essência do teorema:
 
-Depois de inserido as informaçõe no arquivo **referencias.bib**, use:
+1.  O termo à esquerda da igualdade, conforme demonstrado no início, segue uma distribuição $\chi^2_n$.
 
-- Segundo @Rbasico2022
-- Tudo é um objeto em R [@Rbasico2022]
+2.  O segundo termo do lado direito é o quadrado de uma variável normal padrão. Sabe-se que a distribuição da média amostral é $\bar{X} \sim N(\mu, \sigma^2/n)$. Logo, a sua padronização ao quadrado, $\left( \frac{\bar{X} - \mu}{\sigma/\sqrt{n}} \right)^2$, segue uma distribuição $\chi^2_1$.
 
-### 📊  Análise de Dados
+3.  O primeiro termo do lado direito expressa a variação dos dados em torno da média amostral. Rearranjando a fórmula de $S^2$, nota-se que $\sum_{i=1}^{n} (X_i - \bar{X})^2 = (n-1)S^2$. Substituindo este valor na equação, obtém-se a estatística $\frac{(n-1)S^2}{\sigma^2}$.
+
+Pelo Teorema de Cochran, que dita a aditividade e independência em partições de somas de quadrados de normais, os graus de liberdade da parcela que contém $S^2$ correspondem à diferença $n - 1$:
+
+$$\frac{(n-1)S^2}{\sigma^2} \sim \chi^2_{n-1}$$
+
+Esta dedução evidencia que a variância de uma amostra proveniente de uma população normal, quando escalonada pelo tamanho da amostra e pela variância populacional, se comporta exatamente como uma variável aleatória $\chi^2$ com $n-1$ graus de liberdade. Essa propriedade é o pilar que sustenta os testes de hipóteses para a variância populacional, permitindo avaliar afirmações sobre a dispersão dos dados com base em evidências amostrais.
+
+### 4.2 Simulação Computacional em Ambiente R
+
+O experimento consiste em uma simulação estocástica (Monte Carlo) que ilustra a convergência teórica demonstrada anteriormente. O algoritmo extrai valores de amostras independentes a partir de uma população com distribuição normal. Em seguida, calcula-se a variância de cada amostra para aplicar a transformação algébrica correspondente ao Teorema de Cochran. Por fim, o comportamento empírico destes dados simulados é visualizado graficamente e sobreposto à curva da Função Densidade de Probabilidade (FDP) exata da distribuição Qui-quadrado.
+
+O bloco de código a seguir detalha esta implementação:
 
 ```{r}
-distancia <- c(10.2, 9.8, 10.5, 10.1, 9.9, 10.3)
-distancia
+#| code-fold: false
+#| code-line-numbers: true
+library(leem)
+
+set.seed(1234)    
+n <- 30            # Tamanho de cada amostra (resultando em 29 graus de liberdade)
+mu <- 100          # Média populacional
+sigma <- 15        # Desvio padrão populacional
+M <- 10000         # Número de iterações/amostras a serem geradas
+
+amostras <- matrix(rnorm(M * n, mean = mu, sd = sigma), nrow = n, ncol = M)
+
+variancias_amostrais <- apply(amostras, 2, var)
+
+estatistica_simulada <- (n - 1) * variancias_amostrais / (sigma^2)
+
+hist(estatistica_simulada, 
+     probability = TRUE, 
+     breaks = 50, 
+     col = "steelblue", 
+     border = "white",
+     main = "Simulação: Variância Amostral e a Distribuição Qui-quadrado",
+     xlab = expression(frac((n-1)*S^2, sigma^2)),
+     ylab = "Densidade Probabilística")
+
+curve(dchisq(x, df = n - 1), 
+      add = TRUE, 
+      col = "firebrick", 
+      lwd = 3)
+
+legend("topright", 
+       legend = c("Dados Simulados", expression(chi[29]^2 ~ Teórica)), 
+       fill = c("steelblue", NA), 
+       border = c("white", NA),
+       col = c(NA, "firebrick"), 
+       lwd = c(NA, 3), 
+       bty = "n")
 ```
 
-## 🧠 Considerações finais
 
-Apresente uma síntese dos principais pontos observados no experimento.
+## Considerações finais
 
-- Retome o objetivo da prática e indique se ele foi alcançado.
-- Destaque os principais aprendizados obtidos.
-- Comente brevemente sobre a qualidade dos dados coletados.
-- Sugira possíveis melhorias no procedimento experimental.
 
-Evite repetir apenas os resultados; foque nas **conclusões e reflexões** sobre a prática realizada.
-
-## Aprenda Quarto
-
-Acesse [Quarto](https://quarto.org/).
-
-## 📖 Referências
+## Referências
