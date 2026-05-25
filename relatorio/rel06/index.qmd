@@ -145,5 +145,49 @@ legend("topright",
 
 ## Considerações finais
 
+Perguntas:
+
+1) Como a distribuição Qui-quadrado é formada matematicamente a partir de variáveis normais?
+
+2) Por que o termo cruzado é eliminado durante a expansão do produto notável no desenvolvimento analítico?
+
+3) Por que usamos (n - 1) no denominador da variância amostral em vez do n?
+
+4) O que aconteceria com o formato da curva no gráfico se aumentássemos o tamanho da amostra (n) de 30 para 300?
+
+5) Qual é o papel prático do "Teorema de Cochran"?
+
+6) Se os dados originais fossem de outra população que não a normal, o Qui-quadrado ainda seria válido?
+
+7) Como esse relatório se conecta com o famoso "Teste t do Student"?
+
+8) O que significa dizer que a variância amostral $S^2$ é um "estimador não viesado"?
+
+9) Na prática do mercado ou da ciência, para que serve testar a variância de uma população?
+
+10) Por que a curva teórica da Qui-quadrado $(x^2)$ no gráfico começa com um valor baixo perto de 0, atinge um pico e depois desce suavemente? O que isso significa na prática?
+
+Respostas:
+
+1) Ela se forma ao tomar várias variáveis normais independentes, elevando elas ao quadrado e somando cada uma delas.
+
+2) O termo cruzado é eliminado porque a soma dos desvios em relação a média amostral é igual a zero, ou seja: $\sum_{i = 1}^{n} (X_i - \bar{X}) = 0$.
+
+3) Essa é a famosa Correção de Bassel. Usamos a média amostral $(\bar{X})$ para calcular os desvios, e não a verdadeira média populacional $(mi)$. Como a amostra tende a ser mais próxima de sua própria média do que da média real da população, dividir por $n$ passaria a variância real, assim, o $(n - 1)$
+
+4) A medida que os graus de liberdade aumentam, a distribuição começa a se aproximar de uma curva perfeitamente simétrica, uma Distribuição Normal, como consequência do Teorema do Limite Central.
+
+5) Esse teorema é o mecanismo oculto que faz com que a variância amostral $(S^2)$ e a média amostral $(\bar{X})$ sejam independentes quando os dados vem da população normal, sem ela não conseguiriamos separar a equação para isolar a Qui-quadrado?
+
+6) A demonstração analítica depende do fato de que $Z_i$, se a população for muito assimétrica ou tiver caudas pesados, a estatística $\frac{(n - 1) S^2}{\sigma^2}$ não seguirá uma QUi-quadrado certinha, o que pode invalidar os testes de hipóteses aplicados a pequenas amostras.
+
+7) A estatística t de Student é definida pela razão entre uma variável Normal padrão e a raiz quadrada de uma variável Qui-quadrado dividida por seus graus de liberdade, assim, a demonstração feita sobre a variância seguir uma Qui-quadrado é uma base fundamental para que o Teste t funcione.
+
+8) Dizer isso significa que, se repetíssemos o experimento da simulação infinitas vezes e calculássemos a média de todas as variâncias amostrais obtidas, esse valor médio seria exatamente igual a variância real da população $(\sigma^2)$, esse estimador não erra nem para mais, nem para menos.
+
+9) Testar médias é comum, mas testar variância é importante para o controle da qualidade e risco financeiro. Na indústria, não queremos que o peso médio de um pacote de comida seja 500g, mas o mais próximo de zero possível, para nenhum cliente receber um pacote vazio ou transbordando.
+
+10) O desenho representa a função densidade de probabilidade, a forma assimétrica indica onde os valores da variância tem maior ou menor chance de acontecer. Perto de 0 a probabilidade é muito baixa significa que quase todos os dados observados teriam que ser praticamente iguais a média; o pico da curva representa a região de maior probabilidade, o valor mais esperado da distribuição; a descida depois mostra que existe uma chance pequena, de sortearmos uma amostra com valores muito extremos e dispersos, o que jogaria a variância lá em cima.
+
 
 ## Referências

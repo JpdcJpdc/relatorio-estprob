@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.36">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -10,9 +10,6 @@
 
 <title>Relatório 06: Distribuição Qui-quadrado</title>
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -85,17 +82,18 @@ div.csl-indent {
 <script src="index_files/libs/clipboard/clipboard.min.js"></script>
 <script src="index_files/libs/quarto-html/quarto.js" type="module"></script>
 <script src="index_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="index_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="index_files/libs/quarto-html/popper.min.js"></script>
 <script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="index_files/libs/quarto-html/anchor.min.js"></script>
 <link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="index_files/libs/bootstrap/bootstrap-efbb37e9afcc02144ebbc7afd12a776f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="index_files/libs/bootstrap/bootstrap-9e3ffae467580fdb927a41352e75a2e0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -187,7 +185,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Data de Publicação</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">24 de maio de 2026</p>
+      <p class="date">25 de maio de 2026</p>
     </div>
   </div>
   
@@ -303,6 +301,32 @@ window.Quarto = {
 </section>
 <section id="considerações-finais" class="level2" data-number="5">
 <h2 data-number="5" class="anchored" data-anchor-id="considerações-finais"><span class="header-section-number">5</span> Considerações finais</h2>
+<p>Perguntas:</p>
+<ol type="1">
+<li><p>Como a distribuição Qui-quadrado é formada matematicamente a partir de variáveis normais?</p></li>
+<li><p>Por que o termo cruzado é eliminado durante a expansão do produto notável no desenvolvimento analítico?</p></li>
+<li><p>Por que usamos (n - 1) no denominador da variância amostral em vez do n?</p></li>
+<li><p>O que aconteceria com o formato da curva no gráfico se aumentássemos o tamanho da amostra (n) de 30 para 300?</p></li>
+<li><p>Qual é o papel prático do “Teorema de Cochran”?</p></li>
+<li><p>Se os dados originais fossem de outra população que não a normal, o Qui-quadrado ainda seria válido?</p></li>
+<li><p>Como esse relatório se conecta com o famoso “Teste t do Student”?</p></li>
+<li><p>O que significa dizer que a variância amostral <span class="math inline">\(S^2\)</span> é um “estimador não viesado”?</p></li>
+<li><p>Na prática do mercado ou da ciência, para que serve testar a variância de uma população?</p></li>
+<li><p>Por que a curva teórica da Qui-quadrado <span class="math inline">\((x^2)\)</span> no gráfico começa com um valor baixo perto de 0, atinge um pico e depois desce suavemente? O que isso significa na prática?</p></li>
+</ol>
+<p>Respostas:</p>
+<ol type="1">
+<li><p>Ela se forma ao tomar várias variáveis normais independentes, elevando elas ao quadrado e somando cada uma delas.</p></li>
+<li><p>O termo cruzado é eliminado porque a soma dos desvios em relação a média amostral é igual a zero, ou seja: <span class="math inline">\(\sum_{i = 1}^{n} (X_i - \bar{X}) = 0\)</span>.</p></li>
+<li><p>Essa é a famosa Correção de Bassel. Usamos a média amostral <span class="math inline">\((\bar{X})\)</span> para calcular os desvios, e não a verdadeira média populacional <span class="math inline">\((mi)\)</span>. Como a amostra tende a ser mais próxima de sua própria média do que da média real da população, dividir por <span class="math inline">\(n\)</span> passaria a variância real, assim, o <span class="math inline">\((n - 1)\)</span></p></li>
+<li><p>A medida que os graus de liberdade aumentam, a distribuição começa a se aproximar de uma curva perfeitamente simétrica, uma Distribuição Normal, como consequência do Teorema do Limite Central.</p></li>
+<li><p>Esse teorema é o mecanismo oculto que faz com que a variância amostral <span class="math inline">\((S^2)\)</span> e a média amostral <span class="math inline">\((\bar{X})\)</span> sejam independentes quando os dados vem da população normal, sem ela não conseguiriamos separar a equação para isolar a Qui-quadrado?</p></li>
+<li><p>A demonstração analítica depende do fato de que <span class="math inline">\(Z_i\)</span>, se a população for muito assimétrica ou tiver caudas pesados, a estatística <span class="math inline">\(\frac{(n - 1) S^2}{\sigma^2}\)</span> não seguirá uma QUi-quadrado certinha, o que pode invalidar os testes de hipóteses aplicados a pequenas amostras.</p></li>
+<li><p>A estatística t de Student é definida pela razão entre uma variável Normal padrão e a raiz quadrada de uma variável Qui-quadrado dividida por seus graus de liberdade, assim, a demonstração feita sobre a variância seguir uma Qui-quadrado é uma base fundamental para que o Teste t funcione.</p></li>
+<li><p>Dizer isso significa que, se repetíssemos o experimento da simulação infinitas vezes e calculássemos a média de todas as variâncias amostrais obtidas, esse valor médio seria exatamente igual a variância real da população <span class="math inline">\((\sigma^2)\)</span>, esse estimador não erra nem para mais, nem para menos.</p></li>
+<li><p>Testar médias é comum, mas testar variância é importante para o controle da qualidade e risco financeiro. Na indústria, não queremos que o peso médio de um pacote de comida seja 500g, mas o mais próximo de zero possível, para nenhum cliente receber um pacote vazio ou transbordando.</p></li>
+<li><p>O desenho representa a função densidade de probabilidade, a forma assimétrica indica onde os valores da variância tem maior ou menor chance de acontecer. Perto de 0 a probabilidade é muito baixa significa que quase todos os dados observados teriam que ser praticamente iguais a média; o pico da curva representa a região de maior probabilidade, o valor mais esperado da distribuição; a descida depois mostra que existe uma chance pequena, de sortearmos uma amostra com valores muito extremos e dispersos, o que jogaria a variância lá em cima.</p></li>
+</ol>
 </section>
 <section id="referências" class="level2" data-number="6">
 
@@ -915,8 +939,52 @@ ASSIS, J. P.; SOUSA, R. P.; LINHARES, P. C. F. <strong>Testes de Hipóteses Esta
 <span id="cb2-147"><a href="#cb2-147" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-148"><a href="#cb2-148" aria-hidden="true" tabindex="-1"></a><span class="fu">## Considerações finais</span></span>
 <span id="cb2-149"><a href="#cb2-149" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-150"><a href="#cb2-150" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-151"><a href="#cb2-151" aria-hidden="true" tabindex="-1"></a><span class="fu">## Referências</span></span>
+<span id="cb2-150"><a href="#cb2-150" aria-hidden="true" tabindex="-1"></a>Perguntas:</span>
+<span id="cb2-151"><a href="#cb2-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-152"><a href="#cb2-152" aria-hidden="true" tabindex="-1"></a>1) Como a distribuição Qui-quadrado é formada matematicamente a partir de variáveis normais?</span>
+<span id="cb2-153"><a href="#cb2-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-154"><a href="#cb2-154" aria-hidden="true" tabindex="-1"></a>2) Por que o termo cruzado é eliminado durante a expansão do produto notável no desenvolvimento analítico?</span>
+<span id="cb2-155"><a href="#cb2-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-156"><a href="#cb2-156" aria-hidden="true" tabindex="-1"></a>3) Por que usamos (n - 1) no denominador da variância amostral em vez do n?</span>
+<span id="cb2-157"><a href="#cb2-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-158"><a href="#cb2-158" aria-hidden="true" tabindex="-1"></a>4) O que aconteceria com o formato da curva no gráfico se aumentássemos o tamanho da amostra (n) de 30 para 300?</span>
+<span id="cb2-159"><a href="#cb2-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-160"><a href="#cb2-160" aria-hidden="true" tabindex="-1"></a>5) Qual é o papel prático do "Teorema de Cochran"?</span>
+<span id="cb2-161"><a href="#cb2-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-162"><a href="#cb2-162" aria-hidden="true" tabindex="-1"></a>6) Se os dados originais fossem de outra população que não a normal, o Qui-quadrado ainda seria válido?</span>
+<span id="cb2-163"><a href="#cb2-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-164"><a href="#cb2-164" aria-hidden="true" tabindex="-1"></a>7) Como esse relatório se conecta com o famoso "Teste t do Student"?</span>
+<span id="cb2-165"><a href="#cb2-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-166"><a href="#cb2-166" aria-hidden="true" tabindex="-1"></a>8) O que significa dizer que a variância amostral $S^2$ é um "estimador não viesado"?</span>
+<span id="cb2-167"><a href="#cb2-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-168"><a href="#cb2-168" aria-hidden="true" tabindex="-1"></a>9) Na prática do mercado ou da ciência, para que serve testar a variância de uma população?</span>
+<span id="cb2-169"><a href="#cb2-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-170"><a href="#cb2-170" aria-hidden="true" tabindex="-1"></a>10) Por que a curva teórica da Qui-quadrado $(x^2)$ no gráfico começa com um valor baixo perto de 0, atinge um pico e depois desce suavemente? O que isso significa na prática?</span>
+<span id="cb2-171"><a href="#cb2-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-172"><a href="#cb2-172" aria-hidden="true" tabindex="-1"></a>Respostas:</span>
+<span id="cb2-173"><a href="#cb2-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-174"><a href="#cb2-174" aria-hidden="true" tabindex="-1"></a>1) Ela se forma ao tomar várias variáveis normais independentes, elevando elas ao quadrado e somando cada uma delas.</span>
+<span id="cb2-175"><a href="#cb2-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-176"><a href="#cb2-176" aria-hidden="true" tabindex="-1"></a>2) O termo cruzado é eliminado porque a soma dos desvios em relação a média amostral é igual a zero, ou seja: $\sum_{i = 1}^{n} (X_i - \bar{X}) = 0$.</span>
+<span id="cb2-177"><a href="#cb2-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-178"><a href="#cb2-178" aria-hidden="true" tabindex="-1"></a>3) Essa é a famosa Correção de Bassel. Usamos a média amostral $(\bar{X})$ para calcular os desvios, e não a verdadeira média populacional $(mi)$. Como a amostra tende a ser mais próxima de sua própria média do que da média real da população, dividir por $n$ passaria a variância real, assim, o $(n - 1)$</span>
+<span id="cb2-179"><a href="#cb2-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-180"><a href="#cb2-180" aria-hidden="true" tabindex="-1"></a>4) A medida que os graus de liberdade aumentam, a distribuição começa a se aproximar de uma curva perfeitamente simétrica, uma Distribuição Normal, como consequência do Teorema do Limite Central.</span>
+<span id="cb2-181"><a href="#cb2-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-182"><a href="#cb2-182" aria-hidden="true" tabindex="-1"></a>5) Esse teorema é o mecanismo oculto que faz com que a variância amostral $(S^2)$ e a média amostral $(\bar{X})$ sejam independentes quando os dados vem da população normal, sem ela não conseguiriamos separar a equação para isolar a Qui-quadrado?</span>
+<span id="cb2-183"><a href="#cb2-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-184"><a href="#cb2-184" aria-hidden="true" tabindex="-1"></a>6) A demonstração analítica depende do fato de que $Z_i$, se a população for muito assimétrica ou tiver caudas pesados, a estatística $\frac{(n - 1) S^2}{\sigma^2}$ não seguirá uma QUi-quadrado certinha, o que pode invalidar os testes de hipóteses aplicados a pequenas amostras.</span>
+<span id="cb2-185"><a href="#cb2-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-186"><a href="#cb2-186" aria-hidden="true" tabindex="-1"></a>7) A estatística t de Student é definida pela razão entre uma variável Normal padrão e a raiz quadrada de uma variável Qui-quadrado dividida por seus graus de liberdade, assim, a demonstração feita sobre a variância seguir uma Qui-quadrado é uma base fundamental para que o Teste t funcione.</span>
+<span id="cb2-187"><a href="#cb2-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-188"><a href="#cb2-188" aria-hidden="true" tabindex="-1"></a>8) Dizer isso significa que, se repetíssemos o experimento da simulação infinitas vezes e calculássemos a média de todas as variâncias amostrais obtidas, esse valor médio seria exatamente igual a variância real da população $(\sigma^2)$, esse estimador não erra nem para mais, nem para menos.</span>
+<span id="cb2-189"><a href="#cb2-189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-190"><a href="#cb2-190" aria-hidden="true" tabindex="-1"></a>9) Testar médias é comum, mas testar variância é importante para o controle da qualidade e risco financeiro. Na indústria, não queremos que o peso médio de um pacote de comida seja 500g, mas o mais próximo de zero possível, para nenhum cliente receber um pacote vazio ou transbordando.</span>
+<span id="cb2-191"><a href="#cb2-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-192"><a href="#cb2-192" aria-hidden="true" tabindex="-1"></a>10) O desenho representa a função densidade de probabilidade, a forma assimétrica indica onde os valores da variância tem maior ou menor chance de acontecer. Perto de 0 a probabilidade é muito baixa significa que quase todos os dados observados teriam que ser praticamente iguais a média; o pico da curva representa a região de maior probabilidade, o valor mais esperado da distribuição; a descida depois mostra que existe uma chance pequena, de sortearmos uma amostra com valores muito extremos e dispersos, o que jogaria a variância lá em cima.</span>
+<span id="cb2-193"><a href="#cb2-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-194"><a href="#cb2-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-195"><a href="#cb2-195" aria-hidden="true" tabindex="-1"></a><span class="fu">## Referências</span></span>
 </code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
