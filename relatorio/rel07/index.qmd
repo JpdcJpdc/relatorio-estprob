@@ -1,7 +1,7 @@
 ---
 # Só mude aqui!!!!
 author: "João Delpasso e Maria Eduarda Motta"
-title: "Relatório 07"
+title: "Relatório 07: Estimadores intervalares"
 bibliography: referencias.bib
 # A partir daqui nao faca alteracoes!!!!!
 link-citations: true
@@ -22,16 +22,19 @@ execute:
   echo: true
   warning: false
   message: false
+nocite: |
+  @*
 ---
 
+{{< include _links.md >}}
 
-## 📌 Introdução
+## Introdução
 
-Neste relatório vamos apresentar a dedução teórica de estimadores para vários cenários probabilisticos, além da fundamentação teórica vamos relacionar este relatório ao relatório 06, e por simulações com o R e o pacote leem vamos verificar a eficácia desses estimadores e discutir suas aplicações em cenários de engenharia mecatrônica.
+Neste relatório vamos apresentar a dedução teórica de estimadores para vários cenários probabilisticos, além da fundamentação teórica vamos relacionar este relatório ao relatório 06, e por simulações com o [R] e o pacote `leem` vamos verificar a eficácia desses estimadores e discutir suas aplicações em cenários de engenharia mecatrônica.
 
 
 
-## 🎯 Objetivos
+## Objetivos
 
 ### Objetivo geral
 
@@ -43,9 +46,8 @@ Desenvolver e aplicar métodos de estimação intervalar para vários parâmetro
 - Analisar a população de Bernoulli;
 - Explorar aplicações na engenharia mecatrônica;
 
----
 
-## 📚  Fundamentação Teórica
+## Fundamentação Teórica
 
 A inferência estatística se fundamenta na capacidade de obter conclusões sobre os parâmetros populacionais desconhecidos pelos dados observados
 
@@ -57,7 +59,7 @@ Enquanto a estimação pontual dá uma aproximação única para o parâmetro $(
 
 A construção de um intervalo se baseia em identificar uma estatística pivotal (uma função das variáveis aleatórias da amostra e do parâmetro de interesse, com distribuição da probabilidade não dependente de parâmetros desconhecidos)
 
-- Média Populacional $(\mu)$: Quando a variância $(\sigma^2)$ é conhecida se usa a normalidade da média amostral $\bar{X}$ para derivar a estatística $Z = \frac {\bar{_X}- \mu}{\frac {\sigma}{\sqrt{n}}}$. Quando $\sigma^2$ é desconhecida, a substituição pelo estimador $S^2$ muda a distribuição para t-Student, que tem caudas mais pesadas mostrando a incerteza adicional.
+- Média Populacional $(\mu)$: Quando a variância $(\sigma^2)$ é conhecida se usa a normalidade da média amostral $\bar{X}$ para derivar a estatística $Z = \frac {\bar{X} - \mu}{\frac {\sigma}{\sqrt{n}}}$. Quando $\sigma^2$ é desconhecida, a substituição pelo estimador $S^2$ muda a distribuição para t-Student, que tem caudas mais pesadas mostrando a incerteza adicional.
 
 - Variância Populacional $(\sigma^2)$: A fundamentação vai para a Qui-Quadrado $(X^2)$, que mostra a soma dos quadrados de variáveis normais padronizadas, permitindo a construção de intervalos assimétricos positivos.
 
@@ -67,33 +69,27 @@ Um intervalo de confiança de nível $1 - \alpha$ corresponde ao conjunto dos va
 
 ### Aproximação pelo Teorema Central do Limite (TCL)
 
-Em populações Bernoulli, a estimação do parâmetro de sucesso $\rho$ usamos o Teorema Central do Limite, que garante que para amostras muito grandes a distribuição da proporção amostral $\hat{p}$ converge para a Normal, mas para casos de amostras pequenas ou probabilidades próximas de 0 ou 1, a aproximação normal pode não ser precisa, coisa que justifica o uso do método de Clopper-Pearson (uma forma exata de calcular o intervalo de confiança para uma proporção, quando o TCL falha ou a propriedade é bem próxima de 0 ou 1), baseado na Distribuição Binomial acumulada.
+Para a estimação do parâmetro de sucesso $p$ em populações de Bernoulli, utiliza-se a aproximação pelo Teorema Central do Limite (TCL). Este teorema garante que, para amostras suficientemente grandes, a distribuição da proporção amostral $\hat{p}$ converge para uma distribuição Normal. Contudo, em cenários envolvendo amostras pequenas ou probabilidades de sucesso significativamente próximas de 0 ou 1, a aproximação normal torna-se imprecisa. Tal limitação justifica a aplicação do método de Clopper-Pearson — uma abordagem analítica exata para calcular o intervalo de confiança de uma proporção, fundamentada na função de distribuição acumulada da Binomial, sendo o método mais robusto quando as premissas do TCL não são atendidas.
 
 ```{r,eval = TRUE}
+library(ggplot2)
 
-n <- 30
-media <- 50
-desvio_padrao <- 10
-erro <- desvio_padrao / sqrt(n)
-erro <- desvio_padrao / sqrt(n)
 alfa <- 0.05
+z_critico <- qnorm(1 - alfa/2)
 
-curve(dnorm(x, mean = media, sd = erro),
-      from = media - 4 * erro, to = media + 4 * erro,
-      ylab = "Densidade", xlab = "Média Amostral",
-      main = "Intervalo de Confiança  de 95% para a Média")
-
-lim_inf <- qnorm(alfa/2, mean = media, sd = erro)
-lim_sup <- qnorm(1 - alfa/2, mean = media, sd = erro)
-
-x_sombra <- seq(lim_inf, lim_sup, length = 100)
-y_sombra <- dnorm(x_sombra, mean = media, sd = erro)
-polygon(c(lim_inf, x_sombra, lim_sup), c(0, y_sombra, 0), col = "lightblue")
+ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
+  stat_function(fun = dnorm, args = list(mean = 0, sd = 1), color = "black", linewidth = 0.8) +
+  stat_function(fun = dnorm, args = list(mean = 0, sd = 1), 
+                xlim = c(-z_critico, z_critico), 
+                geom = "area", fill = "lightblue", alpha = 0.7) +
+  labs(title = "Distribuição Normal Padrão (Estatística Z)",
+       subtitle = paste("Limites Críticos para 95% de Confiança: \u00B1", round(z_critico, 3)),
+       y = "Densidade de Probabilidade", 
+       x = "Escore Z") +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5, face = "bold"),
+        plot.subtitle = element_text(hjust = 0.5))
 ```
-
-::: {.callout-note}
-Não consegui fazer o gráfico no Leem, dava erro e não carregava o arquivo
-:::
 
 ### Na engenharia mecatrônica
 
@@ -109,14 +105,8 @@ Robôs possuem repetibilidade, quando programamos um braço robótico por exempl
 
 Ou seja, a estimação intervalar atua como uma barreira, protegendo contra a incerteza, enquanto a estimação pontual dá o valor central, o intervalo de confiança dá a segurança necessária para o dimensionamento de sistemas de controle, o que garante as tolerâncias de fabricação, as incertezas de sensores e as variações de consumo de energia dentro de limites que garantem a integridade e a performance do sistema.
 
----
 
-## ⚙️ Metodologia
-
-Etse relatório foi estruturado em:
-
-1) Revisão teórica;
-2) Implementação computacional;
+## Metodologia
 
 ### Revisão Teórica
 
@@ -128,41 +118,109 @@ Para o parâmetro de sucesso em populações bernoulli $(\rho)$, analisamos a co
 
 ### Implementação Computacional
 
-- Simulação de dados
-- Gráfico
+Para a consecução das análises empíricas, o ambiente computacional foi estruturado na linguagem R. A rotina metodológica inicial consiste no carregamento do pacote `leem` e na definição rigorosa dos parâmetros estocásticos e sementes de aleatoriedade, garantindo a reprodutibilidade do experimento simulado.
 
 
----
+## Resultados e Discussão
 
-## 🔍 Resultados e Discussão
+Os resultados teóricos demonstraram que a largura de um intervalo de confiança é dado por três fatores: nível de confiança (1 - $\alpha$), desvio padrão da população $(\sigma)$ e o tamanho da amostra (n). Com as deduções realizadas, confirmamos que para uma mesma confiança, quanto maior o tamanho da amostra, menor a amplitude do intervalo. Isso indica uma maior precisão na estimativa do parâmetro $\theta$. Observamos que o uso da distribuição t de Student, com $\sigma^2$ desconhecido, resulta em intervalos um pouco mais amplos do que os baseados na distribuição normal.
 
-Os resultados teóricos demonstraram que a largura de um intervalo de confiança é dado por três fatores: nível de confiança (1 - $\alpha$), desvio padrão da população $(\sigma)$ e o tamanho da amostra (n).
+### Simulações Computacionais e Extração de Intervalos
 
-Com as deduções realizadas, confirmamos que pra uma mesma confiança, quanto maior o tamanho da amostra, menor a amplitude do intervalo, isso indica uma maior precisão na estimativa do parâmetro $\theta$.
-Observamos que o uso da distribuição t de Student, com $\theta$ desconhecido, resulta em intervalos um pouco mais amplos do que os baseados na distribuição normal.
+A simulação computacional permite visualizar o comportamento dos estimadores em experimentos parametrizados. A seguir, apresentam-se os cálculos automatizados para os cenários analíticos estabelecidos na metodologia.
 
-A simulação por código nos permitiu visualizar o comportamento dos estimadores em experimentos repetidos
+```{r, eval = TRUE}
+library(leem)
 
-Com amostras aleatórias calculando os intervalos, vemos que a freqência em que o parâmetro real está contido coincide com o nível definido.
+set.seed(2026)
+n1 <- 30
+n2 <- 35
+alpha <- 0.05
+mu_real <- 50
+sigma_conhecido <- 10
 
-Se o valor hipotético $\theta_0$ está fora do intervalo construído, o teste de hipóteses bilateral rejeitará a nulidade () ao nível $\alpha$, o que unifica conceitos de estimação e teste.
+amostra_norm <- rnorm(n1, mean = mu_real, sd = sigma_conhecido)
 
-Tratando da população $\rho$, o Método de CLopper-Pearson é melhor para amostras pequenas, enquanto o Teorema Central do Limite falha ou dá intervalos que podem ter valores impossíveis, o resultado exato garante uma cobertura sempre conservadora.
+media_amostral <- mean(amostra_norm)
+z_critico <- qnorm(1 - alpha/2)
+erro_padrao_z <- sigma_conhecido / sqrt(n1)
+
+ic_media_inf <- media_amostral - z_critico * erro_padrao_z
+ic_media_sup <- media_amostral + z_critico * erro_padrao_z
+
+cat("1. IC Média (Variância Conhecida): [", round(ic_media_inf, 3), ", ", round(ic_media_sup, 3), "]\n")
+
+# --- Simulação 2: Variância Populacional ---
+var_amostral <- var(amostra_norm)
+chi_inf <- qchisq(1 - alpha/2, df = n1 - 1)
+chi_sup <- qchisq(alpha/2, df = n1 - 1)
+
+ic_var_inf <- ((n1 - 1) * var_amostral) / chi_inf
+ic_var_sup <- ((n1 - 1) * var_amostral) / chi_sup
+
+cat("2. IC Variância: [", round(ic_var_inf, 3), ", ", round(ic_var_sup, 3), "]\n")
+
+# --- Simulação 3: Diferença de Médias (Homocedásticas) ---
+amostra_norm2 <- rnorm(n2, mean = 45, sd = sigma_conhecido)
+
+media2 <- mean(amostra_norm2)
+var2 <- var(amostra_norm2)
+
+sp_2 <- ((n1 - 1) * var_amostral + (n2 - 1) * var2) / (n1 + n2 - 2)
+t_critico <- qt(1 - alpha/2, df = n1 + n2 - 2)
+erro_padrao_t <- sqrt(sp_2 * (1/n1 + 1/n2))
+
+ic_diff_inf <- (media_amostral - media2) - t_critico * erro_padrao_t
+ic_diff_sup <- (media_amostral - media2) + t_critico * erro_padrao_t
+
+cat("3. IC Diferença de Médias (Homocedástica): [", round(ic_diff_inf, 3), ", ", round(ic_diff_sup, 3), "]\n")
+
+# --- Simulação 4: População Bernoulli (Estimador Aproximado) ---
+sucessos <- 22
+p_chapeu <- sucessos / n1
+
+ic_p_inf <- p_chapeu - z_critico * sqrt((p_chapeu * (1 - p_chapeu)) / n1)
+ic_p_sup <- p_chapeu + z_critico * sqrt((p_chapeu * (1 - p_chapeu)) / n1)
+
+cat("4. IC Bernoulli (Wald Aproximado): [", round(ic_p_inf, 3), ", ", round(ic_p_sup, 3), "]\n")
+```
 
 
+## Considerações Finais
+
+A estimação intervalar transcende a limitação analítica da estimação pontual ao quantificar matematicamente a incerteza inerente ao processo de inferência. O uso de quantidades pivotais baseadas nas distribuições Normal, t de Student, Qui-Quadrado ou F de Snedecor, fornece a fundamentação rigorosa necessária para estimar parâmetros populacionais lidando com múltiplas condições de variabilidade e tamanho amostral. Adicionalmente, a transição entre estimadores assintóticos (como a aproximação via TCL para populações Bernoulli) e métodos exatos (como Clopper-Pearson) evidencia a necessidade de pensamento crítico sobre as premissas estocásticas aplicadas aos dados reais. 
+
+Na engenharia mecatrônica, essa transição da estimativa pontual para a modelagem da incerteza é o que permite projetar sistemas com tolerâncias robustas, planejar manutenções baseadas em risco mensurável e validar protocolos de controle de qualidade automatizado, garantindo que as predições do modelo englobem a real variação física do sistema dentro do nível de confiança $(1 - \alpha)$ exigido pelo projeto.
 
 
+### Questionário
 
-### 📊  Análise de Dados
+**Questão 1:** Qual é a distinção matemática fundamental entre a estimação pontual tratada e a estimação intervalar desenvolvida neste relatório?
 
+::: {.callout-tip collapse="true"}
+## Resposta
+Enquanto o estimador pontual fornece uma única coordenada no espaço paramétrico (uma aproximação isolada que não informa sua própria margem de erro), o estimador intervalar acopla a estimativa pontual ao seu erro padrão e à distribuição de probabilidade da estatística amostral. Isso resulta em um limite inferior e superior que, sob um nível de confiança $(1 - \alpha)$, quantifica probabilisticamente a incerteza do estimador.
+:::
 
+**Questão 2:** Na inferência da média populacional $(\mu)$, qual é a justificativa teórica para a adoção da distribuição t de Student quando a variância populacional $(\sigma^2)$ é desconhecida?
 
-## 🧠 Considerações finais
+::: {.callout-tip collapse="true"}
+## Resposta
+Quando o parâmetro populacional $\sigma^2$ é desconhecido, torna-se necessário utilizar a variância amostral $(S^2)$ como estimador em seu lugar. Essa substituição insere uma nova fonte de variabilidade na estatística pivotal. A distribuição t de Student, ao possuir caudas mais pesadas que a distribuição Normal Padrão, compensa matematicamente essa incerteza adicional, impedindo a subestimação da amplitude do intervalo, o que é de impacto crítico em amostras pequenas $(n < 30)$.
+:::
 
+**Questão 3:** Sob a ótica da distribuição de probabilidade de populações Bernoulli, em quais cenários a aproximação pelo Teorema Central do Limite (TCL) falha, tornando mandatória a aplicação do intervalo exato de Clopper-Pearson?
 
-## 📖 Referências
+::: {.callout-tip collapse="true"}
+## Resposta
+A aproximação pelo TCL pressupõe que a distribuição binomial converge assintoticamente para a Normal, o que exige simetria na distribuição. Essa premissa sofre colapso quando o tamanho da amostra $(n)$ é reduzido ou quando a verdadeira proporção $(p)$ aproxima-se dos limites operacionais de $0$ ou $1$ (eventos muito raros ou muito frequentes). Nesses casos, o método de Clopper-Pearson inverte a função de distribuição acumulada da Binomial, garantindo a probabilidade de cobertura estrita de $(1 - \alpha)$ sem depender de assíntotas.
+:::
 
-Depois de inserido as informaçõe no arquivo **referencias.bib**, use:
+**Questão 4:** Ao modelar duas populações normais e independentes, qual é a diferença na tratativa matemática dos graus de liberdade entre cenários de variâncias homocedásticas e heterocedásticas?
 
-- Segundo @Rbasico2022
-- Tudo é um objeto em R [@Rbasico2022]
+::: {.callout-tip collapse="true"}
+## Resposta
+Em cenários homocedásticos $(\sigma_1^2 = \sigma_2^2)$, as variâncias podem ser agrupadas no estimador conjunto $(S_p^2)$, permitindo o cálculo dos graus de liberdade através de uma soma algébrica exata: $n_1 + n_2 - 2$. No cenário heterocedástico $(\sigma_1^2 \neq \sigma_2^2)$, não há homogeneidade para agrupar as dispersões. Utiliza-se a equação de aproximação de Welch-Satterthwaite, resultando em um valor de graus de liberdade efetivos $(\nu)$ que é comumente fracionário e mais conservador, ajustando as caudas da distribuição t para refletir as variâncias desiguais.
+:::
+
+## Referências
