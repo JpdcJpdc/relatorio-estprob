@@ -1,7 +1,7 @@
 ---
 # Só mude aqui!!!!
-author: "Nome do Aluno"
-title: "Relatório de Aula Prática XX"
+author: "João Delpasso e Maria Eduarda Motta"
+title: "Relatório 07"
 bibliography: referencias.bib
 # A partir daqui nao faca alteracoes!!!!!
 link-citations: true
@@ -27,9 +27,7 @@ execute:
 
 ## 📌 Introdução
 
-Descreva o contexto da prática e sua importância.
-
-> Exemplo: análise da variabilidade em experimentos físicos utilizando uma catapulta.
+Neste relatório vamos apresentar a dedução teórica de estimadores para vários cenários probabilisticos, além da fundamentação teórica vamos relacionar este relatório ao relatório 06, e por simulações com o R e o pacote leem vamos verificar a eficácia desses estimadores e discutir suas aplicações em cenários de engenharia mecatrônica.
 
 
 
@@ -37,89 +35,134 @@ Descreva o contexto da prática e sua importância.
 
 ### Objetivo geral
 
-Descrever o objetivo principal da prática.
+Desenvolver e aplicar métodos de estimação intervalar para vários parâmetros, compreendendo as propriedades estatísticas e a validação dos resultados obtidos.
 
 ### Objetivos específicos
 
-- Coletar dados experimentais  
-- Aplicar estatística descritiva  
-- Construir gráficos  
-- Interpretar resultados  
+- Deduzir estimadores intervalares;
+- Analisar a população de Bernoulli;
+- Explorar aplicações na engenharia mecatrônica;
 
 ---
 
 ## 📚  Fundamentação Teórica
 
-Apresente os conceitos principais:
+A inferência estatística se fundamenta na capacidade de obter conclusões sobre os parâmetros populacionais desconhecidos pelos dados observados
 
-- Média
-- Variância
-- Desvio padrão
-- Amostragem
+::: {.callout-note}
+Enquanto a estimação pontual dá uma aproximação única para o parâmetro $(\theta)$, a estimação intervalar é necessária para quantificar a incerteza associada a essa estimativa.
+:::
 
-$$
-\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i
-$$
+### Estatística Pivotal e Distribuições Amostrais
+
+A construção de um intervalo se baseia em identificar uma estatística pivotal (uma função das variáveis aleatórias da amostra e do parâmetro de interesse, com distribuição da probabilidade não dependente de parâmetros desconhecidos)
+
+- Média Populacional $(\mu)$: Quando a variância $(\sigma^2)$ é conhecida se usa a normalidade da média amostral $\bar{X}$ para derivar a estatística $Z = \frac {\bar{_X}- \mu}{\frac {\sigma}{\sqrt{n}}}$. Quando $\sigma^2$ é desconhecida, a substituição pelo estimador $S^2$ muda a distribuição para t-Student, que tem caudas mais pesadas mostrando a incerteza adicional.
+
+- Variância Populacional $(\sigma^2)$: A fundamentação vai para a Qui-Quadrado $(X^2)$, que mostra a soma dos quadrados de variáveis normais padronizadas, permitindo a construção de intervalos assimétricos positivos.
+
+### Dualidade da Interferência e Testes de Hipóteses
+
+Um intervalo de confiança de nível $1 - \alpha$ corresponde ao conjunto dos valores hipotéticos de $\theta$ para um teste de hipótese bilateral não rejeita a hipótese nula $H_0 : \theta = \theta_0$ ao nível de $\alpha$, o que permite que a estimação seja vista como um teste de significância contínuo para todos os valores possíveis.
+
+### Aproximação pelo Teorema Central do Limite (TCL)
+
+Em populações Bernoulli, a estimação do parâmetro de sucesso $\rho$ usamos o Teorema Central do Limite, que garante que para amostras muito grandes a distribuição da proporção amostral $\hat{p}$ converge para a Normal, mas para casos de amostras pequenas ou probabilidades próximas de 0 ou 1, a aproximação normal pode não ser precisa, coisa que justifica o uso do método de Clopper-Pearson (uma forma exata de calcular o intervalo de confiança para uma proporção, quando o TCL falha ou a propriedade é bem próxima de 0 ou 1), baseado na Distribuição Binomial acumulada.
+
+```{r,eval = TRUE}
+
+n <- 30
+media <- 50
+desvio_padrao <- 10
+erro <- desvio_padrao / sqrt(n)
+erro <- desvio_padrao / sqrt(n)
+alfa <- 0.05
+
+curve(dnorm(x, mean = media, sd = erro),
+      from = media - 4 * erro, to = media + 4 * erro,
+      ylab = "Densidade", xlab = "Média Amostral",
+      main = "Intervalo de Confiança  de 95% para a Média")
+
+lim_inf <- qnorm(alfa/2, mean = media, sd = erro)
+lim_sup <- qnorm(1 - alfa/2, mean = media, sd = erro)
+
+x_sombra <- seq(lim_inf, lim_sup, length = 100)
+y_sombra <- dnorm(x_sombra, mean = media, sd = erro)
+polygon(c(lim_inf, x_sombra, lim_sup), c(0, y_sombra, 0), col = "lightblue")
+```
+
+::: {.callout-note}
+Não consegui fazer o gráfico no Leem, dava erro e não carregava o arquivo
+:::
+
+### Na engenharia mecatrônica
+
+- Controle estatístico de processo
+- Confiabilidade e vida útil
+- Robótica industrial e tolerâncias de montagem
+
+Na linha de montagem de um componente eletrônico ou usinagem, não conseguimos medir todas as peças, então mediríamos uma amostra e usaríamos a estimação intervalar da média para as dimensões da peça atenderem a tolerância do projeto (se o intervalo de confiança calculado pra média começar a se aproximar dos limites).
+
+Precisamos prever quando um motor ou um sensor de pressão falharão, usamos a estimação intervalar da variância e da média do tempo de falha, o que permite estabelecer um plano de manutenção para evitar paradas não planejadas.
+
+Robôs possuem repetibilidade, quando programamos um braço robótico por exemplo, para realizar uma montagem usamos a estimação intervalar para validar se a incerteza do posicionamento desse robô está dentro da tolerância aceitável.
+
+Ou seja, a estimação intervalar atua como uma barreira, protegendo contra a incerteza, enquanto a estimação pontual dá o valor central, o intervalo de confiança dá a segurança necessária para o dimensionamento de sistemas de controle, o que garante as tolerâncias de fabricação, as incertezas de sensores e as variações de consumo de energia dentro de limites que garantem a integridade e a performance do sistema.
 
 ---
 
 ## ⚙️ Metodologia
 
-::: {.callout-note}
-Descreva como o experimento foi realizado.
-:::
+Etse relatório foi estruturado em:
 
-- Materiais utilizados  
-- Procedimento  
-- Número de repetições  
+1) Revisão teórica;
+2) Implementação computacional;
+
+### Revisão Teórica
+
+Com fundamentação baseada em distribuições de probabilidade, para a dedução dos estimadores intervalares identificamos estatísticas adequadas para cada cenário:
+
+- Para a média populacional $(\mu)$, usamos a Distribuição Normal (variância conhecida) e a distribuição t de Student (variância desconhecida).
+- Para a variância populacional $(\sigma^2)$, usamos a Distribuição Qui-Quadrado $(X^2)$.
+Para o parâmetro de sucesso em populações bernoulli $(\rho)$, analisamos a convergência normal pelo Teorema Central do Limite (TCL) e a precisão exata (pelo método de Clopper-Pearson).
+
+### Implementação Computacional
+
+- Simulação de dados
+- Gráfico
+
 
 ---
 
 ## 🔍 Resultados e Discussão
 
-Apresente e interprete os resultados obtidos a partir dos dados coletados.
+Os resultados teóricos demonstraram que a largura de um intervalo de confiança é dado por três fatores: nível de confiança (1 - $\alpha$), desvio padrão da população $(\sigma)$ e o tamanho da amostra (n).
 
-- Descreva os principais resultados numéricos (média, variabilidade, etc.).
-- Comente o comportamento dos dados observados nos gráficos.
-- Indique se há presença de valores discrepantes (outliers).
-- Avalie se os dados apresentam simetria ou tendência.
+Com as deduções realizadas, confirmamos que pra uma mesma confiança, quanto maior o tamanho da amostra, menor a amplitude do intervalo, isso indica uma maior precisão na estimativa do parâmetro $\theta$.
+Observamos que o uso da distribuição t de Student, com $\theta$ desconhecido, resulta em intervalos um pouco mais amplos do que os baseados na distribuição normal.
 
-Em seguida, discuta os resultados à luz dos conceitos teóricos:
+A simulação por código nos permitiu visualizar o comportamento dos estimadores em experimentos repetidos
 
-- Os resultados estão de acordo com o esperado?
-- Há grande variabilidade? O que isso significa no contexto do experimento?
-- Quais fatores podem ter influenciado os resultados?
-- Existem possíveis fontes de erro experimental?
+Com amostras aleatórias calculando os intervalos, vemos que a freqência em que o parâmetro real está contido coincide com o nível definido.
 
-Procure não apenas descrever, mas **interpretar os dados**.
+Se o valor hipotético $\theta_0$ está fora do intervalo construído, o teste de hipóteses bilateral rejeitará a nulidade () ao nível $\alpha$, o que unifica conceitos de estimação e teste.
 
-### 💬 Exemplo de como citar uma referência bibliográfica
+Tratando da população $\rho$, o Método de CLopper-Pearson é melhor para amostras pequenas, enquanto o Teorema Central do Limite falha ou dá intervalos que podem ter valores impossíveis, o resultado exato garante uma cobertura sempre conservadora.
+
+
+
+
+
+### 📊  Análise de Dados
+
+
+
+## 🧠 Considerações finais
+
+
+## 📖 Referências
 
 Depois de inserido as informaçõe no arquivo **referencias.bib**, use:
 
 - Segundo @Rbasico2022
 - Tudo é um objeto em R [@Rbasico2022]
-
-### 📊  Análise de Dados
-
-```{r}
-distancia <- c(10.2, 9.8, 10.5, 10.1, 9.9, 10.3)
-distancia
-```
-
-## 🧠 Considerações finais
-
-Apresente uma síntese dos principais pontos observados no experimento.
-
-- Retome o objetivo da prática e indique se ele foi alcançado.
-- Destaque os principais aprendizados obtidos.
-- Comente brevemente sobre a qualidade dos dados coletados.
-- Sugira possíveis melhorias no procedimento experimental.
-
-Evite repetir apenas os resultados; foque nas **conclusões e reflexões** sobre a prática realizada.
-
-## Aprenda Quarto
-
-Acesse [Quarto](https://quarto.org/).
-
-## 📖 Referências
