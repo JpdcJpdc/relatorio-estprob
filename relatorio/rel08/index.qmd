@@ -1,7 +1,7 @@
 ---
 # Só mude aqui!!!!
-author: "Nome do Aluno"
-title: "Relatório de Aula Prática XX"
+author: "João Delpasso e Maria Eduarda Motta"
+title: "Relatório 08: Teste de hipóteses para duas populações"
 bibliography: referencias.bib
 # A partir daqui nao faca alteracoes!!!!!
 link-citations: true
@@ -24,102 +24,220 @@ execute:
   message: false
 ---
 
+{{< include _links.md >}}
 
-## 📌 Introdução
+## Introdução
 
-Descreva o contexto da prática e sua importância.
-
-> Exemplo: análise da variabilidade em experimentos físicos utilizando uma catapulta.
-
+Quando se deseja comparar duas populações, é necessário realizar um teste de hipóteses para verificar se existe diferença significativa entre elas. Este relatório será aplicado os conceitos de teste de hipóteses para duas populações, utilizando dados coletados apartir do experimento da catapulta utilizando duas configurações diferentes e em 15 lançamentos cada uma.
 
 
-## 🎯 Objetivos
 
-### Objetivo geral
+***
+## Objetivos
 
-Descrever o objetivo principal da prática.
+Determinar apatir de amostras coletadas se existe diferença significativa entre as médias das duas populações, utilizando o teste de hipóteses para duas populações.
+
 
 ### Objetivos específicos
 
-- Coletar dados experimentais  
-- Aplicar estatística descritiva  
-- Construir gráficos  
-- Interpretar resultados  
+- Coletar dados da catapulta utilizando duas configurações diferentes;
+- Calcular as médias e desvios padrões das amostras coletadas;
+- Realizar o teste de hipóteses para duas populações.
+- Discutir os resultados obtidos e suas implicações.
 
----
+***
 
-## 📚  Fundamentação Teórica
+## Fundamentação Teórica
 
-Apresente os conceitos principais:
+Para comparar duas populações, é necessário realizar um teste de hipóteses para verificar se existe diferença significativa entre elas. O teste de hipóteses é uma técnica estatística que permite avaliar se uma afirmação sobre uma população é verdadeira ou falsa, com base em dados amostrais.
 
-- Média
-- Variância
-- Desvio padrão
-- Amostragem
+Neste relatório, deseja-se comparar as médias de duas populações apartir de amostras coletadas utilizando duas configurações diferentes da catapulta. Para isso, será utilizado o teste t de Student para duas amostras independentes, que é apropriado quando se deseja comparar as médias de duas populações com variâncias desconhecidas e amostras pequenas.
 
-$$
-\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i
-$$
+### Hipóteses
 
----
+Uma hipótese é uma afirmação sobre uma população que pode ser testada com base em dados amostrais. No teste de hipóteses, existem duas hipóteses: a hipótese nula (H0) e a hipótese alternativa (H1).
 
-## ⚙️ Metodologia
+A hipotése nula tipicamente, procura mostrar que o efeito estatístico sendo estudado não existe, ou seja, no caso da comparação de duas médias, $H_0: \mu_1 = \mu_2$, onde $\mu_1$ e $\mu_2$ são as médias das duas populações. A hipótese alternativa, por outro lado, procura mostrar que o efeito estatístico existe, ou seja, no caso da comparação de duas médias, $H_1: \mu_1 \neq \mu_2$.
 
-::: {.callout-note}
-Descreva como o experimento foi realizado.
-:::
+### Teste
 
-- Materiais utilizados  
-- Procedimento  
-- Número de repetições  
+Um teste de hipóteses é uma técnica estatística que permite avaliar se uma afirmação sobre uma população é verdadeira ou falsa, com base em dados amostrais. O teste t de Student para duas amostras independentes é apropriado quando se deseja comparar as médias de duas populações com variâncias desconhecidas e amostras pequenas.
 
----
+Para populações com variâncias desconhecidas, o teste t de Student para duas amostras independentes é utilizado. A estatística de teste é calculada como:
 
-## 🔍 Resultados e Discussão
+$$t = \frac{\bar{x}_1 - \bar{x}_2}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}$${#eq-t-test}
 
-Apresente e interprete os resultados obtidos a partir dos dados coletados.
+E os graus de liberdade são calculados como:
 
-- Descreva os principais resultados numéricos (média, variabilidade, etc.).
-- Comente o comportamento dos dados observados nos gráficos.
-- Indique se há presença de valores discrepantes (outliers).
-- Avalie se os dados apresentam simetria ou tendência.
+$$df = \frac{\left(\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}\right)^2}{\frac{\left(\frac{s_1^2}{n_1}\right)^2}{n_1 - 1} + \frac{\left(\frac{s_2^2}{n_2}\right)^2}{n_2 - 1}}$$ {#eq-df}
 
-Em seguida, discuta os resultados à luz dos conceitos teóricos:
 
-- Os resultados estão de acordo com o esperado?
-- Há grande variabilidade? O que isso significa no contexto do experimento?
-- Quais fatores podem ter influenciado os resultados?
-- Existem possíveis fontes de erro experimental?
+### Confiança
 
-Procure não apenas descrever, mas **interpretar os dados**.
+A confiança em um teste de hipóteses é a probabilidade de não rejeitar a hipótese nula quando ela é verdadeira. Geralmente, o nível de confiança é fixado em 95% (α = 0.05), indicando que há 5% de probabilidade de cometer um erro do tipo I (rejeitar a hipótese nula quando ela é verdadeira).
 
-### 💬 Exemplo de como citar uma referência bibliográfica
+Aumentar ou diminuir o nível de confiança afeta a probabilidade de cometer erros do tipo I e do tipo II. Um nível de confiança mais alto (por exemplo, 99%) reduz a probabilidade de cometer um erro do tipo I, mas aumenta a probabilidade de cometer um erro do tipo II. Por outro lado, um nível de confiança mais baixo (por exemplo, 90%) aumenta a probabilidade de cometer um erro do tipo I, mas reduz a probabilidade de cometer um erro do tipo II.
 
-Depois de inserido as informaçõe no arquivo **referencias.bib**, use:
+### Erro tipo I e tipo II
 
-- Segundo @Rbasico2022
-- Tudo é um objeto em R [@Rbasico2022]
+O erro tipo I ocorre quando a hipótese nula é rejeitada quando ela é verdadeira. A probabilidade de cometer um erro tipo I é denotada por α, que é o nível de significância do teste. Por exemplo, se α = 0.05, há uma probabilidade de 5% de rejeitar a hipótese nula quando ela é verdadeira.
 
-### 📊  Análise de Dados
+O erro tipo II ocorre quando a hipótese nula não é rejeitada quando ela é falsa. A probabilidade de cometer um erro tipo II é denotada por β, que depende do tamanho da amostra, da variabilidade dos dados e do nível de significância do teste. Por exemplo, se β = 0.20, há uma probabilidade de 20% de não rejeitar a hipótese nula quando ela é falsa.
+
+### Poder do teste
+
+O poder do teste é a probabilidade de rejeitar a hipótese nula quando ela é falsa. O poder do teste é calculado como 1 - β, onde β é a probabilidade de cometer um erro tipo II. Um poder do teste mais alto indica uma maior capacidade de detectar diferenças significativas entre as populações.
+
+
+### Conclusão do teste de hipóteses
+
+A conclusão do teste de hipóteses para duas populações depende dos resultados obtidos a partir das amostras coletadas. Se a hipótese nula for rejeitada, isso indica que há evidências suficientes para afirmar que as médias das duas populações são significativamente diferentes. Por outro lado, se a hipótese nula não for rejeitada, isso indica que não há evidências suficientes para afirmar que as médias das duas populações são significativamente diferentes.
+
+***
+
+## Metodologia
+
+Para a amostragem do experimento da catapulta. Será demarcado um ponto de referência para facilitar a medição da distância percorrida pelo projétil. Serão realizadas 15 medições para cada configuração da catapulta, totalizando 30 medições. As medições serão registradas em uma tabela.
+
+Com os dados coletados, serão calculadas as médias e desvios padrões das amostras. Em seguida, será realizado o teste de hipóteses para duas populações, utilizando o teste t de Student para duas amostras independentes. O nível de significância será fixado em 5% (α = 0.05), e os resultados serão interpretados com base nas hipóteses formuladas.
+
+
+***
+
+## Resultados e Discussão
+
+### Dados Coletados
+
+Os dados coletados a partir do experimento da catapulta utilizando duas configurações diferentes são apresentados na tabela abaixo:
 
 ```{r}
-distancia <- c(10.2, 9.8, 10.5, 10.1, 9.9, 10.3)
-distancia
+#| echo: false
+#| warning: false
+
+df <- read.csv("dados.csv", sep = ";")
+
+# Apply scalar addition to specific column vectors
+df$config1 <- df$config1 + 220
+df$config2 <- df$config2 + 330
+
+# Output the modified DataFrame
+knitr::kable(t(df))
 ```
 
-## 🧠 Considerações finais
+:::{.callout-note}
+- Configuração 1: O-(Nível III), A+(Nível III), A-(Nível IV), B+(Nível VI)
+- Configuração 2: O-(Nível III), A+(Nível III), A-(Nível IV), B+(Nível IV)
+:::
 
-Apresente uma síntese dos principais pontos observados no experimento.
+Utilizando o pacote [R] para calcular a distribuição das amostras:
+```{r}
+#| code-fold: false
+#| code-line-numbers: true
+library(ggplot2)
+library(tidyr)
 
-- Retome o objetivo da prática e indique se ele foi alcançado.
-- Destaque os principais aprendizados obtidos.
-- Comente brevemente sobre a qualidade dos dados coletados.
-- Sugira possíveis melhorias no procedimento experimental.
+# Transform wide data matrix to a long-format dataframe
+df_long <- pivot_longer(df, cols = c(config1, config2), 
+                        names_to = "Configuracao", values_to = "Distancia")
 
-Evite repetir apenas os resultados; foque nas **conclusões e reflexões** sobre a prática realizada.
+# Compute statistical aggregates dynamically
+means <- aggregate(Distancia ~ Configuracao, df_long, mean)
 
-## Aprenda Quarto
+# Construct the layered geometry
+ggplot(df_long, aes(x = Distancia, fill = Configuracao)) +
+  geom_histogram(alpha = 0.5, position = "identity", bins = 15, color = "black") +
+  geom_vline(data = means, aes(xintercept = Distancia, color = Configuracao), 
+             linetype = "dashed", linewidth = 1) +
+  labs(title = "Comparação: Configuração 1 vs 2",
+       x = "Distância (cm)", 
+       y = "Frequência") +
+  theme_minimal()
+```
 
-Acesse [Quarto](https://quarto.org/).
+- Configuração 1: $\bar{x}_1 = `r round(mean(df$config1), 2)`$ cm, $s_1 = `r round(sd(df$config1), 2)`$ cm
+- Configuração 2: $\bar{x}_2 = `r round(mean(df$config2), 2)`$ cm, $s_2 = `r round(sd(df$config2), 2)`$ cm
 
-## 📖 Referências
+### Hipótese do experimento
+
+A hipótese do experimento é que há uma diferença significativa na distância percorrida pelo projétil entre as duas configurações da catapulta.
+
+$H_0: \mu_1 = \mu_2$ (não há diferença significativa entre as médias das duas populações)
+
+$H_0: \mu_1 - \mu_2 = 0$
+
+Logo a hipótese alternativa é:
+
+$H_1: \mu_1 - \mu_2 \neq 0$ (há diferença significativa entre as médias das duas populações)
+
+
+### Testando a hipótese
+
+Para testar a hipótese, será utilizado o teste t de Student para duas amostras independentes. O nível de significância será fixado em 5% (α = 0.05).
+
+Com base na @eq-t-test e médias amostrais $\bar{x}_1 = 288.67$ e $\bar{x}_2 = 404.6$, desvios padrões amostrais $s_1 = 13.24$ e $s_2 =18.25$, e tamanhos amostrais $n_1 = n_2 = 15$, a estatística de teste é calculada como: 
+
+$$t = \frac{288.67 - 404.6}{\sqrt{\frac{13.24^2}{15} + \frac{18.25^2}{15}}} $$
+
+$$t = \frac{-115.93}{\sqrt{\frac{175.30}{15} + \frac{333.06}{15}}} $$
+
+$$t = \frac{-115.93}{\sqrt{11.69 + 22.20}} $$
+
+$$t = \frac{-115.93}{\sqrt{33.89}} $$
+
+$$t = \frac{-115.93}{5.82} $$
+
+$$t = -19.92$$
+
+#### Graus de liberdade
+
+Para calcular os graus de liberdade, utilizamos a @eq-df:
+
+$$df = \frac{\left(\frac{13.24^2}{15} + \frac{18.25^2}{15}\right)^2}{\frac{\left(\frac{13.24^2}{15}\right)^2}{15 - 1} + \frac{\left(\frac{18.25^2}{15}\right)^2}{15 - 1}}$$
+
+
+$$df = \frac{\left(\frac{175.30}{15} + \frac{333.06}{15}\right)^2}{\frac{\left(\frac{175.30}{15}\right)^2}{14} + \frac{\left(\frac{333.06}{15}\right)^2}{14}}$$
+
+
+$$df = \frac{\left(11.69 + 22.20\right)^2}{\frac{11.69^2}{14} + \frac{22.20^2}{14}}$$
+
+$$df = \frac{33.89^2}{\frac{136.61}{14} + \frac{492.84}{14}}$$
+
+$$df = \frac{1148.92}{9.76 + 35.20}$$
+
+$$df = \frac{1148.92}{44.96}$$
+
+$$df = 25.55$$
+
+Logo, os graus de liberdade são arredondados para $25$.
+
+:::{.callout-note}
+Os graus de liberdade são arredondados para baixo , pois o teste t de Student para duas amostras independentes requer que os graus de liberdade sejam um número inteiro. Portanto, arredondar para cima aumenta as chances do Erro Tipo I, logo, é mais conservador arredondar para baixo.
+:::
+
+#### Tabela t de Student
+
+Com $\alpha = \frac{0.05}{2} = 0.025$ e $df = 25$, o valor crítico da tabela t de Student é $t_{crit} = 3.0782$.
+
+:::{.callout-note}
+O valor de $\alpha$ é dividido por 2, pois o teste é bilateral, ou seja, estamos interessados em detectar diferenças significativas em ambas as direções (maior ou menor).
+:::
+
+#### Comparando o valor crítico com a estatística de teste
+
+O valor crítico da tabela t de Student é $t_{crit} = 3.0782$, enquanto a estatística de teste calculada é $t = -19.92$. Como o valor absoluto da estatística de teste é maior que o valor crítico ($|t| > t_{crit}$), a hipótese nula é rejeitada.
+
+
+### Conclusão do teste
+
+Com base nos resultados obtidos, rejeita-se a hipótese nula $H_0: \mu_1 = \mu_2$, indicando que há evidências suficientes para afirmar que as médias das duas populações são significativamente diferentes. Portanto, conclui-se que a configuração da catapulta tem um efeito significativo na distância percorrida pelo projétil.
+
+Como o valor da estatística de teste é negativo, pode-se concluir que a Configuração 1 resulta em uma distância menor do que a Configuração 2.
+
+***
+
+## Considerações finais
+
+
+***
+
+## Referências
