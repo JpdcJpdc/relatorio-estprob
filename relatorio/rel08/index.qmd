@@ -237,6 +237,50 @@ Como o valor da estatística de teste é negativo, pode-se concluir que a Config
 
 ## Considerações finais
 
+### Perguntas
+
+1) Qual variável mudou entre a configuração 1 e a 2 que justifica o aumento na distância média?
+
+2) O teste t aplicado permite que afirmemos que a configuração 2 é superior mesmo tendo sido desenhado para detectar diferenças?
+
+3) Se quisessemos encontrar a melhor combinação para as 4 variáveis, porque o teste t isolado limitaria a descoberta?
+
+4) Porque os graus de liberdade calculados foram arredondados para baixo?
+
+5) Porque dividir o valor do nível de significância para achar o valor crítico?
+
+6) Qual o critério para rejeitar a hipótese nula?
+
+7) O que o sinal negativo da estatística calculada revela sobre o desempenho da primeira configuração com a segunda?
+
+8) Se no experimento usassemos um teste unilateral pra provar que a segunda configuração é superior, o valor critico de t seria igual, maior ou menor?
+
+9) O que a diferença dos desvios padrões sugere sobre o comportamento da catapulta?
+
+10) Se repetissemos esse experimento com 100 lançamentos em cada configuração, o valor crítico de t mudaria?
+
+### Respostas
+
+1) A única diferença é o fator B+, que passa de 6 para 4, essa mudança age sobre a tensão do elático, o que permite uma transferência de energia cinética bem mais eficiente pra bolinha (isso eleva a distância média de 288,67 cm para 404,6 cm).
+
+2) Sim, mesmo que tenha sido feito sob a hipótese de que as médias são diferentes ($H_1: \mu_1 \neq \mu_2$), com a hipótese nula ($H_0$) foi rejeitada, olhamos pros dados, como a estatística foi negativa ($t = -19,92$) e a média amostral da segunda configuração ($\bar{x}_2 = 404,6$cm) é maior que da primeira configuração ($\bar{x}_1 = 288,67$cm), concluimos que a segunda configuração, em alcance, é superior a primeira.
+
+3) O teste t de Student só consegue comparar duas combinações diferentes por vez, se tentassemos testar todas as combinações possíveis das variáveis usando ele, precisaríamos de muitos testes pareados, isso aumentaria a chance de cometer um erro do tipo 1 (falso positivo), fora que ele é incapaz de detectar efeitos de interação, de quando o angulo muda conforme a variável, ou mesmo a tensão da mola. Logo, pra fazer isso precisariamos usar outro tipo de teste.
+
+4) Eles foram arredondados para baixo como uma abordagem mais concervadora, visto que se arredondassemos pra cima teria mais chance de cairmos no erro tipo 1 (falso positivo) quando a distribuição t precisa de um número inteiro (para a consulta na tabela).
+
+5) Dividimos o valor porque é um teste bilateral, detectamos diferenças nas duas direções da distribuição.
+
+6) Comparamos o valor absoluto da estatística de teste calculada com o valor da tabela, e se o teste calculado for maior que o valor da tabela a hipótese nula é rejeitada (no nosso experimento, como |-19,92| > 3,0782 pudemos rejeitar a hipótese nula). Assim, tem evidências para afirmarmos que as médias das populações são diferentes.
+
+7) Isso mostra que a média amostral da primeira configuração é menor que da segunda configuração, isso permite concluirmos que a primeira configuração resulta em uma distancia de lançamento bem menor que da segunda configuração.
+
+8) Se usassemos um teste unilateral o valor critico seria menor, já que toda a área de rejeição ficaria concentrada em uma única cauda da distribuição, o que diminui o valor necessário pra rejeitar a hipótese nula quando comparado a um teste bilateral com $\alpha/2 = 0,025$.
+
+9) O desvio padrão maior na segunda configuração indica que além de arremessar a bolinha mais longe, tem uma dispersão dos resultados maior, o que faz sentido, já que forças maiores amplificam as imperfeições, dando uma precisão um pouco menor e um alcance bem maior.
+
+10) O valor de t mudaria pra perto de 1,96, se aproximando da distribuição normal padrão, porque o aumento dos graus diminui a incerteza do teste, a estatística t calculada tenderia a ficar mais extrema, pelo erro padrão diminuir conforme a amostra aumenta.
+
 
 ***
 
